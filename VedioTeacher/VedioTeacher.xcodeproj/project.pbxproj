@@ -1,0 +1,549 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9E6B6B2B19653801001007CD /* libUtilsGather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6B6B2619653801001007CD /* libUtilsGather.a */; };
+		9E6B6B2C19653801001007CD /* libUtilsGather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6B6B2819653801001007CD /* libUtilsGather.a */; };
+		9ED53ACE196285A900DA3248 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53ACD196285A900DA3248 /* Foundation.framework */; };
+		9ED53AD0196285A900DA3248 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53ACF196285A900DA3248 /* CoreGraphics.framework */; };
+		9ED53AD2196285A900DA3248 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53AD1196285A900DA3248 /* UIKit.framework */; };
+		9ED53AD8196285A900DA3248 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9ED53AD6196285A900DA3248 /* InfoPlist.strings */; };
+		9ED53ADA196285A900DA3248 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED53AD9196285A900DA3248 /* main.m */; };
+		9ED53ADE196285A900DA3248 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED53ADD196285A900DA3248 /* AppDelegate.m */; };
+		9ED53AE4196285A900DA3248 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED53AE3196285A900DA3248 /* ViewController.m */; };
+		9ED53AE6196285A900DA3248 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ED53AE5196285A900DA3248 /* Images.xcassets */; };
+		9ED53AED196285A900DA3248 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53AEC196285A900DA3248 /* XCTest.framework */; };
+		9ED53AEE196285A900DA3248 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53ACD196285A900DA3248 /* Foundation.framework */; };
+		9ED53AEF196285A900DA3248 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53AD1196285A900DA3248 /* UIKit.framework */; };
+		9ED53AF7196285A900DA3248 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9ED53AF5196285A900DA3248 /* InfoPlist.strings */; };
+		9ED53AF9196285A900DA3248 /* VedioTeacherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED53AF8196285A900DA3248 /* VedioTeacherTests.m */; };
+		9ED53B03196285C200DA3248 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53B02196285C200DA3248 /* AVFoundation.framework */; };
+		9ED53B071962AE4000DA3248 /* UIColor+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED53B061962AE4000DA3248 /* UIColor+extend.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9ED53AF0196285A900DA3248 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ED53AC2196285A900DA3248 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9ED53AC9196285A900DA3248;
+			remoteInfo = VedioTeacher;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9E6B6B2619653801001007CD /* libUtilsGather.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUtilsGather.a; sourceTree = "<group>"; };
+		9E6B6B2819653801001007CD /* libUtilsGather.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUtilsGather.a; sourceTree = "<group>"; };
+		9E6B6B2919653801001007CD /* SayHello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SayHello.h; sourceTree = "<group>"; };
+		9E6B6B2A19653801001007CD /* UtilsGather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsGather.h; sourceTree = "<group>"; };
+		9ED53ACA196285A900DA3248 /* VedioTeacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VedioTeacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9ED53ACD196285A900DA3248 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9ED53ACF196285A900DA3248 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9ED53AD1196285A900DA3248 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9ED53AD5196285A900DA3248 /* VedioTeacher-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VedioTeacher-Info.plist"; sourceTree = "<group>"; };
+		9ED53AD7196285A900DA3248 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9ED53AD9196285A900DA3248 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9ED53ADB196285A900DA3248 /* VedioTeacher-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VedioTeacher-Prefix.pch"; sourceTree = "<group>"; };
+		9ED53ADC196285A900DA3248 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9ED53ADD196285A900DA3248 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9ED53AE2196285A900DA3248 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9ED53AE3196285A900DA3248 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9ED53AE5196285A900DA3248 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9ED53AEB196285A900DA3248 /* VedioTeacherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VedioTeacherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9ED53AEC196285A900DA3248 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9ED53AF4196285A900DA3248 /* VedioTeacherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VedioTeacherTests-Info.plist"; sourceTree = "<group>"; };
+		9ED53AF6196285A900DA3248 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9ED53AF8196285A900DA3248 /* VedioTeacherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VedioTeacherTests.m; sourceTree = "<group>"; };
+		9ED53B02196285C200DA3248 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9ED53B051962AE4000DA3248 /* UIColor+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+extend.h"; sourceTree = "<group>"; };
+		9ED53B061962AE4000DA3248 /* UIColor+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+extend.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9ED53AC7196285A900DA3248 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ED53B03196285C200DA3248 /* AVFoundation.framework in Frameworks */,
+				9ED53AD0196285A900DA3248 /* CoreGraphics.framework in Frameworks */,
+				9E6B6B2C19653801001007CD /* libUtilsGather.a in Frameworks */,
+				9E6B6B2B19653801001007CD /* libUtilsGather.a in Frameworks */,
+				9ED53AD2196285A900DA3248 /* UIKit.framework in Frameworks */,
+				9ED53ACE196285A900DA3248 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9ED53AE8196285A900DA3248 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ED53AED196285A900DA3248 /* XCTest.framework in Frameworks */,
+				9ED53AEF196285A900DA3248 /* UIKit.framework in Frameworks */,
+				9ED53AEE196285A900DA3248 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9E6805041963EFC7009F6C15 /* OpenSource */ = {
+			isa = PBXGroup;
+			children = (
+				9E6B6B2419653801001007CD /* UtilsGather */,
+			);
+			path = OpenSource;
+			sourceTree = "<group>";
+		};
+		9E6B6B2419653801001007CD /* UtilsGather */ = {
+			isa = PBXGroup;
+			children = (
+				9E6B6B2519653801001007CD /* iphone-os */,
+				9E6B6B2719653801001007CD /* iphonesimulator */,
+				9E6B6B2919653801001007CD /* SayHello.h */,
+				9E6B6B2A19653801001007CD /* UtilsGather.h */,
+			);
+			path = UtilsGather;
+			sourceTree = "<group>";
+		};
+		9E6B6B2519653801001007CD /* iphone-os */ = {
+			isa = PBXGroup;
+			children = (
+				9E6B6B2619653801001007CD /* libUtilsGather.a */,
+			);
+			path = "iphone-os";
+			sourceTree = "<group>";
+		};
+		9E6B6B2719653801001007CD /* iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				9E6B6B2819653801001007CD /* libUtilsGather.a */,
+			);
+			path = iphonesimulator;
+			sourceTree = "<group>";
+		};
+		9ED53AC1196285A900DA3248 = {
+			isa = PBXGroup;
+			children = (
+				9ED53AD3196285A900DA3248 /* VedioTeacher */,
+				9ED53AF2196285A900DA3248 /* VedioTeacherTests */,
+				9ED53ACC196285A900DA3248 /* Frameworks */,
+				9ED53ACB196285A900DA3248 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9ED53ACB196285A900DA3248 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9ED53ACA196285A900DA3248 /* VedioTeacher.app */,
+				9ED53AEB196285A900DA3248 /* VedioTeacherTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9ED53ACC196285A900DA3248 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9ED53B02196285C200DA3248 /* AVFoundation.framework */,
+				9ED53ACD196285A900DA3248 /* Foundation.framework */,
+				9ED53ACF196285A900DA3248 /* CoreGraphics.framework */,
+				9ED53AD1196285A900DA3248 /* UIKit.framework */,
+				9ED53AEC196285A900DA3248 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9ED53AD3196285A900DA3248 /* VedioTeacher */ = {
+			isa = PBXGroup;
+			children = (
+				9ED53B041962AE3800DA3248 /* Utils */,
+				9ED53ADC196285A900DA3248 /* AppDelegate.h */,
+				9ED53ADD196285A900DA3248 /* AppDelegate.m */,
+				9ED53AE2196285A900DA3248 /* ViewController.h */,
+				9ED53AE3196285A900DA3248 /* ViewController.m */,
+				9E6805041963EFC7009F6C15 /* OpenSource */,
+				9ED53AE5196285A900DA3248 /* Images.xcassets */,
+				9ED53AD4196285A900DA3248 /* Supporting Files */,
+			);
+			path = VedioTeacher;
+			sourceTree = "<group>";
+		};
+		9ED53AD4196285A900DA3248 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9ED53AD5196285A900DA3248 /* VedioTeacher-Info.plist */,
+				9ED53AD6196285A900DA3248 /* InfoPlist.strings */,
+				9ED53AD9196285A900DA3248 /* main.m */,
+				9ED53ADB196285A900DA3248 /* VedioTeacher-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9ED53AF2196285A900DA3248 /* VedioTeacherTests */ = {
+			isa = PBXGroup;
+			children = (
+				9ED53AF8196285A900DA3248 /* VedioTeacherTests.m */,
+				9ED53AF3196285A900DA3248 /* Supporting Files */,
+			);
+			path = VedioTeacherTests;
+			sourceTree = "<group>";
+		};
+		9ED53AF3196285A900DA3248 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9ED53AF4196285A900DA3248 /* VedioTeacherTests-Info.plist */,
+				9ED53AF5196285A900DA3248 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9ED53B041962AE3800DA3248 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9ED53B051962AE4000DA3248 /* UIColor+extend.h */,
+				9ED53B061962AE4000DA3248 /* UIColor+extend.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9ED53AC9196285A900DA3248 /* VedioTeacher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9ED53AFC196285A900DA3248 /* Build configuration list for PBXNativeTarget "VedioTeacher" */;
+			buildPhases = (
+				9ED53AC6196285A900DA3248 /* Sources */,
+				9ED53AC7196285A900DA3248 /* Frameworks */,
+				9ED53AC8196285A900DA3248 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VedioTeacher;
+			productName = VedioTeacher;
+			productReference = 9ED53ACA196285A900DA3248 /* VedioTeacher.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9ED53AEA196285A900DA3248 /* VedioTeacherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9ED53AFF196285A900DA3248 /* Build configuration list for PBXNativeTarget "VedioTeacherTests" */;
+			buildPhases = (
+				9ED53AE7196285A900DA3248 /* Sources */,
+				9ED53AE8196285A900DA3248 /* Frameworks */,
+				9ED53AE9196285A900DA3248 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9ED53AF1196285A900DA3248 /* PBXTargetDependency */,
+			);
+			name = VedioTeacherTests;
+			productName = VedioTeacherTests;
+			productReference = 9ED53AEB196285A900DA3248 /* VedioTeacherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9ED53AC2196285A900DA3248 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Cao JianRong";
+				TargetAttributes = {
+					9ED53AEA196285A900DA3248 = {
+						TestTargetID = 9ED53AC9196285A900DA3248;
+					};
+				};
+			};
+			buildConfigurationList = 9ED53AC5196285A900DA3248 /* Build configuration list for PBXProject "VedioTeacher" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9ED53AC1196285A900DA3248;
+			productRefGroup = 9ED53ACB196285A900DA3248 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9ED53AC9196285A900DA3248 /* VedioTeacher */,
+				9ED53AEA196285A900DA3248 /* VedioTeacherTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9ED53AC8196285A900DA3248 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ED53AE6196285A900DA3248 /* Images.xcassets in Resources */,
+				9ED53AD8196285A900DA3248 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9ED53AE9196285A900DA3248 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ED53AF7196285A900DA3248 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9ED53AC6196285A900DA3248 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ED53AE4196285A900DA3248 /* ViewController.m in Sources */,
+				9ED53ADE196285A900DA3248 /* AppDelegate.m in Sources */,
+				9ED53ADA196285A900DA3248 /* main.m in Sources */,
+				9ED53B071962AE4000DA3248 /* UIColor+extend.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9ED53AE7196285A900DA3248 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ED53AF9196285A900DA3248 /* VedioTeacherTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9ED53AF1196285A900DA3248 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9ED53AC9196285A900DA3248 /* VedioTeacher */;
+			targetProxy = 9ED53AF0196285A900DA3248 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9ED53AD6196285A900DA3248 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9ED53AD7196285A900DA3248 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9ED53AF5196285A900DA3248 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9ED53AF6196285A900DA3248 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9ED53AFA196285A900DA3248 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VedioTeacher/OpenSource/TestUtils",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		9ED53AFB196285A900DA3248 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VedioTeacher/OpenSource/TestUtils",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9ED53AFD196285A900DA3248 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VedioTeacher/VedioTeacher-Prefix.pch";
+				INFOPLIST_FILE = "VedioTeacher/VedioTeacher-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VedioTeacher/OpenSource/UtilsGather/iphone-os",
+					"$(PROJECT_DIR)/VedioTeacher/OpenSource/UtilsGather/iphonesimulator",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9ED53AFE196285A900DA3248 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VedioTeacher/VedioTeacher-Prefix.pch";
+				INFOPLIST_FILE = "VedioTeacher/VedioTeacher-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VedioTeacher/OpenSource/UtilsGather/iphone-os",
+					"$(PROJECT_DIR)/VedioTeacher/OpenSource/UtilsGather/iphonesimulator",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9ED53B00196285A900DA3248 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VedioTeacher.app/VedioTeacher";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VedioTeacher/VedioTeacher-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "VedioTeacherTests/VedioTeacherTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		9ED53B01196285A900DA3248 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VedioTeacher.app/VedioTeacher";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VedioTeacher/VedioTeacher-Prefix.pch";
+				INFOPLIST_FILE = "VedioTeacherTests/VedioTeacherTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9ED53AC5196285A900DA3248 /* Build configuration list for PBXProject "VedioTeacher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9ED53AFA196285A900DA3248 /* Debug */,
+				9ED53AFB196285A900DA3248 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9ED53AFC196285A900DA3248 /* Build configuration list for PBXNativeTarget "VedioTeacher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9ED53AFD196285A900DA3248 /* Debug */,
+				9ED53AFE196285A900DA3248 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9ED53AFF196285A900DA3248 /* Build configuration list for PBXNativeTarget "VedioTeacherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9ED53B00196285A900DA3248 /* Debug */,
+				9ED53B01196285A900DA3248 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9ED53AC2196285A900DA3248 /* Project object */;
+}
