@@ -9,5 +9,12 @@
 #import "GetTVInfoReqBody.h"
 
 @implementation GetTVInfoReqBody
+@synthesize idTV;
+
+-(void) dealloc
+{
+    [idTV release];
+    [super dealloc];
+}
 
 @end

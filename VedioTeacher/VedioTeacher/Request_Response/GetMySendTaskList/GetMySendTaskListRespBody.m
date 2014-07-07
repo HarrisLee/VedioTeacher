@@ -9,5 +9,16 @@
 #import "GetMySendTaskListRespBody.h"
 
 @implementation GetMySendTaskListRespBody
+@synthesize taskList;
 
+-(void) setValue:(id)value
+{
+    
+}
+
+-(void) dealloc
+{
+    [taskList release];
+    [super dealloc];
+}
 @end

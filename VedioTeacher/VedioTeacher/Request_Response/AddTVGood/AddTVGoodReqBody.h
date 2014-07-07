@@ -9,5 +9,10 @@
 #import "ReqBody.h"
 
 @interface AddTVGoodReqBody : ReqBody
-
+{
+    NSString *idTV;
+    NSString *AccountId;
+}
+@property (nonatomic, retain) NSString *idTV;
+@property (nonatomic, retain) NSString *AccountId;
 @end

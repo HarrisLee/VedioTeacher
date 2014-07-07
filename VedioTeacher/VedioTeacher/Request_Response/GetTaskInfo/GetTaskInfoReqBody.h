@@ -9,5 +9,8 @@
 #import "ReqBody.h"
 
 @interface GetTaskInfoReqBody : ReqBody
-
+{
+    NSString *taskid;
+}
+@property (nonatomic, retain) NSString *taskid;
 @end

@@ -9,5 +9,12 @@
 #import "GetTVListOfGoodCountReqBody.h"
 
 @implementation GetTVListOfGoodCountReqBody
+@synthesize idSecondDirectory;
+
+-(void) dealloc
+{
+    [idSecondDirectory release];
+    [super dealloc];
+}
 
 @end

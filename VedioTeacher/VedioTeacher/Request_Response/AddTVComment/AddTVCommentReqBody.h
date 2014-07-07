@@ -9,5 +9,12 @@
 #import "ReqBody.h"
 
 @interface AddTVCommentReqBody : ReqBody
-
+{
+    NSString *TVId;
+    NSString *commentNote;
+    NSString *accountId;
+}
+@property (nonatomic, retain) NSString *TVId;
+@property (nonatomic, retain) NSString *commentNote;
+@property (nonatomic, retain) NSString *accountId;
 @end

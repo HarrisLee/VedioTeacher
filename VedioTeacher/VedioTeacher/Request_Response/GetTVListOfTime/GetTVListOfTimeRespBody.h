@@ -9,5 +9,8 @@
 #import "RespBody.h"
 
 @interface GetTVListOfTimeRespBody : RespBody
-
+{
+    NSString *result;
+}
+@property (nonatomic, retain) NSString *result;
 @end

@@ -9,5 +9,22 @@
 #import "UploadTVFileReqBody.h"
 
 @implementation UploadTVFileReqBody
+@synthesize fs;
+@synthesize idSecondDirectory;
+@synthesize idTask;
+@synthesize addAccountId;
+@synthesize describeTV;
+@synthesize nameTV;
+
+-(void) dealloc
+{
+    [fs release];
+    [idTask release];
+    [idSecondDirectory release];
+    [addAccountId release];
+    [describeTV release];
+    [nameTV release];
+    [super dealloc];
+}
 
 @end

@@ -9,5 +9,17 @@
 #import "AddTVGoodRespBody.h"
 
 @implementation AddTVGoodRespBody
+@synthesize tVGoodResult;
+
+-(void) setValue:(id)value
+{
+    
+}
+
+-(void) dealloc
+{
+    [tVGoodResult release];
+    [super dealloc];
+}
 
 @end

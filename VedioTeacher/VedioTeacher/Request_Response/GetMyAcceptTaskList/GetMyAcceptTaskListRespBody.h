@@ -9,5 +9,8 @@
 #import "RespBody.h"
 
 @interface GetMyAcceptTaskListRespBody : RespBody
-
+{
+    NSMutableArray *taskAcceptList;
+}
+@property (nonatomic, retain) NSMutableArray *taskAcceptList;
 @end

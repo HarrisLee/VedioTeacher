@@ -9,5 +9,16 @@
 #import "AddTaskRespBody.h"
 
 @implementation AddTaskRespBody
+@synthesize result;
 
+-(void) setValue:(id)value
+{
+    self.result = value;
+}
+
+-(void) dealloc
+{
+    [result release];
+    [super dealloc];
+}
 @end

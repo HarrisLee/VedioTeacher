@@ -9,5 +9,8 @@
 #import "RespBody.h"
 
 @interface GetPeopleAccountListRespBody : RespBody
-
+{
+    NSMutableArray *peopleList;
+}
+@property (nonatomic, retain) NSMutableArray *peopleList;
 @end

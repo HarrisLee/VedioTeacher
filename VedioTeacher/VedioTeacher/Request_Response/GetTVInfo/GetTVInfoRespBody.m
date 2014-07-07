@@ -9,5 +9,15 @@
 #import "GetTVInfoRespBody.h"
 
 @implementation GetTVInfoRespBody
+@synthesize info;
 
-@end
+-(void) setValue:(id)value
+{
+    self.info = value;
+}
+
+-(void) dealloc
+{
+    [info release];
+    [super dealloc];
+}@end

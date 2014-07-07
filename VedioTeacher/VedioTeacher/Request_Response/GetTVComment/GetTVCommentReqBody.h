@@ -9,5 +9,8 @@
 #import "ReqBody.h"
 
 @interface GetTVCommentReqBody : ReqBody
-
+{
+    NSString *idTV;
+}
+@property (nonatomic, retain) NSString *idTV;
 @end

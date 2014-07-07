@@ -9,5 +9,8 @@
 #import "ReqBody.h"
 
 @interface GetTVListOfGoodCountReqBody : ReqBody
-
+{
+    NSString *idSecondDirectory;
+}
+@property (nonatomic, retain) NSString *idSecondDirectory;
 @end

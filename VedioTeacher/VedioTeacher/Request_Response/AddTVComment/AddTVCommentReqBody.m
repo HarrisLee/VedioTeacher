@@ -9,5 +9,14 @@
 #import "AddTVCommentReqBody.h"
 
 @implementation AddTVCommentReqBody
+@synthesize TVId,commentNote,accountId;
+
+-(void) dealloc
+{
+    [TVId release];
+    [commentNote release];
+    [accountId release];
+    [super dealloc];
+}
 
 @end

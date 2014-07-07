@@ -9,5 +9,15 @@
 #import "GetMyAcceptTaskListReqBody.h"
 
 @implementation GetMyAcceptTaskListReqBody
+@synthesize startTime;
+@synthesize endTime;
+@synthesize accountId;
 
+-(void) dealloc
+{
+    [startTime release];
+    [endTime release];
+    [accountId release];
+    [super dealloc];
+}
 @end

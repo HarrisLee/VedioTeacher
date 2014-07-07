@@ -9,5 +9,12 @@
 #import "ReqBody.h"
 
 @interface GetMyAcceptTaskListReqBody : ReqBody
-
+{
+    NSString *startTime;
+    NSString *endTime;
+    NSString *accountId;
+}
+@property (nonatomic, retain) NSString *startTime;
+@property (nonatomic, retain) NSString *endTime;
+@property (nonatomic, retain) NSString *accountId;
 @end

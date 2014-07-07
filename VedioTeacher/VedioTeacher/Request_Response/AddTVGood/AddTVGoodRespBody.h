@@ -9,5 +9,8 @@
 #import "RespBody.h"
 
 @interface AddTVGoodRespBody : RespBody
-
+{
+    NSString *tVGoodResult;
+}
+@property (nonatomic, retain) NSString *tVGoodResult;
 @end

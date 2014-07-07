@@ -9,5 +9,8 @@
 #import "ReqBody.h"
 
 @interface GetMyTVListOfGoodCountReqBody : ReqBody
-
+{
+    NSString *accountId;
+}
+@property (nonatomic, retain) NSString *accountId;
 @end

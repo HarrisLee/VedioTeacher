@@ -9,5 +9,11 @@
 #import "GetMyTVListOfGoodCountReqBody.h"
 
 @implementation GetMyTVListOfGoodCountReqBody
+@synthesize accountId;
 
+-(void) dealloc
+{
+    [accountId release];
+    [super dealloc];
+}
 @end

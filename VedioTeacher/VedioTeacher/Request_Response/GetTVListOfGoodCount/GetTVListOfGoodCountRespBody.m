@@ -9,5 +9,17 @@
 #import "GetTVListOfGoodCountRespBody.h"
 
 @implementation GetTVListOfGoodCountRespBody
+@synthesize count;
+
+-(void) setValue:(id)value
+{
+    self.count = value;
+}
+
+-(void) dealloc
+{
+    [count release];
+    [super dealloc];
+}
 
 @end

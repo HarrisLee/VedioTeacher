@@ -9,5 +9,14 @@
 #import "AddTVGoodReqBody.h"
 
 @implementation AddTVGoodReqBody
+@synthesize idTV;
+@synthesize AccountId;
+
+-(void) dealloc
+{
+    [idTV release];
+    [AccountId release];
+    [super dealloc];
+}
 
 @end

@@ -9,5 +9,8 @@
 #import "RespBody.h"
 
 @interface GetTVListOfGoodCountRespBody : RespBody
-
+{
+    NSString *count;
+}
+@property (nonatomic, retain) NSString *count;
 @end

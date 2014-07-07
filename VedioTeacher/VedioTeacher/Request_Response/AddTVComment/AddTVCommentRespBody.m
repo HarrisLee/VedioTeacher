@@ -9,5 +9,17 @@
 #import "AddTVCommentRespBody.h"
 
 @implementation AddTVCommentRespBody
+@synthesize tvCommentResult;
+
+-(void) setValue:(id)value
+{
+    
+}
+
+-(void) dealloc
+{
+    [tvCommentResult release];
+    [super dealloc];
+}
 
 @end

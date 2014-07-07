@@ -9,5 +9,16 @@
 #import "UploadTVFileRespBody.h"
 
 @implementation UploadTVFileRespBody
+@synthesize result;
 
+-(void) setValue:(id)value
+{
+    self.result = value;
+}
+
+-(void) dealloc
+{
+    [result release];
+    [super dealloc];
+}
 @end

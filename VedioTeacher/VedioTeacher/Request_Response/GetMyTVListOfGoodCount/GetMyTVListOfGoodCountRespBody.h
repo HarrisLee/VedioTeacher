@@ -9,5 +9,8 @@
 #import "RespBody.h"
 
 @interface GetMyTVListOfGoodCountRespBody : RespBody
-
+{
+    NSMutableArray *tvList;
+}
+@property (nonatomic, retain) NSMutableArray *tvList;
 @end

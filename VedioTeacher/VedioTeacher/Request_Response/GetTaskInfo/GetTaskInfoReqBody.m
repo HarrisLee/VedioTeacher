@@ -9,5 +9,11 @@
 #import "GetTaskInfoReqBody.h"
 
 @implementation GetTaskInfoReqBody
+@synthesize taskid;
 
+-(void) dealloc
+{
+    [taskid release];
+    [super dealloc];
+}
 @end

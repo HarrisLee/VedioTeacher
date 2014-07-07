@@ -9,5 +9,16 @@
 #import "ReqBody.h"
 
 @interface GetTVOfSearchReqBody : ReqBody
-
+{
+    NSString *startTime;
+    NSString *endTime;
+    NSString *GJZ;
+    NSString *jobId;
+    NSString *accountId;
+}
+@property (nonatomic, retain) NSString *startTime;
+@property (nonatomic, retain) NSString *endTime;
+@property (nonatomic, retain) NSString *GJZ;
+@property (nonatomic, retain) NSString *jobId;
+@property (nonatomic, retain) NSString *accountId;
 @end

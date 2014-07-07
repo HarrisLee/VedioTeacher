@@ -9,5 +9,17 @@
 #import "GetPeopleAccountListRespBody.h"
 
 @implementation GetPeopleAccountListRespBody
+@synthesize peopleList;
+
+-(void) setValue:(id)value
+{
+    
+}
+
+-(void) dealloc
+{
+    [peopleList release];
+    [super dealloc];
+}
 
 @end

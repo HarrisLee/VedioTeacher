@@ -9,5 +9,16 @@
 #import "GetMyTVListOfTimeRespBody.h"
 
 @implementation GetMyTVListOfTimeRespBody
+@synthesize tvList;
 
+-(void) setValue:(id)value
+{
+    
+}
+
+-(void) dealloc
+{
+    [tvList release];
+    [super dealloc];
+}
 @end

@@ -9,5 +9,20 @@
 #import "GetTVOfSearchReqBody.h"
 
 @implementation GetTVOfSearchReqBody
+@synthesize startTime;
+@synthesize endTime;
+@synthesize GJZ;
+@synthesize jobId;
+@synthesize accountId;
+
+-(void) dealloc
+{
+    [startTime release];
+    [endTime release];
+    [GJZ release];
+    [jobId release];
+    [accountId release];
+    [super dealloc];
+}
 
 @end

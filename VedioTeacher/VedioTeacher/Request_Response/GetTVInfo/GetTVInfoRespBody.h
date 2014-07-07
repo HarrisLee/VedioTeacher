@@ -9,5 +9,8 @@
 #import "RespBody.h"
 
 @interface GetTVInfoRespBody : RespBody
-
+{
+    NSString *info;
+}
+@property (nonatomic, retain) NSString *info;
 @end

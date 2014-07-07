@@ -9,5 +9,17 @@
 #import "GetTaskInfoRespBody.h"
 
 @implementation GetTaskInfoRespBody
+@synthesize taskResult;
+
+-(void) setValue:(id)value
+{
+    self.taskResult = value;
+}
+
+-(void) dealloc
+{
+    [taskResult release];
+    [super dealloc];
+}
 
 @end

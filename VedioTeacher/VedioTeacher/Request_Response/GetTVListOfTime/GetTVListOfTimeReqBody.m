@@ -9,5 +9,12 @@
 #import "GetTVListOfTimeReqBody.h"
 
 @implementation GetTVListOfTimeReqBody
+@synthesize idSecondDirectory;
+
+-(void) dealloc
+{
+    [idSecondDirectory release];
+    [super dealloc];
+}
 
 @end

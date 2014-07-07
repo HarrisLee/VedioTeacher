@@ -9,5 +9,8 @@
 #import "RespBody.h"
 
 @interface AddTVCommentRespBody : RespBody
-
+{
+    NSString *tvCommentResult;
+}
+@property (nonatomic, retain) NSString *tvCommentResult;
 @end

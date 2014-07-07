@@ -9,5 +9,8 @@
 #import "RespBody.h"
 
 @interface AddTaskRespBody : RespBody
-
+{
+    NSString *result;
+}
+@property (nonatomic, retain) NSString *result;
 @end

@@ -9,5 +9,8 @@
 #import "RespBody.h"
 
 @interface UploadTVFileRespBody : RespBody
-
+{
+    NSString *result;
+}
+@property (nonatomic, retain) NSString *result;
 @end
