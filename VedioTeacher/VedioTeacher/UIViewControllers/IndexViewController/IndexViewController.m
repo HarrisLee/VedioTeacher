@@ -39,7 +39,7 @@
         
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error : %@", [error localizedDescription]);
-        alertMessage(@"请求失败，获取一级目录不成功.");
+        alertMessage(@"请求失败，获取主目录目录失败.");
     }];
     
     [theOperation start];
@@ -50,12 +50,17 @@
 {
     NSLog(@"%@",response.topDirectoryArray);
     
+    if ([response.topDirectoryArray count] < 6) {
+        alertMessage(@"主目录获取个数小于6");
+        return ;
+    }
+    
     NSMutableArray *viewArray = [[NSMutableArray alloc] init];
     
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:20.0f],NSFontAttributeName,[UIColor getColor:@"ff956c"],NSForegroundColorAttributeName,nil];
     
     //首页
-    BaseViewController *hvc = [[BaseViewController alloc]init];
+    HeadViewController *hvc = [[HeadViewController alloc]init];
     hvc.title = [[response.topDirectoryArray objectAtIndex:0] nameTopDirectory];
     UINavigationController *hvcNav = [[UINavigationController alloc] initWithRootViewController:hvc];
     hvcNav.navigationBar.translucent = NO;
@@ -68,8 +73,8 @@
     [hvc release];
     [hvcNav release];
     
-    //一卡通
-    BaseViewController *oneCard = [[BaseViewController alloc] init];
+    //第二个主目录
+    SecondViewController *oneCard = [[SecondViewController alloc] init];
     oneCard.title = [[response.topDirectoryArray objectAtIndex:1] nameTopDirectory];
     UINavigationController *cardNav = [[UINavigationController alloc] initWithRootViewController:oneCard];
     cardNav.navigationBar.translucent = NO;
@@ -82,8 +87,8 @@
     [oneCard release];
     [cardNav release];
     
-    //汽车票
-    BaseViewController *tvc = [[BaseViewController alloc]init];
+    //第三个主目录
+    ThirdViewController *tvc = [[ThirdViewController alloc]init];
     tvc.title = [[response.topDirectoryArray objectAtIndex:2] nameTopDirectory];
     UINavigationController *tvcNav = [[UINavigationController alloc] initWithRootViewController:tvc];
     [tvcNav.navigationBar setBarTintColor:[UIColor whiteColor]];
@@ -96,8 +101,8 @@
     [tvc release];
     [tvcNav release];
     
-    //我的
-    BaseViewController *zone = [[BaseViewController alloc] init];
+    //第四个主目录
+    FourthViewController *zone = [[FourthViewController alloc] init];
     zone.title = [[response.topDirectoryArray objectAtIndex:3] nameTopDirectory];;
     UINavigationController *zoneNav = [[UINavigationController alloc] initWithRootViewController:zone];
 //    zoneNav.tabBarItem.image = [UIImage imageNamed:@"icon_mine_nomal"];
@@ -110,9 +115,23 @@
     [zone release];
     [zoneNav release];
     
-    //设置
-    BaseViewController *more = [[BaseViewController alloc] init];
-    more.title = [[response.topDirectoryArray objectAtIndex:4] nameTopDirectory];;
+    //第五个主目录
+    FifthViewController *four = [[FifthViewController alloc] init];
+    four.title = [[response.topDirectoryArray objectAtIndex:4] nameTopDirectory];;
+    UINavigationController *fourNav = [[UINavigationController alloc] initWithRootViewController:four];
+    //    fourNav.tabBarItem.image = [UIImage imageNamed:@"icon_mine_nomal"];
+    //    fourNav.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_mine_click"];
+    fourNav.navigationBar.titleTextAttributes = dict;
+    [fourNav.navigationBar setBarTintColor:[UIColor whiteColor]];
+    [fourNav.navigationBar setTintColor:[UIColor orangeColor]];
+    fourNav.navigationBar.translucent = NO;
+    [viewArray addObject:fourNav];
+    [four release];
+    [fourNav release];
+    
+    //第六个主目录
+    MoreViewController *more = [[MoreViewController alloc] init];
+    more.title = [[response.topDirectoryArray objectAtIndex:5] nameTopDirectory];;
     UINavigationController *moreNav = [[UINavigationController alloc] initWithRootViewController:more];
     [moreNav.navigationBar setBarTintColor:[UIColor whiteColor]];
     [moreNav.navigationBar setTintColor:[UIColor orangeColor]];
@@ -142,16 +161,4 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
