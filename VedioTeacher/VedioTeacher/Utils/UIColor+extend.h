@@ -1,17 +1,18 @@
 //
 //  UIColor+extend.h
-//  DealExtreme
+//  Hey!XuanWu
 //
-//  Created by xiongcaixing on 10-8-30.
-//  Copyright 2010 epro. All rights reserved.
+//  Created by Cao JianRong on 13-10-23.
+//  Copyright (c) 2013年 Melo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-// 扩展UIColor类
-@interface UIColor(extend)
+@interface UIColor (extend)
 
-// 将十六进制的颜色值转为objective-c的颜色
-+ (UIColor *)getColor:(NSString *) hexColor;
++ (id)getColor:(NSString *) hexColor;
+
+
 
 @end
+

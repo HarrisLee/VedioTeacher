@@ -14,4 +14,22 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #import "UIColor+extend.h"
+#import "PublicDefine.h"
+#import "Utils.h"
+#import "JMWhenTapped.h"
+#import "DataCenter.h"
+#import "AFNetworking.h"
+#import "AFHTTPClient.h"
+#import "AFJSONRequestOperation.h"
+#import "NetPublicDefine.h"
+#import "AFHttpRequestUtils.h"
+//#define  __OPTIMIZE__
+
+#ifndef __OPTIMIZE__
+#define NSLog(fmt, ...) NSLog((@"\n[文件:%s]" "\n[函数:%s]" "\n[行号:%d]\n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define NSLog(...){}
+#endif
+
+
 #endif
