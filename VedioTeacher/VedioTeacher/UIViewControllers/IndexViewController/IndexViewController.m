@@ -56,7 +56,7 @@
     
     //首页
     BaseViewController *hvc = [[BaseViewController alloc]init];
-    hvc.title = @"首页";
+    hvc.title = [[response.topDirectoryArray objectAtIndex:0] nameTopDirectory];
     UINavigationController *hvcNav = [[UINavigationController alloc] initWithRootViewController:hvc];
     hvcNav.navigationBar.translucent = NO;
 //    hvcNav.tabBarItem.image = [UIImage imageNamed:@"icon_home_nomal"];
@@ -70,7 +70,7 @@
     
     //一卡通
     BaseViewController *oneCard = [[BaseViewController alloc] init];
-    oneCard.title = @"一卡通";
+    oneCard.title = [[response.topDirectoryArray objectAtIndex:1] nameTopDirectory];
     UINavigationController *cardNav = [[UINavigationController alloc] initWithRootViewController:oneCard];
     cardNav.navigationBar.translucent = NO;
 //    cardNav.tabBarItem.image = [UIImage imageNamed:@"icon_onecard_nomal"];
@@ -84,7 +84,7 @@
     
     //汽车票
     BaseViewController *tvc = [[BaseViewController alloc]init];
-    tvc.title = @"汽车票";
+    tvc.title = [[response.topDirectoryArray objectAtIndex:2] nameTopDirectory];
     UINavigationController *tvcNav = [[UINavigationController alloc] initWithRootViewController:tvc];
     [tvcNav.navigationBar setBarTintColor:[UIColor whiteColor]];
     [tvcNav.navigationBar setTintColor:[UIColor orangeColor]];
@@ -98,7 +98,7 @@
     
     //我的
     BaseViewController *zone = [[BaseViewController alloc] init];
-    zone.title = @"我的";
+    zone.title = [[response.topDirectoryArray objectAtIndex:3] nameTopDirectory];;
     UINavigationController *zoneNav = [[UINavigationController alloc] initWithRootViewController:zone];
 //    zoneNav.tabBarItem.image = [UIImage imageNamed:@"icon_mine_nomal"];
 //    zoneNav.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_mine_click"];
@@ -112,7 +112,7 @@
     
     //设置
     BaseViewController *more = [[BaseViewController alloc] init];
-    more.title = @"设置";
+    more.title = [[response.topDirectoryArray objectAtIndex:4] nameTopDirectory];;
     UINavigationController *moreNav = [[UINavigationController alloc] initWithRootViewController:more];
     [moreNav.navigationBar setBarTintColor:[UIColor whiteColor]];
     [moreNav.navigationBar setTintColor:[UIColor orangeColor]];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E4DACF2196A8834008C71BD /* HeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DACF1196A8834008C71BD /* HeadViewController.m */; };
 		9E5A2418196A307700C6D1A4 /* CheckVesion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A240E196A307600C6D1A4 /* CheckVesion.m */; };
 		9E5A2419196A307700C6D1A4 /* DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2410196A307600C6D1A4 /* DataCenter.m */; };
 		9E5A241A196A307700C6D1A4 /* GetIpAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2412196A307600C6D1A4 /* GetIpAddress.m */; };
@@ -195,6 +196,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E4DACF0196A8834008C71BD /* HeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadViewController.h; sourceTree = "<group>"; };
+		9E4DACF1196A8834008C71BD /* HeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadViewController.m; sourceTree = "<group>"; };
 		9E5A240D196A307600C6D1A4 /* CheckVesion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckVesion.h; sourceTree = "<group>"; };
 		9E5A240E196A307600C6D1A4 /* CheckVesion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckVesion.m; sourceTree = "<group>"; };
 		9E5A240F196A307600C6D1A4 /* DataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCenter.h; sourceTree = "<group>"; };
@@ -533,6 +536,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E4DACEF196A86D2008C71BD /* HeadViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9E4DACF0196A8834008C71BD /* HeadViewController.h */,
+				9E4DACF1196A8834008C71BD /* HeadViewController.m */,
+			);
+			path = HeadViewController;
+			sourceTree = "<group>";
+		};
+		9E4DACF3196A8918008C71BD /* FifthViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FifthViewController;
+			sourceTree = "<group>";
+		};
+		9E4DACF4196A8918008C71BD /* FourthViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FourthViewController;
+			sourceTree = "<group>";
+		};
+		9E4DACF5196A8918008C71BD /* MoreViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MoreViewController;
+			sourceTree = "<group>";
+		};
+		9E4DACF6196A8918008C71BD /* SecondViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SecondViewController;
+			sourceTree = "<group>";
+		};
+		9E4DACF7196A8918008C71BD /* ThirdViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdViewController;
+			sourceTree = "<group>";
+		};
 		9E5A241D196A308A00C6D1A4 /* AFHttpRequestUtils */ = {
 			isa = PBXGroup;
 			children = (
@@ -996,6 +1043,12 @@
 		9E5A24EB196A308A00C6D1A4 /* UIViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9E4DACF5196A8918008C71BD /* MoreViewController */,
+				9E4DACF3196A8918008C71BD /* FifthViewController */,
+				9E4DACF4196A8918008C71BD /* FourthViewController */,
+				9E4DACF7196A8918008C71BD /* ThirdViewController */,
+				9E4DACF6196A8918008C71BD /* SecondViewController */,
+				9E4DACEF196A86D2008C71BD /* HeadViewController */,
 				9E5A2600196A6E5800C6D1A4 /* IndexViewController */,
 				9E5A2601196A6E7500C6D1A4 /* BaseViewController.h */,
 				9E5A2602196A6E7500C6D1A4 /* BaseViewController.m */,
@@ -1580,6 +1633,7 @@
 				9E5A25AB196A409100C6D1A4 /* AddTVGoodReqBody.m in Sources */,
 				9ED53AE4196285A900DA3248 /* ViewController.m in Sources */,
 				9E5A2507196A308A00C6D1A4 /* AddAccountRespBody.m in Sources */,
+				9E4DACF2196A8834008C71BD /* HeadViewController.m in Sources */,
 				9E5A2603196A6E7500C6D1A4 /* BaseViewController.m in Sources */,
 				9E5A24ED196A308A00C6D1A4 /* AFHttpRequestUtils.m in Sources */,
 				9ED53ADE196285A900DA3248 /* AppDelegate.m in Sources */,
