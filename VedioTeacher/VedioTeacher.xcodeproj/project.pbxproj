@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		9E4DACF2196A8834008C71BD /* HeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DACF1196A8834008C71BD /* HeadViewController.m */; };
+		9E4DACFA196A9CB2008C71BD /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DACF9196A9CB2008C71BD /* SecondViewController.m */; };
+		9E4DACFD196A9CBC008C71BD /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DACFC196A9CBC008C71BD /* ThirdViewController.m */; };
+		9E4DAD00196A9CC5008C71BD /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DACFF196A9CC5008C71BD /* FourthViewController.m */; };
+		9E4DAD03196A9CD2008C71BD /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DAD02196A9CD2008C71BD /* FifthViewController.m */; };
+		9E4DAD06196A9CDE008C71BD /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DAD05196A9CDE008C71BD /* MoreViewController.m */; };
 		9E5A2418196A307700C6D1A4 /* CheckVesion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A240E196A307600C6D1A4 /* CheckVesion.m */; };
 		9E5A2419196A307700C6D1A4 /* DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2410196A307600C6D1A4 /* DataCenter.m */; };
 		9E5A241A196A307700C6D1A4 /* GetIpAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2412196A307600C6D1A4 /* GetIpAddress.m */; };
@@ -198,6 +203,16 @@
 /* Begin PBXFileReference section */
 		9E4DACF0196A8834008C71BD /* HeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadViewController.h; sourceTree = "<group>"; };
 		9E4DACF1196A8834008C71BD /* HeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadViewController.m; sourceTree = "<group>"; };
+		9E4DACF8196A9CB2008C71BD /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		9E4DACF9196A9CB2008C71BD /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		9E4DACFB196A9CBC008C71BD /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		9E4DACFC196A9CBC008C71BD /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		9E4DACFE196A9CC5008C71BD /* FourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthViewController.h; sourceTree = "<group>"; };
+		9E4DACFF196A9CC5008C71BD /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
+		9E4DAD01196A9CD2008C71BD /* FifthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FifthViewController.h; sourceTree = "<group>"; };
+		9E4DAD02196A9CD2008C71BD /* FifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FifthViewController.m; sourceTree = "<group>"; };
+		9E4DAD04196A9CDE008C71BD /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		9E4DAD05196A9CDE008C71BD /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		9E5A240D196A307600C6D1A4 /* CheckVesion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckVesion.h; sourceTree = "<group>"; };
 		9E5A240E196A307600C6D1A4 /* CheckVesion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckVesion.m; sourceTree = "<group>"; };
 		9E5A240F196A307600C6D1A4 /* DataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCenter.h; sourceTree = "<group>"; };
@@ -548,6 +563,8 @@
 		9E4DACF3196A8918008C71BD /* FifthViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9E4DAD01196A9CD2008C71BD /* FifthViewController.h */,
+				9E4DAD02196A9CD2008C71BD /* FifthViewController.m */,
 			);
 			path = FifthViewController;
 			sourceTree = "<group>";
@@ -555,6 +572,8 @@
 		9E4DACF4196A8918008C71BD /* FourthViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9E4DACFE196A9CC5008C71BD /* FourthViewController.h */,
+				9E4DACFF196A9CC5008C71BD /* FourthViewController.m */,
 			);
 			path = FourthViewController;
 			sourceTree = "<group>";
@@ -562,6 +581,8 @@
 		9E4DACF5196A8918008C71BD /* MoreViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9E4DAD04196A9CDE008C71BD /* MoreViewController.h */,
+				9E4DAD05196A9CDE008C71BD /* MoreViewController.m */,
 			);
 			path = MoreViewController;
 			sourceTree = "<group>";
@@ -569,6 +590,8 @@
 		9E4DACF6196A8918008C71BD /* SecondViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9E4DACF8196A9CB2008C71BD /* SecondViewController.h */,
+				9E4DACF9196A9CB2008C71BD /* SecondViewController.m */,
 			);
 			path = SecondViewController;
 			sourceTree = "<group>";
@@ -576,6 +599,8 @@
 		9E4DACF7196A8918008C71BD /* ThirdViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9E4DACFB196A9CBC008C71BD /* ThirdViewController.h */,
+				9E4DACFC196A9CBC008C71BD /* ThirdViewController.m */,
 			);
 			path = ThirdViewController;
 			sourceTree = "<group>";
@@ -1568,6 +1593,7 @@
 				9E5A2521196A308A00C6D1A4 /* GetPeopleOpinionReturnRespBody.m in Sources */,
 				9E5A2418196A307700C6D1A4 /* CheckVesion.m in Sources */,
 				9E5A24F1196A308A00C6D1A4 /* UserModel.m in Sources */,
+				9E4DAD00196A9CC5008C71BD /* FourthViewController.m in Sources */,
 				9E5A241A196A307700C6D1A4 /* GetIpAddress.m in Sources */,
 				9E5A25E4196A41EE00C6D1A4 /* GetPeopleAccountListReqBody.m in Sources */,
 				9E5A258F196A398B00C6D1A4 /* PeopleOptinModel.m in Sources */,
@@ -1582,6 +1608,7 @@
 				9E5A251A196A308A00C6D1A4 /* GetJobReqBody.m in Sources */,
 				9E5A2515196A308A00C6D1A4 /* GetImgRespBody.m in Sources */,
 				9E5A250D196A308A00C6D1A4 /* AddPeopleAccountRespBody.m in Sources */,
+				9E4DACFA196A9CB2008C71BD /* SecondViewController.m in Sources */,
 				9E5A252C196A308A00C6D1A4 /* VerifyOutsideLoginReqBody.m in Sources */,
 				9E5A25FC196A425C00C6D1A4 /* GetMyAcceptTaskListReqBody.m in Sources */,
 				9E5A258B196A398B00C6D1A4 /* ImageCommentModel.m in Sources */,
@@ -1643,6 +1670,7 @@
 				9E5A2419196A307700C6D1A4 /* DataCenter.m in Sources */,
 				9E5A25A5196A406900C6D1A4 /* GetAccountListRespBody.m in Sources */,
 				9E5A256F196A33AD00C6D1A4 /* UIPlaceHolderTextView.m in Sources */,
+				9E4DAD06196A9CDE008C71BD /* MoreViewController.m in Sources */,
 				9E5A25D2196A419400C6D1A4 /* GetTVInfoReqBody.m in Sources */,
 				9E5A24FC196A308A00C6D1A4 /* QBAssetCollectionViewController.m in Sources */,
 				9E5A2528196A308A00C6D1A4 /* UploadFileReqBody.m in Sources */,
@@ -1651,6 +1679,7 @@
 				9ED53B071962AE4000DA3248 /* UIColor+extend.m in Sources */,
 				9E5A24FE196A308A00C6D1A4 /* QBImagePickerAssetView.m in Sources */,
 				9E5A25C9196A415900C6D1A4 /* GetTVListOfTimeRespBody.m in Sources */,
+				9E4DAD03196A9CD2008C71BD /* FifthViewController.m in Sources */,
 				9E5A25C0196A412D00C6D1A4 /* GetTVOfSearchReqBody.m in Sources */,
 				9E5A2517196A308A00C6D1A4 /* GetImgCommentRespBody.m in Sources */,
 				9E5A256C196A33AD00C6D1A4 /* ImageControl.m in Sources */,
@@ -1660,6 +1689,7 @@
 				9E5A251E196A308A00C6D1A4 /* GetPeopleOpinionListReqBody.m in Sources */,
 				9E5A250A196A308A00C6D1A4 /* AddGoodReqBody.m in Sources */,
 				9E5A25ED196A421600C6D1A4 /* GetMyTVListOfTimeRespBody.m in Sources */,
+				9E4DACFD196A9CBC008C71BD /* ThirdViewController.m in Sources */,
 				9E5A25E7196A41FC00C6D1A4 /* GetPeopleAccountListRespBody.m in Sources */,
 				9E5A2502196A308A00C6D1A4 /* QBImagePickerGroupCell.m in Sources */,
 				9E5A25CF196A417D00C6D1A4 /* GetTVListOfGoodCountRespBody.m in Sources */,
