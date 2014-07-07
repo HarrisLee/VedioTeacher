@@ -129,7 +129,7 @@
     // Was there an error?
     if (error != NULL)
     {
-        msg = @"请在“设置-隐私-照片”中打开“客道”的照片访问权限";
+        msg = @"请在“设置-隐私-照片”中打开“参与式视频教学”的照片访问权限";
     }
     else  // No errors
     {

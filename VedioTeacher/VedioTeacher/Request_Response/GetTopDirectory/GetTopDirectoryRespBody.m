@@ -21,12 +21,12 @@
     self.topDirectoryArray = array;
     [array release];
     
-//    for (id obj in value) {
-//        FDirectoryModel *model = [[FDirectoryModel alloc] init];
-//        [Utils setProperty:model withDic:obj];
-//        [topDirectoryArray addObject:model];
-//        [model release];
-//    }
+    for (id obj in value) {
+        FDirectoryModel *model = [[FDirectoryModel alloc] init];
+        [Utils setProperty:model withDic:obj];
+        [topDirectoryArray addObject:model];
+        [model release];
+    }
 }
 
 -(void) dealloc

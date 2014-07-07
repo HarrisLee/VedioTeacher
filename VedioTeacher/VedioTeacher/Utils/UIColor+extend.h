@@ -12,7 +12,5 @@
 
 + (id)getColor:(NSString *) hexColor;
 
-
-
 @end
 

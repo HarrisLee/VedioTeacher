@@ -19,9 +19,9 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor whiteColor];
-    ViewController *viewController = [[ViewController alloc] init];
-    viewController.title = @"首页";
+    IndexViewController *viewController = [[IndexViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewController];
+    [nav setNavigationBarHidden:YES];
     nav.navigationBar.translucent = NO;
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:20.0f],NSFontAttributeName,[UIColor orangeColor],NSForegroundColorAttributeName,nil];
     nav.navigationBar.titleTextAttributes = dict;

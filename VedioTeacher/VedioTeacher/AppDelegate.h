@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ViewController.h"
+#import "IndexViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

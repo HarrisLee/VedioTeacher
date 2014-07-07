@@ -7,6 +7,7 @@
 //
 
 #import "RespBody.h"
+#import "FDirectoryModel.h"
 
 @interface GetTopDirectoryRespBody : RespBody
 {
