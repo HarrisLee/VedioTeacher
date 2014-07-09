@@ -121,6 +121,8 @@ static AFHttpRequestUtils *m_RequestCenter = nil;
     
     TBXML *tbxml = [[TBXML alloc] initWithXMLData:jsonData error:&error];
     
+    NSLog(@"%@",[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]);
+    
     if (error) {
         NSLog(@"xmlParseError:%@",error);
         [tbxml release];

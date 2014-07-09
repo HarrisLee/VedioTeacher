@@ -9,5 +9,9 @@
 #import "BaseViewController.h"
 
 @interface SecondViewController : BaseViewController
+{
+    NSString *topId;
+}
+@property (nonatomic, retain) NSString *topId;
 
 @end

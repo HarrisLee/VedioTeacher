@@ -9,16 +9,16 @@
 #import "AddSecondDirectoryRespBody.h"
 
 @implementation AddSecondDirectoryRespBody
-@synthesize accountId;
+@synthesize secondDir;
 
 -(void) setValue:(id)value
 {
-    self.accountId = value;
+    self.secondDir = value;
 }
 
 -(void) dealloc
 {
-    [accountId release];
+    [secondDir release];
     [super dealloc];
 }
 @end

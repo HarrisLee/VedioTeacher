@@ -13,6 +13,7 @@
 		9E4DAD00196A9CC5008C71BD /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DACFF196A9CC5008C71BD /* FourthViewController.m */; };
 		9E4DAD03196A9CD2008C71BD /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DAD02196A9CD2008C71BD /* FifthViewController.m */; };
 		9E4DAD06196A9CDE008C71BD /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DAD05196A9CDE008C71BD /* MoreViewController.m */; };
+		9E50FCFB196D20190027683C /* AddSecondDirView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E50FCFA196D20190027683C /* AddSecondDirView.m */; };
 		9E5A2418196A307700C6D1A4 /* CheckVesion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A240E196A307600C6D1A4 /* CheckVesion.m */; };
 		9E5A2419196A307700C6D1A4 /* DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2410196A307600C6D1A4 /* DataCenter.m */; };
 		9E5A241A196A307700C6D1A4 /* GetIpAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2412196A307600C6D1A4 /* GetIpAddress.m */; };
@@ -213,6 +214,8 @@
 		9E4DAD02196A9CD2008C71BD /* FifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FifthViewController.m; sourceTree = "<group>"; };
 		9E4DAD04196A9CDE008C71BD /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		9E4DAD05196A9CDE008C71BD /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		9E50FCF9196D20190027683C /* AddSecondDirView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSecondDirView.h; sourceTree = "<group>"; };
+		9E50FCFA196D20190027683C /* AddSecondDirView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSecondDirView.m; sourceTree = "<group>"; };
 		9E5A240D196A307600C6D1A4 /* CheckVesion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckVesion.h; sourceTree = "<group>"; };
 		9E5A240E196A307600C6D1A4 /* CheckVesion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckVesion.m; sourceTree = "<group>"; };
 		9E5A240F196A307600C6D1A4 /* DataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCenter.h; sourceTree = "<group>"; };
@@ -603,6 +606,15 @@
 				9E4DACFC196A9CBC008C71BD /* ThirdViewController.m */,
 			);
 			path = ThirdViewController;
+			sourceTree = "<group>";
+		};
+		9E50FCF8196D1FF10027683C /* AddSecondDirView */ = {
+			isa = PBXGroup;
+			children = (
+				9E50FCF9196D20190027683C /* AddSecondDirView.h */,
+				9E50FCFA196D20190027683C /* AddSecondDirView.m */,
+			);
+			path = AddSecondDirView;
 			sourceTree = "<group>";
 		};
 		9E5A241D196A308A00C6D1A4 /* AFHttpRequestUtils */ = {
@@ -1084,6 +1096,7 @@
 		9E5A24EC196A308A00C6D1A4 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				9E50FCF8196D1FF10027683C /* AddSecondDirView */,
 				9E5A2554196A339E00C6D1A4 /* CommonViews */,
 			);
 			path = UIViews;
@@ -1618,6 +1631,7 @@
 				9E5A2572196A33AD00C6D1A4 /* UIView+WhenTappedBlocks.m in Sources */,
 				9E5A25BD196A411800C6D1A4 /* UploadTVFileRespBody.m in Sources */,
 				9E5A2527196A308A00C6D1A4 /* GetTopDirectoryRespBody.m in Sources */,
+				9E50FCFB196D20190027683C /* AddSecondDirView.m in Sources */,
 				9E5A25B4196A40C800C6D1A4 /* AddTaskReqBody.m in Sources */,
 				9E5A2606196A72A200C6D1A4 /* IndexViewController.m in Sources */,
 				9E5A2525196A308A00C6D1A4 /* GetSecondDirectoryOfTimeRespBody.m in Sources */,

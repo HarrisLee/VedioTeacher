@@ -7,7 +7,18 @@
 //
 
 #import "BaseViewController.h"
+#import "GetSecondDirectoryReqBody.h"
+#import "GetSecondDirectoryRespBody.h"
+#import "AddSecondDirectoryReqBody.h"
+#import "AddSecondDirectoryRespBody.h"
+#import "AddSecondDirView.h"
+#import "SDirectoryModel.h"
 
-@interface HeadViewController : BaseViewController
+@interface HeadViewController : BaseViewController<UIAlertViewDelegate,UITextFieldDelegate>
+{
+    NSString *topId;
+    NSMutableArray *secArray;
+}
+@property (nonatomic, retain) NSString *topId;
 
 @end

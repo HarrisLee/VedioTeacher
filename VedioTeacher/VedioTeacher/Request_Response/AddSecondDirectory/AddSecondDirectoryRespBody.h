@@ -10,7 +10,7 @@
 
 @interface AddSecondDirectoryRespBody : RespBody
 {
-    NSString *accountId;
+    NSString *secondDir;
 }
-@property (nonatomic, retain) NSString *accountId;
+@property (nonatomic, retain) NSString *secondDir;
 @end

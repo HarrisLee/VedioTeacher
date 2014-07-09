@@ -9,5 +9,9 @@
 #import "BaseViewController.h"
 
 @interface MoreViewController : BaseViewController
+{
+    NSString *topId;
+}
+@property (nonatomic, retain) NSString *topId;
 
 @end

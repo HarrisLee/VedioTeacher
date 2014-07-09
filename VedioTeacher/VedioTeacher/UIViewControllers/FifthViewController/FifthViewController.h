@@ -9,5 +9,9 @@
 #import "BaseViewController.h"
 
 @interface FifthViewController : BaseViewController
+{
+    NSString *topId;
+}
+@property (nonatomic, retain) NSString *topId;
 
 @end

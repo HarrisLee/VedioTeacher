@@ -62,6 +62,7 @@
     //首页
     HeadViewController *hvc = [[HeadViewController alloc]init];
     hvc.title = [[response.topDirectoryArray objectAtIndex:0] nameTopDirectory];
+    hvc.topId = [[response.topDirectoryArray objectAtIndex:0] idTopDirectory];
     UINavigationController *hvcNav = [[UINavigationController alloc] initWithRootViewController:hvc];
     hvcNav.navigationBar.translucent = NO;
 //    hvcNav.tabBarItem.image = [UIImage imageNamed:@"icon_home_nomal"];
@@ -76,6 +77,7 @@
     //第二个主目录
     SecondViewController *oneCard = [[SecondViewController alloc] init];
     oneCard.title = [[response.topDirectoryArray objectAtIndex:1] nameTopDirectory];
+    oneCard.topId = [[response.topDirectoryArray objectAtIndex:1] idTopDirectory];
     UINavigationController *cardNav = [[UINavigationController alloc] initWithRootViewController:oneCard];
     cardNav.navigationBar.translucent = NO;
 //    cardNav.tabBarItem.image = [UIImage imageNamed:@"icon_onecard_nomal"];
@@ -90,6 +92,7 @@
     //第三个主目录
     ThirdViewController *tvc = [[ThirdViewController alloc]init];
     tvc.title = [[response.topDirectoryArray objectAtIndex:2] nameTopDirectory];
+    tvc.topId = [[response.topDirectoryArray objectAtIndex:2] idTopDirectory];
     UINavigationController *tvcNav = [[UINavigationController alloc] initWithRootViewController:tvc];
     [tvcNav.navigationBar setBarTintColor:[UIColor whiteColor]];
     [tvcNav.navigationBar setTintColor:[UIColor orangeColor]];
@@ -103,7 +106,8 @@
     
     //第四个主目录
     FourthViewController *zone = [[FourthViewController alloc] init];
-    zone.title = [[response.topDirectoryArray objectAtIndex:3] nameTopDirectory];;
+    zone.title = [[response.topDirectoryArray objectAtIndex:3] nameTopDirectory];
+    zone.topId = [[response.topDirectoryArray objectAtIndex:3] idTopDirectory];
     UINavigationController *zoneNav = [[UINavigationController alloc] initWithRootViewController:zone];
 //    zoneNav.tabBarItem.image = [UIImage imageNamed:@"icon_mine_nomal"];
 //    zoneNav.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_mine_click"];
@@ -117,7 +121,8 @@
     
     //第五个主目录
     FifthViewController *four = [[FifthViewController alloc] init];
-    four.title = [[response.topDirectoryArray objectAtIndex:4] nameTopDirectory];;
+    four.title = [[response.topDirectoryArray objectAtIndex:4] nameTopDirectory];
+    four.topId = [[response.topDirectoryArray objectAtIndex:4] idTopDirectory];
     UINavigationController *fourNav = [[UINavigationController alloc] initWithRootViewController:four];
     //    fourNav.tabBarItem.image = [UIImage imageNamed:@"icon_mine_nomal"];
     //    fourNav.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_mine_click"];
@@ -131,7 +136,8 @@
     
     //第六个主目录
     MoreViewController *more = [[MoreViewController alloc] init];
-    more.title = [[response.topDirectoryArray objectAtIndex:5] nameTopDirectory];;
+    more.title = [[response.topDirectoryArray objectAtIndex:5] nameTopDirectory];
+    more.topId = [[response.topDirectoryArray objectAtIndex:5] idTopDirectory];
     UINavigationController *moreNav = [[UINavigationController alloc] initWithRootViewController:more];
     [moreNav.navigationBar setBarTintColor:[UIColor whiteColor]];
     [moreNav.navigationBar setTintColor:[UIColor orangeColor]];
