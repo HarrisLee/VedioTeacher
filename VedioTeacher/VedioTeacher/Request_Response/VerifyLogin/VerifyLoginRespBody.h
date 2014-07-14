@@ -10,7 +10,7 @@
 
 @interface VerifyLoginRespBody : RespBody
 {
-    NSString *isVerify;
+    NSString *userId;
 }
-@property (nonatomic, retain) NSString *isVerify;
+@property (nonatomic, retain) NSString *userId;
 @end

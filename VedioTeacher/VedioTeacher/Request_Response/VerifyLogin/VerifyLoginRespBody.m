@@ -9,16 +9,16 @@
 #import "VerifyLoginRespBody.h"
 
 @implementation VerifyLoginRespBody
-@synthesize isVerify;
+@synthesize userId;
 
 -(void) setValue:(id)value
 {
-    self.isVerify = value;
+    self.userId = value;
 }
 
 -(void) dealloc
 {
-    [isVerify release];
+    [userId release];
     [super dealloc];
 }
 

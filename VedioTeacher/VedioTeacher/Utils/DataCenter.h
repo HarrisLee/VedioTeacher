@@ -17,14 +17,12 @@
     NSDictionary            *configDictionary;      //配置字典
     NSDictionary            *errorDictionary;       //错误码字典
     UserModel               *userInfo;
-    BOOL                    isOpen;
     BOOL                    isOutLogin;              //是否是外部账号登录
     NSString                *outLoginName;
     NSString                *outLoginId;
     NSString                *loginName;
     NSString                *loginId;
 }
-@property                    BOOL                   isOpen;
 @property                    BOOL                   isLogined;
 @property                    BOOL                   isShare;
 @property                    BOOL                   isOutLogin;

@@ -27,6 +27,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [DataCenter shareInstance].loginId = @"NA140714020202352";
+    
     GetTopDirectoryReqBody *reqBody = [[GetTopDirectoryReqBody alloc] init];
     NSMutableURLRequest *urlRequets = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_TOPDIR];
     [reqBody release];

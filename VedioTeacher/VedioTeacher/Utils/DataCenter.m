@@ -14,7 +14,6 @@ static DataCenter *m_DataCenter = nil;
 @synthesize configDictionary;
 @synthesize errorDictionary;
 @synthesize userInfo;
-@synthesize isOpen;
 @synthesize isOutLogin;
 @synthesize outLoginName;
 @synthesize outLoginId;
@@ -41,7 +40,6 @@ static DataCenter *m_DataCenter = nil;
         }
         
         self.isShare = YES;
-        self.isOpen = NO;
         self.isOutLogin = NO;
         [Utils copyPlistToDst:@"Config"];
         NSDictionary *tmpdic = [[NSDictionary alloc] initWithContentsOfFile:[Utils getDstPlistPath:@"Config"]];

@@ -7,8 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "QBImagePickerController.h"
+#import "MBProgressHUD.h"
 
-@interface SecondViewController : BaseViewController
+@interface SecondViewController : BaseViewController<QBImagePickerControllerDelegate,MBProgressHUDDelegate>
 {
     NSString *topId;
 }

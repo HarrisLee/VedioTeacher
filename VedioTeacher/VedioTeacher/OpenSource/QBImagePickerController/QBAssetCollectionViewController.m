@@ -241,7 +241,7 @@
     [HUD addSubview:actView];
     [actView release];
     
-    m_window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, 320, SCREEN_HEIGHT)];
+    m_window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     m_window.windowLevel = UIWindowLevelStatusBar + 1;//UIWindowLevelAlert+1;
     m_window.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.2];
     [m_window makeKeyAndVisible];
