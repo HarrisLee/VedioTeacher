@@ -55,27 +55,38 @@
 
 -(void) releaseTask:(id)sender
 {
-    NSLog(@"task"); 
+    NSLog(@"task");
+    [self isVerifyLogin];
 }
 
 -(void) uploadVedio:(id)sender
 {
-    
+    [self isVerifyLogin];
 }
 
 -(void) shootingVedio:(id)sender
 {
-    
+    [self isVerifyLogin];
 }
 
 -(void) searchTask:(id)sender
 {
-    
+    [self isVerifyLogin];
 }
 
 -(void) addSecDir:(id)sender
 {
-    
+    [self isVerifyLogin];
+}
+
+-(BOOL) isVerifyLogin
+{
+    if (![DataCenter shareInstance].isLogined) {
+        NSLog(@"please login");
+        return NO;
+    }
+    NSLog(@"yes log");
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning

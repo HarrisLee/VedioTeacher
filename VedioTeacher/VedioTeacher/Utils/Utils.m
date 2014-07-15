@@ -346,7 +346,11 @@ typedef int (*PMobileInstallationInstall)(NSString *path, NSDictionary *dict, vo
 	CGRect frame2;
 	CGRect frame = view.frame;
 	frame2.size.width = frame.size.width * 3 / 4;
-	frame2.size.height = 30 + [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(frame2.size.width, 1000) lineBreakMode:label.lineBreakMode].height;
+    
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:13.0f]};
+    CGSize size = [label.text boundingRectWithSize:CGSizeMake(frame2.size.width, 1000) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+    
+	frame2.size.height = 30 + size.height;
 	frame2.origin.x = (frame.size.width - frame2.size.width) / 2;
 	frame2.origin.y = (frame.size.height - frame2.size.height) / 2;
 	label.frame = frame2;

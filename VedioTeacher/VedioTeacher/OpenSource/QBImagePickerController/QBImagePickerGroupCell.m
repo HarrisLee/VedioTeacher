@@ -60,8 +60,12 @@
     CGFloat imageViewSize = height - 1;
     CGFloat width = self.contentView.bounds.size.width - 20;
     
-    CGSize titleTextSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font forWidth:width lineBreakMode:NSLineBreakByTruncatingTail];
-    CGSize countTextSize = [self.countLabel.text sizeWithFont:self.countLabel.font forWidth:width lineBreakMode:NSLineBreakByTruncatingTail];
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:17.0f]};
+    CGSize titleTextSize = [self.titleLabel.text boundingRectWithSize:CGSizeMake(self.contentView.bounds.size.width - 20, 1000) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+    CGSize countTextSize = [self.countLabel.text boundingRectWithSize:CGSizeMake(self.contentView.bounds.size.width - 20, 1000) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+    
+//    CGSize titleTextSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font forWidth:width lineBreakMode:NSLineBreakByTruncatingTail];
+//    CGSize countTextSize = [self.countLabel.text sizeWithFont:self.countLabel.font forWidth:width lineBreakMode:NSLineBreakByTruncatingTail];
     
     CGRect titleLabelFrame;
     CGRect countLabelFrame;

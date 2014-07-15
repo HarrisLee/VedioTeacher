@@ -75,7 +75,9 @@
 
 - (void)setContent:(NSString*)content {
     commentLabel.text = content;
-    CGSize size = [content sizeWithFont:commentLabel.font constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+    
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:12.0]};
+    CGSize size = [content boundingRectWithSize:CGSizeMake(300, 1000) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
     CGRect frame = COMMENT_LAEBL_FRAME;
     commentLabel.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, size.height);
     lineImage.frame = CGRectMake(10, size.height+28, 300, 2);
