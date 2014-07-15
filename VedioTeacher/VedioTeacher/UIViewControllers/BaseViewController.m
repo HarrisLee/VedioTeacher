@@ -26,11 +26,6 @@
     return self;
 }
 
--(void) viewWillAppear:(BOOL)animated
-{
-    [self setTitleViewHidden:[DataCenter shareInstance].isLogined];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -58,18 +53,7 @@
     UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbar_icon_redirect_hight_os7"] style:UIBarButtonItemStylePlain target:self action:@selector(shootingVedio:)];
     UIBarButtonItem *item4 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbar_icon_redirect_hight_os7"] style:UIBarButtonItemStylePlain target:self action:@selector(searchTask:)];
     self.navigationItem.rightBarButtonItems = @[item4,item3,item2,item1,item0];
-    
-    segment = [[UISegmentedControl alloc] initWithItems:@[@"我的视频",@"全部"]];
-    [segment setSelectedSegmentIndex:0];
-    segment.clipsToBounds = YES;
-    [segment setTintColor:[UIColor getColor:@"6ABAFA"]];
-//    [segment setHidden:YES];
-    [segment addTarget:self action:@selector(segmentClickedAtIndex:) forControlEvents:UIControlEventValueChanged];
-    self.navigationItem.titleView = segment;
-    [segment release];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleViewHiden:) name:@"titleView" object:nil];
-    
+
 }
 
 -(void) segmentClickedAtIndex:(id) sender
@@ -118,22 +102,6 @@
     return YES;
 }
 
--(void) titleViewHiden:(NSNotification *) notification
-{
-    NSString *hidden = [notification.userInfo objectForKey:@"show"];
-    if ([hidden isEqualToString:@"1"]) {
-        [segment setHidden:NO];
-    } else {
-        [segment setHidden:YES];
-    }
-    
-}
-
--(void) setTitleViewHidden:(BOOL) hidden
-{
-    [segment setHidden:!hidden];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -142,7 +110,6 @@
 
 -(void) dealloc
 {
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"titleView" object:nil];
     [super dealloc];
 }
 

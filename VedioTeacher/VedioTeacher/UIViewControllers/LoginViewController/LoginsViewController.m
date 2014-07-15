@@ -29,7 +29,6 @@
     // Do any additional setup after loading the view.
     [self createLoginView];
     [self createRegisterView];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"titleView" object:self userInfo:@{@"show":@"0"}];
 }
 
 -(void)createLoginView
@@ -203,7 +202,6 @@
         [DataCenter shareInstance].isLogined = YES;
         [DataCenter shareInstance].loginName = nameField.text;
         [DataCenter shareInstance].loginId = [respBody.userId stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"titleView" object:self userInfo:@{@"show":@"1"}];
         [self dismissViewControllerAnimated:YES completion:^{}];
     } else {
         alertMessage(@"登录失败,账户或密码错误.");
