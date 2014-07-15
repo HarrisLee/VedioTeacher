@@ -571,7 +571,13 @@ typedef int (*PMobileInstallationInstall)(NSString *path, NSDictionary *dict, vo
 @end
 
 
-@implementation NSString (md5)
+@implementation NSString (extend)
+
+- (NSString *) trimming
+{
+    return [self stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
+}
+
 -(NSString *) md5HexDigest
 {
     const char *original_str = [self UTF8String];

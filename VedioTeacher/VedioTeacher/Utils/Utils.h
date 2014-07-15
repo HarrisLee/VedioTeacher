@@ -107,7 +107,8 @@ InstallResult;
 
 #import <CommonCrypto/CommonDigest.h>
 
-@interface NSString (md5)
+@interface NSString (extend)
+- (NSString *) trimming;
 //md5加密
 -(NSString *) md5HexDigest;
 - (NSString *)urlEncodedString;

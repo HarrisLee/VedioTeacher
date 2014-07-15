@@ -90,6 +90,8 @@
     
     [operation start];
     [operation release];
+    
+    self.view.backgroundColor = [UIColor redColor];
 }
 
 -(void) checkDataLogin:(VerifyLoginRespBody *) response
@@ -107,26 +109,21 @@
     NSLog(@"%@",response.sDirectoryArray);
 }
 
--(void) addSecDir:(id)sender
+-(BOOL) addSecDir:(id)sender
 {
-//    if (![DataCenter shareInstance].isLogined) {
-//        LoginViewController *login = [[LoginViewController alloc] init];
-//        login.title = @"登录";
-//        [UIView  beginAnimations:nil context:NULL];
-//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-//        [UIView setAnimationDuration:0.75];
-//        [self presentViewController:login animated:YES completion:^{}];
-//        [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.navigationController.view cache:NO];
-//        [UIView commitAnimations];
-//        [login release];
-//        return ;
-//    }
+    BOOL tag = [super addSecDir:sender];
+    
+    if (!tag) {
+        return NO;
+    }
+    
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"请输入活动主题"delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     [alertView textFieldAtIndex:0].keyboardType = UIKeyboardTypeDefault;
     [alertView textFieldAtIndex:0].delegate = self;
     [alertView show];
     [alertView release];
+    return YES;
 }
 
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

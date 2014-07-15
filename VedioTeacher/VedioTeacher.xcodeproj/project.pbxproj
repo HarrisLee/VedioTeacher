@@ -174,6 +174,7 @@
 		9E5A25FF196A426900C6D1A4 /* GetMyAcceptTaskListRespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A25FE196A426900C6D1A4 /* GetMyAcceptTaskListRespBody.m */; };
 		9E5A2603196A6E7500C6D1A4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2602196A6E7500C6D1A4 /* BaseViewController.m */; };
 		9E5A2606196A72A200C6D1A4 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2605196A72A200C6D1A4 /* IndexViewController.m */; };
+		9EBDDC761974D2AA006CAD7A /* LoginsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDDC751974D2AA006CAD7A /* LoginsViewController.m */; };
 		9ED53ACE196285A900DA3248 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53ACD196285A900DA3248 /* Foundation.framework */; };
 		9ED53AD0196285A900DA3248 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53ACF196285A900DA3248 /* CoreGraphics.framework */; };
 		9ED53AD2196285A900DA3248 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53AD1196285A900DA3248 /* UIKit.framework */; };
@@ -504,6 +505,8 @@
 		9E5A2602196A6E7500C6D1A4 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		9E5A2604196A72A200C6D1A4 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
 		9E5A2605196A72A200C6D1A4 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
+		9EBDDC741974D2AA006CAD7A /* LoginsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginsViewController.h; sourceTree = "<group>"; };
+		9EBDDC751974D2AA006CAD7A /* LoginsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginsViewController.m; sourceTree = "<group>"; };
 		9ED53ACA196285A900DA3248 /* VedioTeacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VedioTeacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED53ACD196285A900DA3248 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9ED53ACF196285A900DA3248 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1087,6 +1090,7 @@
 				9E4DACF6196A8918008C71BD /* SecondViewController */,
 				9E4DACEF196A86D2008C71BD /* HeadViewController */,
 				9E5A2600196A6E5800C6D1A4 /* IndexViewController */,
+				9EBDDC701974CE81006CAD7A /* LoginViewController */,
 				9E5A2601196A6E7500C6D1A4 /* BaseViewController.h */,
 				9E5A2602196A6E7500C6D1A4 /* BaseViewController.m */,
 			);
@@ -1357,6 +1361,15 @@
 				9E5A2605196A72A200C6D1A4 /* IndexViewController.m */,
 			);
 			path = IndexViewController;
+			sourceTree = "<group>";
+		};
+		9EBDDC701974CE81006CAD7A /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9EBDDC741974D2AA006CAD7A /* LoginsViewController.h */,
+				9EBDDC751974D2AA006CAD7A /* LoginsViewController.m */,
+			);
+			path = LoginViewController;
 			sourceTree = "<group>";
 		};
 		9ED53AC1196285A900DA3248 = {
@@ -1694,6 +1707,7 @@
 				9E5A24FE196A308A00C6D1A4 /* QBImagePickerAssetView.m in Sources */,
 				9E5A25C9196A415900C6D1A4 /* GetTVListOfTimeRespBody.m in Sources */,
 				9E4DAD03196A9CD2008C71BD /* FifthViewController.m in Sources */,
+				9EBDDC761974D2AA006CAD7A /* LoginsViewController.m in Sources */,
 				9E5A25C0196A412D00C6D1A4 /* GetTVOfSearchReqBody.m in Sources */,
 				9E5A2517196A308A00C6D1A4 /* GetImgCommentRespBody.m in Sources */,
 				9E5A256C196A33AD00C6D1A4 /* ImageControl.m in Sources */,

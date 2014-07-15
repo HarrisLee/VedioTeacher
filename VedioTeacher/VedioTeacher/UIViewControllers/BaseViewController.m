@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "LoginsViewController.h"
 
 @interface BaseViewController ()
 
@@ -53,39 +54,44 @@
     
 }
 
--(void) releaseTask:(id)sender
+-(BOOL) releaseTask:(id)sender
 {
     NSLog(@"task");
-    [self isVerifyLogin];
+    return [self isVerifyLogin];
 }
 
--(void) uploadVedio:(id)sender
+-(BOOL) uploadVedio:(id)sender
 {
-    [self isVerifyLogin];
+    return [self isVerifyLogin];
 }
 
--(void) shootingVedio:(id)sender
+-(BOOL) shootingVedio:(id)sender
 {
-    [self isVerifyLogin];
+    return [self isVerifyLogin];
 }
 
--(void) searchTask:(id)sender
+-(BOOL) searchTask:(id)sender
 {
-    [self isVerifyLogin];
+    return [self isVerifyLogin];
 }
 
--(void) addSecDir:(id)sender
+-(BOOL) addSecDir:(id)sender
 {
-    [self isVerifyLogin];
+    return [self isVerifyLogin];
 }
 
 -(BOOL) isVerifyLogin
 {
     if (![DataCenter shareInstance].isLogined) {
-        NSLog(@"please login");
+        LoginsViewController *login = [[LoginsViewController alloc] init];
+        login.modalPresentationStyle = UIModalPresentationFormSheet;
+        login.view.backgroundColor = [UIColor whiteColor];
+        [self presentViewController:login animated:YES completion:nil];
+        login.view.superview.frame = CGRectMake(0, 0, 512, 320);
+        login.view.superview.center = self.view.center;
+        [login release];
         return NO;
     }
-    NSLog(@"yes log");
     return YES;
 }
 

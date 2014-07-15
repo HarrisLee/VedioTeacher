@@ -159,9 +159,10 @@
     [viewArray release];
 }
 
--(void) releaseTask:(id)sender
+-(BOOL) releaseTask:(id)sender
 {
     NSLog(@"index");
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
