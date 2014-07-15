@@ -30,48 +30,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-//    VerifyLoginReqBody *req = [[VerifyLoginReqBody alloc] init];
-//    req.password = @"123456";
-//    req.name = @"123456";
-//    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:req andReqType:VERITY_LOGIN];
-//    [req release];
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        VerifyLoginRespBody *respBody = (VerifyLoginRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:VERITY_LOGIN];
-//        [self checkDataLogin:respBody];
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"Error : %@", [error localizedDescription]);
-//        alertMessage(@"请求失败，获取二级目录目录失败.");
-//    }];
-//
-//    [operation start];
-//    [operation release];
-    
-//    AddAccountReqBody *requs = [[AddAccountReqBody alloc] init];
-//    requs.accountName = @"123456";
-//    requs.accountPassword = @"123456";
-//    requs.peopleName = @"haha";
-//    requs.peopleJob = @"Jobs";
-//    requs.peopleMobileNo = @"15152569200";
-//    NSMutableURLRequest *ust = [[AFHttpRequestUtils shareInstance] requestWithBody:requs andReqType:ADD_ACCOUNT];
-//    [requs release];
-//    
-//    AFHTTPRequestOperation *operations = [[AFHTTPRequestOperation alloc] initWithRequest:ust];
-//    [operations setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        AddAccountRespBody *respBody = (AddAccountRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:ADD_ACCOUNT];
-//        [self checkDatas:respBody];
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"Error : %@", [error localizedDescription]);
-//        alertMessage(@"请求失败，获取二级目录目录失败.");
-//    }];
-//    
-//    [operations start];
-//    [operations release];
-    
-    
-    
-    
     secArray = [[NSMutableArray alloc] init];
     
     GetSecondDirectoryReqBody *req = [[GetSecondDirectoryReqBody alloc] init];
@@ -90,18 +48,6 @@
     
     [operation start];
     [operation release];
-    
-    self.view.backgroundColor = [UIColor redColor];
-}
-
--(void) checkDataLogin:(VerifyLoginRespBody *) response
-{
-    NSLog(@"%@",response.userId);
-}
-
--(void) checkDatas:(AddAccountRespBody *)response
-{
-    NSLog(@"%@",response.result);
 }
 
 -(void) checkData:(GetSecondDirectoryRespBody *)response
@@ -111,9 +57,7 @@
 
 -(BOOL) addSecDir:(id)sender
 {
-    BOOL tag = [super addSecDir:sender];
-    
-    if (!tag) {
+    if (![super addSecDir:sender]) {
         return NO;
     }
     
@@ -132,7 +76,7 @@
     if ([dirName length] == 0) {
         return ;
     }
-    if (buttonIndex == 1) {   //创建相册
+    if (buttonIndex == 1) {   //创建二级目录
         AddSecondDirectoryReqBody *reqBody = [[AddSecondDirectoryReqBody alloc] init];
         reqBody.idTopDirectory = [self.topId stringByReplacingOccurrencesOfString:@" " withString:@""];
         reqBody.nameSecondDirectory = dirName;

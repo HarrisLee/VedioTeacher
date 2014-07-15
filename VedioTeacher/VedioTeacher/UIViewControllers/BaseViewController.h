@@ -25,4 +25,6 @@
 //添加二级目录
 -(BOOL) addSecDir:(id)sender;
 
+-(void) setTitleViewHidden:(BOOL) hidden;
+
 @end

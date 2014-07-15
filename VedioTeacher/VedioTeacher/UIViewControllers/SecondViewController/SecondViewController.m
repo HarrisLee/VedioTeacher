@@ -30,8 +30,12 @@
     // Do any additional setup after loading the view.
 }
 
--(void) releaseTask:(id)sender
+-(BOOL) releaseTask:(id)sender
 {
+    if (![super releaseTask:sender]) {
+        return NO;
+    }
+    
     QBImagePickerController *imagePickerController = [[QBImagePickerController alloc] init];
     imagePickerController.delegate = self;
     imagePickerController.allowsMultipleSelection = YES;
@@ -43,6 +47,7 @@
     [self presentViewController:navigationController animated:YES completion:NULL];
     [imagePickerController release];
     [navigationController release];
+    return YES;
 }
 
 - (void)imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController
