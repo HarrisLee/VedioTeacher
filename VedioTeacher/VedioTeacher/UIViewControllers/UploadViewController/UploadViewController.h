@@ -15,6 +15,9 @@
 #import "GetMyExecuteTaskListRespBody.h"
 #import "QBImagePickerController.h"
 #import "MBProgressHUD.h"
+#import "UploadTVFileReqBody.h"
+#import "UploadTVFileRespBody.h"
+
 
 @interface UploadViewController : BaseViewController<UITextFieldDelegate,UITextViewDelegate,UITableViewDataSource,UITableViewDelegate,QBImagePickerControllerDelegate,MBProgressHUDDelegate>
 {
@@ -28,5 +31,6 @@
     NSInteger   selectType;   //1:一级目录  2:二级目录   3:关联任务
     NSMutableArray *secondArray;
     NSMutableArray *taskArray;
+    NSMutableArray *uploadArray;
 }
 @end

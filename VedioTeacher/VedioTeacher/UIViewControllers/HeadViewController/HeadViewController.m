@@ -128,11 +128,6 @@
     NSLog(@"%@",dirName);
 }
 
--(void) goBackViewController:(id)sender
-{
-    NSLog(@"don't go preview");
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

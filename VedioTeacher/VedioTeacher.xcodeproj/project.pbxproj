@@ -194,6 +194,7 @@
 		9ED53AF9196285A900DA3248 /* VedioTeacherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED53AF8196285A900DA3248 /* VedioTeacherTests.m */; };
 		9ED53B03196285C200DA3248 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53B02196285C200DA3248 /* AVFoundation.framework */; };
 		9ED53B071962AE4000DA3248 /* UIColor+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED53B061962AE4000DA3248 /* UIColor+extend.m */; };
+		9EEC5C0619766A9300801AE1 /* SendTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEC5C0519766A9300801AE1 /* SendTaskViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -540,6 +541,8 @@
 		9ED53B02196285C200DA3248 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9ED53B051962AE4000DA3248 /* UIColor+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+extend.h"; sourceTree = "<group>"; };
 		9ED53B061962AE4000DA3248 /* UIColor+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+extend.m"; sourceTree = "<group>"; };
+		9EEC5C0419766A9300801AE1 /* SendTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendTaskViewController.h; sourceTree = "<group>"; };
+		9EEC5C0519766A9300801AE1 /* SendTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendTaskViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1107,6 +1110,7 @@
 		9E5A24EB196A308A00C6D1A4 /* UIViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9EEC5C0319766A8100801AE1 /* SendTaskViewController */,
 				9E6648F61976112300F810CC /* UploadViewController */,
 				9E6648F51976112300F810CC /* PlayerViewController */,
 				9E4DACF5196A8918008C71BD /* MoreViewController */,
@@ -1517,6 +1521,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		9EEC5C0319766A8100801AE1 /* SendTaskViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9EEC5C0419766A9300801AE1 /* SendTaskViewController.h */,
+				9EEC5C0519766A9300801AE1 /* SendTaskViewController.m */,
+			);
+			path = SendTaskViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1691,6 +1704,7 @@
 				9E5A2527196A308A00C6D1A4 /* GetTopDirectoryRespBody.m in Sources */,
 				9E50FCFB196D20190027683C /* AddSecondDirView.m in Sources */,
 				9E5A25B4196A40C800C6D1A4 /* AddTaskReqBody.m in Sources */,
+				9EEC5C0619766A9300801AE1 /* SendTaskViewController.m in Sources */,
 				9E5A2606196A72A200C6D1A4 /* IndexViewController.m in Sources */,
 				9E5A2525196A308A00C6D1A4 /* GetSecondDirectoryOfTimeRespBody.m in Sources */,
 				9E5A2509196A308A00C6D1A4 /* AddCommentRespBody.m in Sources */,

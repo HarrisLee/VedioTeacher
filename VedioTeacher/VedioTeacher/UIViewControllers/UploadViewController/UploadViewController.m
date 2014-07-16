@@ -35,6 +35,7 @@
     selectType = 1;
     secondArray = [[NSMutableArray alloc] init];
     taskArray = [[NSMutableArray alloc] init];
+    uploadArray = [[NSMutableArray alloc] init];
     
     [self setUpInitView];
     
@@ -61,12 +62,11 @@
 }
 
 #pragma mark ---------------------------------
-#pragma mark QBImagePickerControllerDelegate
+#pragma mark - QBImagePickerControllerDelegate
 
 - (void)imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController
 {
     NSLog(@"取消选择");
-    
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -93,6 +93,64 @@
 - (NSString *)imagePickerController:(QBImagePickerController *)imagePickerController descriptionForNumberOfPhotos:(NSUInteger)numberOfPhotos numberOfVideos:(NSUInteger)numberOfVideos
 {
     return [NSString stringWithFormat:@"图片%d 视频%d", numberOfPhotos, numberOfVideos];
+}
+
+/**
+ *  多选视频的代理方法。在这里进行选择，上传等一系列操作
+ */
+- (void)imagePickerController:(QBImagePickerController *)imagePickerController didFinishPickingMediaWithInfo:(id)info
+{
+    
+    if(imagePickerController.allowsMultipleSelection) {
+        NSArray *mediaInfoArray = (NSArray *)info;
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self uploadVedioWith:mediaInfoArray];
+        }];
+        NSLog(@"Selected %d vedio and mediaInfoArray==%@", mediaInfoArray.count,mediaInfoArray);
+    } else {
+        NSDictionary *mediaInfo = (NSDictionary *)info;
+        NSLog(@"Selected: %@", mediaInfo);
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }
+}
+
+-(void) uploadVedioWith:(NSArray *)mediaInfoArray
+{
+//    errorCount = 0;
+//    startTag = YES;
+//    finishCount = 0;
+//    if (startTag == YES) {
+//        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+//        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//        [window addSubview:HUD];
+//        // Set determinate mode
+//        HUD.mode = MBProgressHUDModeAnnularDeterminate;
+//        HUD.delegate = self;
+//        HUD.labelText = @"图片上传中...";
+//        [HUD show:YES];
+//        startTag = NO;
+//        UIActivityIndicatorView *actView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//        actView.frame = CGRectMake(150, (SCREEN_HEIGHT - 20)/2-11, 20, 20);
+//        [actView startAnimating];
+//        [HUD addSubview:actView];
+//        [actView release];
+//    }
+    
+    @autoreleasepool {
+        for (ALAsset *asset in mediaInfoArray) {
+            if ([asset valueForProperty:ALAssetPropertyType] == ALAssetTypeVideo) {
+                ALAssetRepresentation *rep = [asset defaultRepresentation];
+                Byte *buffer = (Byte*)malloc(rep.size);
+                NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
+                NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
+                [uploadArray addObject:data];
+            }
+        }
+        
+//        [self upLoadImageWithSort];
+    }
 }
 
 #pragma mark ---------------------------------

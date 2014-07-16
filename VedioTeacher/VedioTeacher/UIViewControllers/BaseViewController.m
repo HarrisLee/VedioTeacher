@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "LoginsViewController.h"
 #import "UploadViewController.h"
+#import "SendTaskViewController.h"
 
 @interface BaseViewController ()
 
@@ -50,16 +51,26 @@
     UIBarButtonItem *item0 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbar_icon_redirect_hight_os7"] style:UIBarButtonItemStylePlain target:self action:@selector(addSecDir:)];
     UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbar_icon_redirect_hight_os7"] style:UIBarButtonItemStylePlain target:self action:@selector(releaseTask:)];
     UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbar_icon_redirect_hight_os7"] style:UIBarButtonItemStylePlain target:self action:@selector(uploadVedio:)];
-    UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbar_icon_redirect_hight_os7"] style:UIBarButtonItemStylePlain target:self action:@selector(shootingVedio:)];
-    UIBarButtonItem *item4 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbar_icon_redirect_hight_os7"] style:UIBarButtonItemStylePlain target:self action:@selector(searchTask:)];
-    self.navigationItem.rightBarButtonItems = @[item4,item3,item2,item1,item0];
+    UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbar_icon_redirect_hight_os7"] style:UIBarButtonItemStylePlain target:self action:@selector(searchTask:)];
+    self.navigationItem.rightBarButtonItems = @[item3,item2,item1,item0];
 
+}
+
+-(BOOL) addSecDir:(id)sender
+{
+    return [self isVerifyLogin];
 }
 
 -(BOOL) releaseTask:(id)sender
 {
-    NSLog(@"task");
-    return [self isVerifyLogin];
+//    BOOL islogin = [self isVerifyLogin];
+//    if (!islogin) {
+//        return NO;
+//    }
+    
+    [self.tabBarController setSelectedIndex:6];
+    
+    return YES;
 }
 
 -(BOOL) uploadVedio:(id)sender
@@ -76,17 +87,7 @@
     return YES;
 }
 
--(BOOL) shootingVedio:(id)sender
-{
-    return [self isVerifyLogin];
-}
-
 -(BOOL) searchTask:(id)sender
-{
-    return [self isVerifyLogin];
-}
-
--(BOOL) addSecDir:(id)sender
 {
     return [self isVerifyLogin];
 }
