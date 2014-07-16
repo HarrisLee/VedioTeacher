@@ -45,7 +45,7 @@
         [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
         
         /* Initialization */
-        self.title = @"照片";
+        self.title = @"媒体库";
         self.filterType = QBImagePickerFilterTypeAllPhotos;
         self.showsCancelButton = YES;
         self.fullScreenLayoutEnabled = YES;
@@ -131,11 +131,12 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
         if(indexPath == nil) {
-            self.previousBarStyle = self.navigationController.navigationBar.barStyle;
+//            self.previousBarStyle = self.navigationController.navigationBar.barStyle;
             self.previousBarTranslucent = self.navigationController.navigationBar.translucent;
-            self.previousStatusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
+//            self.previousStatusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
             
-            self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+//            self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
             self.navigationController.navigationBar.translucent = YES;
             //取消无效代码
 //            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
@@ -167,9 +168,10 @@
     [super viewWillDisappear:animated];
     
     // Restore bar styles
-    self.navigationController.navigationBar.barStyle = self.previousBarStyle;
+//    self.navigationController.navigationBar.barStyle = self.previousBarStyle;
     self.navigationController.navigationBar.translucent = self.previousBarTranslucent;
-    [[UIApplication sharedApplication] setStatusBarStyle:self.previousStatusBarStyle animated:YES];
+//    [[UIApplication sharedApplication] setStatusBarStyle:self.previousStatusBarStyle animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 //    [m_window release];
 //    [m_window setHidden:YES];
 }
@@ -317,33 +319,13 @@
 
 - (void)assetCollectionViewController:(QBAssetCollectionViewController *)assetCollectionViewController didFinishPickingAssets:(NSArray *)assets
 {
-//    m_window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, 320, SCREEN_HEIGHT)];
-//    m_window.windowLevel = UIWindowLevelStatusBar + 1;//UIWindowLevelAlert+1;
-//    m_window.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.2];
-//    [m_window makeKeyAndVisible];
-//    
-//    UIActivityIndicatorView *actView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    actView.frame = CGRectMake(150, (SCREEN_HEIGHT - 20)/2-11, 20, 20);
-//    [actView startAnimating];
-//    [m_window addSubview:actView];
-//    [actView release];
-//    
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, actView.frame.origin.y + 25, 320, 20)];
-//    label.text = @"准备进行上传...";
-//    label.backgroundColor = [UIColor clearColor];
-//    label.textColor = [UIColor whiteColor];
-//    label.textAlignment = NSTextAlignmentCenter;
-//    label.font = [UIFont systemFontOfSize:16.0f];
-//    [m_window addSubview:label];
-//    [label release];
-    
     if([self.delegate respondsToSelector:@selector(imagePickerControllerWillFinishPickingMedia:)]) {
         [self.delegate imagePickerControllerWillFinishPickingMedia:self];
     }
     
     if([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingMediaWithInfo:)]) {
         NSMutableArray *info = [NSMutableArray array];
-        //根据需要, 穿入ALAsset对象  或者 dic对象(包含UIImage,类型,UIImagePickerControllerReferenceURL)
+        //根据需要, 传入ALAsset对象  或者 dic对象(包含UIImage,类型,UIImagePickerControllerReferenceURL)
         for(ALAsset *asset in assets) {
 //            [info addObject:[self mediaInfoFromAsset:asset]];
             [info addObject:asset];

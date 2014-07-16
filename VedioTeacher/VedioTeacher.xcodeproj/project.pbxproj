@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E4910AA1976523300767FDB /* GetMyExecuteTaskListReqBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4910A91976523300767FDB /* GetMyExecuteTaskListReqBody.m */; };
+		9E4910AD1976523D00767FDB /* GetMyExecuteTaskListRespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4910AC1976523D00767FDB /* GetMyExecuteTaskListRespBody.m */; };
 		9E4DACF2196A8834008C71BD /* HeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DACF1196A8834008C71BD /* HeadViewController.m */; };
 		9E4DACFA196A9CB2008C71BD /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DACF9196A9CB2008C71BD /* SecondViewController.m */; };
 		9E4DACFD196A9CBC008C71BD /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DACFC196A9CBC008C71BD /* ThirdViewController.m */; };
@@ -205,6 +207,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E4910A81976523300767FDB /* GetMyExecuteTaskListReqBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMyExecuteTaskListReqBody.h; sourceTree = "<group>"; };
+		9E4910A91976523300767FDB /* GetMyExecuteTaskListReqBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMyExecuteTaskListReqBody.m; sourceTree = "<group>"; };
+		9E4910AB1976523D00767FDB /* GetMyExecuteTaskListRespBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMyExecuteTaskListRespBody.h; sourceTree = "<group>"; };
+		9E4910AC1976523D00767FDB /* GetMyExecuteTaskListRespBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMyExecuteTaskListRespBody.m; sourceTree = "<group>"; };
 		9E4DACF0196A8834008C71BD /* HeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadViewController.h; sourceTree = "<group>"; };
 		9E4DACF1196A8834008C71BD /* HeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadViewController.m; sourceTree = "<group>"; };
 		9E4DACF8196A9CB2008C71BD /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
@@ -563,6 +569,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E4910A71976522300767FDB /* GetMyExecuteTaskList */ = {
+			isa = PBXGroup;
+			children = (
+				9E4910A81976523300767FDB /* GetMyExecuteTaskListReqBody.h */,
+				9E4910A91976523300767FDB /* GetMyExecuteTaskListReqBody.m */,
+				9E4910AB1976523D00767FDB /* GetMyExecuteTaskListRespBody.h */,
+				9E4910AC1976523D00767FDB /* GetMyExecuteTaskListRespBody.m */,
+			);
+			path = GetMyExecuteTaskList;
+			sourceTree = "<group>";
+		};
 		9E4DACEF196A86D2008C71BD /* HeadViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -765,6 +782,7 @@
 		9E5A245D196A308A00C6D1A4 /* Request_Response */ = {
 			isa = PBXGroup;
 			children = (
+				9E4910A71976522300767FDB /* GetMyExecuteTaskList */,
 				9E5A2594196A401B00C6D1A4 /* GetMyAcceptTaskList */,
 				9E5A2595196A401B00C6D1A4 /* GetMySendTaskList */,
 				9E5A2596196A401B00C6D1A4 /* GetMyTVListOfGoodCount */,
@@ -1684,6 +1702,7 @@
 				9E5A25D8196A41B800C6D1A4 /* GetTVCommentReqBody.m in Sources */,
 				9E5A251C196A308A00C6D1A4 /* GetMainInfoReqBody.m in Sources */,
 				9E5A2519196A308A00C6D1A4 /* GetImgListRespBody.m in Sources */,
+				9E4910AA1976523300767FDB /* GetMyExecuteTaskListReqBody.m in Sources */,
 				9E5A2500196A308A00C6D1A4 /* QBImagePickerController.m in Sources */,
 				9E5A2520196A308A00C6D1A4 /* GetPeopleOpinionReturnReqBody.m in Sources */,
 				9E5A2524196A308A00C6D1A4 /* GetSecondDirectoryOfTimeReqBody.m in Sources */,
@@ -1765,6 +1784,7 @@
 				9E5A25B7196A40DC00C6D1A4 /* AddTaskRespBody.m in Sources */,
 				9E5A25F3196A423200C6D1A4 /* GetMyTVListOfGoodCountRespBody.m in Sources */,
 				9E5A24F7196A308A00C6D1A4 /* AFPropertyListRequestOperation.m in Sources */,
+				9E4910AD1976523D00767FDB /* GetMyExecuteTaskListRespBody.m in Sources */,
 				9E5A24EE196A308A00C6D1A4 /* ReqBody.m in Sources */,
 				9E5A250F196A308A00C6D1A4 /* AddPeopleOpinionRespBody.m in Sources */,
 			);

@@ -7,8 +7,16 @@
 //
 
 #import "BaseViewController.h"
+#import "FDirectoryModel.h"
+#import "SDirectoryModel.h"
+#import "GetSecondDirectoryReqBody.h"
+#import "GetSecondDirectoryRespBody.h"
+#import "GetMyExecuteTaskListReqBody.h"
+#import "GetMyExecuteTaskListRespBody.h"
+#import "QBImagePickerController.h"
+#import "MBProgressHUD.h"
 
-@interface UploadViewController : BaseViewController<UITextFieldDelegate,UITextViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface UploadViewController : BaseViewController<UITextFieldDelegate,UITextViewDelegate,UITableViewDataSource,UITableViewDelegate,QBImagePickerControllerDelegate,MBProgressHUDDelegate>
 {
     UITextField *top1Field;
     UITextField *top2Field;

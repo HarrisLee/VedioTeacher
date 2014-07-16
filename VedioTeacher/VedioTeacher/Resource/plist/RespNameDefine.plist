@@ -74,5 +74,7 @@
 	<string>GetTaskInfoRespBody</string>
 	<key>uploadTVFile</key>
 	<string>UploadTVFileRespBody</string>
+	<key>getMyExecuteTaskList</key>
+	<string>GetMyExecuteTaskListRespBody</string>
 </dict>
 </plist>

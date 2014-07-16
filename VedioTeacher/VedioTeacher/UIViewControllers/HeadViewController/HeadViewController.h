@@ -13,10 +13,6 @@
 #import "AddSecondDirectoryRespBody.h"
 #import "AddSecondDirView.h"
 #import "SDirectoryModel.h"
-#import "AddAccountReqBody.h"
-#import "AddAccountRespBody.h"
-#import "VerifyLoginReqBody.h"
-#import "VerifyLoginRespBody.h"
 
 @interface HeadViewController : BaseViewController<UIAlertViewDelegate,UITextFieldDelegate>
 {

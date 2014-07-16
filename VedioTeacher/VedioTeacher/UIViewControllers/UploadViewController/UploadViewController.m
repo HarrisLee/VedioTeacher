@@ -38,6 +38,61 @@
     
     [self setUpInitView];
     
+    GetMyExecuteTaskListReqBody *reqBody = [[GetMyExecuteTaskListReqBody alloc] init];
+    reqBody.accountId = [DataCenter shareInstance].loginId;
+    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_EXECUTETASK];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        GetMyExecuteTaskListRespBody *respBody = (GetMyExecuteTaskListRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_EXECUTETASK];
+        [self checkTask:respBody];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error : %@", [error localizedDescription]);
+        alertMessage(@"请求失败，获取二级目录目录失败.");
+    }];
+    
+    [operation start];
+    [operation release];
+    
+}
+
+-(void) checkTask:(GetMyExecuteTaskListRespBody *)response
+{
+    NSLog(@"%@",response.taskArray);
+}
+
+#pragma mark ---------------------------------
+#pragma mark QBImagePickerControllerDelegate
+
+- (void)imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController
+{
+    NSLog(@"取消选择");
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (NSString *)descriptionForSelectingAllAssets:(QBImagePickerController *)imagePickerController
+{
+    return @"";
+}
+
+- (NSString *)descriptionForDeselectingAllAssets:(QBImagePickerController *)imagePickerController
+{
+    return @"";
+}
+
+- (NSString *)imagePickerController:(QBImagePickerController *)imagePickerController descriptionForNumberOfPhotos:(NSUInteger)numberOfPhotos
+{
+    return [NSString stringWithFormat:@"图片%d张", numberOfPhotos];
+}
+
+- (NSString *)imagePickerController:(QBImagePickerController *)imagePickerController descriptionForNumberOfVideos:(NSUInteger)numberOfVideos
+{
+    return [NSString stringWithFormat:@"视频%d", numberOfVideos];
+}
+
+- (NSString *)imagePickerController:(QBImagePickerController *)imagePickerController descriptionForNumberOfPhotos:(NSUInteger)numberOfPhotos numberOfVideos:(NSUInteger)numberOfVideos
+{
+    return [NSString stringWithFormat:@"图片%d 视频%d", numberOfPhotos, numberOfVideos];
 }
 
 #pragma mark ---------------------------------
@@ -45,14 +100,29 @@
 
 -(BOOL) textFieldShouldBeginEditing:(UITextField *)textField
 {
-    
+    if (textField == top1Field) {
+        selectType = 1;
+        top2Field.text = @"";
+        [dropView reloadData];
+        [UIView animateWithDuration:0.5 animations:^{
+            [dropView setHidden:NO];
+            dropView.frame = CGRectMake(105, top1Field.frame.origin.y + 25, 200, 25*6);
+        }];
+    } else if(textField == top2Field) {
+        selectType = 2;
+        [dropView reloadData];
+        [UIView animateWithDuration:0.5 animations:^{
+            [dropView setHidden:NO];
+            dropView.frame = CGRectMake(105, top2Field.frame.origin.y + 25, 200, 25*([secondArray count] > 6 ? 6 : [secondArray count]));
+        }];
+    }
     return NO;
 }
 
 -(BOOL) textViewShouldBeginEditing:(UITextView *)textView
 {
     [UIView animateWithDuration:0.5 animations:^{
-        uView.frame = CGRectMake(600, -300,  400, 768 - 112);
+        uView.frame = CGRectMake(600, -150,  400, 768 - 112);
     }];
     return YES;
 }
@@ -73,6 +143,18 @@
 -(void) chooseFile:(id) sender
 {
     NSLog(@"choose file");
+    QBImagePickerController *imagePickerController = [[QBImagePickerController alloc] init];
+    imagePickerController.filterType = QBImagePickerFilterTypeAllVideos;
+    imagePickerController.delegate = self;
+    imagePickerController.allowsMultipleSelection = YES;
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imagePickerController];
+    navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    navigationController.navigationBar.tintColor = [UIColor blackColor];
+    navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
+    [self presentViewController:navigationController animated:YES completion:NULL];
+    [imagePickerController release];
+    [navigationController release];
 }
 
 -(void) submitFile:(id) sender
@@ -96,6 +178,10 @@
     }
 }
 
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 25.0f;
+}
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -104,8 +190,77 @@
     if (!cell) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
     }
-    cell.textLabel.text = @"1";
+    cell.contentView.backgroundColor = [UIColor clearColor];
+    switch (selectType) {
+        case 1:
+        {
+            FDirectoryModel *model = [[DataCenter shareInstance].topDirectory objectAtIndex:indexPath.row];
+            cell.textLabel.text = model.nameTopDirectory;
+        }
+            break;
+        case 2:
+        {
+            SDirectoryModel *model = [secondArray objectAtIndex:indexPath.row];
+            cell.textLabel.text = model.nameSecondDirectory;
+        }
+            break;
+        default:
+        {
+            
+            cell.textLabel.text = @"1";
+        }
+
+            break;
+    }
+    
     return cell;
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [dropView setHidden:YES];
+    if (selectType == 1) {
+        //获取二级目录
+        FDirectoryModel *model = [[DataCenter shareInstance].topDirectory objectAtIndex:indexPath.row];
+        top1Field.text = model.nameTopDirectory;
+        GetSecondDirectoryReqBody *req = [[GetSecondDirectoryReqBody alloc] init];
+        req.idTopDirectory = model.idTopDirectory;
+        NSMutableURLRequest *urlRequets = [[AFHttpRequestUtils shareInstance] requestWithBody:req andReqType:GETSECDIR];
+        [req release];
+        
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequets];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            GetSecondDirectoryRespBody *respBody = (GetSecondDirectoryRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GETSECDIR];
+            [self checkData:respBody];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error : %@", [error localizedDescription]);
+            alertMessage(@"请求失败，获取二级目录目录失败.");
+        }];
+        
+        [operation start];
+        [operation release];
+    } else if(selectType == 2){
+        SDirectoryModel *model = [secondArray objectAtIndex:indexPath.row];
+        top2Field.text = model.nameSecondDirectory;
+    } else {
+        
+        relevanceField.text = @"111";
+    }
+}
+
+-(void) checkData:(GetSecondDirectoryRespBody *)response
+{
+    NSLog(@"%d",[response.sDirectoryArray count]);
+    if ([response.sDirectoryArray count] == 0) {
+        alertMessage(@"该主目录下没有二级目录，请重新选择");
+        return;
+    }
+    
+    [secondArray removeAllObjects];
+    for (SDirectoryModel *model in response.sDirectoryArray) {
+        [secondArray addObject:model];
+    }
 }
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -196,6 +351,7 @@
     [uView addSubview:vedioNameField];
     [vedioNameField release];
     
+/*   封面空间去除
     name = [[UILabel alloc] initWithFrame:CGRectMake(15, vedioNameField.frame.origin.y + 40, 80, 15)];
     name.text = @"视频封面:";
     name.textAlignment = NSTextAlignmentRight;
@@ -212,6 +368,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickerCoverImage:)];
     [coverView addGestureRecognizer:tap];
     [tap release];
+*/
     
     name = [[UILabel alloc] initWithFrame:CGRectMake(15, coverView.frame.origin.y + 215, 80, 15)];
     name.text = @"视频简介:";
@@ -231,6 +388,8 @@
     dropView = [[UITableView alloc] initWithFrame:CGRectMake(name.frame.origin.x + name.frame.size.width + 10, top1Field.frame.origin.y + 25, 200, 25*6) style:UITableViewStylePlain];
     dropView.delegate = self;
     dropView.dataSource = self;
+    dropView.bounces = NO;
+    dropView.separatorInset = UIEdgeInsetsZero;
     [dropView setHidden:YES];
     [uView addSubview:dropView];
     [dropView release];

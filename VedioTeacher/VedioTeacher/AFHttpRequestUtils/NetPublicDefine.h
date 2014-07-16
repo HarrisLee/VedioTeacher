@@ -81,4 +81,6 @@
 
 #define UPLOAD_TVFILE         @"uploadTVFile"
 
+#define GET_EXECUTETASK  @"getMyExecuteTaskList"
+
 #endif

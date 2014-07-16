@@ -76,5 +76,7 @@
 	<string>GetTaskInfo</string>
 	<key>uploadTVFile</key>
 	<string>UploadTVFile</string>
+	<key>getMyExecuteTaskList</key>
+	<string>GetMyExecuteTaskList</string>
 </dict>
 </plist>
