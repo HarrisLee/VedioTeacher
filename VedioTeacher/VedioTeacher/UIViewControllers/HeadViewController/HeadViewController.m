@@ -26,11 +26,17 @@
     return self;
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    [self.tabBarController.tabBar setHidden:NO];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     secArray = [[NSMutableArray alloc] init];
+    serviceArray = [[NSMutableArray alloc] init];
     
     GetSecondDirectoryReqBody *req = [[GetSecondDirectoryReqBody alloc] init];
     req.idTopDirectory = self.topId;
@@ -52,7 +58,7 @@
 
 -(void) checkData:(GetSecondDirectoryRespBody *)response
 {
-    NSLog(@"%@",response.sDirectoryArray);
+    NSLog(@"%d",[response.sDirectoryArray count]);
 }
 
 -(BOOL) addSecDir:(id)sender
@@ -109,9 +115,9 @@
     SDirectoryModel *model = [[SDirectoryModel alloc] init];
     model.idSecondDirectory = respBody.secondDir;
     model.nameSecondDirectory = dirName;
-//    [secArray addObject:model];
-//    [serviceArray addObject:model];
-//    [model release];
+    [secArray addObject:model];
+    [serviceArray addObject:model];
+    [model release];
 //    [dirTable reloadData];
     
 }
@@ -120,6 +126,11 @@
 {
     dirName = [textField.text retain];
     NSLog(@"%@",dirName);
+}
+
+-(void) goBackViewController:(id)sender
+{
+    NSLog(@"don't go preview");
 }
 
 - (void)didReceiveMemoryWarning

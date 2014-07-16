@@ -57,6 +57,8 @@
         return ;
     }
     
+    [[DataCenter shareInstance].topDirectory addObjectsFromArray:response.topDirectoryArray];
+    
     NSMutableArray *viewArray = [[NSMutableArray alloc] init];
     
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:20.0f],NSFontAttributeName,[UIColor getColor:@"ff956c"],NSForegroundColorAttributeName,nil];

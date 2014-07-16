@@ -17,12 +17,12 @@
     self.sDirectoryArray = array;
     [array release];
     
-//    for (id obj in value) {
-//        SDirectoryModel *model = [[SDirectoryModel alloc] init];
-//        [Utils setProperty:model withDic:obj];
-//        [sDirectoryArray addObject:model];
-//        [model release];
-//    }
+    for (id obj in value) {
+        SDirectoryModel *model = [[SDirectoryModel alloc] init];
+        [Utils setProperty:model withDic:obj];
+        [sDirectoryArray addObject:model];
+        [model release];
+    }
 }
 
 -(void) dealloc

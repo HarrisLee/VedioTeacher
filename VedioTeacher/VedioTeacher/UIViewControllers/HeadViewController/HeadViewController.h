@@ -22,6 +22,7 @@
 {
     NSString *topId;
     NSMutableArray *secArray;
+    NSMutableArray *serviceArray;
 }
 @property (nonatomic, retain) NSString *topId;
 

@@ -174,6 +174,8 @@
 		9E5A25FF196A426900C6D1A4 /* GetMyAcceptTaskListRespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A25FE196A426900C6D1A4 /* GetMyAcceptTaskListRespBody.m */; };
 		9E5A2603196A6E7500C6D1A4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2602196A6E7500C6D1A4 /* BaseViewController.m */; };
 		9E5A2606196A72A200C6D1A4 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2605196A72A200C6D1A4 /* IndexViewController.m */; };
+		9E6648F91976113900F810CC /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6648F81976113900F810CC /* PlayerViewController.m */; };
+		9E6648FC1976114600F810CC /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6648FB1976114600F810CC /* UploadViewController.m */; };
 		9EBDDC761974D2AA006CAD7A /* LoginsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDDC751974D2AA006CAD7A /* LoginsViewController.m */; };
 		9ED53ACE196285A900DA3248 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53ACD196285A900DA3248 /* Foundation.framework */; };
 		9ED53AD0196285A900DA3248 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53ACF196285A900DA3248 /* CoreGraphics.framework */; };
@@ -505,6 +507,10 @@
 		9E5A2602196A6E7500C6D1A4 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		9E5A2604196A72A200C6D1A4 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
 		9E5A2605196A72A200C6D1A4 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
+		9E6648F71976113900F810CC /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
+		9E6648F81976113900F810CC /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
+		9E6648FA1976114600F810CC /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
+		9E6648FB1976114600F810CC /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
 		9EBDDC741974D2AA006CAD7A /* LoginsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginsViewController.h; sourceTree = "<group>"; };
 		9EBDDC751974D2AA006CAD7A /* LoginsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginsViewController.m; sourceTree = "<group>"; };
 		9ED53ACA196285A900DA3248 /* VedioTeacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VedioTeacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1083,6 +1089,8 @@
 		9E5A24EB196A308A00C6D1A4 /* UIViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9E6648F61976112300F810CC /* UploadViewController */,
+				9E6648F51976112300F810CC /* PlayerViewController */,
 				9E4DACF5196A8918008C71BD /* MoreViewController */,
 				9E4DACF3196A8918008C71BD /* FifthViewController */,
 				9E4DACF4196A8918008C71BD /* FourthViewController */,
@@ -1361,6 +1369,24 @@
 				9E5A2605196A72A200C6D1A4 /* IndexViewController.m */,
 			);
 			path = IndexViewController;
+			sourceTree = "<group>";
+		};
+		9E6648F51976112300F810CC /* PlayerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9E6648F71976113900F810CC /* PlayerViewController.h */,
+				9E6648F81976113900F810CC /* PlayerViewController.m */,
+			);
+			path = PlayerViewController;
+			sourceTree = "<group>";
+		};
+		9E6648F61976112300F810CC /* UploadViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9E6648FA1976114600F810CC /* UploadViewController.h */,
+				9E6648FB1976114600F810CC /* UploadViewController.m */,
+			);
+			path = UploadViewController;
 			sourceTree = "<group>";
 		};
 		9EBDDC701974CE81006CAD7A /* LoginViewController */ = {
@@ -1643,6 +1669,7 @@
 				9E5A25A8196A408500C6D1A4 /* AddTVGoodRespBody.m in Sources */,
 				9E5A2572196A33AD00C6D1A4 /* UIView+WhenTappedBlocks.m in Sources */,
 				9E5A25BD196A411800C6D1A4 /* UploadTVFileRespBody.m in Sources */,
+				9E6648FC1976114600F810CC /* UploadViewController.m in Sources */,
 				9E5A2527196A308A00C6D1A4 /* GetTopDirectoryRespBody.m in Sources */,
 				9E50FCFB196D20190027683C /* AddSecondDirView.m in Sources */,
 				9E5A25B4196A40C800C6D1A4 /* AddTaskReqBody.m in Sources */,
@@ -1661,6 +1688,7 @@
 				9E5A2520196A308A00C6D1A4 /* GetPeopleOpinionReturnReqBody.m in Sources */,
 				9E5A2524196A308A00C6D1A4 /* GetSecondDirectoryOfTimeReqBody.m in Sources */,
 				9E5A24F4196A308A00C6D1A4 /* AFImageRequestOperation.m in Sources */,
+				9E6648F91976113900F810CC /* PlayerViewController.m in Sources */,
 				9E5A2510196A308A00C6D1A4 /* AddPeopleOpinionReturnReqBody.m in Sources */,
 				9E5A2571196A33AD00C6D1A4 /* UIView+RectCorner.m in Sources */,
 				9E5A250C196A308A00C6D1A4 /* AddPeopleAccountReqBody.m in Sources */,

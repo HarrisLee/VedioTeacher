@@ -17,24 +17,19 @@
     NSDictionary            *configDictionary;      //配置字典
     NSDictionary            *errorDictionary;       //错误码字典
     UserModel               *userInfo;
-    BOOL                    isOutLogin;              //是否是外部账号登录
-    NSString                *outLoginName;
-    NSString                *outLoginId;
     NSString                *loginName;
     NSString                *loginId;
+    NSMutableArray          *topDirectory;
 }
 @property                    BOOL                   isLogined;
-@property                    BOOL                   isShare;
-@property                    BOOL                   isOutLogin;
 @property (nonatomic,retain) UserModel              *userInfo;
 @property (nonatomic,retain) NSDictionary           *configDictionary;
 @property (nonatomic,retain) NSDictionary           *errorDictionary;
-@property (nonatomic,retain) NSString               *outLoginName;
-@property (nonatomic,retain) NSString               *outLoginId;
 @property (nonatomic,retain) NSString               *loginName;
 @property (nonatomic,retain) NSString               *loginId;
+@property (nonatomic,retain) NSMutableArray         *topDirectory;
 
-+(DataCenter*)shareInstance;
++ (DataCenter*)shareInstance;
 + (NSString*)saveImageFile:(UIImage*)image;
 
 

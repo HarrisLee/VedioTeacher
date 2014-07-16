@@ -8,11 +8,10 @@
 
 #import "BaseViewController.h"
 #import "LoginsViewController.h"
+#import "UploadViewController.h"
 
 @interface BaseViewController ()
-{
-    UISegmentedControl *segment;
-}
+
 @end
 
 @implementation BaseViewController
@@ -33,10 +32,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     UIView *logoView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 400, 44)];
     logoView.backgroundColor = [UIColor redColor];
-    UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 44)];
+    UIButton *logo = [UIButton buttonWithType:UIButtonTypeCustom];
+    logo.frame = CGRectMake(0, 0, 300, 44);
     logo.backgroundColor = [UIColor brownColor];
+    [logo addTarget:self action:@selector(goBackViewController:) forControlEvents:UIControlEventTouchUpInside];
     [logoView addSubview:logo];
-    [logo release];
     UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(300, 5, 100, 30)];
     name.text = self.title;
     name.textColor = [UIColor blackColor];
@@ -56,11 +56,6 @@
 
 }
 
--(void) segmentClickedAtIndex:(id) sender
-{
-    NSLog(@"%d",[sender selectedSegmentIndex]);
-}
-
 -(BOOL) releaseTask:(id)sender
 {
     NSLog(@"task");
@@ -69,7 +64,16 @@
 
 -(BOOL) uploadVedio:(id)sender
 {
-    return [self isVerifyLogin];
+//    BOOL islogin = [self isVerifyLogin];
+//    if (!islogin) {
+//        return NO;
+//    }
+    
+    UploadViewController *upload = [[UploadViewController alloc] init];
+    [self.navigationController pushViewController:upload animated:YES];
+    [upload release];
+    
+    return YES;
 }
 
 -(BOOL) shootingVedio:(id)sender
@@ -100,6 +104,11 @@
         return NO;
     }
     return YES;
+}
+
+-(void) goBackViewController:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
