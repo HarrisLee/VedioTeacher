@@ -280,8 +280,13 @@
     [dropView setHidden:YES];
     if (selectType == 1) {
         //获取二级目录
+        UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+        if ([cell.textLabel.text isEqualToString:top1Field.text]) {
+            return ;
+        }
         FDirectoryModel *model = [[DataCenter shareInstance].topDirectory objectAtIndex:indexPath.row];
         top1Field.text = model.nameTopDirectory;
+        [secondArray removeAllObjects];
         GetSecondDirectoryReqBody *req = [[GetSecondDirectoryReqBody alloc] init];
         req.idTopDirectory = model.idTopDirectory;
         NSMutableURLRequest *urlRequets = [[AFHttpRequestUtils shareInstance] requestWithBody:req andReqType:GETSECDIR];
@@ -315,7 +320,6 @@
         return;
     }
     
-    [secondArray removeAllObjects];
     for (SDirectoryModel *model in response.sDirectoryArray) {
         [secondArray addObject:model];
     }
