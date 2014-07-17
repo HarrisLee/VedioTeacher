@@ -11,7 +11,6 @@
 #import "GetSecondDirectoryRespBody.h"
 #import "AddSecondDirectoryReqBody.h"
 #import "AddSecondDirectoryRespBody.h"
-#import "AddSecondDirView.h"
 #import "SDirectoryModel.h"
 
 @interface HeadViewController : BaseViewController<UIAlertViewDelegate,UITextFieldDelegate>

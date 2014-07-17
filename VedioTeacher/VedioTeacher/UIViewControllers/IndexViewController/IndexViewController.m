@@ -63,6 +63,20 @@
     
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:20.0f],NSFontAttributeName,[UIColor getColor:@"6ABAFA"],NSForegroundColorAttributeName,nil];
     
+    //个人中心
+    SendTaskViewController *send = [[SendTaskViewController alloc] init];
+    send.title = @"个人中心";
+    UINavigationController *sendNav = [[UINavigationController alloc] initWithRootViewController:send];
+    [sendNav.navigationBar setBarTintColor:[UIColor whiteColor]];
+    [sendNav.navigationBar setTintColor:[UIColor getColor:@"6ABAFA"]];
+    //    sendNav.tabBarItem.image = [UIImage imageNamed:@"icon_set_nomal"];
+    //    sendNav.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_set_click"];
+    sendNav.navigationBar.titleTextAttributes = dict;
+    sendNav.navigationBar.translucent = NO;
+    [viewArray addObject:sendNav];
+    [send release];
+    [sendNav release];
+    
     //首页
     HeadViewController *hvc = [[HeadViewController alloc]init];
     hvc.title = [[response.topDirectoryArray objectAtIndex:0] nameTopDirectory];
@@ -153,19 +167,7 @@
     [more release];
     [moreNav release];
     
-    //个人中心
-    SendTaskViewController *send = [[SendTaskViewController alloc] init];
-    send.title = @"个人中心";
-    UINavigationController *sendNav = [[UINavigationController alloc] initWithRootViewController:send];
-    [sendNav.navigationBar setBarTintColor:[UIColor whiteColor]];
-    [sendNav.navigationBar setTintColor:[UIColor getColor:@"6ABAFA"]];
-    //    sendNav.tabBarItem.image = [UIImage imageNamed:@"icon_set_nomal"];
-    //    sendNav.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_set_click"];
-    sendNav.navigationBar.titleTextAttributes = dict;
-    sendNav.navigationBar.translucent = NO;
-    [viewArray addObject:sendNav];
-    [send release];
-    [sendNav release];
+
     
     //tab
     UITabBarController *tab = [[UITabBarController alloc] init];
