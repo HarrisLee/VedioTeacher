@@ -31,14 +31,17 @@
 
     //已经发布的任务、详细信息
     UIView *sendedView;
-    NSInteger didSection;
-    NSMutableArray *taskArray;
-    NSMutableArray *acceptArray;
-    NSMutableArray *dateArray;
-    UITableView *sendTable;
-    NSString *showTask;
+    NSInteger didSection;  //选择的Section 用于确定年份
+    NSMutableArray *accountArray; //所有用户数组
+    NSMutableArray *taskArray;  //发布的任务数组
+    NSMutableArray *acceptArray; //接受的任务数组
+    NSMutableArray *dateArray; //年份数组
+    UITableView *sendTable;  //左侧列表
+    NSString *showTask;   //展示标识 1：我发布的 2：我接受的
     NSString *startTime;
     NSString *endTime;
+    
+    UIImageView *titleRect;
     
     UITextField *taskTitleField;
     UILabel *taskAccount;

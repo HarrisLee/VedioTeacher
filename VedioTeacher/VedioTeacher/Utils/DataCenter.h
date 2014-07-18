@@ -20,6 +20,7 @@
     NSString                *loginName;
     NSString                *loginId;
     NSMutableArray          *topDirectory;
+    NSString                *taskDirId;
 }
 @property                    BOOL                   isLogined;
 @property (nonatomic,retain) UserModel              *userInfo;
@@ -28,6 +29,7 @@
 @property (nonatomic,retain) NSString               *loginName;
 @property (nonatomic,retain) NSString               *loginId;
 @property (nonatomic,retain) NSMutableArray         *topDirectory;
+@property (nonatomic,retain) NSString               *taskDirId;
 
 + (DataCenter*)shareInstance;
 + (NSString*)saveImageFile:(UIImage*)image;

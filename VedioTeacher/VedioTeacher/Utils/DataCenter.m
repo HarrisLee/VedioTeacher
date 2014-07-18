@@ -17,6 +17,7 @@ static DataCenter *m_DataCenter = nil;
 @synthesize loginName;
 @synthesize loginId;
 @synthesize topDirectory;
+@synthesize taskDirId;
 
 +(DataCenter*)shareInstance {
     @synchronized(self)
@@ -69,8 +70,13 @@ static DataCenter *m_DataCenter = nil;
 
 - (void)dealloc {
     [configDictionary release];
+    [errorDictionary release];
     [m_DataCenter release];
     [topDirectory release];
+    [taskDirId release];
+    [userInfo release];
+    [loginId release];
+    [loginName release];
     [super dealloc];
 }
 

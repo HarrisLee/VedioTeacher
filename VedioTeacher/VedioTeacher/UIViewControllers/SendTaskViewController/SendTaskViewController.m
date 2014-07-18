@@ -23,6 +23,11 @@
     return self;
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    NSLog(@"%@",[DataCenter shareInstance].taskDirId);
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -34,6 +39,7 @@
     dateArray = [[NSMutableArray alloc] initWithObjects:@"2014",@"2015",@"2016",@"2017",@"2018",@"2019",@"2020", nil];;
     taskArray = [[NSMutableArray alloc] init];
     acceptArray = [[NSMutableArray alloc] init];
+    accountArray = [[NSMutableArray alloc] init];
     
     [self createInitView];
     
@@ -41,19 +47,39 @@
     
 }
 
+//显示我发布的任务
 -(void) sendedTask:(id)sender
 {
-    
+    showTask = @"1";
+    [titleRect setHidden:NO];
+    taskTitleField.text = @"";
+    taskInfoView.text = @"";
+    taskAccountName.text = @"";
+    [taskAccount setHidden:YES];
+    [taskAccountName setHidden:YES];
+    taskInfoView.layer.borderWidth = 1.0;
+    [sendedView setHidden:NO];
 }
 
+//显示我接受的任务
 -(void) acceptedNewTask:(id)sender
 {
+    showTask = @"2";
+    [titleRect setHidden:YES];
+    taskTitleField.text = @"";
+    taskInfoView.text = @"";
+    taskAccountName.text = @"";
+    [taskAccount setHidden:NO];
+    [taskAccountName setHidden:NO];
+    taskInfoView.layer.borderWidth = 0.0;
+    [sendedView setHidden:NO];
     
 }
 
+//显示我发布的视频
 -(void) sendedVideo:(id)sender
 {
-    
+    [sendedView setHidden:YES];
 }
 
 -(void) submitTask:(id)sender
@@ -155,6 +181,22 @@
 -(void) mouthClickAtIndex:(id)sender
 {
     NSLog(@"%@",[[sender currentTitle] stringByReplacingOccurrencesOfString:@"月" withString:@""]);
+    
+    if ([startTime hasSuffix:[NSString stringWithFormat:@"%d",[sender tag]]]) {
+        if ([startTime hasPrefix:[dateArray objectAtIndex:didSection]]) {
+            return ;
+        }
+    }
+    
+    startTime = [NSString stringWithFormat:@""];
+    endTime = [NSString stringWithFormat:@""];
+    if ([showTask isEqualToString:@"1"]) {
+        [self getMySendedTask:[DataCenter shareInstance].loginId startTime:startTime endTime:endTime];
+    } else {
+        [self getMyAcceptTask:[DataCenter shareInstance].loginId startTime:startTime endTime:endTime];
+    }
+    
+    
 }
 
 -(BOOL) textViewShouldBeginEditing:(UITextView *)textView
@@ -198,7 +240,35 @@
 
 -(void) checkAccountList:(GetAccountListRespBody *) response
 {
-    
+    if ([response.accountListResult count] == 0) {
+        alertMessage(@"请求出错，请重新获取");
+        return ;
+    }
+    [[userScroll subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [userScroll setContentSize:CGSizeMake(204, sendedView.frame.size.height)];
+    [accountArray removeAllObjects];
+    for (AccountModel *model in response.accountListResult) {
+        [accountArray addObject:model];
+    }
+
+    for (int i = 0; i < [accountArray count]; i++) {
+//        AccountModel *model = accountArray[i];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(10 + 97*(i%2), 10 + 40*(i/2), 87, 30);
+        button.tag = 2000+i;
+        [button.titleLabel setFont:[UIFont systemFontOfSize:13.0f]];
+        [button setTitle:@"userName" forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"preview_like_icon"] forState:UIControlStateSelected];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(chooseAccount:) forControlEvents:UIControlEventTouchUpInside];
+        [userScroll addSubview:button];
+    }
+    [userScroll setContentSize:CGSizeMake(204, 15 + ceilf([accountArray count]/2.0))];
+}
+
+-(void) chooseAccount:(id) sender
+{
+    [sender setSelected:![sender isSelected]];
 }
 
 /*!
@@ -211,7 +281,7 @@
 -(void) getMySendedTask:(NSString *)account startTime:(NSString *)start endTime:(NSString *)end
 {
     GetMySendTaskListReqBody *reqBody = [[GetMySendTaskListReqBody alloc] init];
-    reqBody.accountId = [DataCenter shareInstance].loginId;
+    reqBody.accountId = account;
     reqBody.startTime = start;
     reqBody.endTime = end;
     NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_MYSENDTASKLIST];
@@ -244,7 +314,7 @@
 -(void) getMyAcceptTask:(NSString *)account startTime:(NSString *)start endTime:(NSString *)end
 {
     GetMyAcceptTaskListReqBody *reqBody = [[GetMyAcceptTaskListReqBody alloc] init];
-    reqBody.accountId = [DataCenter shareInstance].loginId;
+    reqBody.accountId = account;
     reqBody.startTime = start;
     reqBody.endTime = end;
     NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_MYACCEPTTASKLIST];
@@ -440,15 +510,21 @@
     [sendedView addSubview:name];
     [name release];
     
-    taskTitleField = [[UITextField alloc] initWithFrame:CGRectMake(name.frame.origin.x + name.frame.size.width + 15, name.frame.origin.y - 5, 250, 30)];
+    titleRect = [[UIImageView alloc] initWithFrame:CGRectMake(name.frame.origin.x + name.frame.size.width + 15, name.frame.origin.y - 5, 250, 30)];
+    titleRect.layer.borderWidth = 1.0;
+    titleRect.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    [sendedView addSubview:titleRect];
+    [titleRect release];
+    
+    taskTitleField = [[UITextField alloc] initWithFrame:CGRectMake(name.frame.origin.x + name.frame.size.width + 19, name.frame.origin.y - 5, 242, 30)];
+    taskTitleField.text = @"任务每次名称";
     [taskTitleField setFont:[UIFont systemFontOfSize:15.0f]];
-    taskTitleField.userInteractionEnabled = NO;
     taskTitleField.borderStyle = UITextBorderStyleNone;
-    taskTitleField.text = @"新任务";
     [sendedView addSubview:taskTitleField];
     [taskTitleField release];
     
     taskAccount = [[UILabel alloc] initWithFrame:CGRectMake(sendTable.frame.size.width + 50, name.frame.origin.y + name.frame.size.height + 20, 100, 20)];
+    [taskAccount setHidden:YES];
     taskAccount.text = @"任务发布者:";
     taskAccount.textAlignment = NSTextAlignmentRight;
     taskAccount.textColor = [UIColor blackColor];
@@ -458,6 +534,7 @@
     [taskAccount release];
     
     taskAccountName = [[UILabel alloc] initWithFrame:CGRectMake(taskAccount.frame.origin.x + taskAccount.frame.size.width + 15, taskAccount.frame.origin.y, 100, 20)];
+    [taskAccountName setHidden:YES];
     taskAccountName.text = @"任务发布者";
     taskAccountName.textColor = [UIColor blackColor];
     taskAccountName.backgroundColor = [UIColor clearColor];
@@ -475,10 +552,10 @@
     [taskInfo release];
     
     taskInfoView = [[UITextView alloc] initWithFrame:CGRectMake(taskInfo.frame.origin.x + taskInfo.frame.size.width + 15, taskInfo.frame.origin.y - 8, 400, 200)];
+    taskInfoView.text = @"任务脚本内容任务";
     taskInfoView.delegate = self;
-//    taskInfoView.layer.borderWidth = 1.0;
-//    taskInfoView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    taskInfoView.text = @"点击右上角上传按钮，先判断是否登录，登录后，出现视频上传界面，如下图。但把左侧的视频列表去掉，只用右侧的界面。右侧的界面中间加一个关联目录的下拉选项，两个下拉框组成，同上，用于确定上传视频的所属分类。其中的关联任务下拉控件和关联目录下拉控件的关系为相互唯一的关系，选了关联任务下方关联目录会自动显示该任务关联的目录，选择了关联目录则关联任务清空，代表是无任务视频。可挑选视频的封面图片供视频列表显示用";
+    taskInfoView.layer.borderWidth = 1.0;
+    taskInfoView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     [taskInfoView setFont:[UIFont systemFontOfSize:15.0]];
     [sendedView addSubview:taskInfoView];
     [taskInfoView release];
@@ -498,6 +575,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) dealloc
+{
+    [accountArray release];
+    [dateArray release];
+    [taskArray release];
+    [accountArray release];
+    [super dealloc];
 }
 
 @end

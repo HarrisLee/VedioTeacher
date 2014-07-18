@@ -59,6 +59,7 @@
 -(void) checkData:(GetSecondDirectoryRespBody *)response
 {
     NSLog(@"%d",[response.sDirectoryArray count]);
+    [DataCenter shareInstance].taskDirId = [[response.sDirectoryArray objectAtIndex:0] idSecondDirectory];
 }
 
 -(BOOL) addSecDir:(id)sender
@@ -118,8 +119,6 @@
     [secArray addObject:model];
     [serviceArray addObject:model];
     [model release];
-//    [dirTable reloadData];
-    
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
