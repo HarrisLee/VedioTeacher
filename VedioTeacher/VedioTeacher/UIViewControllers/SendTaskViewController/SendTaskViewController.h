@@ -9,6 +9,18 @@
 #import "BaseViewController.h"
 #import "DateShowCell.h"
 #import "TaskCell.h"
+#import "GetAccountListReqBody.h"
+#import "GetAccountListRespBody.h"
+#import "GetTaskInfoReqBody.h"
+#import "GetTaskInfoRespBody.h"
+#import "GetMyAcceptTaskListReqBody.h"
+#import "GetMyAcceptTaskListRespBody.h"
+#import "GetMySendTaskListReqBody.h"
+#import "GetMySendTaskListRespBody.h"
+#import "GetMyTVListOfTimeReqBody.h"
+#import "GetMyTVListOfTimeRespBody.h"
+#import "GetMyTVListOfGoodCountReqBody.h"
+#import "GetMyTVListOfGoodCountRespBody.h"
 
 @interface SendTaskViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,DateShowCellDelegate>
 {

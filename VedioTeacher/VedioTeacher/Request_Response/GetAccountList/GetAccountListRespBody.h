@@ -7,6 +7,7 @@
 //
 
 #import "RespBody.h"
+#import "AccountModel.h"
 
 @interface GetAccountListRespBody : RespBody
 {

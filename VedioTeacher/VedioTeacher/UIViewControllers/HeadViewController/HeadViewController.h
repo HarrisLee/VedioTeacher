@@ -12,6 +12,10 @@
 #import "AddSecondDirectoryReqBody.h"
 #import "AddSecondDirectoryRespBody.h"
 #import "SDirectoryModel.h"
+#import "GetTVListOfTimeReqBody.h"
+#import "GetTVListOfTimeRespBody.h"
+#import "GetTVListOfGoodCountReqBody.h"
+#import "GetTVListOfGoodCountRespBody.h"
 
 @interface HeadViewController : BaseViewController<UIAlertViewDelegate,UITextFieldDelegate>
 {

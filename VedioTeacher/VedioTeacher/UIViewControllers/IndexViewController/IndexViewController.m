@@ -175,6 +175,7 @@
     tab.viewControllers = viewArray;
     [self.navigationController pushViewController:tab animated:YES];
     [viewArray release];
+    [tab release];
 }
 
 -(BOOL) releaseTask:(id)sender

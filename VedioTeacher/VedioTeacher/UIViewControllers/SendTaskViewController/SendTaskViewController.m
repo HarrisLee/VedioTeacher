@@ -37,6 +37,8 @@
     
     [self createInitView];
     
+    [self getAccountList:[DataCenter shareInstance].loginId];
+    
 }
 
 -(void) sendedTask:(id)sender
@@ -125,6 +127,7 @@
         if (!cell) {
             cell = [[[DateShowCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
         }
+        cell.delegate = self;
         [cell clearClicked];
         return cell;
     }
@@ -146,12 +149,12 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    NSLog(@"%d-%d",indexPath.section,indexPath.row);
 }
 
 -(void) mouthClickAtIndex:(id)sender
 {
-    
+    NSLog(@"%@",[[sender currentTitle] stringByReplacingOccurrencesOfString:@"月" withString:@""]);
 }
 
 -(BOOL) textViewShouldBeginEditing:(UITextView *)textView
@@ -168,6 +171,177 @@
         self.view.frame = CGRectMake(0, 0, 1024, 768);
     }];
     return YES;
+}
+
+/*!
+ *  获取所有用户列表
+ *
+ *  @param account 用户ID
+ */
+-(void) getAccountList:(NSString *)account
+{
+    GetAccountListReqBody *reqBody = [[GetAccountListReqBody alloc] init];
+    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_ACCOUNTLIST];
+    [reqBody release];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        GetAccountListRespBody *respBody = (GetAccountListRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_ACCOUNTLIST];
+        [self checkAccountList:respBody];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error : %@", [error localizedDescription]);
+        alertMessage(@"请求失败，获取用户列表失败.");
+    }];
+    
+    [operation start];
+    [operation release];
+}
+
+-(void) checkAccountList:(GetAccountListRespBody *) response
+{
+    
+}
+
+/*!
+ *  获取我发布的任务
+ *
+ *  @param account 用户ID
+ *  @param start   开始时间
+ *  @param end     结束时间
+ */
+-(void) getMySendedTask:(NSString *)account startTime:(NSString *)start endTime:(NSString *)end
+{
+    GetMySendTaskListReqBody *reqBody = [[GetMySendTaskListReqBody alloc] init];
+    reqBody.accountId = [DataCenter shareInstance].loginId;
+    reqBody.startTime = start;
+    reqBody.endTime = end;
+    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_MYSENDTASKLIST];
+    [reqBody release];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        GetMySendTaskListRespBody *respBody = (GetMySendTaskListRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_MYSENDTASKLIST];
+        [self checkSendTaskList:respBody];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error : %@", [error localizedDescription]);
+        alertMessage(@"请求失败，获取用户列表失败.");
+    }];
+    
+    [operation start];
+    [operation release];
+}
+
+-(void) checkSendTaskList:(GetMySendTaskListRespBody *) response
+{
+    
+}
+
+/*!
+ *  获取我接受的任务
+ *
+ *  @param account 用户ID
+ *  @param start   开始时间
+ *  @param end     结束时间
+ */
+-(void) getMyAcceptTask:(NSString *)account startTime:(NSString *)start endTime:(NSString *)end
+{
+    GetMyAcceptTaskListReqBody *reqBody = [[GetMyAcceptTaskListReqBody alloc] init];
+    reqBody.accountId = [DataCenter shareInstance].loginId;
+    reqBody.startTime = start;
+    reqBody.endTime = end;
+    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_MYACCEPTTASKLIST];
+    [reqBody release];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        GetMyAcceptTaskListRespBody *respBody = (GetMyAcceptTaskListRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_MYACCEPTTASKLIST];
+        [self checkAccpetTaskList:respBody];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error : %@", [error localizedDescription]);
+        alertMessage(@"请求失败，获取用户列表失败.");
+    }];
+    
+    [operation start];
+    [operation release];
+}
+
+-(void) checkAccpetTaskList:(GetMyAcceptTaskListRespBody *) response
+{
+    
+}
+
+/*!
+ *  获取任务信息
+ *
+ *  @param taskid 任务ID
+ */
+-(void) getTaskInfo:(NSString *)taskid
+{
+    GetTaskInfoReqBody *reqBody = [[GetTaskInfoReqBody alloc] init];
+    reqBody.taskid = taskid;
+    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_TASKINFO];
+    [reqBody release];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        GetTaskInfoRespBody *respBody = (GetTaskInfoRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_TASKINFO];
+        [self checkTaskInfo:respBody];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error : %@", [error localizedDescription]);
+        alertMessage(@"请求失败，获取用户列表失败.");
+    }];
+    
+    [operation start];
+    [operation release];
+}
+
+-(void) checkTaskInfo:(GetTaskInfoRespBody *) response
+{
+    
+}
+
+/*!
+ *  获取我发布的视频
+ *
+ *  @param accound 用户ID
+ *  @param byTime  是否根据时间来排序   YES:时间倒序  NO:点赞数倒序
+ */
+-(void) getMyTV:(NSString *) accound withTime:(BOOL)byTime
+{
+    if (byTime) {
+        GetMyTVListOfTimeReqBody *reqBody = [[GetMyTVListOfTimeReqBody alloc] init];
+        reqBody.accountId = [DataCenter shareInstance].loginId;
+        NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_MYTVLIST_TIME];
+        [reqBody release];
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            GetMyTVListOfTimeRespBody *respBody = (GetMyTVListOfTimeRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_MYTVLIST_TIME];
+            [self checkTVList:respBody];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error : %@", [error localizedDescription]);
+            alertMessage(@"请求失败，获取用户列表失败.");
+        }];
+        
+        [operation start];
+        [operation release];
+    } else {
+        GetMyTVListOfGoodCountReqBody *reqBody = [[GetMyTVListOfGoodCountReqBody alloc] init];
+        reqBody.accountId = [DataCenter shareInstance].loginId;
+        NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_MYTVLIST_GOODCOUNT];
+        [reqBody release];
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            GetMyTVListOfGoodCountRespBody *respBody = (GetMyTVListOfGoodCountRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_MYTVLIST_GOODCOUNT];
+            [self checkTVList:respBody];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error : %@", [error localizedDescription]);
+            alertMessage(@"请求失败，获取用户列表失败.");
+        }];
+        
+        [operation start];
+        [operation release];
+    }
+}
+
+-(void) checkTVList:(id) response
+{
+    
 }
 
 -(void) createInitView
@@ -197,7 +371,7 @@
     UIButton *newTask = [UIButton buttonWithType:UIButtonTypeCustom];
     newTask.frame = CGRectMake(sendTask.frame.size.width + sendTask.frame.origin.x + 10, headerView.frame.size.height - 35, 90, 30);
     newTask.layer.cornerRadius = 3.0;
-    [newTask setTitle:@"我的新任务" forState:UIControlStateNormal];
+    [newTask setTitle:@"我的任务" forState:UIControlStateNormal];
     [newTask setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [newTask.titleLabel setFont:[UIFont systemFontOfSize:13.0f]];
     [newTask addTarget:self action:@selector(acceptedNewTask:) forControlEvents:UIControlEventTouchUpInside];

@@ -30,14 +30,6 @@
     // Do any additional setup after loading the view.
 }
 
--(BOOL) releaseTask:(id)sender
-{
-    if (![super releaseTask:sender]) {
-        return NO;
-    }
-    return YES;
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

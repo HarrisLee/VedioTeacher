@@ -47,6 +47,7 @@ static AFHttpRequestUtils *m_RequestCenter = nil;
         
         baseUrl = [configPlist objectForKey:@"service"];
         
+        [configPlist release];
     }
     return self;
 }
@@ -121,7 +122,7 @@ static AFHttpRequestUtils *m_RequestCenter = nil;
     
     TBXML *tbxml = [[TBXML alloc] initWithXMLData:jsonData error:&error];
     
-    NSLog(@"%@",[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]);
+    NSLog(@"%@",[[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] autorelease]);
     
     if (error) {
         NSLog(@"xmlParseError:%@",error);
@@ -147,7 +148,7 @@ static AFHttpRequestUtils *m_RequestCenter = nil;
             }
         }
     }
-    
+    [tbxml release];
     if (!respStr) {
         return nil;
     }

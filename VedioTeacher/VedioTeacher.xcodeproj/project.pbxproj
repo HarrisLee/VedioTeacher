@@ -179,6 +179,8 @@
 		9E6648F91976113900F810CC /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6648F81976113900F810CC /* PlayerViewController.m */; };
 		9E6648FC1976114600F810CC /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6648FB1976114600F810CC /* UploadViewController.m */; };
 		9E83D1661977B9A900ECB49C /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E83D1651977B9A900ECB49C /* TaskCell.m */; };
+		9E9183C71978C6A00045B8D6 /* AccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9183C61978C6A00045B8D6 /* AccountModel.m */; };
+		9E9183CE1978C8000045B8D6 /* TaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9183CD1978C8000045B8D6 /* TaskModel.m */; };
 		9EBDDC761974D2AA006CAD7A /* LoginsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDDC751974D2AA006CAD7A /* LoginsViewController.m */; };
 		9ED53ACE196285A900DA3248 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53ACD196285A900DA3248 /* Foundation.framework */; };
 		9ED53AD0196285A900DA3248 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53ACF196285A900DA3248 /* CoreGraphics.framework */; };
@@ -521,6 +523,10 @@
 		9E6648FB1976114600F810CC /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
 		9E83D1641977B9A900ECB49C /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		9E83D1651977B9A900ECB49C /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
+		9E9183C51978C6A00045B8D6 /* AccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountModel.h; sourceTree = "<group>"; };
+		9E9183C61978C6A00045B8D6 /* AccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountModel.m; sourceTree = "<group>"; };
+		9E9183CC1978C8000045B8D6 /* TaskModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskModel.h; sourceTree = "<group>"; };
+		9E9183CD1978C8000045B8D6 /* TaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskModel.m; sourceTree = "<group>"; };
 		9EBDDC741974D2AA006CAD7A /* LoginsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginsViewController.h; sourceTree = "<group>"; };
 		9EBDDC751974D2AA006CAD7A /* LoginsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginsViewController.m; sourceTree = "<group>"; };
 		9ED53ACA196285A900DA3248 /* VedioTeacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VedioTeacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -662,9 +668,10 @@
 			isa = PBXGroup;
 			children = (
 				9E5A2574196A398B00C6D1A4 /* JobModel */,
-				9E5A2577196A398B00C6D1A4 /* DirectoryModel */,
 				9E5A257C196A398B00C6D1A4 /* ImageModel */,
 				9E5A2583196A398B00C6D1A4 /* PeopleOptinModel */,
+				9E9183CB1978C7D90045B8D6 /* TaskModel */,
+				9E5A2577196A398B00C6D1A4 /* DirectoryModel */,
 				9E5A2428196A308A00C6D1A4 /* UserModel */,
 			);
 			path = Model;
@@ -675,6 +682,8 @@
 			children = (
 				9E5A2429196A308A00C6D1A4 /* UserModel.h */,
 				9E5A242A196A308A00C6D1A4 /* UserModel.m */,
+				9E9183C51978C6A00045B8D6 /* AccountModel.h */,
+				9E9183C61978C6A00045B8D6 /* AccountModel.m */,
 			);
 			path = UserModel;
 			sourceTree = "<group>";
@@ -1408,6 +1417,15 @@
 			path = UploadViewController;
 			sourceTree = "<group>";
 		};
+		9E9183CB1978C7D90045B8D6 /* TaskModel */ = {
+			isa = PBXGroup;
+			children = (
+				9E9183CC1978C8000045B8D6 /* TaskModel.h */,
+				9E9183CD1978C8000045B8D6 /* TaskModel.m */,
+			);
+			path = TaskModel;
+			sourceTree = "<group>";
+		};
 		9EBDDC701974CE81006CAD7A /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1719,9 +1737,11 @@
 				9E5A24FB196A308A00C6D1A4 /* MBProgressHUD.m in Sources */,
 				9E5A2589196A398B00C6D1A4 /* FDirectoryModel.m in Sources */,
 				9E5A251B196A308A00C6D1A4 /* GetJobRespBody.m in Sources */,
+				9E9183C71978C6A00045B8D6 /* AccountModel.m in Sources */,
 				9E5A25AE196A40A700C6D1A4 /* AddTVCommentReqBody.m in Sources */,
 				9E5A2514196A308A00C6D1A4 /* GetImgReqBody.m in Sources */,
 				9E5A25D8196A41B800C6D1A4 /* GetTVCommentReqBody.m in Sources */,
+				9E9183CE1978C8000045B8D6 /* TaskModel.m in Sources */,
 				9E5A251C196A308A00C6D1A4 /* GetMainInfoReqBody.m in Sources */,
 				9E5A2519196A308A00C6D1A4 /* GetImgListRespBody.m in Sources */,
 				9E4910AA1976523300767FDB /* GetMyExecuteTaskListReqBody.m in Sources */,

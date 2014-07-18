@@ -13,7 +13,16 @@
 
 -(void) setValue:(id)value
 {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    self.accountListResult = array;
+    [array release];
     
+    for (id obj in value) {
+        AccountModel *model = [[AccountModel alloc] init];
+        [Utils setProperty:model withDic:obj];
+        [accountListResult addObject:model];
+        [model release];
+    }
 }
 
 -(void) dealloc

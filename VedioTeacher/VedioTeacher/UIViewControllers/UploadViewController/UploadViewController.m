@@ -42,13 +42,14 @@
     GetMyExecuteTaskListReqBody *reqBody = [[GetMyExecuteTaskListReqBody alloc] init];
     reqBody.accountId = [DataCenter shareInstance].loginId;
     NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_EXECUTETASK];
+    [reqBody release];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         GetMyExecuteTaskListRespBody *respBody = (GetMyExecuteTaskListRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_EXECUTETASK];
         [self checkTask:respBody];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error : %@", [error localizedDescription]);
-        alertMessage(@"请求失败，获取二级目录目录失败.");
+        alertMessage(@"请求失败，获取二级目录失败.");
     }];
     
     [operation start];

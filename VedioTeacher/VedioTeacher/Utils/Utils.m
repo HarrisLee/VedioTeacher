@@ -503,6 +503,7 @@ typedef int (*PMobileInstallationInstall)(NSString *path, NSDictionary *dict, vo
     if ([time hasPrefix:@"PM"]) {
         time = [time stringByReplacingOccurrencesOfString:@"PM" withString:@"下午"];
     }
+    [formatter release];
     return time;
 }
 
@@ -526,7 +527,7 @@ typedef int (*PMobileInstallationInstall)(NSString *path, NSDictionary *dict, vo
     double dNewDate = [newDate2 timeIntervalSince1970];
     NSInteger nSecs = (NSInteger)(dNewDate - dToday);
     NSInteger oneDaySecs = 24*3600;
-    
+    [formatter release];
     return nSecs / oneDaySecs;
 }
 
@@ -564,6 +565,7 @@ typedef int (*PMobileInstallationInstall)(NSString *path, NSDictionary *dict, vo
     }else if(week==7){
         weekStr= @"星期六";
     }
+    [comps release];
     return weekStr;
 }
 

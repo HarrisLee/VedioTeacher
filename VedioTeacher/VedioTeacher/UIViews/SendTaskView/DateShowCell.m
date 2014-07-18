@@ -23,6 +23,7 @@
 
 -(void) createInitView
 {
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.contentView.backgroundColor = [UIColor getColor:@"E4E4E4"];
     for (int i=0; i<12; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
