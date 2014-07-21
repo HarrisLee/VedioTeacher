@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E24710A197CAA1200289E84 /* AcceptTaskReqBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E247109197CAA1200289E84 /* AcceptTaskReqBody.m */; };
+		9E24710D197CAA1E00289E84 /* EndTaskReqBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E24710C197CAA1E00289E84 /* EndTaskReqBody.m */; };
+		9E247110197CAA3300289E84 /* AcceptTaskRespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E24710F197CAA3300289E84 /* AcceptTaskRespBody.m */; };
+		9E247113197CAA3E00289E84 /* EndTaskRespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E247112197CAA3E00289E84 /* EndTaskRespBody.m */; };
+		9E247116197CADF700289E84 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E247115197CADF700289E84 /* CollectionCell.m */; };
+		9E247119197CB91C00289E84 /* CollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E247118197CB91C00289E84 /* CollectionHeaderView.m */; };
 		9E4910AA1976523300767FDB /* GetMyExecuteTaskListReqBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4910A91976523300767FDB /* GetMyExecuteTaskListReqBody.m */; };
 		9E4910AD1976523D00767FDB /* GetMyExecuteTaskListRespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4910AC1976523D00767FDB /* GetMyExecuteTaskListRespBody.m */; };
 		9E4DACF2196A8834008C71BD /* HeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DACF1196A8834008C71BD /* HeadViewController.m */; };
@@ -212,6 +218,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E247108197CAA1200289E84 /* AcceptTaskReqBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptTaskReqBody.h; sourceTree = "<group>"; };
+		9E247109197CAA1200289E84 /* AcceptTaskReqBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptTaskReqBody.m; sourceTree = "<group>"; };
+		9E24710B197CAA1E00289E84 /* EndTaskReqBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndTaskReqBody.h; sourceTree = "<group>"; };
+		9E24710C197CAA1E00289E84 /* EndTaskReqBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndTaskReqBody.m; sourceTree = "<group>"; };
+		9E24710E197CAA3300289E84 /* AcceptTaskRespBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptTaskRespBody.h; sourceTree = "<group>"; };
+		9E24710F197CAA3300289E84 /* AcceptTaskRespBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptTaskRespBody.m; sourceTree = "<group>"; };
+		9E247111197CAA3E00289E84 /* EndTaskRespBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndTaskRespBody.h; sourceTree = "<group>"; };
+		9E247112197CAA3E00289E84 /* EndTaskRespBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndTaskRespBody.m; sourceTree = "<group>"; };
+		9E247114197CADF700289E84 /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
+		9E247115197CADF700289E84 /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
+		9E247117197CB91C00289E84 /* CollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionHeaderView.h; sourceTree = "<group>"; };
+		9E247118197CB91C00289E84 /* CollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionHeaderView.m; sourceTree = "<group>"; };
 		9E4910A81976523300767FDB /* GetMyExecuteTaskListReqBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMyExecuteTaskListReqBody.h; sourceTree = "<group>"; };
 		9E4910A91976523300767FDB /* GetMyExecuteTaskListReqBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMyExecuteTaskListReqBody.m; sourceTree = "<group>"; };
 		9E4910AB1976523D00767FDB /* GetMyExecuteTaskListRespBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMyExecuteTaskListRespBody.h; sourceTree = "<group>"; };
@@ -583,6 +601,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E247106197CA9FF00289E84 /* AcceptTask */ = {
+			isa = PBXGroup;
+			children = (
+				9E247108197CAA1200289E84 /* AcceptTaskReqBody.h */,
+				9E247109197CAA1200289E84 /* AcceptTaskReqBody.m */,
+				9E24710E197CAA3300289E84 /* AcceptTaskRespBody.h */,
+				9E24710F197CAA3300289E84 /* AcceptTaskRespBody.m */,
+			);
+			path = AcceptTask;
+			sourceTree = "<group>";
+		};
+		9E247107197CA9FF00289E84 /* EndTask */ = {
+			isa = PBXGroup;
+			children = (
+				9E24710B197CAA1E00289E84 /* EndTaskReqBody.h */,
+				9E24710C197CAA1E00289E84 /* EndTaskReqBody.m */,
+				9E247111197CAA3E00289E84 /* EndTaskRespBody.h */,
+				9E247112197CAA3E00289E84 /* EndTaskRespBody.m */,
+			);
+			path = EndTask;
+			sourceTree = "<group>";
+		};
 		9E4910A71976522300767FDB /* GetMyExecuteTaskList */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,12 +707,12 @@
 		9E5A2427196A308A00C6D1A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9E5A2574196A398B00C6D1A4 /* JobModel */,
-				9E5A257C196A398B00C6D1A4 /* ImageModel */,
-				9E5A2583196A398B00C6D1A4 /* PeopleOptinModel */,
 				9E9183CB1978C7D90045B8D6 /* TaskModel */,
 				9E5A2577196A398B00C6D1A4 /* DirectoryModel */,
 				9E5A2428196A308A00C6D1A4 /* UserModel */,
+				9E5A2574196A398B00C6D1A4 /* JobModel */,
+				9E5A257C196A398B00C6D1A4 /* ImageModel */,
+				9E5A2583196A398B00C6D1A4 /* PeopleOptinModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -790,12 +830,13 @@
 		9E5A245D196A308A00C6D1A4 /* Request_Response */ = {
 			isa = PBXGroup;
 			children = (
+				9E247106197CA9FF00289E84 /* AcceptTask */,
+				9E247107197CA9FF00289E84 /* EndTask */,
 				9E4910A71976522300767FDB /* GetMyExecuteTaskList */,
 				9E5A2594196A401B00C6D1A4 /* GetMyAcceptTaskList */,
 				9E5A2595196A401B00C6D1A4 /* GetMySendTaskList */,
 				9E5A2596196A401B00C6D1A4 /* GetMyTVListOfGoodCount */,
 				9E5A2597196A401B00C6D1A4 /* GetMyTVListOfTime */,
-				9E5A2598196A401B00C6D1A4 /* GetPeopleAccountList */,
 				9E5A2599196A401B00C6D1A4 /* GetTaskInfo */,
 				9E5A259A196A401B00C6D1A4 /* GetTVComment */,
 				9E5A259B196A401B00C6D1A4 /* GetTVInfo */,
@@ -806,14 +847,18 @@
 				9E5A2590196A3F6900C6D1A4 /* AddTask */,
 				9E5A2591196A3F6900C6D1A4 /* AddTVComment */,
 				9E5A2592196A3F6900C6D1A4 /* AddTVGood */,
-				9E5A2593196A3F6900C6D1A4 /* GetAccountList */,
-				9E5A245E196A308A00C6D1A4 /* AddAccount */,
 				9E5A2463196A308A00C6D1A4 /* AddComment */,
 				9E5A2468196A308A00C6D1A4 /* AddGood */,
+				9E5A2593196A3F6900C6D1A4 /* GetAccountList */,
+				9E5A245E196A308A00C6D1A4 /* AddAccount */,
+				9E5A247C196A308A00C6D1A4 /* AddSecondDirectory */,
+				9E5A24A4196A308A00C6D1A4 /* GetSecondDirectory */,
+				9E5A24AE196A308A00C6D1A4 /* GetTopDirectory */,
+				9E5A24B8196A308A00C6D1A4 /* VerifyLogin */,
+				9E5A2598196A401B00C6D1A4 /* GetPeopleAccountList */,
 				9E5A246D196A308A00C6D1A4 /* AddPeopleAccount */,
 				9E5A2472196A308A00C6D1A4 /* AddPeopleOpinion */,
 				9E5A2477196A308A00C6D1A4 /* AddPeopleOpinionReturn */,
-				9E5A247C196A308A00C6D1A4 /* AddSecondDirectory */,
 				9E5A2481196A308A00C6D1A4 /* GetImg */,
 				9E5A2486196A308A00C6D1A4 /* GetImgComment */,
 				9E5A248B196A308A00C6D1A4 /* GetImgList */,
@@ -821,11 +866,8 @@
 				9E5A2495196A308A00C6D1A4 /* GetMainInfo */,
 				9E5A249A196A308A00C6D1A4 /* GetPeopleOpinionList */,
 				9E5A249F196A308A00C6D1A4 /* GetPeopleOpinionReturn */,
-				9E5A24A4196A308A00C6D1A4 /* GetSecondDirectory */,
 				9E5A24A9196A308A00C6D1A4 /* GetSecondDirectoryOfTime */,
-				9E5A24AE196A308A00C6D1A4 /* GetTopDirectory */,
 				9E5A24B3196A308A00C6D1A4 /* UploadFile */,
-				9E5A24B8196A308A00C6D1A4 /* VerifyLogin */,
 				9E5A24BD196A308A00C6D1A4 /* VerifyOutsideLogin */,
 			);
 			path = Request_Response;
@@ -1145,6 +1187,10 @@
 		9E5A2554196A339E00C6D1A4 /* CommonViews */ = {
 			isa = PBXGroup;
 			children = (
+				9E247114197CADF700289E84 /* CollectionCell.h */,
+				9E247115197CADF700289E84 /* CollectionCell.m */,
+				9E247117197CB91C00289E84 /* CollectionHeaderView.h */,
+				9E247118197CB91C00289E84 /* CollectionHeaderView.m */,
 				9E5A2555196A33AD00C6D1A4 /* CActivityIndicatorView.h */,
 				9E5A2556196A33AD00C6D1A4 /* CActivityIndicatorView.m */,
 				9E5A2557196A33AD00C6D1A4 /* CommentCell.h */,
@@ -1731,6 +1777,7 @@
 				9E5A2527196A308A00C6D1A4 /* GetTopDirectoryRespBody.m in Sources */,
 				9E5A25B4196A40C800C6D1A4 /* AddTaskReqBody.m in Sources */,
 				9EEC5C0619766A9300801AE1 /* SendTaskViewController.m in Sources */,
+				9E247116197CADF700289E84 /* CollectionCell.m in Sources */,
 				9E5A2606196A72A200C6D1A4 /* IndexViewController.m in Sources */,
 				9E5A2525196A308A00C6D1A4 /* GetSecondDirectoryOfTimeRespBody.m in Sources */,
 				9E5A2509196A308A00C6D1A4 /* AddCommentRespBody.m in Sources */,
@@ -1766,6 +1813,7 @@
 				9E5A25F0196A422600C6D1A4 /* GetMyTVListOfGoodCountReqBody.m in Sources */,
 				9E5A24F0196A308A00C6D1A4 /* TBXML.m in Sources */,
 				9E5A2523196A308A00C6D1A4 /* GetSecondDirectoryRespBody.m in Sources */,
+				9E24710D197CAA1E00289E84 /* EndTaskReqBody.m in Sources */,
 				9E5A2516196A308A00C6D1A4 /* GetImgCommentReqBody.m in Sources */,
 				9E5A25DE196A41D300C6D1A4 /* GetTaskInfoReqBody.m in Sources */,
 				9E5A25E1196A41DF00C6D1A4 /* GetTaskInfoRespBody.m in Sources */,
@@ -1779,6 +1827,7 @@
 				9E5A2507196A308A00C6D1A4 /* AddAccountRespBody.m in Sources */,
 				9E4DACF2196A8834008C71BD /* HeadViewController.m in Sources */,
 				9E5A2603196A6E7500C6D1A4 /* BaseViewController.m in Sources */,
+				9E24710A197CAA1200289E84 /* AcceptTaskReqBody.m in Sources */,
 				9E5A24ED196A308A00C6D1A4 /* AFHttpRequestUtils.m in Sources */,
 				9ED53ADE196285A900DA3248 /* AppDelegate.m in Sources */,
 				9E5A2529196A308A00C6D1A4 /* UploadFileRespBody.m in Sources */,
@@ -1794,6 +1843,7 @@
 				9E5A25BA196A40FB00C6D1A4 /* UploadTVFileReqBody.m in Sources */,
 				9E5A256E196A33AD00C6D1A4 /* UINavigationItem+Margin.m in Sources */,
 				9ED53B071962AE4000DA3248 /* UIColor+extend.m in Sources */,
+				9E247113197CAA3E00289E84 /* EndTaskRespBody.m in Sources */,
 				9E5A24FE196A308A00C6D1A4 /* QBImagePickerAssetView.m in Sources */,
 				9E5A25C9196A415900C6D1A4 /* GetTVListOfTimeRespBody.m in Sources */,
 				9E4DAD03196A9CD2008C71BD /* FifthViewController.m in Sources */,
@@ -1802,6 +1852,7 @@
 				9E5A2517196A308A00C6D1A4 /* GetImgCommentRespBody.m in Sources */,
 				9E5A256C196A33AD00C6D1A4 /* ImageControl.m in Sources */,
 				9E5A25F6196A424200C6D1A4 /* GetMySendTaskListReqBody.m in Sources */,
+				9E247119197CB91C00289E84 /* CollectionHeaderView.m in Sources */,
 				9E5A2526196A308A00C6D1A4 /* GetTopDirectoryReqBody.m in Sources */,
 				9E5A24F9196A308A00C6D1A4 /* AFXMLRequestOperation.m in Sources */,
 				9E5A251E196A308A00C6D1A4 /* GetPeopleOpinionListReqBody.m in Sources */,
@@ -1820,6 +1871,7 @@
 				9E5A2512196A308A00C6D1A4 /* AddSecondDirectoryReqBody.m in Sources */,
 				9E5A256D196A33AD00C6D1A4 /* UINavigationBar+Customer.m in Sources */,
 				9E5A2570196A33AD00C6D1A4 /* UIScrollView+PullLoad.m in Sources */,
+				9E247110197CAA3300289E84 /* AcceptTaskRespBody.m in Sources */,
 				9E5A2503196A308A00C6D1A4 /* QBImagePickerVideoInfoView.m in Sources */,
 				9E5A2573196A33AD00C6D1A4 /* WaterFlowView.m in Sources */,
 				9E5A256B196A33AD00C6D1A4 /* CommentCell.m in Sources */,

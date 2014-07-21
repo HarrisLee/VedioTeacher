@@ -10,13 +10,13 @@
 
 @interface AccountModel : NSObject
 {
-    NSString *userId;
-    NSString *loginname;
-    NSString *passowrd;
-    NSString *userName;
+    NSString *idAccoun;
+    NSString *accountName;
+    NSString *accountPassword;
+    NSString *peopleName;
 }
-@property (nonatomic, retain) NSString *userId;
-@property (nonatomic, retain) NSString *loginname;
-@property (nonatomic, retain) NSString *passowrd;
-@property (nonatomic, retain) NSString *userName;
+@property (nonatomic, retain) NSString *idAccoun;
+@property (nonatomic, retain) NSString *accountName;
+@property (nonatomic, retain) NSString *accountPassword;
+@property (nonatomic, retain) NSString *peopleName;
 @end

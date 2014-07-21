@@ -10,7 +10,7 @@
 
 @interface GetTVListOfGoodCountRespBody : RespBody
 {
-    NSString *count;
+    NSMutableArray *tvList;
 }
-@property (nonatomic, retain) NSString *count;
+@property (nonatomic, retain) NSMutableArray *tvList;
 @end

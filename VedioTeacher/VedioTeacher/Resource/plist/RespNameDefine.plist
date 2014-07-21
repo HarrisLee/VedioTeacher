@@ -76,5 +76,9 @@
 	<string>UploadTVFileRespBody</string>
 	<key>getMyExecuteTaskList</key>
 	<string>GetMyExecuteTaskListRespBody</string>
+	<key>endTask</key>
+	<string>EndTaskRespBody</string>
+	<key>acceptTask</key>
+	<string>AcceptTaskRespBody</string>
 </dict>
 </plist>

@@ -36,7 +36,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     secArray = [[NSMutableArray alloc] init];
-    serviceArray = [[NSMutableArray alloc] init];
+    vedioDictionary = [[NSMutableDictionary alloc] init];
+    clickedIndex = 0;
+    isLoading = NO;
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    [layout setItemSize:CGSizeMake(240, 160)];
+    //    [layout setMinimumInteritemSpacing:1];
+    [layout setMinimumLineSpacing:10.0f];
+    [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    
+    waterView = [[UICollectionView alloc] initWithFrame:CGRectMake(10, 0, 1004, 768 - 64 - 10) collectionViewLayout:layout];
+    waterView.delegate = self;
+    waterView.dataSource = self;
+    waterView.showsVerticalScrollIndicator = NO;
+    [waterView registerClass:[CollectionCell class] forCellWithReuseIdentifier:@"collectionIdentifier"];
+    [waterView registerClass:[CollectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"collectionHeaderIdentifier"];
+    waterView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:waterView];
+    [layout release];
+    [waterView release];
     
     GetSecondDirectoryReqBody *req = [[GetSecondDirectoryReqBody alloc] init];
     req.idTopDirectory = self.topId;
@@ -59,7 +78,23 @@
 -(void) checkData:(GetSecondDirectoryRespBody *)response
 {
     NSLog(@"%d",[response.sDirectoryArray count]);
+    if ([response.sDirectoryArray count] == 0) {
+        alertMessage(@"二级目录暂时为空.");
+        return ;
+    }
+    
+    clickedIndex = 0;
+    
     [DataCenter shareInstance].taskDirId = [[response.sDirectoryArray objectAtIndex:0] idSecondDirectory];
+    
+    [self getTVListAtIndex:clickedIndex];
+    
+    [secArray removeAllObjects];
+    
+    for (SDirectoryModel *model in response.sDirectoryArray) {
+        [secArray addObject:model];
+    }
+    [waterView reloadData];
 }
 
 -(BOOL) addSecDir:(id)sender
@@ -112,19 +147,190 @@
         alertMessage(@"添加分类失败.请重新创建");
         return ;
     }
-    
     SDirectoryModel *model = [[SDirectoryModel alloc] init];
     model.idSecondDirectory = respBody.secondDir;
     model.nameSecondDirectory = dirName;
     [secArray addObject:model];
-    [serviceArray addObject:model];
     [model release];
+    [waterView reloadData];
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
     dirName = [textField.text retain];
     NSLog(@"%@",dirName);
+}
+
+/**
+ *  返回每个collectionViewCell的大小（可以进行单独的配置）
+ *
+ *  @param collectionView       collectionView
+ *  @param collectionViewLayout collectionViewLayout
+ *  @param indexPath            indexPath
+ *
+ *  @return 返回每个collectionViewCell的大小
+ */
+-(CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(240, 160);
+}
+
+
+-(CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 5.0;
+}
+
+-(CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 15.0;
+}
+
+/**
+ *  总共有多少个Section
+ *
+ *  @param collectionView collectionView
+ *
+ *  @return 返回总共多少个Section
+ */
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+/*!
+ *  sectionHeader的frame
+ *
+ *  @param collectionView       collection
+ *  @param collectionViewLayout collectionViewLayout
+ *  @param section              section
+ *
+ *  @return 返回sectionHeader的大小以及位置
+ */
+-(CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeMake(1004, 40);
+}
+
+-(UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    CollectionHeaderView *header = (CollectionHeaderView *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"collectionHeaderIdentifier" forIndexPath:indexPath];
+    if (!header) {
+        header = [[[CollectionHeaderView alloc] init] autorelease];
+    }
+    header.delegate =self;
+    [header setHeaderDataView:secArray index:clickedIndex];
+    return header;
+}
+
+//-(CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+//{
+//
+//}
+
+/**
+ *  每个section总共有多少个cell
+ *
+ *  @param collectionView collection
+ *  @param section        当前的section
+ *
+ *  @return 返回每个section总共有多少个cell
+ */
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 28;
+}
+
+/**
+ *  返回的UICollectionViewCell
+ *  这个cell返回的时候必须先从
+ *  -dequeueReusableCellWithReuseIdentifier:forIndexPath:中检索
+ *
+ *  @param  collectionView
+ *
+ *  @return 返回Cell
+ */
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *collectionIdentifier = @"collectionIdentifier";
+    CollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionIdentifier forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[[CollectionCell alloc] init] autorelease];
+    }
+    cell.label.text = @"20：19";
+    cell.name.text = @"变形金刚4:绝境重生";
+    cell.count.text = [NSString stringWithFormat:@"播放：19.5万"];
+    cell.point.text = @"9.8";
+    return cell;
+}
+
+/**
+ *  选中的当前Cell的点击事件
+ *
+ *  @param collectionView collectionView
+ *  @param indexPath      indexPath  索引
+ */
+-(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+-(void) headerClickAtIndex:(id)sender
+{
+    if (isLoading) {
+        return;
+    }
+    NSLog(@"%d",[sender tag]);
+    clickedIndex = [sender tag] - 5000;
+    [self getTVListAtIndex:clickedIndex];
+}
+
+- (void) getTVListAtIndex:(NSInteger)index
+{
+    isLoading = YES;
+    SDirectoryModel *model = [secArray objectAtIndex:index];
+    GetTVListOfGoodCountReqBody *reqBody = [[GetTVListOfGoodCountReqBody alloc] init];
+    reqBody.idSecondDirectory = model.idSecondDirectory;
+    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_TVLIST_GOODCOUNT];
+    [reqBody release];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        GetTVListOfGoodCountRespBody *respBody = (GetTVListOfGoodCountRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_TVLIST_GOODCOUNT];
+        [self checkSecondDirectroy:respBody];
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error : %@", [error localizedDescription]);
+        [self checkSecondDirectroy:nil];
+    }];
+    [operation start];
+    [operation request];
+}
+
+-(void)checkSecondDirectroy:(GetTVListOfGoodCountRespBody *) response
+{
+    isLoading = NO;
+    if (!response) {
+        alertMessage(@"获取视频列表失败，请重新获取.");
+        return ;
+    }
+    
+    if ([response.tvList count] == 0) {
+        alertMessage(@"该目录下视频列表为空.");
+        return ;
+    }
+    
+    [vedioDictionary removeObjectForKey:[NSString stringWithFormat:@"%d",clickedIndex]];
+    
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (id obj in response.tvList) {
+        [array addObject:obj];
+    }
+    
+    if ([array count] > 0) {
+        [vedioDictionary setObject:array forKey:[NSString stringWithFormat:@"%d",clickedIndex]];
+    }
+    
+    [waterView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

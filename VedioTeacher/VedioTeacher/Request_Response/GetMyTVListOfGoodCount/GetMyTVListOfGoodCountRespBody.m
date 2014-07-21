@@ -13,7 +13,16 @@
 
 -(void) setValue:(id)value
 {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    self.tvList = array;
+    [array release];
     
+    for (id obj in value) {
+        //        SDirectoryModel *model = [[SDirectoryModel alloc] init];
+        //        [Utils setProperty:model withDic:obj];
+        //        [tvList addObject:model];
+        //        [model release];
+    }
 }
 
 -(void) dealloc

@@ -78,5 +78,9 @@
 	<string>UploadTVFile</string>
 	<key>getMyExecuteTaskList</key>
 	<string>GetMyExecuteTaskList</string>
+	<key>endTask</key>
+	<string>EndTask</string>
+	<key>acceptTask</key>
+	<string>AcceptTask</string>
 </dict>
 </plist>

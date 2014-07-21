@@ -9,17 +9,29 @@
 #import "GetTVListOfGoodCountRespBody.h"
 
 @implementation GetTVListOfGoodCountRespBody
-@synthesize count;
+@synthesize tvList;
 
 -(void) setValue:(id)value
 {
-    self.count = value;
+    if (![value isKindOfClass:[NSArray class]]) {
+        return ;
+    }
+    
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    self.tvList = array;
+    [array release];
+    
+    for (id obj in value) {
+//        SDirectoryModel *model = [[SDirectoryModel alloc] init];
+//        [Utils setProperty:model withDic:obj];
+//        [tvList addObject:model];
+//        [model release];
+    }
 }
 
 -(void) dealloc
 {
-    [count release];
+    [tvList release];
     [super dealloc];
 }
-
 @end

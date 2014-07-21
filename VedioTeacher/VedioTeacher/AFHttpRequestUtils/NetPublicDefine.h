@@ -83,4 +83,8 @@
 
 #define GET_EXECUTETASK  @"getMyExecuteTaskList"
 
+#define END_TASK         @"endTask"
+
+#define ACCEPT_TASK      @"acceptTask"
+
 #endif

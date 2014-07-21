@@ -84,7 +84,80 @@
 
 -(void) submitTask:(id)sender
 {
-    
+    if ([[sender currentTitle] isEqualToString:@"立即发布任务"]) {
+        NSMutableString *accountList = [[NSMutableString alloc] init];
+        for (int i = 0; i<[accountArray count]; i++) {
+            UIButton *btn = (UIButton *)[userScroll viewWithTag:2000+i];
+            if ([btn isSelected]) {
+                AccountModel *model = [accountArray objectAtIndex:i];
+                [accountList appendString:[NSString stringWithFormat:@"|%@",[model.idAccoun stringByReplacingOccurrencesOfString:@" " withString:@""]]];
+            }
+        }
+        
+        if ([accountList length] == 0) {
+            alertMessage(@"您尚未选择任务接收者");
+            return;
+        }
+        
+        if ([taskTitleField.text length] == 0 || [taskInfoView.text length] == 0) {
+            alertMessage(@"任务信息输入不完整，请补充");
+            return;
+        }
+
+        [accountList deleteCharactersInRange:NSMakeRange(0, 1)];
+        
+        AddTaskReqBody *reqBody = [[AddTaskReqBody alloc] init];
+        reqBody.taskName = taskTitleField.text;
+        reqBody.taskNote = taskInfoView.text;
+        reqBody.idSecondDirectory = @"SD140715094304369";//[DataCenter shareInstance].taskDirId;
+        reqBody.addTaskAccountID = [DataCenter shareInstance].loginId;
+        reqBody.AcceptAccountList = accountList;
+        NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:ADD_TASK];
+        [reqBody release];
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            AddTaskRespBody *respBody = (AddTaskRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:ADD_TASK];
+            [self checkAddTask:respBody];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error : %@", [error localizedDescription]);
+            alertMessage(@"请求失败，请重新添加任务.");
+        }];
+        
+        [operation start];
+        [operation release];
+    } else if([[sender currentTitle] isEqualToString:@"立即接收任务"]){
+        AcceptTaskReqBody *reqBody = [[AcceptTaskReqBody alloc] init];
+        reqBody.accountid = [DataCenter shareInstance].loginId;
+        reqBody.taskId = @"";
+        NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:ACCEPT_TASK];
+        [reqBody release];
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            AcceptTaskRespBody *respBody = (AcceptTaskRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:ACCEPT_TASK];
+            [self checkAcceptTask:respBody];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error : %@", [error localizedDescription]);
+            alertMessage(@"请求失败，请重新接受任务.");
+        }];
+    }
+}
+
+-(void) checkAddTask:(AddTaskRespBody *) response
+{
+    NSLog(@"%@",response.result);
+    if ([@"\"0\"" isEqualToString:response.result]) {
+        alertMessage(@"添加任务失败，请重新添加");
+        return ;
+    }
+}
+
+-(void) checkAcceptTask:(AcceptTaskRespBody *)response
+{
+    NSLog(@"%@",response.result);
+    if ([@"\"0\"" isEqualToString:response.result]) {
+        alertMessage(@"接受任务失败，请重新操作");
+        return ;
+    }
 }
 
 #pragma mark ----------------------------------------
@@ -252,12 +325,12 @@
     }
 
     for (int i = 0; i < [accountArray count]; i++) {
-//        AccountModel *model = accountArray[i];
+        AccountModel *model = accountArray[i];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(10 + 97*(i%2), 10 + 40*(i/2), 87, 30);
         button.tag = 2000+i;
         [button.titleLabel setFont:[UIFont systemFontOfSize:13.0f]];
-        [button setTitle:@"userName" forState:UIControlStateNormal];
+        [button setTitle:[model.peopleName stringByReplacingOccurrencesOfString:@" " withString:@""] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:@"preview_like_icon"] forState:UIControlStateSelected];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(chooseAccount:) forControlEvents:UIControlEventTouchUpInside];

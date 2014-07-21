@@ -9,14 +9,14 @@
 #import "AccountModel.h"
 
 @implementation AccountModel
-@synthesize userId,userName,passowrd,loginname;
+@synthesize idAccoun,accountName,accountPassword,peopleName;
 
 -(void) dealloc
 {
-    [userName release];
-    [userId release];
-    [passowrd release];
-    [loginname release];
+    [idAccoun release];
+    [accountName release];
+    [accountPassword release];
+    [peopleName release];
     [super dealloc];
 }
 

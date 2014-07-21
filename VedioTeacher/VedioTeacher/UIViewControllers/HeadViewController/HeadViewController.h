@@ -7,6 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "CollectionCell.h"
+#import "CollectionHeaderView.h"
 #import "GetSecondDirectoryReqBody.h"
 #import "GetSecondDirectoryRespBody.h"
 #import "AddSecondDirectoryReqBody.h"
@@ -17,11 +19,14 @@
 #import "GetTVListOfGoodCountReqBody.h"
 #import "GetTVListOfGoodCountRespBody.h"
 
-@interface HeadViewController : BaseViewController<UIAlertViewDelegate,UITextFieldDelegate>
+@interface HeadViewController : BaseViewController<UIAlertViewDelegate,UITextFieldDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,CollectionHeaderViewDelegate>
 {
     NSString *topId;
     NSMutableArray *secArray;
-    NSMutableArray *serviceArray;
+    NSMutableDictionary *vedioDictionary;
+    UICollectionView *waterView;
+    NSInteger  clickedIndex;
+    BOOL isLoading;
 }
 @property (nonatomic, retain) NSString *topId;
 

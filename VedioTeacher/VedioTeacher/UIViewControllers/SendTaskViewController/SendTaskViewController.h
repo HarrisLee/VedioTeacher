@@ -21,6 +21,13 @@
 #import "GetMyTVListOfTimeRespBody.h"
 #import "GetMyTVListOfGoodCountReqBody.h"
 #import "GetMyTVListOfGoodCountRespBody.h"
+#import "AddTaskReqBody.h"
+#import "AddTaskRespBody.h"
+#import "AcceptTaskReqBody.h"
+#import "AcceptTaskRespBody.h"
+#import "EndTaskReqBody.h"
+#import "EndTaskRespBody.h"
+
 
 @interface SendTaskViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,DateShowCellDelegate>
 {

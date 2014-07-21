@@ -10,7 +10,7 @@
 
 @interface GetTVListOfTimeRespBody : RespBody
 {
-    NSString *result;
+    NSMutableArray *tvList;
 }
-@property (nonatomic, retain) NSString *result;
+@property (nonatomic, retain) NSMutableArray *tvList;
 @end
