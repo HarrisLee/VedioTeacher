@@ -86,14 +86,13 @@
     clickedIndex = 0;
     
     [DataCenter shareInstance].taskDirId = [[response.sDirectoryArray objectAtIndex:0] idSecondDirectory];
-    
-    [self getTVListAtIndex:clickedIndex];
-    
+
     [secArray removeAllObjects];
     
     for (SDirectoryModel *model in response.sDirectoryArray) {
         [secArray addObject:model];
     }
+    [self getTVListAtIndex:clickedIndex];
     [waterView reloadData];
 }
 
@@ -209,7 +208,7 @@
  */
 -(CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    return CGSizeMake(1004, 40);
+    return CGSizeMake(1004, 50);
 }
 
 -(UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -273,7 +272,13 @@
  */
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    SDirectoryModel *model = [secArray objectAtIndex:clickedIndex];
+    PlayerViewController *play = [[PlayerViewController alloc] init];
+    play.title = @"视频播放";
+    play.topName = self.title;
+    play.secondName = model.nameSecondDirectory;
+    [self.navigationController pushViewController:play animated:YES];
+    [play release];
 }
 
 -(void) headerClickAtIndex:(id)sender

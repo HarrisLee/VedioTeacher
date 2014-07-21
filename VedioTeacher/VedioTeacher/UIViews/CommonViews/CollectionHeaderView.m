@@ -16,7 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        headerScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 1004, 40)];
+        headerScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 1004, 50)];
         [self addSubview:headerScroll];
         [headerScroll release];
     }
@@ -26,7 +26,7 @@
 -(void) setHeaderDataView:(NSArray *)headerArray  index:(NSInteger)index
 {
     [[headerScroll subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [headerScroll setContentSize:CGSizeMake(1004, 40)];
+    [headerScroll setContentSize:CGSizeMake(1004, 50)];
     
     buttonCount = [headerArray count];
     
@@ -38,7 +38,7 @@
         SDirectoryModel *model = [headerArray objectAtIndex:i];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.layer.cornerRadius = 4.0f;
-        button.frame = CGRectMake(5+100*i, 5, 100, 30);
+        button.frame = CGRectMake(5+100*i, 10, 100, 30);
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         button.backgroundColor = [UIColor clearColor];
         if (i == index) {
@@ -51,7 +51,7 @@
         [headerScroll addSubview:button];
     }
     
-    [headerScroll setContentSize:CGSizeMake(10+100*buttonCount,40.0f)];
+    [headerScroll setContentSize:CGSizeMake(10+100*buttonCount,50.0f)];
 }
 
 -(void) headerClickAtIndex:(id) sender

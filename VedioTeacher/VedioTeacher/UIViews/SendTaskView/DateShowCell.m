@@ -50,7 +50,7 @@
         UIButton *btn = (UIButton *)[self viewWithTag:600+i];
         [btn setBackgroundColor:[UIColor whiteColor]];
         if ([sender tag] - 600 == i) {
-            [btn setBackgroundColor:[UIColor getColor:@"6ABAFA"]];
+            [btn setBackgroundColor:[UIColor getColor:@"3FA6FF"]];
         }
     }
     

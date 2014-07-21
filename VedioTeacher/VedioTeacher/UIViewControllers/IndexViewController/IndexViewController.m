@@ -61,16 +61,16 @@
     
     NSMutableArray *viewArray = [[NSMutableArray alloc] init];
     
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:20.0f],NSFontAttributeName,[UIColor getColor:@"6ABAFA"],NSForegroundColorAttributeName,nil];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:20.0f],NSFontAttributeName,[UIColor getColor:@"3FA6FF"],NSForegroundColorAttributeName,nil];
     
     //个人中心
     SendTaskViewController *send = [[SendTaskViewController alloc] init];
     send.title = @"个人中心";
     UINavigationController *sendNav = [[UINavigationController alloc] initWithRootViewController:send];
     [sendNav.navigationBar setBarTintColor:[UIColor whiteColor]];
-    [sendNav.navigationBar setTintColor:[UIColor getColor:@"6ABAFA"]];
-    //    sendNav.tabBarItem.image = [UIImage imageNamed:@"icon_set_nomal"];
-    //    sendNav.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_set_click"];
+    [sendNav.navigationBar setTintColor:[UIColor getColor:@"3FA6FF"]];
+    sendNav.tabBarItem.image = [UIImage imageNamed:@"menu_3"];
+    sendNav.tabBarItem.selectedImage = [UIImage imageNamed:@"menu_3_v"];
     sendNav.navigationBar.titleTextAttributes = dict;
     sendNav.navigationBar.translucent = NO;
     [viewArray addObject:sendNav];
@@ -83,10 +83,10 @@
     hvc.topId = [[response.topDirectoryArray objectAtIndex:0] idTopDirectory];
     UINavigationController *hvcNav = [[UINavigationController alloc] initWithRootViewController:hvc];
     hvcNav.navigationBar.translucent = NO;
-//    hvcNav.tabBarItem.image = [UIImage imageNamed:@"icon_home_nomal"];
-//    hvcNav.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_home_click"];
+    hvcNav.tabBarItem.image = [UIImage imageNamed:@"menu_3"];
+    hvcNav.tabBarItem.selectedImage = [UIImage imageNamed:@"menu_3_v"];
     [hvcNav.navigationBar setBarTintColor:[UIColor whiteColor]];
-    [hvcNav.navigationBar setTintColor:[UIColor getColor:@"6ABAFA"]];
+    [hvcNav.navigationBar setTintColor:[UIColor getColor:@"3FA6FF"]];
     hvcNav.navigationBar.titleTextAttributes = dict;
     [viewArray addObject:hvcNav];
     [hvc release];
@@ -98,10 +98,10 @@
     oneCard.topId = [[response.topDirectoryArray objectAtIndex:1] idTopDirectory];
     UINavigationController *cardNav = [[UINavigationController alloc] initWithRootViewController:oneCard];
     cardNav.navigationBar.translucent = NO;
-//    cardNav.tabBarItem.image = [UIImage imageNamed:@"icon_onecard_nomal"];
-//    cardNav.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_onecard_click"];
+    cardNav.tabBarItem.image = [UIImage imageNamed:@"menu_3"];
+    cardNav.tabBarItem.selectedImage = [UIImage imageNamed:@"menu_3_v"];
     [cardNav.navigationBar setBarTintColor:[UIColor whiteColor]];
-    [cardNav.navigationBar setTintColor:[UIColor getColor:@"6ABAFA"]];
+    [cardNav.navigationBar setTintColor:[UIColor getColor:@"3FA6FF"]];
     cardNav.navigationBar.titleTextAttributes = dict;
     [viewArray addObject:cardNav];
     [oneCard release];
@@ -113,9 +113,9 @@
     tvc.topId = [[response.topDirectoryArray objectAtIndex:2] idTopDirectory];
     UINavigationController *tvcNav = [[UINavigationController alloc] initWithRootViewController:tvc];
     [tvcNav.navigationBar setBarTintColor:[UIColor whiteColor]];
-    [tvcNav.navigationBar setTintColor:[UIColor getColor:@"6ABAFA"]];
-//    tvcNav.tabBarItem.image = [UIImage imageNamed:@"icon_carticket_nomal"];
-//    tvcNav.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_carticket_click"];
+    [tvcNav.navigationBar setTintColor:[UIColor getColor:@"3FA6FF"]];
+    tvcNav.tabBarItem.image = [UIImage imageNamed:@"menu_3"];
+    tvcNav.tabBarItem.selectedImage = [UIImage imageNamed:@"menu_3_v"];
     tvcNav.navigationBar.titleTextAttributes = dict;
     tvcNav.navigationBar.translucent = NO;
     [viewArray addObject:tvcNav];
@@ -127,11 +127,11 @@
     zone.title = [[response.topDirectoryArray objectAtIndex:3] nameTopDirectory];
     zone.topId = [[response.topDirectoryArray objectAtIndex:3] idTopDirectory];
     UINavigationController *zoneNav = [[UINavigationController alloc] initWithRootViewController:zone];
-//    zoneNav.tabBarItem.image = [UIImage imageNamed:@"icon_mine_nomal"];
-//    zoneNav.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_mine_click"];
+    zoneNav.tabBarItem.image = [UIImage imageNamed:@"menu_3"];
+    zoneNav.tabBarItem.selectedImage = [UIImage imageNamed:@"menu_3_v"];
     zoneNav.navigationBar.titleTextAttributes = dict;
     [zoneNav.navigationBar setBarTintColor:[UIColor whiteColor]];
-    [zoneNav.navigationBar setTintColor:[UIColor getColor:@"6ABAFA"]];
+    [zoneNav.navigationBar setTintColor:[UIColor getColor:@"3FA6FF"]];
     zoneNav.navigationBar.translucent = NO;
     [viewArray addObject:zoneNav];
     [zone release];
@@ -142,11 +142,11 @@
     four.title = [[response.topDirectoryArray objectAtIndex:4] nameTopDirectory];
     four.topId = [[response.topDirectoryArray objectAtIndex:4] idTopDirectory];
     UINavigationController *fourNav = [[UINavigationController alloc] initWithRootViewController:four];
-    //    fourNav.tabBarItem.image = [UIImage imageNamed:@"icon_mine_nomal"];
-    //    fourNav.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_mine_click"];
+    fourNav.tabBarItem.image = [UIImage imageNamed:@"menu_3"];
+    fourNav.tabBarItem.selectedImage = [UIImage imageNamed:@"menu_3_v"];
     fourNav.navigationBar.titleTextAttributes = dict;
     [fourNav.navigationBar setBarTintColor:[UIColor whiteColor]];
-    [fourNav.navigationBar setTintColor:[UIColor getColor:@"6ABAFA"]];
+    [fourNav.navigationBar setTintColor:[UIColor getColor:@"3FA6FF"]];
     fourNav.navigationBar.translucent = NO;
     [viewArray addObject:fourNav];
     [four release];
@@ -158,20 +158,18 @@
     more.topId = [[response.topDirectoryArray objectAtIndex:5] idTopDirectory];
     UINavigationController *moreNav = [[UINavigationController alloc] initWithRootViewController:more];
     [moreNav.navigationBar setBarTintColor:[UIColor whiteColor]];
-    [moreNav.navigationBar setTintColor:[UIColor getColor:@"6ABAFA"]];
-//    moreNav.tabBarItem.image = [UIImage imageNamed:@"icon_set_nomal"];
-//    moreNav.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_set_click"];
+    [moreNav.navigationBar setTintColor:[UIColor getColor:@"3FA6FF"]];
+    moreNav.tabBarItem.image = [UIImage imageNamed:@"menu_3"];
+    moreNav.tabBarItem.selectedImage = [UIImage imageNamed:@"menu_3_v"];
     moreNav.navigationBar.titleTextAttributes = dict;
     moreNav.navigationBar.translucent = NO;
     [viewArray addObject:moreNav];
     [more release];
     [moreNav release];
     
-
-    
     //tab
     UITabBarController *tab = [[UITabBarController alloc] init];
-    [tab.tabBar setTintColor:[UIColor getColor:@"6ABAFA"]];
+    [tab.tabBar setTintColor:[UIColor getColor:@"3FA6FF"]];
     tab.viewControllers = viewArray;
     [self.navigationController pushViewController:tab animated:YES];
     [viewArray release];

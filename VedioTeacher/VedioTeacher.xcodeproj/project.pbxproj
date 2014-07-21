@@ -185,6 +185,8 @@
 		9E6648F91976113900F810CC /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6648F81976113900F810CC /* PlayerViewController.m */; };
 		9E6648FC1976114600F810CC /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6648FB1976114600F810CC /* UploadViewController.m */; };
 		9E83D1661977B9A900ECB49C /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E83D1651977B9A900ECB49C /* TaskCell.m */; };
+		9E8DE23E197CE8C900BFC6A1 /* VedioModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8DE23D197CE8C900BFC6A1 /* VedioModel.m */; };
+		9E8DE242197CEA8A00BFC6A1 /* TVCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8DE241197CEA8900BFC6A1 /* TVCommentModel.m */; };
 		9E9183C71978C6A00045B8D6 /* AccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9183C61978C6A00045B8D6 /* AccountModel.m */; };
 		9E9183CE1978C8000045B8D6 /* TaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9183CD1978C8000045B8D6 /* TaskModel.m */; };
 		9EBDDC761974D2AA006CAD7A /* LoginsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDDC751974D2AA006CAD7A /* LoginsViewController.m */; };
@@ -541,6 +543,10 @@
 		9E6648FB1976114600F810CC /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
 		9E83D1641977B9A900ECB49C /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		9E83D1651977B9A900ECB49C /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
+		9E8DE23C197CE8C900BFC6A1 /* VedioModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioModel.h; sourceTree = "<group>"; };
+		9E8DE23D197CE8C900BFC6A1 /* VedioModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioModel.m; sourceTree = "<group>"; };
+		9E8DE240197CEA8900BFC6A1 /* TVCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVCommentModel.h; sourceTree = "<group>"; };
+		9E8DE241197CEA8900BFC6A1 /* TVCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVCommentModel.m; sourceTree = "<group>"; };
 		9E9183C51978C6A00045B8D6 /* AccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountModel.h; sourceTree = "<group>"; };
 		9E9183C61978C6A00045B8D6 /* AccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountModel.m; sourceTree = "<group>"; };
 		9E9183CC1978C8000045B8D6 /* TaskModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskModel.h; sourceTree = "<group>"; };
@@ -707,6 +713,8 @@
 		9E5A2427196A308A00C6D1A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9E8DE23F197CEA8100BFC6A1 /* TVCommentModel */,
+				9E8DE23B197CE8BB00BFC6A1 /* VedioModel */,
 				9E9183CB1978C7D90045B8D6 /* TaskModel */,
 				9E5A2577196A398B00C6D1A4 /* DirectoryModel */,
 				9E5A2428196A308A00C6D1A4 /* UserModel */,
@@ -1105,7 +1113,6 @@
 		9E5A24C3196A308A00C6D1A4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				9E5938D41977745500508070 /* take_photo@2x.png */,
 				9E5A24C4196A308A00C6D1A4 /* 2.jpg */,
 				9E5A24C5196A308A00C6D1A4 /* 2.png */,
 				9E5A24C6196A308A00C6D1A4 /* bottomView.png */,
@@ -1139,6 +1146,7 @@
 				9E5A24E2196A308A00C6D1A4 /* table7.png */,
 				9E5A24E3196A308A00C6D1A4 /* toolbar_icon_redirect_hight_os7@2x.png */,
 				9E5A24E4196A308A00C6D1A4 /* toolbar_icon_redirect_os7@2x.png */,
+				9E5938D41977745500508070 /* take_photo@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1461,6 +1469,24 @@
 				9E6648FB1976114600F810CC /* UploadViewController.m */,
 			);
 			path = UploadViewController;
+			sourceTree = "<group>";
+		};
+		9E8DE23B197CE8BB00BFC6A1 /* VedioModel */ = {
+			isa = PBXGroup;
+			children = (
+				9E8DE23C197CE8C900BFC6A1 /* VedioModel.h */,
+				9E8DE23D197CE8C900BFC6A1 /* VedioModel.m */,
+			);
+			path = VedioModel;
+			sourceTree = "<group>";
+		};
+		9E8DE23F197CEA8100BFC6A1 /* TVCommentModel */ = {
+			isa = PBXGroup;
+			children = (
+				9E8DE240197CEA8900BFC6A1 /* TVCommentModel.h */,
+				9E8DE241197CEA8900BFC6A1 /* TVCommentModel.m */,
+			);
+			path = TVCommentModel;
 			sourceTree = "<group>";
 		};
 		9E9183CB1978C7D90045B8D6 /* TaskModel */ = {
@@ -1803,6 +1829,7 @@
 				9E5A250C196A308A00C6D1A4 /* AddPeopleAccountReqBody.m in Sources */,
 				9E5A24FD196A308A00C6D1A4 /* QBImagePickerAssetCell.m in Sources */,
 				9E5A25C3196A413A00C6D1A4 /* GetTVOfSearchRespBody.m in Sources */,
+				9E8DE23E197CE8C900BFC6A1 /* VedioModel.m in Sources */,
 				9E5A25D5196A419F00C6D1A4 /* GetTVInfoRespBody.m in Sources */,
 				9E5A2522196A308A00C6D1A4 /* GetSecondDirectoryReqBody.m in Sources */,
 				9E5A2501196A308A00C6D1A4 /* QBImagePickerFooterView.m in Sources */,
@@ -1823,6 +1850,7 @@
 				9E5A24F2196A308A00C6D1A4 /* AFHTTPClient.m in Sources */,
 				9E5A250E196A308A00C6D1A4 /* AddPeopleOpinionReqBody.m in Sources */,
 				9E5A25AB196A409100C6D1A4 /* AddTVGoodReqBody.m in Sources */,
+				9E8DE242197CEA8A00BFC6A1 /* TVCommentModel.m in Sources */,
 				9ED53AE4196285A900DA3248 /* ViewController.m in Sources */,
 				9E5A2507196A308A00C6D1A4 /* AddAccountRespBody.m in Sources */,
 				9E4DACF2196A8834008C71BD /* HeadViewController.m in Sources */,

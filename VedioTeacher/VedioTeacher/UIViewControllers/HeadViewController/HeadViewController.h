@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "CollectionCell.h"
 #import "CollectionHeaderView.h"
+#import "PlayerViewController.h"
 #import "GetSecondDirectoryReqBody.h"
 #import "GetSecondDirectoryRespBody.h"
 #import "AddSecondDirectoryReqBody.h"

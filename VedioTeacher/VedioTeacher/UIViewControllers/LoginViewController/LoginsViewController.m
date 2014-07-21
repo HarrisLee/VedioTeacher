@@ -50,7 +50,7 @@
     UIButton *cancle = [UIButton buttonWithType:UIButtonTypeCustom];
     cancle.frame = CGRectMake(0, 0, 60, 40);
     [cancle setTitle:@"取消" forState:UIControlStateNormal];
-    [cancle setTitleColor:[UIColor getColor:@"6ABAFA"] forState:UIControlStateNormal];
+    [cancle setTitleColor:[UIColor getColor:@"3FA6FF"] forState:UIControlStateNormal];
     [cancle addTarget:self action:@selector(cancleLogin:) forControlEvents:UIControlEventTouchUpInside];
     [cancle.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
     [loginView addSubview:cancle];
@@ -79,7 +79,7 @@
     UIButton *login = [UIButton buttonWithType:UIButtonTypeCustom];
     login.frame = CGRectMake((512-390)/2, 140, 390, 35);
     login.layer.cornerRadius = 5.0f;
-    [login setBackgroundColor:[UIColor getColor:@"6ABAFA"]];
+    [login setBackgroundColor:[UIColor getColor:@"3FA6FF"]];
     [login setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [login setTitle:@"登录" forState:UIControlStateNormal];
     [login.titleLabel setFont:[UIFont systemFontOfSize:17.0f]];
@@ -89,7 +89,7 @@
     UIButton *regsiBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     regsiBtn.frame = CGRectMake(150, 180, 100, 35);
     [regsiBtn setBackgroundColor:[UIColor clearColor]];
-    [regsiBtn setTitleColor:[UIColor getColor:@"6ABAFA"] forState:UIControlStateNormal];
+    [regsiBtn setTitleColor:[UIColor getColor:@"3FA6FF"] forState:UIControlStateNormal];
     [regsiBtn setTitle:@"注册账户" forState:UIControlStateNormal];
     [regsiBtn.titleLabel setFont:[UIFont systemFontOfSize:11.0f]];
     [regsiBtn addTarget:self action:@selector(goRegisterView:) forControlEvents:UIControlEventTouchUpInside];
@@ -130,7 +130,7 @@
     UIButton *gobackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     gobackBtn.frame = CGRectMake(0, 0, 60, 40);
     [gobackBtn setTitle:@"返回" forState:UIControlStateNormal];
-    [gobackBtn setTitleColor:[UIColor getColor:@"6ABAFA"] forState:UIControlStateNormal];
+    [gobackBtn setTitleColor:[UIColor getColor:@"3FA6FF"] forState:UIControlStateNormal];
     [gobackBtn addTarget:self action:@selector(goLoginView:) forControlEvents:UIControlEventTouchUpInside];
     [gobackBtn.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
     [registerView addSubview:gobackBtn];
@@ -158,7 +158,7 @@
     UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     registerBtn.frame = CGRectMake((512-390)/2, 260, 390, 35);
     registerBtn.layer.cornerRadius = 5.0f;
-    [registerBtn setBackgroundColor:[UIColor getColor:@"6ABAFA"]];
+    [registerBtn setBackgroundColor:[UIColor getColor:@"3FA6FF"]];
     [registerBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [registerBtn setTitle:@"注册账户" forState:UIControlStateNormal];
     [registerBtn.titleLabel setFont:[UIFont systemFontOfSize:17.0f]];

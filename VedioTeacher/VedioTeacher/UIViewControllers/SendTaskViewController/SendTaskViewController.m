@@ -191,7 +191,7 @@
     [button addTarget:self action:@selector(sectionHeaderDidSelectAtIndex:) forControlEvents:UIControlEventTouchUpInside];
     [button setBackgroundColor:[UIColor getColor:@"E4E4E4"]];
     if (didSection == section) {
-        [button setBackgroundColor:[UIColor getColor:@"6ABAFA"]];
+        [button setBackgroundColor:[UIColor getColor:@"3FA6FF"]];
     }
     
     UIImageView *hor = [[UIImageView alloc] initWithFrame:CGRectMake(0, 24.5, 205, 0.5)];
