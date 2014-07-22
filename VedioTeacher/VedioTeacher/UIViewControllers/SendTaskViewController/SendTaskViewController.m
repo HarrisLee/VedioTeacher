@@ -26,6 +26,9 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     NSLog(@"%@",[DataCenter shareInstance].taskDirId);
+    if ([DataCenter shareInstance].isLogined) {
+        nameLabel.text = [DataCenter shareInstance].loginName;
+    }
 }
 
 - (void)viewDidLoad
@@ -51,6 +54,7 @@
 //显示我发布的任务
 -(void) sendedTask:(id)sender
 {
+    didRow = 0;
     showTask = @"1";
     [titleRect setHidden:NO];
     taskTitleField.text = @"";
@@ -73,6 +77,7 @@
 //显示我接受的任务
 -(void) acceptedNewTask:(id)sender
 {
+    didRow = 0;
     showTask = @"2";
     [titleRect setHidden:YES];
     taskTitleField.text = @"";
@@ -245,7 +250,7 @@
             cell = [[[DateShowCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
         }
         cell.delegate = self;
-        [cell clearClicked];
+        [cell setHighlightedAtIndex:didRow];
         return cell;
     }
     static NSString *identifier = @"task";
@@ -268,6 +273,7 @@
 {
     NSInteger section = [sender tag] - 500;
     didSection = section;
+    didRow = 0;
     [sendTable reloadData];
 }
 
@@ -280,7 +286,7 @@
             taskTitleField.text = model.taskName;
             taskInfoView.text = model.taskNote;
             //显示接受的用户
-            
+            [self getTaskInfo:model.taskID];
             
         } else {
             TaskModel *model = [acceptArray objectAtIndex:indexPath.row];
@@ -427,7 +433,7 @@
         [self checkSendTaskList:respBody];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error : %@", [error localizedDescription]);
-        alertMessage(@"请求失败，获取用户列表失败.");
+        alertMessage(@"获取当前时间段的我发布的任务失败，请重新获取.");
     }];
     
     [operation start];
@@ -469,7 +475,7 @@
         [self checkAccpetTaskList:respBody];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error : %@", [error localizedDescription]);
-        alertMessage(@"请求失败，获取用户列表失败.");
+        alertMessage(@"获取当前时间段的我的任务失败，请重新获取.");
     }];
     
     [operation start];
@@ -507,7 +513,7 @@
         [self checkTaskInfo:respBody];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error : %@", [error localizedDescription]);
-        alertMessage(@"请求失败，获取用户列表失败.");
+        alertMessage(@"请求失败，请重新获取任务详情.");
     }];
     
     [operation start];
@@ -538,7 +544,7 @@
             [self checkTVList:respBody];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error : %@", [error localizedDescription]);
-            alertMessage(@"请求失败，获取用户列表失败.");
+            alertMessage(@"获取我的视频失败,请重新获取.");
         }];
         
         [operation start];
@@ -554,7 +560,7 @@
             [self checkTVList:respBody];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error : %@", [error localizedDescription]);
-            alertMessage(@"请求失败，获取用户列表失败.");
+            alertMessage(@"获取我的视频失败,请重新获取.");
         }];
         
         [operation start];

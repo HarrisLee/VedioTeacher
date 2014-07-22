@@ -168,6 +168,9 @@
             dropView.frame = CGRectMake(105, top1Field.frame.origin.y + 25, 200, 25*6);
         }];
     } else if(textField == top2Field) {
+        if ([secondArray count] == 0) {
+            return NO;
+        }
         selectType = 2;
         [dropView reloadData];
         [UIView animateWithDuration:0.5 animations:^{

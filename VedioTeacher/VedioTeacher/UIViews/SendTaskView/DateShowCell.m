@@ -73,7 +73,7 @@
     for (int i = 0; i<12; i++) {
         UIButton *btn = (UIButton *)[self viewWithTag:600+i];
         [btn setBackgroundColor:[UIColor whiteColor]];
-        if (index == i) {
+        if (index == i + 1) {
             [btn setBackgroundColor:[UIColor getColor:@"3FA6FF"]];
         }
     }
