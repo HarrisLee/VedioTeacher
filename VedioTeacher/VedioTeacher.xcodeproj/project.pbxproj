@@ -32,26 +32,6 @@
 		9E5A24EF196A308A00C6D1A4 /* RespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2424196A308A00C6D1A4 /* RespBody.m */; };
 		9E5A24F0196A308A00C6D1A4 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2426196A308A00C6D1A4 /* TBXML.m */; };
 		9E5A24F1196A308A00C6D1A4 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A242A196A308A00C6D1A4 /* UserModel.m */; };
-		9E5A24F2196A308A00C6D1A4 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A242E196A308A00C6D1A4 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		9E5A24F3196A308A00C6D1A4 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2430196A308A00C6D1A4 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		9E5A24F4196A308A00C6D1A4 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2432196A308A00C6D1A4 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		9E5A24F5196A308A00C6D1A4 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2434196A308A00C6D1A4 /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		9E5A24F6196A308A00C6D1A4 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2436196A308A00C6D1A4 /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		9E5A24F7196A308A00C6D1A4 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2439196A308A00C6D1A4 /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		9E5A24F8196A308A00C6D1A4 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A243B196A308A00C6D1A4 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		9E5A24F9196A308A00C6D1A4 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A243D196A308A00C6D1A4 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		9E5A24FA196A308A00C6D1A4 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A243F196A308A00C6D1A4 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		9E5A24FB196A308A00C6D1A4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2442196A308A00C6D1A4 /* MBProgressHUD.m */; };
-		9E5A24FC196A308A00C6D1A4 /* QBAssetCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2445196A308A00C6D1A4 /* QBAssetCollectionViewController.m */; };
-		9E5A24FD196A308A00C6D1A4 /* QBImagePickerAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2448196A308A00C6D1A4 /* QBImagePickerAssetCell.m */; };
-		9E5A24FE196A308A00C6D1A4 /* QBImagePickerAssetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A244B196A308A00C6D1A4 /* QBImagePickerAssetView.m */; };
-		9E5A24FF196A308A00C6D1A4 /* QBImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9E5A244D196A308A00C6D1A4 /* QBImagePickerController.bundle */; };
-		9E5A2500196A308A00C6D1A4 /* QBImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A244F196A308A00C6D1A4 /* QBImagePickerController.m */; };
-		9E5A2501196A308A00C6D1A4 /* QBImagePickerFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2451196A308A00C6D1A4 /* QBImagePickerFooterView.m */; };
-		9E5A2502196A308A00C6D1A4 /* QBImagePickerGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2453196A308A00C6D1A4 /* QBImagePickerGroupCell.m */; };
-		9E5A2503196A308A00C6D1A4 /* QBImagePickerVideoInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2455196A308A00C6D1A4 /* QBImagePickerVideoInfoView.m */; };
-		9E5A2504196A308A00C6D1A4 /* libUtilsGather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E5A2458196A308A00C6D1A4 /* libUtilsGather.a */; };
-		9E5A2505196A308A00C6D1A4 /* libUtilsGather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E5A245A196A308A00C6D1A4 /* libUtilsGather.a */; };
 		9E5A2506196A308A00C6D1A4 /* AddAccountReqBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2460196A308A00C6D1A4 /* AddAccountReqBody.m */; };
 		9E5A2507196A308A00C6D1A4 /* AddAccountRespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2462196A308A00C6D1A4 /* AddAccountRespBody.m */; };
 		9E5A2508196A308A00C6D1A4 /* AddCommentReqBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2465196A308A00C6D1A4 /* AddCommentReqBody.m */; };
@@ -190,6 +170,26 @@
 		9E9183C71978C6A00045B8D6 /* AccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9183C61978C6A00045B8D6 /* AccountModel.m */; };
 		9E9183CE1978C8000045B8D6 /* TaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9183CD1978C8000045B8D6 /* TaskModel.m */; };
 		9EBDDC761974D2AA006CAD7A /* LoginsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDDC751974D2AA006CAD7A /* LoginsViewController.m */; };
+		9EC7BF01197E580E000A0E54 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BED2197E580E000A0E54 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9EC7BF02197E580E000A0E54 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BED4197E580E000A0E54 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9EC7BF03197E580E000A0E54 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BED6197E580E000A0E54 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9EC7BF04197E580E000A0E54 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BED8197E580E000A0E54 /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9EC7BF05197E580E000A0E54 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEDA197E580E000A0E54 /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9EC7BF06197E580E000A0E54 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEDD197E580E000A0E54 /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9EC7BF07197E580E000A0E54 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEDF197E580E000A0E54 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9EC7BF08197E580E000A0E54 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEE1197E580E000A0E54 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9EC7BF09197E580E000A0E54 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEE3197E580E000A0E54 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9EC7BF0A197E580E000A0E54 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEE6197E580E000A0E54 /* MBProgressHUD.m */; };
+		9EC7BF0B197E580E000A0E54 /* QBAssetCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEE9197E580E000A0E54 /* QBAssetCollectionViewController.m */; };
+		9EC7BF0C197E580E000A0E54 /* QBImagePickerAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEEC197E580E000A0E54 /* QBImagePickerAssetCell.m */; };
+		9EC7BF0D197E580E000A0E54 /* QBImagePickerAssetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEEF197E580E000A0E54 /* QBImagePickerAssetView.m */; };
+		9EC7BF0E197E580E000A0E54 /* QBImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9EC7BEF1197E580E000A0E54 /* QBImagePickerController.bundle */; };
+		9EC7BF0F197E580E000A0E54 /* QBImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEF3197E580E000A0E54 /* QBImagePickerController.m */; };
+		9EC7BF10197E580E000A0E54 /* QBImagePickerFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEF5197E580E000A0E54 /* QBImagePickerFooterView.m */; };
+		9EC7BF11197E580E000A0E54 /* QBImagePickerGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEF7197E580E000A0E54 /* QBImagePickerGroupCell.m */; };
+		9EC7BF12197E580E000A0E54 /* QBImagePickerVideoInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEF9197E580E000A0E54 /* QBImagePickerVideoInfoView.m */; };
+		9EC7BF13197E580E000A0E54 /* libUtilsGather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EC7BEFC197E580E000A0E54 /* libUtilsGather.a */; };
+		9EC7BF14197E580E000A0E54 /* libUtilsGather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EC7BEFE197E580E000A0E54 /* libUtilsGather.a */; };
 		9ED53ACE196285A900DA3248 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53ACD196285A900DA3248 /* Foundation.framework */; };
 		9ED53AD0196285A900DA3248 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53ACF196285A900DA3248 /* CoreGraphics.framework */; };
 		9ED53AD2196285A900DA3248 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53AD1196285A900DA3248 /* UIKit.framework */; };
@@ -271,49 +271,6 @@
 		9E5A2426196A308A00C6D1A4 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
 		9E5A2429196A308A00C6D1A4 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		9E5A242A196A308A00C6D1A4 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
-		9E5A242D196A308A00C6D1A4 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
-		9E5A242E196A308A00C6D1A4 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
-		9E5A242F196A308A00C6D1A4 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		9E5A2430196A308A00C6D1A4 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
-		9E5A2431196A308A00C6D1A4 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
-		9E5A2432196A308A00C6D1A4 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
-		9E5A2433196A308A00C6D1A4 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
-		9E5A2434196A308A00C6D1A4 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
-		9E5A2435196A308A00C6D1A4 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
-		9E5A2436196A308A00C6D1A4 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
-		9E5A2437196A308A00C6D1A4 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
-		9E5A2438196A308A00C6D1A4 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
-		9E5A2439196A308A00C6D1A4 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
-		9E5A243A196A308A00C6D1A4 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		9E5A243B196A308A00C6D1A4 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
-		9E5A243C196A308A00C6D1A4 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
-		9E5A243D196A308A00C6D1A4 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
-		9E5A243E196A308A00C6D1A4 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
-		9E5A243F196A308A00C6D1A4 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		9E5A2441196A308A00C6D1A4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		9E5A2442196A308A00C6D1A4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		9E5A2444196A308A00C6D1A4 /* QBAssetCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBAssetCollectionViewController.h; sourceTree = "<group>"; };
-		9E5A2445196A308A00C6D1A4 /* QBAssetCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBAssetCollectionViewController.m; sourceTree = "<group>"; };
-		9E5A2446196A308A00C6D1A4 /* QBAssetCollectionViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBAssetCollectionViewControllerDelegate.h; sourceTree = "<group>"; };
-		9E5A2447196A308A00C6D1A4 /* QBImagePickerAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerAssetCell.h; sourceTree = "<group>"; };
-		9E5A2448196A308A00C6D1A4 /* QBImagePickerAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerAssetCell.m; sourceTree = "<group>"; };
-		9E5A2449196A308A00C6D1A4 /* QBImagePickerAssetCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerAssetCellDelegate.h; sourceTree = "<group>"; };
-		9E5A244A196A308A00C6D1A4 /* QBImagePickerAssetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerAssetView.h; sourceTree = "<group>"; };
-		9E5A244B196A308A00C6D1A4 /* QBImagePickerAssetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerAssetView.m; sourceTree = "<group>"; };
-		9E5A244C196A308A00C6D1A4 /* QBImagePickerAssetViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerAssetViewDelegate.h; sourceTree = "<group>"; };
-		9E5A244D196A308A00C6D1A4 /* QBImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = QBImagePickerController.bundle; sourceTree = "<group>"; };
-		9E5A244E196A308A00C6D1A4 /* QBImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerController.h; sourceTree = "<group>"; };
-		9E5A244F196A308A00C6D1A4 /* QBImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerController.m; sourceTree = "<group>"; };
-		9E5A2450196A308A00C6D1A4 /* QBImagePickerFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerFooterView.h; sourceTree = "<group>"; };
-		9E5A2451196A308A00C6D1A4 /* QBImagePickerFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerFooterView.m; sourceTree = "<group>"; };
-		9E5A2452196A308A00C6D1A4 /* QBImagePickerGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerGroupCell.h; sourceTree = "<group>"; };
-		9E5A2453196A308A00C6D1A4 /* QBImagePickerGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerGroupCell.m; sourceTree = "<group>"; };
-		9E5A2454196A308A00C6D1A4 /* QBImagePickerVideoInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerVideoInfoView.h; sourceTree = "<group>"; };
-		9E5A2455196A308A00C6D1A4 /* QBImagePickerVideoInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerVideoInfoView.m; sourceTree = "<group>"; };
-		9E5A2458196A308A00C6D1A4 /* libUtilsGather.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUtilsGather.a; sourceTree = "<group>"; };
-		9E5A245A196A308A00C6D1A4 /* libUtilsGather.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUtilsGather.a; sourceTree = "<group>"; };
-		9E5A245B196A308A00C6D1A4 /* SayHello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SayHello.h; sourceTree = "<group>"; };
-		9E5A245C196A308A00C6D1A4 /* UtilsGather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsGather.h; sourceTree = "<group>"; };
 		9E5A245F196A308A00C6D1A4 /* AddAccountReqBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAccountReqBody.h; sourceTree = "<group>"; };
 		9E5A2460196A308A00C6D1A4 /* AddAccountReqBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAccountReqBody.m; sourceTree = "<group>"; };
 		9E5A2461196A308A00C6D1A4 /* AddAccountRespBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAccountRespBody.h; sourceTree = "<group>"; };
@@ -553,6 +510,49 @@
 		9E9183CD1978C8000045B8D6 /* TaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskModel.m; sourceTree = "<group>"; };
 		9EBDDC741974D2AA006CAD7A /* LoginsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginsViewController.h; sourceTree = "<group>"; };
 		9EBDDC751974D2AA006CAD7A /* LoginsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginsViewController.m; sourceTree = "<group>"; };
+		9EC7BED1197E580E000A0E54 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		9EC7BED2197E580E000A0E54 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		9EC7BED3197E580E000A0E54 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		9EC7BED4197E580E000A0E54 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		9EC7BED5197E580E000A0E54 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		9EC7BED6197E580E000A0E54 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		9EC7BED7197E580E000A0E54 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		9EC7BED8197E580E000A0E54 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		9EC7BED9197E580E000A0E54 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		9EC7BEDA197E580E000A0E54 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		9EC7BEDB197E580E000A0E54 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		9EC7BEDC197E580E000A0E54 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		9EC7BEDD197E580E000A0E54 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		9EC7BEDE197E580E000A0E54 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		9EC7BEDF197E580E000A0E54 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		9EC7BEE0197E580E000A0E54 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		9EC7BEE1197E580E000A0E54 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		9EC7BEE2197E580E000A0E54 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		9EC7BEE3197E580E000A0E54 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		9EC7BEE5197E580E000A0E54 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		9EC7BEE6197E580E000A0E54 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		9EC7BEE8197E580E000A0E54 /* QBAssetCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBAssetCollectionViewController.h; sourceTree = "<group>"; };
+		9EC7BEE9197E580E000A0E54 /* QBAssetCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBAssetCollectionViewController.m; sourceTree = "<group>"; };
+		9EC7BEEA197E580E000A0E54 /* QBAssetCollectionViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBAssetCollectionViewControllerDelegate.h; sourceTree = "<group>"; };
+		9EC7BEEB197E580E000A0E54 /* QBImagePickerAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerAssetCell.h; sourceTree = "<group>"; };
+		9EC7BEEC197E580E000A0E54 /* QBImagePickerAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerAssetCell.m; sourceTree = "<group>"; };
+		9EC7BEED197E580E000A0E54 /* QBImagePickerAssetCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerAssetCellDelegate.h; sourceTree = "<group>"; };
+		9EC7BEEE197E580E000A0E54 /* QBImagePickerAssetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerAssetView.h; sourceTree = "<group>"; };
+		9EC7BEEF197E580E000A0E54 /* QBImagePickerAssetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerAssetView.m; sourceTree = "<group>"; };
+		9EC7BEF0197E580E000A0E54 /* QBImagePickerAssetViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerAssetViewDelegate.h; sourceTree = "<group>"; };
+		9EC7BEF1197E580E000A0E54 /* QBImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = QBImagePickerController.bundle; sourceTree = "<group>"; };
+		9EC7BEF2197E580E000A0E54 /* QBImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerController.h; sourceTree = "<group>"; };
+		9EC7BEF3197E580E000A0E54 /* QBImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerController.m; sourceTree = "<group>"; };
+		9EC7BEF4197E580E000A0E54 /* QBImagePickerFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerFooterView.h; sourceTree = "<group>"; };
+		9EC7BEF5197E580E000A0E54 /* QBImagePickerFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerFooterView.m; sourceTree = "<group>"; };
+		9EC7BEF6197E580E000A0E54 /* QBImagePickerGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerGroupCell.h; sourceTree = "<group>"; };
+		9EC7BEF7197E580E000A0E54 /* QBImagePickerGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerGroupCell.m; sourceTree = "<group>"; };
+		9EC7BEF8197E580E000A0E54 /* QBImagePickerVideoInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerVideoInfoView.h; sourceTree = "<group>"; };
+		9EC7BEF9197E580E000A0E54 /* QBImagePickerVideoInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerVideoInfoView.m; sourceTree = "<group>"; };
+		9EC7BEFC197E580E000A0E54 /* libUtilsGather.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUtilsGather.a; sourceTree = "<group>"; };
+		9EC7BEFE197E580E000A0E54 /* libUtilsGather.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUtilsGather.a; sourceTree = "<group>"; };
+		9EC7BEFF197E580E000A0E54 /* SayHello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SayHello.h; sourceTree = "<group>"; };
+		9EC7BF00197E580E000A0E54 /* UtilsGather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsGather.h; sourceTree = "<group>"; };
 		9ED53ACA196285A900DA3248 /* VedioTeacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VedioTeacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED53ACD196285A900DA3248 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9ED53ACF196285A900DA3248 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -586,9 +586,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ED53B03196285C200DA3248 /* AVFoundation.framework in Frameworks */,
-				9E5A2504196A308A00C6D1A4 /* libUtilsGather.a in Frameworks */,
-				9E5A2505196A308A00C6D1A4 /* libUtilsGather.a in Frameworks */,
 				9ED53AD0196285A900DA3248 /* CoreGraphics.framework in Frameworks */,
+				9EC7BF14197E580E000A0E54 /* libUtilsGather.a in Frameworks */,
+				9EC7BF13197E580E000A0E54 /* libUtilsGather.a in Frameworks */,
 				9ED53AD2196285A900DA3248 /* UIKit.framework in Frameworks */,
 				9ED53ACE196285A900DA3248 /* Foundation.framework in Frameworks */,
 			);
@@ -734,105 +734,6 @@
 				9E9183C61978C6A00045B8D6 /* AccountModel.m */,
 			);
 			path = UserModel;
-			sourceTree = "<group>";
-		};
-		9E5A242B196A308A00C6D1A4 /* OpenSource */ = {
-			isa = PBXGroup;
-			children = (
-				9E5A242C196A308A00C6D1A4 /* AFNetworking */,
-				9E5A2440196A308A00C6D1A4 /* HudProgress */,
-				9E5A2443196A308A00C6D1A4 /* QBImagePickerController */,
-				9E5A2456196A308A00C6D1A4 /* UtilsGather */,
-			);
-			name = OpenSource;
-			path = VedioTeacher/OpenSource;
-			sourceTree = "<group>";
-		};
-		9E5A242C196A308A00C6D1A4 /* AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				9E5A242D196A308A00C6D1A4 /* AFHTTPClient.h */,
-				9E5A242E196A308A00C6D1A4 /* AFHTTPClient.m */,
-				9E5A242F196A308A00C6D1A4 /* AFHTTPRequestOperation.h */,
-				9E5A2430196A308A00C6D1A4 /* AFHTTPRequestOperation.m */,
-				9E5A2431196A308A00C6D1A4 /* AFImageRequestOperation.h */,
-				9E5A2432196A308A00C6D1A4 /* AFImageRequestOperation.m */,
-				9E5A2433196A308A00C6D1A4 /* AFJSONRequestOperation.h */,
-				9E5A2434196A308A00C6D1A4 /* AFJSONRequestOperation.m */,
-				9E5A2435196A308A00C6D1A4 /* AFNetworkActivityIndicatorManager.h */,
-				9E5A2436196A308A00C6D1A4 /* AFNetworkActivityIndicatorManager.m */,
-				9E5A2437196A308A00C6D1A4 /* AFNetworking.h */,
-				9E5A2438196A308A00C6D1A4 /* AFPropertyListRequestOperation.h */,
-				9E5A2439196A308A00C6D1A4 /* AFPropertyListRequestOperation.m */,
-				9E5A243A196A308A00C6D1A4 /* AFURLConnectionOperation.h */,
-				9E5A243B196A308A00C6D1A4 /* AFURLConnectionOperation.m */,
-				9E5A243C196A308A00C6D1A4 /* AFXMLRequestOperation.h */,
-				9E5A243D196A308A00C6D1A4 /* AFXMLRequestOperation.m */,
-				9E5A243E196A308A00C6D1A4 /* UIImageView+AFNetworking.h */,
-				9E5A243F196A308A00C6D1A4 /* UIImageView+AFNetworking.m */,
-			);
-			path = AFNetworking;
-			sourceTree = "<group>";
-		};
-		9E5A2440196A308A00C6D1A4 /* HudProgress */ = {
-			isa = PBXGroup;
-			children = (
-				9E5A2441196A308A00C6D1A4 /* MBProgressHUD.h */,
-				9E5A2442196A308A00C6D1A4 /* MBProgressHUD.m */,
-			);
-			path = HudProgress;
-			sourceTree = "<group>";
-		};
-		9E5A2443196A308A00C6D1A4 /* QBImagePickerController */ = {
-			isa = PBXGroup;
-			children = (
-				9E5A2444196A308A00C6D1A4 /* QBAssetCollectionViewController.h */,
-				9E5A2445196A308A00C6D1A4 /* QBAssetCollectionViewController.m */,
-				9E5A2446196A308A00C6D1A4 /* QBAssetCollectionViewControllerDelegate.h */,
-				9E5A2447196A308A00C6D1A4 /* QBImagePickerAssetCell.h */,
-				9E5A2448196A308A00C6D1A4 /* QBImagePickerAssetCell.m */,
-				9E5A2449196A308A00C6D1A4 /* QBImagePickerAssetCellDelegate.h */,
-				9E5A244A196A308A00C6D1A4 /* QBImagePickerAssetView.h */,
-				9E5A244B196A308A00C6D1A4 /* QBImagePickerAssetView.m */,
-				9E5A244C196A308A00C6D1A4 /* QBImagePickerAssetViewDelegate.h */,
-				9E5A244D196A308A00C6D1A4 /* QBImagePickerController.bundle */,
-				9E5A244E196A308A00C6D1A4 /* QBImagePickerController.h */,
-				9E5A244F196A308A00C6D1A4 /* QBImagePickerController.m */,
-				9E5A2450196A308A00C6D1A4 /* QBImagePickerFooterView.h */,
-				9E5A2451196A308A00C6D1A4 /* QBImagePickerFooterView.m */,
-				9E5A2452196A308A00C6D1A4 /* QBImagePickerGroupCell.h */,
-				9E5A2453196A308A00C6D1A4 /* QBImagePickerGroupCell.m */,
-				9E5A2454196A308A00C6D1A4 /* QBImagePickerVideoInfoView.h */,
-				9E5A2455196A308A00C6D1A4 /* QBImagePickerVideoInfoView.m */,
-			);
-			path = QBImagePickerController;
-			sourceTree = "<group>";
-		};
-		9E5A2456196A308A00C6D1A4 /* UtilsGather */ = {
-			isa = PBXGroup;
-			children = (
-				9E5A2457196A308A00C6D1A4 /* iphone-os */,
-				9E5A2459196A308A00C6D1A4 /* iphonesimulator */,
-				9E5A245B196A308A00C6D1A4 /* SayHello.h */,
-				9E5A245C196A308A00C6D1A4 /* UtilsGather.h */,
-			);
-			path = UtilsGather;
-			sourceTree = "<group>";
-		};
-		9E5A2457196A308A00C6D1A4 /* iphone-os */ = {
-			isa = PBXGroup;
-			children = (
-				9E5A2458196A308A00C6D1A4 /* libUtilsGather.a */,
-			);
-			path = "iphone-os";
-			sourceTree = "<group>";
-		};
-		9E5A2459196A308A00C6D1A4 /* iphonesimulator */ = {
-			isa = PBXGroup;
-			children = (
-				9E5A245A196A308A00C6D1A4 /* libUtilsGather.a */,
-			);
-			path = iphonesimulator;
 			sourceTree = "<group>";
 		};
 		9E5A245D196A308A00C6D1A4 /* Request_Response */ = {
@@ -1507,11 +1408,110 @@
 			path = LoginViewController;
 			sourceTree = "<group>";
 		};
+		9EC7BECF197E580E000A0E54 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				9EC7BED0197E580E000A0E54 /* AFNetworking */,
+				9EC7BEE4197E580E000A0E54 /* HudProgress */,
+				9EC7BEE7197E580E000A0E54 /* QBImagePickerController */,
+				9EC7BEFA197E580E000A0E54 /* UtilsGather */,
+			);
+			name = Libraries;
+			path = VedioTeacher/Libraries;
+			sourceTree = "<group>";
+		};
+		9EC7BED0197E580E000A0E54 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				9EC7BED1197E580E000A0E54 /* AFHTTPClient.h */,
+				9EC7BED2197E580E000A0E54 /* AFHTTPClient.m */,
+				9EC7BED3197E580E000A0E54 /* AFHTTPRequestOperation.h */,
+				9EC7BED4197E580E000A0E54 /* AFHTTPRequestOperation.m */,
+				9EC7BED5197E580E000A0E54 /* AFImageRequestOperation.h */,
+				9EC7BED6197E580E000A0E54 /* AFImageRequestOperation.m */,
+				9EC7BED7197E580E000A0E54 /* AFJSONRequestOperation.h */,
+				9EC7BED8197E580E000A0E54 /* AFJSONRequestOperation.m */,
+				9EC7BED9197E580E000A0E54 /* AFNetworkActivityIndicatorManager.h */,
+				9EC7BEDA197E580E000A0E54 /* AFNetworkActivityIndicatorManager.m */,
+				9EC7BEDB197E580E000A0E54 /* AFNetworking.h */,
+				9EC7BEDC197E580E000A0E54 /* AFPropertyListRequestOperation.h */,
+				9EC7BEDD197E580E000A0E54 /* AFPropertyListRequestOperation.m */,
+				9EC7BEDE197E580E000A0E54 /* AFURLConnectionOperation.h */,
+				9EC7BEDF197E580E000A0E54 /* AFURLConnectionOperation.m */,
+				9EC7BEE0197E580E000A0E54 /* AFXMLRequestOperation.h */,
+				9EC7BEE1197E580E000A0E54 /* AFXMLRequestOperation.m */,
+				9EC7BEE2197E580E000A0E54 /* UIImageView+AFNetworking.h */,
+				9EC7BEE3197E580E000A0E54 /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		9EC7BEE4197E580E000A0E54 /* HudProgress */ = {
+			isa = PBXGroup;
+			children = (
+				9EC7BEE5197E580E000A0E54 /* MBProgressHUD.h */,
+				9EC7BEE6197E580E000A0E54 /* MBProgressHUD.m */,
+			);
+			path = HudProgress;
+			sourceTree = "<group>";
+		};
+		9EC7BEE7197E580E000A0E54 /* QBImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				9EC7BEE8197E580E000A0E54 /* QBAssetCollectionViewController.h */,
+				9EC7BEE9197E580E000A0E54 /* QBAssetCollectionViewController.m */,
+				9EC7BEEA197E580E000A0E54 /* QBAssetCollectionViewControllerDelegate.h */,
+				9EC7BEEB197E580E000A0E54 /* QBImagePickerAssetCell.h */,
+				9EC7BEEC197E580E000A0E54 /* QBImagePickerAssetCell.m */,
+				9EC7BEED197E580E000A0E54 /* QBImagePickerAssetCellDelegate.h */,
+				9EC7BEEE197E580E000A0E54 /* QBImagePickerAssetView.h */,
+				9EC7BEEF197E580E000A0E54 /* QBImagePickerAssetView.m */,
+				9EC7BEF0197E580E000A0E54 /* QBImagePickerAssetViewDelegate.h */,
+				9EC7BEF1197E580E000A0E54 /* QBImagePickerController.bundle */,
+				9EC7BEF2197E580E000A0E54 /* QBImagePickerController.h */,
+				9EC7BEF3197E580E000A0E54 /* QBImagePickerController.m */,
+				9EC7BEF4197E580E000A0E54 /* QBImagePickerFooterView.h */,
+				9EC7BEF5197E580E000A0E54 /* QBImagePickerFooterView.m */,
+				9EC7BEF6197E580E000A0E54 /* QBImagePickerGroupCell.h */,
+				9EC7BEF7197E580E000A0E54 /* QBImagePickerGroupCell.m */,
+				9EC7BEF8197E580E000A0E54 /* QBImagePickerVideoInfoView.h */,
+				9EC7BEF9197E580E000A0E54 /* QBImagePickerVideoInfoView.m */,
+			);
+			path = QBImagePickerController;
+			sourceTree = "<group>";
+		};
+		9EC7BEFA197E580E000A0E54 /* UtilsGather */ = {
+			isa = PBXGroup;
+			children = (
+				9EC7BEFB197E580E000A0E54 /* iphone-os */,
+				9EC7BEFD197E580E000A0E54 /* iphonesimulator */,
+				9EC7BEFF197E580E000A0E54 /* SayHello.h */,
+				9EC7BF00197E580E000A0E54 /* UtilsGather.h */,
+			);
+			path = UtilsGather;
+			sourceTree = "<group>";
+		};
+		9EC7BEFB197E580E000A0E54 /* iphone-os */ = {
+			isa = PBXGroup;
+			children = (
+				9EC7BEFC197E580E000A0E54 /* libUtilsGather.a */,
+			);
+			path = "iphone-os";
+			sourceTree = "<group>";
+		};
+		9EC7BEFD197E580E000A0E54 /* iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				9EC7BEFE197E580E000A0E54 /* libUtilsGather.a */,
+			);
+			path = iphonesimulator;
+			sourceTree = "<group>";
+		};
 		9ED53AC1196285A900DA3248 = {
 			isa = PBXGroup;
 			children = (
 				9ED53AD3196285A900DA3248 /* VedioTeacher */,
-				9E5A242B196A308A00C6D1A4 /* OpenSource */,
+				9EC7BECF197E580E000A0E54 /* Libraries */,
 				9ED53AF2196285A900DA3248 /* VedioTeacherTests */,
 				9ED53ACC196285A900DA3248 /* Frameworks */,
 				9ED53ACB196285A900DA3248 /* Products */,
@@ -1709,7 +1709,6 @@
 				9E5A254E196A308A00C6D1A4 /* toolbar_icon_redirect_os7@2x.png in Resources */,
 				9E5A254C196A308A00C6D1A4 /* table7.png in Resources */,
 				9E5A2552196A308A00C6D1A4 /* RespNameDefine.plist in Resources */,
-				9E5A24FF196A308A00C6D1A4 /* QBImagePickerController.bundle in Resources */,
 				9ED53AE6196285A900DA3248 /* Images.xcassets in Resources */,
 				9E5A252F196A308A00C6D1A4 /* 2.png in Resources */,
 				9E5A2530196A308A00C6D1A4 /* bottomView.png in Resources */,
@@ -1729,6 +1728,7 @@
 				9E5A253A196A308A00C6D1A4 /* group_edit_createbutton_background@2x.png in Resources */,
 				9E5A253F196A308A00C6D1A4 /* login_cancel_highlighted.png in Resources */,
 				9E5A2535196A308A00C6D1A4 /* empty_comment.png in Resources */,
+				9EC7BF0E197E580E000A0E54 /* QBImagePickerController.bundle in Resources */,
 				9E5A2537196A308A00C6D1A4 /* empty_like.png in Resources */,
 				9E5A2548196A308A00C6D1A4 /* music_navigationbar_more_os7@2x.png in Resources */,
 				9E5A2544196A308A00C6D1A4 /* menu_3_v@2x.png in Resources */,
@@ -1764,14 +1764,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EC7BF04197E580E000A0E54 /* AFJSONRequestOperation.m in Sources */,
+				9EC7BF03197E580E000A0E54 /* AFImageRequestOperation.m in Sources */,
 				9E5A241C196A307700C6D1A4 /* Utils.m in Sources */,
 				9E5A251D196A308A00C6D1A4 /* GetMainInfoRespBody.m in Sources */,
 				9E5A252B196A308A00C6D1A4 /* VerifyLoginRespBody.m in Sources */,
 				9E5A256A196A33AD00C6D1A4 /* CActivityIndicatorView.m in Sources */,
 				9E5A252D196A308A00C6D1A4 /* VerifyOutsideLoginRespBody.m in Sources */,
+				9EC7BF09197E580E000A0E54 /* UIImageView+AFNetworking.m in Sources */,
 				9E5A258A196A398B00C6D1A4 /* SDirectoryModel.m in Sources */,
 				9E5A250B196A308A00C6D1A4 /* AddGoodRespBody.m in Sources */,
 				9E5A2511196A308A00C6D1A4 /* AddPeopleOpinionReturnRespBody.m in Sources */,
+				9EC7BF0B197E580E000A0E54 /* QBAssetCollectionViewController.m in Sources */,
 				9E5A2521196A308A00C6D1A4 /* GetPeopleOpinionReturnRespBody.m in Sources */,
 				9E5A2418196A307700C6D1A4 /* CheckVesion.m in Sources */,
 				9E5A24F1196A308A00C6D1A4 /* UserModel.m in Sources */,
@@ -1779,21 +1783,22 @@
 				9E5A241A196A307700C6D1A4 /* GetIpAddress.m in Sources */,
 				9E5A25E4196A41EE00C6D1A4 /* GetPeopleAccountListReqBody.m in Sources */,
 				9E5A258F196A398B00C6D1A4 /* PeopleOptinModel.m in Sources */,
-				9E5A24F6196A308A00C6D1A4 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				9E5A25EA196A420B00C6D1A4 /* GetMyTVListOfTimeReqBody.m in Sources */,
 				9E5A2518196A308A00C6D1A4 /* GetImgListReqBody.m in Sources */,
-				9E5A24FA196A308A00C6D1A4 /* UIImageView+AFNetworking.m in Sources */,
 				9E5A252A196A308A00C6D1A4 /* VerifyLoginReqBody.m in Sources */,
 				9E5A251F196A308A00C6D1A4 /* GetPeopleOpinionListRespBody.m in Sources */,
 				9E5A2508196A308A00C6D1A4 /* AddCommentReqBody.m in Sources */,
-				9E5A24F3196A308A00C6D1A4 /* AFHTTPRequestOperation.m in Sources */,
 				9E5A251A196A308A00C6D1A4 /* GetJobReqBody.m in Sources */,
 				9E5A2515196A308A00C6D1A4 /* GetImgRespBody.m in Sources */,
 				9E5A250D196A308A00C6D1A4 /* AddPeopleAccountRespBody.m in Sources */,
 				9E4DACFA196A9CB2008C71BD /* SecondViewController.m in Sources */,
+				9EC7BF0A197E580E000A0E54 /* MBProgressHUD.m in Sources */,
 				9E5A252C196A308A00C6D1A4 /* VerifyOutsideLoginReqBody.m in Sources */,
 				9E5A25FC196A425C00C6D1A4 /* GetMyAcceptTaskListReqBody.m in Sources */,
+				9EC7BF08197E580E000A0E54 /* AFXMLRequestOperation.m in Sources */,
 				9E5A258B196A398B00C6D1A4 /* ImageCommentModel.m in Sources */,
+				9EC7BF01197E580E000A0E54 /* AFHTTPClient.m in Sources */,
+				9EC7BF07197E580E000A0E54 /* AFURLConnectionOperation.m in Sources */,
 				9E5A25C6196A414B00C6D1A4 /* GetTVListOfTimeReqBody.m in Sources */,
 				9E5A258E196A398B00C6D1A4 /* OptinReturnModel.m in Sources */,
 				9E5A25A8196A408500C6D1A4 /* AddTVGoodRespBody.m in Sources */,
@@ -1807,7 +1812,6 @@
 				9E5A2606196A72A200C6D1A4 /* IndexViewController.m in Sources */,
 				9E5A2525196A308A00C6D1A4 /* GetSecondDirectoryOfTimeRespBody.m in Sources */,
 				9E5A2509196A308A00C6D1A4 /* AddCommentRespBody.m in Sources */,
-				9E5A24FB196A308A00C6D1A4 /* MBProgressHUD.m in Sources */,
 				9E5A2589196A398B00C6D1A4 /* FDirectoryModel.m in Sources */,
 				9E5A251B196A308A00C6D1A4 /* GetJobRespBody.m in Sources */,
 				9E9183C71978C6A00045B8D6 /* AccountModel.m in Sources */,
@@ -1818,24 +1822,23 @@
 				9E5A251C196A308A00C6D1A4 /* GetMainInfoReqBody.m in Sources */,
 				9E5A2519196A308A00C6D1A4 /* GetImgListRespBody.m in Sources */,
 				9E4910AA1976523300767FDB /* GetMyExecuteTaskListReqBody.m in Sources */,
-				9E5A2500196A308A00C6D1A4 /* QBImagePickerController.m in Sources */,
 				9E5A2520196A308A00C6D1A4 /* GetPeopleOpinionReturnReqBody.m in Sources */,
 				9E5A2524196A308A00C6D1A4 /* GetSecondDirectoryOfTimeReqBody.m in Sources */,
 				9E83D1661977B9A900ECB49C /* TaskCell.m in Sources */,
-				9E5A24F4196A308A00C6D1A4 /* AFImageRequestOperation.m in Sources */,
 				9E6648F91976113900F810CC /* PlayerViewController.m in Sources */,
 				9E5A2510196A308A00C6D1A4 /* AddPeopleOpinionReturnReqBody.m in Sources */,
+				9EC7BF06197E580E000A0E54 /* AFPropertyListRequestOperation.m in Sources */,
 				9E5A2571196A33AD00C6D1A4 /* UIView+RectCorner.m in Sources */,
 				9E5A250C196A308A00C6D1A4 /* AddPeopleAccountReqBody.m in Sources */,
-				9E5A24FD196A308A00C6D1A4 /* QBImagePickerAssetCell.m in Sources */,
 				9E5A25C3196A413A00C6D1A4 /* GetTVOfSearchRespBody.m in Sources */,
+				9EC7BF0C197E580E000A0E54 /* QBImagePickerAssetCell.m in Sources */,
 				9E8DE23E197CE8C900BFC6A1 /* VedioModel.m in Sources */,
+				9EC7BF12197E580E000A0E54 /* QBImagePickerVideoInfoView.m in Sources */,
+				9EC7BF10197E580E000A0E54 /* QBImagePickerFooterView.m in Sources */,
 				9E5A25D5196A419F00C6D1A4 /* GetTVInfoRespBody.m in Sources */,
 				9E5A2522196A308A00C6D1A4 /* GetSecondDirectoryReqBody.m in Sources */,
-				9E5A2501196A308A00C6D1A4 /* QBImagePickerFooterView.m in Sources */,
 				9E5A25FF196A426900C6D1A4 /* GetMyAcceptTaskListRespBody.m in Sources */,
 				9E5A25B1196A40B600C6D1A4 /* AddTVCommentRespBody.m in Sources */,
-				9E5A24F8196A308A00C6D1A4 /* AFURLConnectionOperation.m in Sources */,
 				9E5A258D196A398B00C6D1A4 /* ImageModel.m in Sources */,
 				9E5A25F0196A422600C6D1A4 /* GetMyTVListOfGoodCountReqBody.m in Sources */,
 				9E5A24F0196A308A00C6D1A4 /* TBXML.m in Sources */,
@@ -1847,32 +1850,33 @@
 				9E5A25A2196A405900C6D1A4 /* GetAccountListReqBody.m in Sources */,
 				9E5A25CC196A416B00C6D1A4 /* GetTVListOfGoodCountReqBody.m in Sources */,
 				9E5A2588196A398B00C6D1A4 /* JobModel.m in Sources */,
-				9E5A24F2196A308A00C6D1A4 /* AFHTTPClient.m in Sources */,
 				9E5A250E196A308A00C6D1A4 /* AddPeopleOpinionReqBody.m in Sources */,
 				9E5A25AB196A409100C6D1A4 /* AddTVGoodReqBody.m in Sources */,
 				9E8DE242197CEA8A00BFC6A1 /* TVCommentModel.m in Sources */,
 				9ED53AE4196285A900DA3248 /* ViewController.m in Sources */,
 				9E5A2507196A308A00C6D1A4 /* AddAccountRespBody.m in Sources */,
 				9E4DACF2196A8834008C71BD /* HeadViewController.m in Sources */,
+				9EC7BF0D197E580E000A0E54 /* QBImagePickerAssetView.m in Sources */,
 				9E5A2603196A6E7500C6D1A4 /* BaseViewController.m in Sources */,
+				9EC7BF0F197E580E000A0E54 /* QBImagePickerController.m in Sources */,
 				9E24710A197CAA1200289E84 /* AcceptTaskReqBody.m in Sources */,
 				9E5A24ED196A308A00C6D1A4 /* AFHttpRequestUtils.m in Sources */,
 				9ED53ADE196285A900DA3248 /* AppDelegate.m in Sources */,
 				9E5A2529196A308A00C6D1A4 /* UploadFileRespBody.m in Sources */,
 				9E5A25DB196A41C500C6D1A4 /* GetTVCommentRespBody.m in Sources */,
+				9EC7BF05197E580E000A0E54 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				9EC7BF11197E580E000A0E54 /* QBImagePickerGroupCell.m in Sources */,
 				9ED53ADA196285A900DA3248 /* main.m in Sources */,
 				9E5A2419196A307700C6D1A4 /* DataCenter.m in Sources */,
 				9E5A25A5196A406900C6D1A4 /* GetAccountListRespBody.m in Sources */,
 				9E5A256F196A33AD00C6D1A4 /* UIPlaceHolderTextView.m in Sources */,
 				9E4DAD06196A9CDE008C71BD /* MoreViewController.m in Sources */,
 				9E5A25D2196A419400C6D1A4 /* GetTVInfoReqBody.m in Sources */,
-				9E5A24FC196A308A00C6D1A4 /* QBAssetCollectionViewController.m in Sources */,
 				9E5A2528196A308A00C6D1A4 /* UploadFileReqBody.m in Sources */,
 				9E5A25BA196A40FB00C6D1A4 /* UploadTVFileReqBody.m in Sources */,
 				9E5A256E196A33AD00C6D1A4 /* UINavigationItem+Margin.m in Sources */,
 				9ED53B071962AE4000DA3248 /* UIColor+extend.m in Sources */,
 				9E247113197CAA3E00289E84 /* EndTaskRespBody.m in Sources */,
-				9E5A24FE196A308A00C6D1A4 /* QBImagePickerAssetView.m in Sources */,
 				9E5A25C9196A415900C6D1A4 /* GetTVListOfTimeRespBody.m in Sources */,
 				9E4DAD03196A9CD2008C71BD /* FifthViewController.m in Sources */,
 				9EBDDC761974D2AA006CAD7A /* LoginsViewController.m in Sources */,
@@ -1882,32 +1886,28 @@
 				9E5A25F6196A424200C6D1A4 /* GetMySendTaskListReqBody.m in Sources */,
 				9E247119197CB91C00289E84 /* CollectionHeaderView.m in Sources */,
 				9E5A2526196A308A00C6D1A4 /* GetTopDirectoryReqBody.m in Sources */,
-				9E5A24F9196A308A00C6D1A4 /* AFXMLRequestOperation.m in Sources */,
 				9E5A251E196A308A00C6D1A4 /* GetPeopleOpinionListReqBody.m in Sources */,
 				9E5A250A196A308A00C6D1A4 /* AddGoodReqBody.m in Sources */,
 				9E5A25ED196A421600C6D1A4 /* GetMyTVListOfTimeRespBody.m in Sources */,
 				9EE9D3BE1977B19E00508574 /* DateShowCell.m in Sources */,
 				9E4DACFD196A9CBC008C71BD /* ThirdViewController.m in Sources */,
 				9E5A25E7196A41FC00C6D1A4 /* GetPeopleAccountListRespBody.m in Sources */,
-				9E5A2502196A308A00C6D1A4 /* QBImagePickerGroupCell.m in Sources */,
 				9E5A25CF196A417D00C6D1A4 /* GetTVListOfGoodCountRespBody.m in Sources */,
 				9E5A25F9196A424D00C6D1A4 /* GetMySendTaskListRespBody.m in Sources */,
-				9E5A24F5196A308A00C6D1A4 /* AFJSONRequestOperation.m in Sources */,
 				9E5A2506196A308A00C6D1A4 /* AddAccountReqBody.m in Sources */,
 				9E5A24EF196A308A00C6D1A4 /* RespBody.m in Sources */,
 				9E5A258C196A398B00C6D1A4 /* ImageDetailModel.m in Sources */,
 				9E5A2512196A308A00C6D1A4 /* AddSecondDirectoryReqBody.m in Sources */,
 				9E5A256D196A33AD00C6D1A4 /* UINavigationBar+Customer.m in Sources */,
+				9EC7BF02197E580E000A0E54 /* AFHTTPRequestOperation.m in Sources */,
 				9E5A2570196A33AD00C6D1A4 /* UIScrollView+PullLoad.m in Sources */,
 				9E247110197CAA3300289E84 /* AcceptTaskRespBody.m in Sources */,
-				9E5A2503196A308A00C6D1A4 /* QBImagePickerVideoInfoView.m in Sources */,
 				9E5A2573196A33AD00C6D1A4 /* WaterFlowView.m in Sources */,
 				9E5A256B196A33AD00C6D1A4 /* CommentCell.m in Sources */,
 				9E5A241B196A307700C6D1A4 /* UncaughtExceptionHandler.mm in Sources */,
 				9E5A2513196A308A00C6D1A4 /* AddSecondDirectoryRespBody.m in Sources */,
 				9E5A25B7196A40DC00C6D1A4 /* AddTaskRespBody.m in Sources */,
 				9E5A25F3196A423200C6D1A4 /* GetMyTVListOfGoodCountRespBody.m in Sources */,
-				9E5A24F7196A308A00C6D1A4 /* AFPropertyListRequestOperation.m in Sources */,
 				9E4910AD1976523D00767FDB /* GetMyExecuteTaskListRespBody.m in Sources */,
 				9E5A24EE196A308A00C6D1A4 /* ReqBody.m in Sources */,
 				9E5A250F196A308A00C6D1A4 /* AddPeopleOpinionRespBody.m in Sources */,
@@ -2038,8 +2038,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/VedioTeacher/OpenSource/UtilsGather/iphonesimulator",
-					"$(PROJECT_DIR)/VedioTeacher/OpenSource/UtilsGather/iphone-os",
+					"$(PROJECT_DIR)/VedioTeacher/Libraries/UtilsGather/iphonesimulator",
+					"$(PROJECT_DIR)/VedioTeacher/Libraries/UtilsGather/iphone-os",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -2059,8 +2059,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/VedioTeacher/OpenSource/UtilsGather/iphonesimulator",
-					"$(PROJECT_DIR)/VedioTeacher/OpenSource/UtilsGather/iphone-os",
+					"$(PROJECT_DIR)/VedioTeacher/Libraries/UtilsGather/iphonesimulator",
+					"$(PROJECT_DIR)/VedioTeacher/Libraries/UtilsGather/iphone-os",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s arm64";
