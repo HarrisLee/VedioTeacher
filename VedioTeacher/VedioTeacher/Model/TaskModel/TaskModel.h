@@ -17,6 +17,8 @@
     NSString *idSecondDirectory;
     NSString *addTaskAccountID;
     NSString *accountID;
+    NSString *taskNote;
+    NSString *isDel;
 }
 @property (nonatomic, retain) NSString *taskID;
 @property (nonatomic, retain) NSString *taskName;
@@ -25,4 +27,6 @@
 @property (nonatomic, retain) NSString *idSecondDirectory;
 @property (nonatomic, retain) NSString *addTaskAccountID;
 @property (nonatomic, retain) NSString *accountID;
+@property (nonatomic, retain) NSString *taskNote;
+@property (nonatomic, retain) NSString *isDel;
 @end

@@ -22,4 +22,6 @@
 
 -(void) clearClicked;
 
+-(void) setHighlightedAtIndex:(int) index;
+
 @end

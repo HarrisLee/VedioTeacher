@@ -16,6 +16,8 @@
 @synthesize idSecondDirectory;
 @synthesize addTaskAccountID;
 @synthesize accountID;
+@synthesize taskNote;
+@synthesize isDel;
 
 -(void) dealloc
 {
@@ -26,6 +28,8 @@
     [idSecondDirectory release];
     [addTaskAccountID release];
     [accountID release];
+    [taskNote release];
+    [isDel release];
     [super dealloc];
 }
 @end

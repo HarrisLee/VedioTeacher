@@ -39,6 +39,7 @@
     //已经发布的任务、详细信息
     UIView *sendedView;
     NSInteger didSection;  //选择的Section 用于确定年份
+    NSInteger didRow;      //选择的月份，用于显示点击的按钮
     NSMutableArray *accountArray; //所有用户数组
     NSMutableArray *taskArray;  //发布的任务数组
     NSMutableArray *acceptArray; //接受的任务数组

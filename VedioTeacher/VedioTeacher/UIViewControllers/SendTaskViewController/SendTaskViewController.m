@@ -35,6 +35,7 @@
     [self.navigationController setNavigationBarHidden:YES];
     
     didSection = 0;
+    didRow = 0;
     showTask = @"1";
     dateArray = [[NSMutableArray alloc] initWithObjects:@"2014",@"2015",@"2016",@"2017",@"2018",@"2019",@"2020", nil];;
     taskArray = [[NSMutableArray alloc] init];
@@ -54,11 +55,19 @@
     [titleRect setHidden:NO];
     taskTitleField.text = @"";
     taskInfoView.text = @"";
+    taskTitleField.userInteractionEnabled = YES;
+    taskInfoView.userInteractionEnabled = YES;
     taskAccountName.text = @"";
     [taskAccount setHidden:YES];
     [taskAccountName setHidden:YES];
     taskInfoView.layer.borderWidth = 1.0;
     [sendedView setHidden:NO];
+    for (int i = 0; i<[accountArray count]; i++) {
+        UIButton *btn = (UIButton *)[userScroll viewWithTag:2000+i];
+        btn.userInteractionEnabled = YES;
+        [btn setSelected:NO];
+    }
+    [sendTable reloadData];
 }
 
 //显示我接受的任务
@@ -68,11 +77,19 @@
     [titleRect setHidden:YES];
     taskTitleField.text = @"";
     taskInfoView.text = @"";
+    taskTitleField.userInteractionEnabled = NO;
+    taskInfoView.userInteractionEnabled = NO;
     taskAccountName.text = @"";
     [taskAccount setHidden:NO];
     [taskAccountName setHidden:NO];
     taskInfoView.layer.borderWidth = 0.0;
     [sendedView setHidden:NO];
+    for (int i = 0; i<[accountArray count]; i++) {
+        UIButton *btn = (UIButton *)[userScroll viewWithTag:2000+i];
+        btn.userInteractionEnabled = NO;
+        [btn setSelected:NO];
+    }
+    [sendTable reloadData];
     
 }
 
@@ -149,6 +166,7 @@
         alertMessage(@"添加任务失败，请重新添加");
         return ;
     }
+    alertMessage(@"添加任务成功.");
 }
 
 -(void) checkAcceptTask:(AcceptTaskRespBody *)response
@@ -173,7 +191,7 @@
         return didSection - section ? 0 : 1;
     }
     if ([showTask isEqualToString:@"1"]) {
-        return 100;//[taskArray count];
+        return [taskArray count];
     }
     return [acceptArray count];
 }
@@ -235,7 +253,14 @@
     if (!cell) {
         cell = [[[TaskCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
     }
-    cell.taskName.text = @"123456";
+    if ([showTask isEqualToString:@"1"]) {
+        TaskModel *model = [taskArray objectAtIndex:indexPath.row];
+        cell.taskName.text = model.taskName;
+    } else {
+        TaskModel *model = [acceptArray objectAtIndex:indexPath.row];
+        cell.taskName.text = model.taskName;
+    }
+    
     return cell;
 }
 
@@ -249,27 +274,56 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"%d-%d",indexPath.section,indexPath.row);
+    if (indexPath.section > 6) {
+        if ([showTask isEqualToString:@"1"]) {
+            TaskModel *model = [taskArray objectAtIndex:indexPath.row];
+            taskTitleField.text = model.taskName;
+            taskInfoView.text = model.taskNote;
+            //显示接受的用户
+            
+            
+        } else {
+            TaskModel *model = [acceptArray objectAtIndex:indexPath.row];
+            taskTitleField.text = model.taskName;
+            taskAccountName.text = model.addTaskAccountID;
+            taskInfoView.text = model.taskNote;
+            [self getTaskInfo:model.taskID];
+        }
+    }
 }
 
 -(void) mouthClickAtIndex:(id)sender
 {
     NSLog(@"%@",[[sender currentTitle] stringByReplacingOccurrencesOfString:@"月" withString:@""]);
     
-    if ([startTime hasSuffix:[NSString stringWithFormat:@"%d",[sender tag]]]) {
+    if ([startTime hasSuffix:[NSString stringWithFormat:@"%02d-01",[sender tag]]]) {
         if ([startTime hasPrefix:[dateArray objectAtIndex:didSection]]) {
             return ;
         }
     }
-    
-    startTime = [NSString stringWithFormat:@""];
-    endTime = [NSString stringWithFormat:@""];
+    NSString *mouth = [[sender currentTitle] stringByReplacingOccurrencesOfString:@"月" withString:@""];
+    didRow = [mouth intValue];
+    [startTime release];  [endTime release];
+    startTime = [[NSString stringWithFormat:@"%@-%02d-01",[dateArray objectAtIndex:didSection],[mouth intValue]] retain];
+    endTime = [[NSString stringWithFormat:@"%@-%02d-30",[dateArray objectAtIndex:didSection],[mouth intValue]] retain];
     if ([showTask isEqualToString:@"1"]) {
         [self getMySendedTask:[DataCenter shareInstance].loginId startTime:startTime endTime:endTime];
+        taskTitleField.text = @"";
+        taskInfoView.text = @"";
+        for (int i = 0; i<[accountArray count]; i++) {
+            UIButton *btn = (UIButton *)[userScroll viewWithTag:2000+i];
+            [btn setSelected:NO];
+        }
     } else {
         [self getMyAcceptTask:[DataCenter shareInstance].loginId startTime:startTime endTime:endTime];
+        taskTitleField.text = @"";
+        taskAccountName.text = @"";
+        taskInfoView.text = @"";
+        for (int i = 0; i<[accountArray count]; i++) {
+            UIButton *btn = (UIButton *)[userScroll viewWithTag:2000+i];
+            [btn setSelected:NO];
+        }
     }
-    
-    
 }
 
 -(BOOL) textViewShouldBeginEditing:(UITextView *)textView
@@ -306,7 +360,6 @@
         NSLog(@"Error : %@", [error localizedDescription]);
         alertMessage(@"请求失败，获取用户列表失败.");
     }];
-    
     [operation start];
     [operation release];
 }
@@ -323,11 +376,20 @@
     for (AccountModel *model in response.accountListResult) {
         [accountArray addObject:model];
     }
-
+    
+    UIButton *title = [UIButton buttonWithType:UIButtonTypeCustom];
+    title.frame = CGRectMake(10, 20, 100, 30);
+    [title setImage:[UIImage imageNamed:@"common_button_green_highlighted"] forState:UIControlStateNormal];
+    [title setTitle:@"  已参与者" forState:UIControlStateNormal];
+    [title setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [title.titleLabel setFont:[UIFont systemFontOfSize:13.0f]];
+    title.userInteractionEnabled = NO;
+    [userScroll addSubview:title];
+    
     for (int i = 0; i < [accountArray count]; i++) {
         AccountModel *model = accountArray[i];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(10 + 97*(i%2), 10 + 40*(i/2), 87, 30);
+        button.frame = CGRectMake(10 + 97*(i%2), 60 + 40*(i/2), 87, 30);
         button.tag = 2000+i;
         [button.titleLabel setFont:[UIFont systemFontOfSize:13.0f]];
         [button setTitle:[model.peopleName stringByReplacingOccurrencesOfString:@" " withString:@""] forState:UIControlStateNormal];
@@ -374,7 +436,16 @@
 
 -(void) checkSendTaskList:(GetMySendTaskListRespBody *) response
 {
-    
+    [taskArray removeAllObjects];
+    if ([response.taskList count] == 0) {
+        alertMessage(@"当前日期范围内暂无任务.");
+        [sendTable reloadData];
+        return ;
+    }
+    for (id obj in response.taskList) {
+        [taskArray addObject:obj];
+    }
+    [sendTable reloadData];
 }
 
 /*!
@@ -407,7 +478,16 @@
 
 -(void) checkAccpetTaskList:(GetMyAcceptTaskListRespBody *) response
 {
-    
+    [acceptArray removeAllObjects];
+    if ([response.taskAcceptList count] == 0) {
+        alertMessage(@"当前日期范围内暂无任务.");
+        [sendTable reloadData];
+        return ;
+    }
+    for (id obj in response.taskAcceptList) {
+        [acceptArray addObject:obj];
+    }
+    [sendTable reloadData];
 }
 
 /*!
@@ -418,7 +498,7 @@
 -(void) getTaskInfo:(NSString *)taskid
 {
     GetTaskInfoReqBody *reqBody = [[GetTaskInfoReqBody alloc] init];
-    reqBody.taskid = taskid;
+    reqBody.taskid = [taskid stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_TASKINFO];
     [reqBody release];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -606,7 +686,7 @@
     [sendedView addSubview:taskAccount];
     [taskAccount release];
     
-    taskAccountName = [[UILabel alloc] initWithFrame:CGRectMake(taskAccount.frame.origin.x + taskAccount.frame.size.width + 15, taskAccount.frame.origin.y, 100, 20)];
+    taskAccountName = [[UILabel alloc] initWithFrame:CGRectMake(taskAccount.frame.origin.x + taskAccount.frame.size.width + 15, taskAccount.frame.origin.y, 242, 20)];
     [taskAccountName setHidden:YES];
     taskAccountName.text = @"任务发布者";
     taskAccountName.textColor = [UIColor blackColor];

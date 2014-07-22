@@ -34,6 +34,7 @@
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button setTitle:[NSString stringWithFormat:@"%d月",i+1] forState:UIControlStateNormal];
         button.tag = 600 + i;
+        [button.titleLabel setFont:[UIFont systemFontOfSize:11.0f]];
         [button addTarget:self action:@selector(mouthClickAtIndex:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
     }
@@ -64,6 +65,17 @@
     for (int i = 0; i<12; i++) {
         UIButton *btn = (UIButton *)[self viewWithTag:600+i];
         [btn setBackgroundColor:[UIColor whiteColor]];
+    }
+}
+
+-(void) setHighlightedAtIndex:(int) index
+{
+    for (int i = 0; i<12; i++) {
+        UIButton *btn = (UIButton *)[self viewWithTag:600+i];
+        [btn setBackgroundColor:[UIColor whiteColor]];
+        if (index == i) {
+            [btn setBackgroundColor:[UIColor getColor:@"3FA6FF"]];
+        }
     }
 }
 
