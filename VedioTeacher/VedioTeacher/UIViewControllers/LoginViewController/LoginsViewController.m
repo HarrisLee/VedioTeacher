@@ -189,7 +189,7 @@
         
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error : %@", [error localizedDescription]);
-        alertMessage(@"请求出错,请稍后重试.");
+        alertMessage(@"登录出错,请稍后重试.");
     }];
     
     [theOperation start];
