@@ -13,6 +13,10 @@
 
 -(void) setValue:(id)value
 {
+    if (![value isKindOfClass:[NSArray class]]) {
+        return ;
+    }
+    
     NSMutableArray *array = [[NSMutableArray alloc] init];
     self.accountListResult = array;
     [array release];

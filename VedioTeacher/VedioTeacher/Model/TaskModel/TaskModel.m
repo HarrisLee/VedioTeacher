@@ -9,5 +9,23 @@
 #import "TaskModel.h"
 
 @implementation TaskModel
+@synthesize taskID;
+@synthesize taskName;
+@synthesize addTaskTime;
+@synthesize isAccept;
+@synthesize idSecondDirectory;
+@synthesize addTaskAccountID;
+@synthesize accountID;
 
+-(void) dealloc
+{
+    [taskID release];
+    [taskName release];
+    [addTaskTime release];
+    [isAccept release];
+    [idSecondDirectory release];
+    [addTaskAccountID release];
+    [accountID release];
+    [super dealloc];
+}
 @end

@@ -9,16 +9,29 @@
 #import "GetTVOfSearchRespBody.h"
 
 @implementation GetTVOfSearchRespBody
-@synthesize result;
+@synthesize tvList;
 
 -(void) setValue:(id)value
 {
-    self.result = value;
+    if (![value isKindOfClass:[NSArray class]]) {
+        return ;
+    }
+    
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    self.tvList = array;
+    [array release];
+    
+    for (id obj in value) {
+        VedioModel *model = [[VedioModel alloc] init];
+        [Utils setProperty:model withDic:obj];
+        [tvList addObject:model];
+        [model release];
+    }
 }
 
 -(void) dealloc
 {
-    [result release];
+    [tvList release];
     [super dealloc];
 }
 @end

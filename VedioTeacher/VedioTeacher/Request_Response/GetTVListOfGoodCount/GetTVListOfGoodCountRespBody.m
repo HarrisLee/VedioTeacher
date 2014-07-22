@@ -22,10 +22,10 @@
     [array release];
     
     for (id obj in value) {
-//        SDirectoryModel *model = [[SDirectoryModel alloc] init];
-//        [Utils setProperty:model withDic:obj];
-//        [tvList addObject:model];
-//        [model release];
+        VedioModel *model = [[VedioModel alloc] init];
+        [Utils setProperty:model withDic:obj];
+        [tvList addObject:model];
+        [model release];
     }
 }
 

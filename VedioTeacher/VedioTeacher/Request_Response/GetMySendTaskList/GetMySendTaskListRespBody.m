@@ -13,7 +13,20 @@
 
 -(void) setValue:(id)value
 {
+    if (![value isKindOfClass:[NSArray class]]) {
+        return ;
+    }
     
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    self.taskList = array;
+    [array release];
+    
+    for (id obj in value) {
+        TaskModel *model = [[TaskModel alloc] init];
+        [Utils setProperty:model withDic:obj];
+        [taskList addObject:model];
+        [model release];
+    }
 }
 
 -(void) dealloc

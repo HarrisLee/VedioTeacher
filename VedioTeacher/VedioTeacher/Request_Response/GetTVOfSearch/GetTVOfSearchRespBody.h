@@ -7,10 +7,11 @@
 //
 
 #import "RespBody.h"
+#import "VedioModel.h"
 
 @interface GetTVOfSearchRespBody : RespBody
 {
-    NSString *result;
+    NSMutableArray *tvList;
 }
-@property (nonatomic, retain) NSString *result;
+@property (nonatomic, retain) NSMutableArray *tvList;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "RespBody.h"
+#import "TaskModel.h"
 
 @interface GetMyAcceptTaskListRespBody : RespBody
 {

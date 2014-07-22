@@ -13,7 +13,7 @@
 
 -(void) setValue:(id)value
 {
-    
+    self.tVGoodResult = value;
 }
 
 -(void) dealloc

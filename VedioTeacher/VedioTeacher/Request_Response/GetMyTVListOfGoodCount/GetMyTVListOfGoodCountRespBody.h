@@ -7,6 +7,7 @@
 //
 
 #import "RespBody.h"
+#import "VedioModel.h"
 
 @interface GetMyTVListOfGoodCountRespBody : RespBody
 {

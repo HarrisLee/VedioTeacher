@@ -7,10 +7,11 @@
 //
 
 #import "RespBody.h"
+#import "TaskModel.h"
 
 @interface GetTVCommentRespBody : RespBody
 {
-    NSString *commentResult;
+    NSMutableArray *commentList;
 }
-@property (nonatomic, retain) NSString *commentResult;
+@property (nonatomic, retain) NSMutableArray *commentList;
 @end

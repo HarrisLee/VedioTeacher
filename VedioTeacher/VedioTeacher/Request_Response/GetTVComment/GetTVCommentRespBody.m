@@ -9,16 +9,29 @@
 #import "GetTVCommentRespBody.h"
 
 @implementation GetTVCommentRespBody
-@synthesize commentResult;
+@synthesize commentList;
 
 -(void) setValue:(id)value
 {
-    self.commentResult = value;
+    if (![value isKindOfClass:[NSArray class]]) {
+        return ;
+    }
+    
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    self.commentList = array;
+    [array release];
+    
+    for (id obj in value) {
+        TaskModel *model = [[TaskModel alloc] init];
+        [Utils setProperty:model withDic:obj];
+        [commentList addObject:model];
+        [model release];
+    }
 }
 
 -(void) dealloc
 {
-    [commentResult release];
+    [commentList release];
     [super dealloc];
 }
 
