@@ -79,7 +79,7 @@
 {
     NSLog(@"%d",[response.sDirectoryArray count]);
     if ([response.sDirectoryArray count] == 0) {
-        alertMessage(@"二级目录暂时为空.");
+//        alertMessage(@"二级目录暂时为空.");
         return ;
     }
     
@@ -315,12 +315,12 @@
 {
     isLoading = NO;
     if (!response) {
-        alertMessage(@"获取视频列表失败，请重新获取.");
+//        alertMessage(@"获取视频列表失败，请重新获取.");
         return ;
     }
     
     if ([response.tvList count] == 0) {
-        alertMessage(@"该目录下视频列表为空.");
+//        alertMessage(@"该目录下视频列表为空.");
         return ;
     }
     

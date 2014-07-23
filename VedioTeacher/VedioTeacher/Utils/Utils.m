@@ -569,6 +569,34 @@ typedef int (*PMobileInstallationInstall)(NSString *path, NSDictionary *dict, vo
     return weekStr;
 }
 
++ (BOOL)writeDataToPath:(NSString*)filePath andAsset:(ALAsset*)asset
+{
+    [[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
+    NSFileHandle *handle = [NSFileHandle fileHandleForWritingAtPath:filePath];
+    if (!handle) {
+        return NO;
+    }
+    static const NSUInteger BufferSize = 1024*1024;
+    
+    ALAssetRepresentation *rep = [asset defaultRepresentation];
+    uint8_t *buffer = calloc(BufferSize, sizeof(*buffer));
+    NSUInteger offset = 0, bytesRead = 0;
+    
+    do {
+        @try {
+            bytesRead = [rep getBytes:buffer fromOffset:offset length:BufferSize error:nil];
+            [handle writeData:[NSData dataWithBytesNoCopy:buffer length:bytesRead freeWhenDone:NO]];
+            offset += bytesRead;
+        } @catch (NSException *exception) {
+            free(buffer);
+            
+            return NO;
+        }
+    } while (bytesRead > 0);
+    
+    free(buffer);
+    return YES;
+}
 
 @end
 

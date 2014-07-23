@@ -78,9 +78,12 @@ static AFHttpRequestUtils *m_RequestCenter = nil;
     [urlRequest setHTTPMethod:@"POST"];
     
     [urlRequest setHTTPBody:[soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [urlRequest setTimeoutInterval:2];
-    
+    if ([reqType isEqualToString:UPLOAD_TVFILE]) {
+        [urlRequest setTimeoutInterval:60*60];
+    } else {
+        [urlRequest setTimeoutInterval:30];
+    }
+
     return urlRequest;
 }
 

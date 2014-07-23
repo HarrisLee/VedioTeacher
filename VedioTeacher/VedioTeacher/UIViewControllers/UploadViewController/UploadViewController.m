@@ -36,6 +36,7 @@
     secondArray = [[NSMutableArray alloc] init];
     taskArray = [[NSMutableArray alloc] init];
     uploadArray = [[NSMutableArray alloc] init];
+    fileArray = [[NSMutableArray alloc] init];
     
     [self setUpInitView];
     
@@ -119,38 +120,124 @@
 
 -(void) uploadVedioWith:(NSArray *)mediaInfoArray
 {
-//    errorCount = 0;
-//    startTag = YES;
-//    finishCount = 0;
-//    if (startTag == YES) {
-//        HUD = [[MBProgressHUD alloc] initWithView:self.view];
-//        UIWindow *window = [UIApplication sharedApplication].keyWindow;
-//        [window addSubview:HUD];
-//        // Set determinate mode
-//        HUD.mode = MBProgressHUDModeAnnularDeterminate;
-//        HUD.delegate = self;
-//        HUD.labelText = @"图片上传中...";
-//        [HUD show:YES];
-//        startTag = NO;
-//        UIActivityIndicatorView *actView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//        actView.frame = CGRectMake(150, (SCREEN_HEIGHT - 20)/2-11, 20, 20);
-//        [actView startAnimating];
-//        [HUD addSubview:actView];
-//        [actView release];
-//    }
+    errorCount = 0;
+    finishCount = 0;
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:HUD];
+    // Set determinate mode
+    HUD.mode = MBProgressHUDModeAnnularDeterminate;
+    HUD.delegate = self;
+    HUD.labelText = @"视频上传中...";
+    [HUD show:YES];
+    UIActivityIndicatorView *actView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    actView.frame = CGRectMake(502, (768 - 20)/2-11, 20, 20);
+    [actView startAnimating];
+    [HUD addSubview:actView];
+    [actView release];
     
-    @autoreleasepool {
-        for (ALAsset *asset in mediaInfoArray) {
-            if ([asset valueForProperty:ALAssetPropertyType] == ALAssetTypeVideo) {
-                ALAssetRepresentation *rep = [asset defaultRepresentation];
-                Byte *buffer = (Byte*)malloc(rep.size);
-                NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
-                NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
-                [uploadArray addObject:data];
-            }
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    int writeCount = 0;
+    
+    for (ALAsset *asset in mediaInfoArray) {
+        writeCount ++ ;
+        NSString *documentsDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:[[asset defaultRepresentation] filename]];
+        if ([Utils writeDataToPath:documentsDirectory andAsset:asset]) {
+            NSData *data = [[NSData alloc] initWithContentsOfFile:documentsDirectory];
+            [uploadArray addObject:[data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
+            [fileArray addObject:documentsDirectory];
+            [data release];
         }
+        if ([mediaInfoArray count] == writeCount) {
+            [self upLoadImageWithSort];
+        }
+    }
+}
+
+-(void) upLoadImageWithSort
+{
+    if ([uploadArray count] == 0 || finishCount >= [uploadArray count]) {
+        [HUD hide:YES];
+        errorCount = 0;
+        finishCount = 0;
+        [uploadArray removeAllObjects];
+        return ;
+    }
+    
+    UploadTVFileReqBody *upreqBody = [[UploadTVFileReqBody alloc] init];
+    
+    upreqBody.idSecondDirectory = [selectModel.idSecondDirectory stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSRange range = [[fileArray objectAtIndex:finishCount] rangeOfString:@"/" options:NSBackwardsSearch];
+    NSString *file = [[fileArray objectAtIndex:finishCount] substringFromIndex:range.location+1];
+    upreqBody.nameTV = [NSString stringWithFormat:@"%@_%@",vedioNameField.text,file];
+    
+    upreqBody.describeTV = [coverRemark text];
+    
+    upreqBody.addAccountId = [DataCenter shareInstance].loginId;
+    
+//    NSData *data = [uploadArray objectAtIndex:finishCount];
+//    
+//    NSString *dataStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];//[NSString base64Encode:data];
+    
+    NSLog(@"%d",[[uploadArray objectAtIndex:finishCount] length]);
+    
+    upreqBody.fs = [uploadArray objectAtIndex:finishCount];//dataStr;
+    
+    NSMutableURLRequest *requestUp = [[AFHttpRequestUtils shareInstance] requestWithBody:upreqBody andReqType:UPLOAD_TVFILE];
+    
+    AFHTTPRequestOperation *theOperationUp = [[AFHTTPRequestOperation alloc] initWithRequest:requestUp];
+    [theOperationUp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation,id responseObject){
         
+        UploadTVFileRespBody *respBody = (UploadTVFileRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:UPLOAD_TVFILE];
+        
+        [self reloadWaterView:respBody];
+        
+    } failure:^(AFHTTPRequestOperation *operation,NSError *error){
+        
+        NSLog(@"Error : %@",[error localizedDescription]);
+        [self uploadFail:error];
+        
+    }];
+    [theOperationUp start];
+    [theOperationUp release];
+}
+
+-(void) reloadWaterView:(UploadTVFileRespBody *)respBody
+{
+    finishCount ++;
+    HUD.progress = 1.0;//((float)finishCount)/uploadArray.count;
+//    if ([@"\"0\"" isEqualToString:respBody.result]) {
 //        [self upLoadImageWithSort];
+//        errorCount ++;
+//        if (finishCount == [uploadArray count] && errorCount > 0) {
+//            alertMessage(@"有视频上传失败。");
+//        }
+//        return ;
+//    }
+//    respBody.result = [respBody.result stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+//    NSArray *array = [respBody.result componentsSeparatedByString:@"|"];
+//    ImageModel *model = [[ImageModel alloc] init];
+//    model.goodCount = @"0";
+//    model.virtualPath = [array objectAtIndex:0];
+//    model.idImg = [array objectAtIndex:1];
+//    model.nameImg = [NSString stringWithFormat:@"%@_%d.png",nameString,finishCount];
+//    [imageArray addObject:model];
+//    
+////    [waterFlower loadData];
+//    
+//    [self upLoadImageWithSort];
+}
+
+-(void) uploadFail:(NSError *)error
+{
+    finishCount ++;
+    HUD.progress = ((float)finishCount)/uploadArray.count;
+    [self upLoadImageWithSort];
+    errorCount ++;
+    if (finishCount == [uploadArray count] && errorCount > 0) {
+        alertMessage(@"有视频上传失败。");
     }
 }
 
@@ -222,6 +309,8 @@
 -(void) submitFile:(id) sender
 {
     NSLog(@"submite file");
+    [uploadArray removeAllObjects];
+    [fileArray removeAllObjects];
 }
 
 #pragma mark ---------------------------------
@@ -308,8 +397,9 @@
         [operation start];
         [operation release];
     } else if(selectType == 2){
-        SDirectoryModel *model = [secondArray objectAtIndex:indexPath.row];
-        top2Field.text = model.nameSecondDirectory;
+        [selectModel release];
+        selectModel = [[secondArray objectAtIndex:indexPath.row] retain];
+        top2Field.text = selectModel.nameSecondDirectory;
     } else {
         
         relevanceField.text = @"111";
@@ -327,6 +417,16 @@
     for (SDirectoryModel *model in response.sDirectoryArray) {
         [secondArray addObject:model];
     }
+}
+
+#pragma mark -
+#pragma mark MBProgressHUDDelegate methods
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+	// Remove HUD from screen when the HUD was hidded
+	[HUD removeFromSuperview];
+	[HUD release];
+	HUD = nil;
 }
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -485,6 +585,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) dealloc
+{
+    [selectModel release];
+    [super dealloc];
 }
 
 @end

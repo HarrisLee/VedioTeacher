@@ -21,6 +21,7 @@
 #import "AFNetworking.h"
 #import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
+#import "AFHTTPRequestOperation.h"
 #import "NetPublicDefine.h"
 #import "AFHttpRequestUtils.h"
 //#define  __OPTIMIZE__

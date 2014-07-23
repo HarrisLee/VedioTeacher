@@ -236,7 +236,7 @@
     [HUD show:YES];
 
     UIActivityIndicatorView *actView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    actView.frame = CGRectMake(150, (SCREEN_HEIGHT - 20)/2-11, 20, 20);
+    actView.frame = CGRectMake(502, (768 - 20)/2-11, 20, 20);
     [actView startAnimating];
     [HUD addSubview:actView];
     [actView release];

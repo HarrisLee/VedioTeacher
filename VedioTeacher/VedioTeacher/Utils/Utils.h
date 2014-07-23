@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import <QuartzCore/QuartzCore.h>
 #import <Security/Security.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 #ifdef __cplusplus
 #define EXTERN_C extern "C"
@@ -102,6 +103,8 @@ InstallResult;
 + (void)showToast:(NSString *)text duration:(NSInteger) duration;
 
 + (void)showToast:(NSString *)text duration:(NSInteger) duration upKeyBoard:(BOOL)isUp;
+
++ (BOOL)writeDataToPath:(NSString*)filePath andAsset:(ALAsset*)asset;
 
 @end
 

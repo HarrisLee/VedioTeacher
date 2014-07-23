@@ -32,5 +32,10 @@
     NSMutableArray *secondArray;
     NSMutableArray *taskArray;
     NSMutableArray *uploadArray;
+    NSInteger finishCount;
+    NSInteger errorCount;
+    MBProgressHUD *HUD;
+    SDirectoryModel *selectModel;
+    NSMutableArray *fileArray;
 }
 @end
