@@ -7,10 +7,11 @@
 //
 
 #import "RespBody.h"
+#import "TaskModel.h"
 
 @interface GetTaskInfoRespBody : RespBody
 {
-    NSString *taskResult;
+    NSMutableArray *taskResult;
 }
-@property (nonatomic, retain) NSString *taskResult;
+@property (nonatomic, retain) NSMutableArray *taskResult;
 @end

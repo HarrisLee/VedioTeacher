@@ -59,5 +59,7 @@
     
     UIScrollView *userScroll;
     
+    NSInteger didSelectCell;
+    
 }
 @end

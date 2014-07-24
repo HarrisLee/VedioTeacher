@@ -140,17 +140,19 @@
     
     int writeCount = 0;
     
-    for (ALAsset *asset in mediaInfoArray) {
-        writeCount ++ ;
-        NSString *documentsDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:[[asset defaultRepresentation] filename]];
-        if ([Utils writeDataToPath:documentsDirectory andAsset:asset]) {
-            NSData *data = [[NSData alloc] initWithContentsOfFile:documentsDirectory];
-            [uploadArray addObject:[data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
-            [fileArray addObject:documentsDirectory];
-            [data release];
-        }
-        if ([mediaInfoArray count] == writeCount) {
-            [self upLoadImageWithSort];
+    @autoreleasepool {
+        for (ALAsset *asset in mediaInfoArray) {
+            writeCount ++ ;
+            NSString *documentsDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:[[asset defaultRepresentation] filename]];
+            if ([Utils writeDataToPath:documentsDirectory andAsset:asset]) {
+                NSData *data = [[NSData alloc] initWithContentsOfFile:documentsDirectory];
+                [uploadArray addObject:[data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
+                [fileArray addObject:documentsDirectory];
+                [data release];
+            }
+            if ([mediaInfoArray count] == writeCount) {
+                [self upLoadImageWithSort];
+            }
         }
     }
 }
@@ -177,13 +179,17 @@
     
     upreqBody.addAccountId = [DataCenter shareInstance].loginId;
     
-//    NSData *data = [uploadArray objectAtIndex:finishCount];
-//    
-//    NSString *dataStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];//[NSString base64Encode:data];
-    
     NSLog(@"%d",[[uploadArray objectAtIndex:finishCount] length]);
     
     upreqBody.fs = [uploadArray objectAtIndex:finishCount];//dataStr;
+    
+//    NSString *path = @"/Users/hmg/Library/Application Support/iPhone Simulator/7.1/Applications/AF4AA34A-0738-4219-802F-B16C5E4F9AE0/Documents/write/IMG_0030.mov";[[fileArray objectAtIndex:0] stringByAppendingPathComponent:@"write"];
+//    
+//    NSData *vData = [[NSData alloc] initWithBase64EncodedString:[fileArray objectAtIndex:0] options:0];
+//    
+//    [vData writeToFile:path atomically:YES];
+//    
+//    NSLog(@"%d",[vData length]);
     
     NSMutableURLRequest *requestUp = [[AFHttpRequestUtils shareInstance] requestWithBody:upreqBody andReqType:UPLOAD_TVFILE];
     

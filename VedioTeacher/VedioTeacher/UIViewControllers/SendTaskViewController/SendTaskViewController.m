@@ -54,6 +54,8 @@
 //显示我发布的任务
 -(void) sendedTask:(id)sender
 {
+    [submit setHidden:NO];
+    [submit setTitle:@"立即发布任务" forState:UIControlStateNormal];
     didRow = 0;
     showTask = @"1";
     [titleRect setHidden:NO];
@@ -68,6 +70,7 @@
     [sendedView setHidden:NO];
     for (int i = 0; i<[accountArray count]; i++) {
         UIButton *btn = (UIButton *)[userScroll viewWithTag:2000+i];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         btn.userInteractionEnabled = YES;
         [btn setSelected:NO];
     }
@@ -77,6 +80,8 @@
 //显示我接受的任务
 -(void) acceptedNewTask:(id)sender
 {
+    [submit setHidden:YES];
+    [submit setTitle:@"立即接受任务" forState:UIControlStateNormal];
     didRow = 0;
     showTask = @"2";
     [titleRect setHidden:YES];
@@ -92,10 +97,10 @@
     for (int i = 0; i<[accountArray count]; i++) {
         UIButton *btn = (UIButton *)[userScroll viewWithTag:2000+i];
         btn.userInteractionEnabled = NO;
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [btn setSelected:NO];
     }
     [sendTable reloadData];
-    
 }
 
 //显示我发布的视频
@@ -150,13 +155,27 @@
     } else if([[sender currentTitle] isEqualToString:@"立即接收任务"]){
         AcceptTaskReqBody *reqBody = [[AcceptTaskReqBody alloc] init];
         reqBody.accountid = [DataCenter shareInstance].loginId;
-        reqBody.taskId = @"";
+        reqBody.taskId = [[acceptArray objectAtIndex:didSelectCell] stringByReplacingOccurrencesOfString:@" " withString:@""];
         NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:ACCEPT_TASK];
         [reqBody release];
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             AcceptTaskRespBody *respBody = (AcceptTaskRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:ACCEPT_TASK];
             [self checkAcceptTask:respBody];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error : %@", [error localizedDescription]);
+            alertMessage(@"请求失败，请重新接受任务.");
+        }];
+    } else if([[sender currentTitle] isEqualToString:@"完成任务"]) {
+        EndTaskReqBody *end = [[EndTaskReqBody alloc] init];
+        end.taskId = [[acceptArray objectAtIndex:didSelectCell] stringByReplacingOccurrencesOfString:@" " withString:@""];
+        end.accountid = [DataCenter shareInstance].loginId;
+        NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:end andReqType:END_TASK];
+        [end release];
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            EndTaskRespBody *respBody = (EndTaskRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:END_TASK];
+            [self checkEndTask:respBody];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error : %@", [error localizedDescription]);
             alertMessage(@"请求失败，请重新接受任务.");
@@ -181,6 +200,22 @@
         alertMessage(@"接受任务失败，请重新操作");
         return ;
     }
+    alertMessage(@"接受任务成功.");
+}
+
+-(void) checkEndTask:(EndTaskRespBody *)response
+{
+    NSLog(@"%@",response.result);
+    if ([@"\"0\"" isEqualToString:response.result]) {
+        alertMessage(@"结束任务失败，请重新操作");
+        return ;
+    }
+    alertMessage(@"结束任务成功.");
+    
+//    [self tableView:sendTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:didSelectCell inSection:7]];
+//    //    TaskCell *cell = (TaskCell *)[self tableView:sendTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:7]];
+//    //    [cell setSelected:YES];
+//    [sendTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:7] animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
 #pragma mark ----------------------------------------
@@ -258,6 +293,7 @@
     if (!cell) {
         cell = [[[TaskCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
     }
+    
     if ([showTask isEqualToString:@"1"]) {
         TaskModel *model = [taskArray objectAtIndex:indexPath.row];
         cell.taskName.text = model.taskName;
@@ -265,7 +301,7 @@
         TaskModel *model = [acceptArray objectAtIndex:indexPath.row];
         cell.taskName.text = model.taskName;
     }
-    
+
     return cell;
 }
 
@@ -280,20 +316,31 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"%d-%d",indexPath.section,indexPath.row);
+    didSelectCell = indexPath.row;
     if (indexPath.section > 6) {
         if ([showTask isEqualToString:@"1"]) {
-            TaskModel *model = [taskArray objectAtIndex:indexPath.row];
-            taskTitleField.text = model.taskName;
-            taskInfoView.text = model.taskNote;
+            TaskModel *selectModel = [taskArray objectAtIndex:didSelectCell];
+            taskTitleField.text = selectModel.taskName;
+            taskInfoView.text = selectModel.taskNote;
             //显示接受的用户
-            [self getTaskInfo:model.taskID];
-            
+            [self getTaskInfo:selectModel.taskID];
         } else {
-            TaskModel *model = [acceptArray objectAtIndex:indexPath.row];
-            taskTitleField.text = model.taskName;
-            taskAccountName.text = model.addTaskAccountID;
-            taskInfoView.text = model.taskNote;
-            [self getTaskInfo:model.taskID];
+            TaskModel *selectModel = [acceptArray objectAtIndex:didSelectCell];
+            taskTitleField.text = selectModel.taskName;
+            taskAccountName.text = selectModel.addTaskAccountID;
+            taskInfoView.text = selectModel.taskNote;
+            [self getTaskInfo:selectModel.taskID];
+            if ([[selectModel.isAccept description] isEqualToString:@"0"]) {
+                [submit setTitle:@"立即接受任务" forState:UIControlStateNormal];
+                [submit setHidden:NO];
+            }
+            else if ([[selectModel.isAccept description] isEqualToString:@"1"]) {
+                [submit setTitle:@"完成任务" forState:UIControlStateNormal];
+                [submit setHidden:NO];
+            }
+            else {
+                [submit setHidden:YES];
+            }
         }
     }
 }
@@ -318,6 +365,7 @@
         taskInfoView.text = @"";
         for (int i = 0; i<[accountArray count]; i++) {
             UIButton *btn = (UIButton *)[userScroll viewWithTag:2000+i];
+            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [btn setSelected:NO];
         }
     } else {
@@ -327,6 +375,7 @@
         taskInfoView.text = @"";
         for (int i = 0; i<[accountArray count]; i++) {
             UIButton *btn = (UIButton *)[userScroll viewWithTag:2000+i];
+            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [btn setSelected:NO];
         }
     }
@@ -522,7 +571,31 @@
 
 -(void) checkTaskInfo:(GetTaskInfoRespBody *) response
 {
+    if (!response.taskResult) {
+        alertMessage(@"获取任务信息出错,请重新获取.");
+        return ;
+    }
     
+    if ([response.taskResult count] == 0) {
+        return ;
+    }
+    
+    for (int i = 0; i < [accountArray count]; i++) {
+        AccountModel *indexModel = [accountArray objectAtIndex:i];
+        UIButton *btn = (UIButton *)[userScroll viewWithTag:2000+i];
+        for (TaskModel *model in response.taskResult) {
+            if ([[model.accountID stringByReplacingOccurrencesOfString:@" " withString:@""] isEqualToString:[indexModel.idAccoun stringByReplacingOccurrencesOfString:@" " withString:@""]]) {
+                [btn setSelected:YES];
+                if ([model.isAccept intValue] == 0) {
+                    [btn setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+                }
+                break ;
+            } else {
+                [btn setSelected:NO];
+                [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            }
+        }
+    }
 }
 
 /*!
