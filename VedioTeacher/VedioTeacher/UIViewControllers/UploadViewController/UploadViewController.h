@@ -36,6 +36,7 @@
     NSInteger errorCount;
     MBProgressHUD *HUD;
     SDirectoryModel *selectModel;
+    TaskModel *taskModel;
     NSMutableArray *fileArray;
 }
 @end

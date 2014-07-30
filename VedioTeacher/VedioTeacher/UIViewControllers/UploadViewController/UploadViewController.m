@@ -61,6 +61,13 @@
 -(void) checkTask:(GetMyExecuteTaskListRespBody *)response
 {
     NSLog(@"%@",response.taskArray);
+    if ([response.taskArray count] == 0) {
+        return ;
+    }
+    [taskArray removeAllObjects];
+    for (TaskModel *model in response.taskArray) {
+        [taskArray addObject:model];
+    }
 }
 
 #pragma mark ---------------------------------
@@ -169,6 +176,7 @@
     
     NSRange range = [[fileArray objectAtIndex:finishCount] rangeOfString:@"/" options:NSBackwardsSearch];
     NSString *file = [[fileArray objectAtIndex:finishCount] substringFromIndex:range.location+1];
+    
     upreqBody.nameTV = [NSString stringWithFormat:@"%@_%@",vedioNameField.text,file];
     
     upreqBody.describeTV = [coverRemark text];
@@ -179,6 +187,12 @@
     
     upreqBody.fs = [uploadArray objectAtIndex:finishCount];//dataStr;
     
+    
+    if ([relevanceField.text length] == 0) {
+        upreqBody.idTask = @"0";
+    } else {
+        upreqBody.idTask = [taskModel.taskID stringByReplacingOccurrencesOfString:@" " withString:@""];
+    }
 //    NSString *path = @"/Users/hmg/Library/Application Support/iPhone Simulator/7.1/Applications/AF4AA34A-0738-4219-802F-B16C5E4F9AE0/Documents/write/IMG_0030.mov";[[fileArray objectAtIndex:0] stringByAppendingPathComponent:@"write"];
 //    
 //    NSData *vData = [[NSData alloc] initWithBase64EncodedString:[fileArray objectAtIndex:0] options:0];
@@ -266,6 +280,16 @@
         [UIView animateWithDuration:0.5 animations:^{
             [dropView setHidden:NO];
             dropView.frame = CGRectMake(105, top2Field.frame.origin.y + 25, 200, 25*([secondArray count] > 6 ? 6 : [secondArray count]));
+        }];
+    } else {
+        if ([taskArray count] == 0) {
+            return NO;
+        }
+        selectType = 3;
+        [dropView reloadData];
+        [UIView animateWithDuration:0.5 animations:^{
+            [dropView setHidden:NO];
+            dropView.frame = CGRectMake(105, relevanceField.frame.origin.y + 25, 200, 25*([taskArray count] > 6 ? 6 : [taskArray count]));
         }];
     }
     return NO;
@@ -360,10 +384,9 @@
             break;
         default:
         {
-            
-            cell.textLabel.text = @"1";
+            TaskModel *model = [taskArray objectAtIndex:indexPath.row];
+            cell.textLabel.text = model.taskName;
         }
-
             break;
     }
     
@@ -404,8 +427,9 @@
         selectModel = [[secondArray objectAtIndex:indexPath.row] retain];
         top2Field.text = selectModel.nameSecondDirectory;
     } else {
-        
-        relevanceField.text = @"111";
+        [taskModel release];
+        taskModel = [[taskArray objectAtIndex:indexPath.row] retain];
+        relevanceField.text = taskModel.taskName;
     }
 }
 
@@ -593,6 +617,7 @@
 -(void) dealloc
 {
     [selectModel release];
+    [taskModel release];
     [super dealloc];
 }
 
