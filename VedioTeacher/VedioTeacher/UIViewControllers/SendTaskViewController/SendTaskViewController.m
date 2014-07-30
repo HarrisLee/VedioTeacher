@@ -152,10 +152,11 @@
         
         [operation start];
         [operation release];
-    } else if([[sender currentTitle] isEqualToString:@"立即接收任务"]){
+    } else if([[sender currentTitle] isEqualToString:@"立即接受任务"]){
         AcceptTaskReqBody *reqBody = [[AcceptTaskReqBody alloc] init];
         reqBody.accountid = [DataCenter shareInstance].loginId;
-        reqBody.taskId = [[acceptArray objectAtIndex:didSelectCell] stringByReplacingOccurrencesOfString:@" " withString:@""];
+        TaskModel *model = [acceptArray objectAtIndex:didSelectCell];
+        reqBody.taskId = [model.taskID stringByReplacingOccurrencesOfString:@" " withString:@""];
         NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:ACCEPT_TASK];
         [reqBody release];
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -166,9 +167,12 @@
             NSLog(@"Error : %@", [error localizedDescription]);
             alertMessage(@"请求失败，请重新接受任务.");
         }];
-    } else if([[sender currentTitle] isEqualToString:@"完成任务"]) {
+        [operation start];
+        [operation release];
+    } else if([[sender currentTitle] isEqualToString:@"结束任务"]) {
         EndTaskReqBody *end = [[EndTaskReqBody alloc] init];
-        end.taskId = [[acceptArray objectAtIndex:didSelectCell] stringByReplacingOccurrencesOfString:@" " withString:@""];
+        TaskModel *model = [acceptArray objectAtIndex:didSelectCell];
+        end.taskId = [model.taskID stringByReplacingOccurrencesOfString:@" " withString:@""];
         end.accountid = [DataCenter shareInstance].loginId;
         NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:end andReqType:END_TASK];
         [end release];
@@ -180,6 +184,8 @@
             NSLog(@"Error : %@", [error localizedDescription]);
             alertMessage(@"请求失败，请重新接受任务.");
         }];
+        [operation start];
+        [operation release];
     }
 }
 
@@ -196,26 +202,40 @@
 -(void) checkAcceptTask:(AcceptTaskRespBody *)response
 {
     NSLog(@"%@",response.result);
-    if ([@"\"0\"" isEqualToString:response.result]) {
+    if ([@"0" isEqualToString:[response.result description]]) {
         alertMessage(@"接受任务失败，请重新操作");
         return ;
     }
     alertMessage(@"接受任务成功.");
+    TaskModel *model = [acceptArray objectAtIndex:didSelectCell];
+    model.isAccept = @"1";
+    [acceptArray replaceObjectAtIndex:didSelectCell withObject:model];
+    [sendTable reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:didSelectCell inSection:7]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [submit setTitle:@"结束任务" forState:UIControlStateNormal];
+    for (int i = 0; i < [accountArray count]; i++) {
+        AccountModel *model = [accountArray objectAtIndex:i];
+        if ([[model.idAccoun stringByReplacingOccurrencesOfString:@" " withString:@""] isEqualToString:[DataCenter shareInstance].loginId]) {
+            UIButton *btn = (UIButton *)[userScroll viewWithTag:2000+i];
+            [btn setSelected:YES];
+            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+            break ;
+        }
+    }
 }
 
 -(void) checkEndTask:(EndTaskRespBody *)response
 {
     NSLog(@"%@",response.result);
-    if ([@"\"0\"" isEqualToString:response.result]) {
+    if ([@"0" isEqualToString:[response.result description]]) {
         alertMessage(@"结束任务失败，请重新操作");
         return ;
     }
     alertMessage(@"结束任务成功.");
-    
-//    [self tableView:sendTable didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:didSelectCell inSection:7]];
-//    //    TaskCell *cell = (TaskCell *)[self tableView:sendTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:7]];
-//    //    [cell setSelected:YES];
-//    [sendTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:7] animated:NO scrollPosition:UITableViewScrollPositionNone];
+    TaskModel *model = [acceptArray objectAtIndex:didSelectCell];
+    model.isAccept = @"2";
+    [acceptArray replaceObjectAtIndex:didSelectCell withObject:model];
+    [sendTable reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:didSelectCell inSection:7]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [submit setHidden:YES];
 }
 
 #pragma mark ----------------------------------------
@@ -296,9 +316,17 @@
     
     if ([showTask isEqualToString:@"1"]) {
         TaskModel *model = [taskArray objectAtIndex:indexPath.row];
+        cell.taskName.textColor = [UIColor blackColor];
         cell.taskName.text = model.taskName;
     } else {
         TaskModel *model = [acceptArray objectAtIndex:indexPath.row];
+        if ([[model.isAccept description] isEqualToString:@"0"]) {
+            cell.taskName.textColor = [UIColor greenColor];
+        } else if ([[model.isAccept description] isEqualToString:@"2"]) {
+            cell.taskName.textColor = [UIColor redColor];
+        } else {
+            cell.taskName.textColor = [UIColor blackColor];
+        }
         cell.taskName.text = model.taskName;
     }
 
@@ -335,7 +363,7 @@
                 [submit setHidden:NO];
             }
             else if ([[selectModel.isAccept description] isEqualToString:@"1"]) {
-                [submit setTitle:@"完成任务" forState:UIControlStateNormal];
+                [submit setTitle:@"结束任务" forState:UIControlStateNormal];
                 [submit setHidden:NO];
             }
             else {
@@ -707,11 +735,11 @@
     [headerView addSubview:userIcon];
     [userIcon release];
     
-    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(userIcon.frame.size.width + userIcon.frame.origin.x + 10, userIcon.frame.origin.y + 20, 200, 20)];
+    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(userIcon.frame.size.width + userIcon.frame.origin.x + 10, userIcon.frame.origin.y + 20, 200, 25)];
     nameLabel.text = @"未登录";
     nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.textColor = [UIColor whiteColor];
-    nameLabel.font = [UIFont systemFontOfSize:17.0f];
+    nameLabel.font = [UIFont systemFontOfSize:19.0f];
     [headerView addSubview:nameLabel];
     [nameLabel release];
     

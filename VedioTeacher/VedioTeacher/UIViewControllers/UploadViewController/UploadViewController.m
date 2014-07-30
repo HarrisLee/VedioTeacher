@@ -102,7 +102,6 @@
  */
 - (void)imagePickerController:(QBImagePickerController *)imagePickerController didFinishPickingMediaWithInfo:(id)info
 {
-    
     if(imagePickerController.allowsMultipleSelection) {
         NSArray *mediaInfoArray = (NSArray *)info;
         [self dismissViewControllerAnimated:YES completion:^{
@@ -112,9 +111,7 @@
     } else {
         NSDictionary *mediaInfo = (NSDictionary *)info;
         NSLog(@"Selected: %@", mediaInfo);
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-        }];
+        [self dismissViewControllerAnimated:YES completion:^{ }];
     }
 }
 
@@ -140,19 +137,18 @@
     
     int writeCount = 0;
     
-    @autoreleasepool {
-        for (ALAsset *asset in mediaInfoArray) {
-            writeCount ++ ;
-            NSString *documentsDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:[[asset defaultRepresentation] filename]];
-            if ([Utils writeDataToPath:documentsDirectory andAsset:asset]) {
-                NSData *data = [[NSData alloc] initWithContentsOfFile:documentsDirectory];
-                [uploadArray addObject:[data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
-                [fileArray addObject:documentsDirectory];
-                [data release];
-            }
-            if ([mediaInfoArray count] == writeCount) {
-                [self upLoadImageWithSort];
-            }
+    for (ALAsset *asset in mediaInfoArray) {
+        writeCount ++ ;
+        NSString *documentsDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:[[asset defaultRepresentation] filename]];
+        if ([Utils writeDataToPath:documentsDirectory andAsset:asset]) {
+            NSData *data = [[NSData alloc] initWithContentsOfFile:documentsDirectory];
+//            [uploadArray addObject:data];
+            [uploadArray addObject:[data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
+            [fileArray addObject:documentsDirectory];
+            [data release];
+        }
+        if ([mediaInfoArray count] == writeCount) {
+            [self upLoadImageWithSort];
         }
     }
 }
@@ -214,6 +210,7 @@
 {
     finishCount ++;
     HUD.progress = 1.0;//((float)finishCount)/uploadArray.count;
+    [HUD hide:YES];
 //    if ([@"\"0\"" isEqualToString:respBody.result]) {
 //        [self upLoadImageWithSort];
 //        errorCount ++;
@@ -523,7 +520,7 @@
     [uView addSubview:vedioNameField];
     [vedioNameField release];
     
-/*   封面空间去除
+/*   封面控件去除
     name = [[UILabel alloc] initWithFrame:CGRectMake(15, vedioNameField.frame.origin.y + 40, 80, 15)];
     name.text = @"视频封面:";
     name.textAlignment = NSTextAlignmentRight;
