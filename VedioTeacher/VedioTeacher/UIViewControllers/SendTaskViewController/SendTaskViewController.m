@@ -615,7 +615,9 @@
             if ([[model.accountID stringByReplacingOccurrencesOfString:@" " withString:@""] isEqualToString:[indexModel.idAccoun stringByReplacingOccurrencesOfString:@" " withString:@""]]) {
                 [btn setSelected:YES];
                 if ([model.isAccept intValue] == 0) {
-                    [btn setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+                    [btn setTitleColor:[UIColor greenColor] forState:UIControlStateSelected];
+                } else {
+                    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
                 }
                 break ;
             } else {
@@ -777,7 +779,7 @@
     [titleRect release];
     
     taskTitleField = [[UITextField alloc] initWithFrame:CGRectMake(name.frame.origin.x + name.frame.size.width + 19, name.frame.origin.y - 5, 242, 30)];
-    taskTitleField.text = @"任务每次名称";
+    taskTitleField.text = @"";
     [taskTitleField setFont:[UIFont systemFontOfSize:15.0f]];
     taskTitleField.borderStyle = UITextBorderStyleNone;
     [sendedView addSubview:taskTitleField];
@@ -795,7 +797,7 @@
     
     taskAccountName = [[UILabel alloc] initWithFrame:CGRectMake(taskAccount.frame.origin.x + taskAccount.frame.size.width + 15, taskAccount.frame.origin.y, 242, 20)];
     [taskAccountName setHidden:YES];
-    taskAccountName.text = @"任务发布者";
+    taskAccountName.text = @"";
     taskAccountName.textColor = [UIColor blackColor];
     taskAccountName.backgroundColor = [UIColor clearColor];
     taskAccountName.font = [UIFont systemFontOfSize:15.0f];
@@ -812,7 +814,7 @@
     [taskInfo release];
     
     taskInfoView = [[UITextView alloc] initWithFrame:CGRectMake(taskInfo.frame.origin.x + taskInfo.frame.size.width + 15, taskInfo.frame.origin.y - 8, 400, 200)];
-    taskInfoView.text = @"任务脚本内容任务";
+    taskInfoView.text = @"";
     taskInfoView.delegate = self;
     taskInfoView.layer.borderWidth = 1.0;
     taskInfoView.layer.borderColor = [UIColor lightGrayColor].CGColor;
