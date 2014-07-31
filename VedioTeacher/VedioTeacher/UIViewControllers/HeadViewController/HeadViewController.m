@@ -296,7 +296,7 @@
     isLoading = YES;
     SDirectoryModel *model = [secArray objectAtIndex:index];
     GetTVListOfGoodCountReqBody *reqBody = [[GetTVListOfGoodCountReqBody alloc] init];
-    reqBody.idSecondDirectory = model.idSecondDirectory;
+    reqBody.idSecondDirectory = [model.idSecondDirectory stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_TVLIST_GOODCOUNT];
     [reqBody release];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
