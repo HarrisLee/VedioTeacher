@@ -12,23 +12,25 @@
 {
     NSString *idTV;
     NSString *nameTV;
-    NSString *virtualPath;
+    NSString *tvVirtualPath;
     NSString *tvPicVirtualPath;
-    NSString *fileImgName;
+    NSString *fileTVName;
     NSString *goodCount;
     NSString *describeTV;
     NSString *addAccountId;
     NSString *addTime;
     NSString *accountName;
+    NSString *tvPicName;
 }
 @property (nonatomic, retain) NSString *idTV;
 @property (nonatomic, retain) NSString *nameTV;
-@property (nonatomic, retain) NSString *virtualPath;
+@property (nonatomic, retain) NSString *tvVirtualPath;
 @property (nonatomic, retain) NSString *tvPicVirtualPath;
-@property (nonatomic, retain) NSString *fileImgName;
+@property (nonatomic, retain) NSString *fileTVName;
 @property (nonatomic, retain) NSString *goodCount;
 @property (nonatomic, retain) NSString *describeTV;
 @property (nonatomic, retain) NSString *addAccountId;
 @property (nonatomic, retain) NSString *addTime;
 @property (nonatomic, retain) NSString *accountName;
+@property (nonatomic, retain) NSString *tvPicName;
 @end

@@ -51,6 +51,11 @@
         [headerScroll addSubview:button];
     }
     
+//    UIImageView *hor = [[UIImageView alloc] initWithFrame:CGRectMake(0, 49, 1024, 1)];
+//    hor.backgroundColor = [UIColor lightGrayColor];
+//    [headerScroll addSubview:hor];
+//    [hor release];
+    
     [headerScroll setContentSize:CGSizeMake(10+100*buttonCount,50.0f)];
 }
 

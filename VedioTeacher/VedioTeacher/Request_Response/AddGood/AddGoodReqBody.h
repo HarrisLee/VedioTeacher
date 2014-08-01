@@ -10,9 +10,9 @@
 
 @interface AddGoodReqBody : ReqBody
 {
-    NSString *imgId;//照片id
+    NSString *TVId;//照片id
     NSString *AccountId;//账号id
 }
-@property (nonatomic, retain) NSString *imgId;
+@property (nonatomic, retain) NSString *TVId;
 @property (nonatomic, retain) NSString *AccountId;
 @end

@@ -11,27 +11,29 @@
 @implementation VedioModel
 @synthesize idTV;
 @synthesize nameTV;
-@synthesize virtualPath;
+@synthesize tvVirtualPath;
 @synthesize tvPicVirtualPath;
-@synthesize fileImgName;
+@synthesize fileTVName;
 @synthesize goodCount;
 @synthesize accountName;
 @synthesize addAccountId;
 @synthesize addTime;
 @synthesize describeTV;
+@synthesize tvPicName;
 
 -(void) dealloc
 {
     [idTV release];
     [nameTV release];
-    [virtualPath release];
+    [tvVirtualPath release];
     [tvPicVirtualPath release];
-    [fileImgName  release];
+    [fileTVName  release];
     [goodCount release];
     [accountName release];
     [addTime release];
     [addAccountId release];
     [describeTV release];
+    [tvPicName release];
     [super dealloc];
 }
 

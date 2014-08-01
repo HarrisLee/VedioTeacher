@@ -11,6 +11,8 @@
 #import "TVCommentModel.h"
 #import "GetTVCommentReqBody.h"
 #import "GetTVCommentRespBody.h"
+#import "AddTVCommentReqBody.h"
+#import "AddTVCommentRespBody.h"
 #import "AddGoodReqBody.h"
 #import "AddGoodRespBody.h"
 #import "GetTVInfoReqBody.h"

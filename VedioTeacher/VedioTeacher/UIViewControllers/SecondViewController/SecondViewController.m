@@ -237,7 +237,8 @@
  */
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 28;
+    NSArray *array = [vedioDictionary objectForKey:[NSString stringWithFormat:@"%d",clickedIndex]];
+    return array ? [array count] : 0;
 }
 
 /**
@@ -253,14 +254,15 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *collectionIdentifier = @"collectionIdentifier";
+    NSArray *array = [vedioDictionary objectForKey:[NSString stringWithFormat:@"%d",clickedIndex]];
+    VedioModel *model = [array objectAtIndex:indexPath.row];
     CollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionIdentifier forIndexPath:indexPath];
     if (!cell) {
         cell = [[[CollectionCell alloc] init] autorelease];
     }
-    cell.label.text = @"20：19";
-    cell.name.text = @"变形金刚4:绝境重生";
-    cell.count.text = [NSString stringWithFormat:@"播放：19.5万"];
-    cell.point.text = @"9.8";
+    cell.name.text = [model.nameTV stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [cell.icon setImageWithURL:[NSURL URLWithString:model.tvPicVirtualPath]];
+    cell.count.text = [NSString stringWithFormat:@"点赞数：%@",[model.goodCount description]];
     return cell;
 }
 
@@ -274,9 +276,10 @@
 {
     SDirectoryModel *model = [secArray objectAtIndex:clickedIndex];
     PlayerViewController *play = [[PlayerViewController alloc] init];
-    play.title = @"视频播放";
+    play.title = @"视频详情";
     play.topName = self.title;
     play.secondName = model.nameSecondDirectory;
+    play.vedioModel = [[vedioDictionary objectForKey:[NSString stringWithFormat:@"%d",clickedIndex]] objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:play animated:YES];
     [play release];
 }
@@ -288,6 +291,7 @@
     }
     NSLog(@"%d",[sender tag]);
     clickedIndex = [sender tag] - 5000;
+    [waterView reloadData];
     [self getTVListAtIndex:clickedIndex];
 }
 
@@ -315,19 +319,19 @@
 {
     isLoading = NO;
     if (!response) {
-        //        alertMessage(@"获取视频列表失败，请重新获取.");
+//        alertMessage(@"获取视频列表失败，请重新获取.");
         return ;
     }
     
     if ([response.tvList count] == 0) {
-        //        alertMessage(@"该目录下视频列表为空.");
+//        alertMessage(@"该目录下视频列表为空.");
         return ;
     }
     
     [vedioDictionary removeObjectForKey:[NSString stringWithFormat:@"%d",clickedIndex]];
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (id obj in response.tvList) {
+    for (VedioModel *obj in response.tvList) {
         [array addObject:obj];
     }
     

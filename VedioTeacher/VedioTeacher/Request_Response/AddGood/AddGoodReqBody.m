@@ -9,12 +9,12 @@
 #import "AddGoodReqBody.h"
 
 @implementation AddGoodReqBody
-@synthesize imgId;
+@synthesize TVId;
 @synthesize AccountId;
 
 -(void) dealloc
 {
-    [imgId release];
+    [TVId release];
     [AccountId release];
     [super dealloc];
 }
