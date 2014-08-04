@@ -13,12 +13,13 @@
 #import "GetTVCommentRespBody.h"
 #import "AddTVCommentReqBody.h"
 #import "AddTVCommentRespBody.h"
-#import "AddGoodReqBody.h"
-#import "AddGoodRespBody.h"
+#import "AddTVGoodReqBody.h"
+#import "AddTVGoodRespBody.h"
 #import "GetTVInfoReqBody.h"
 #import "GetTVInfoRespBody.h"
+#import "LoginsViewController.h"
 
-@interface PlayerViewController : BaseViewController
+@interface PlayerViewController : BaseViewController<UITextFieldDelegate>
 {
     UIScrollView *scrollView;
     VedioModel *vedioModel;
@@ -26,6 +27,12 @@
     NSString *secondName;
     UIButton *goodBtn;
     UILabel *countLabel;
+    UILabel *uploader;
+    UILabel *uploadTime;
+    UITextField *contentField;
+    UIImageView *bottomBack;
+    CGPoint point;
+    NSInteger commentCount;
 }
 @property (nonatomic, retain) VedioModel *vedioModel;
 @property (nonatomic, retain) NSString *topName;

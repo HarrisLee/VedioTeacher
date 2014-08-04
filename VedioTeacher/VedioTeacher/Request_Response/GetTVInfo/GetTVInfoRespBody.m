@@ -13,7 +13,13 @@
 
 -(void) setValue:(id)value
 {
-    self.info = value;
+    if (![value isKindOfClass:[NSArray class]]) {
+        self.info = nil;
+        return ;
+    }
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:[value objectAtIndex:0]];
+    self.info =  dic;
+    [dic release];
 }
 
 -(void) dealloc

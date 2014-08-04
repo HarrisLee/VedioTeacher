@@ -36,8 +36,6 @@
 		9E5A2507196A308A00C6D1A4 /* AddAccountRespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2462196A308A00C6D1A4 /* AddAccountRespBody.m */; };
 		9E5A2508196A308A00C6D1A4 /* AddCommentReqBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2465196A308A00C6D1A4 /* AddCommentReqBody.m */; };
 		9E5A2509196A308A00C6D1A4 /* AddCommentRespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2467196A308A00C6D1A4 /* AddCommentRespBody.m */; };
-		9E5A250A196A308A00C6D1A4 /* AddGoodReqBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A246A196A308A00C6D1A4 /* AddGoodReqBody.m */; };
-		9E5A250B196A308A00C6D1A4 /* AddGoodRespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A246C196A308A00C6D1A4 /* AddGoodRespBody.m */; };
 		9E5A250C196A308A00C6D1A4 /* AddPeopleAccountReqBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A246F196A308A00C6D1A4 /* AddPeopleAccountReqBody.m */; };
 		9E5A250D196A308A00C6D1A4 /* AddPeopleAccountRespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2471196A308A00C6D1A4 /* AddPeopleAccountRespBody.m */; };
 		9E5A250E196A308A00C6D1A4 /* AddPeopleOpinionReqBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2474196A308A00C6D1A4 /* AddPeopleOpinionReqBody.m */; };
@@ -279,10 +277,6 @@
 		9E5A2465196A308A00C6D1A4 /* AddCommentReqBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentReqBody.m; sourceTree = "<group>"; };
 		9E5A2466196A308A00C6D1A4 /* AddCommentRespBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentRespBody.h; sourceTree = "<group>"; };
 		9E5A2467196A308A00C6D1A4 /* AddCommentRespBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentRespBody.m; sourceTree = "<group>"; };
-		9E5A2469196A308A00C6D1A4 /* AddGoodReqBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGoodReqBody.h; sourceTree = "<group>"; };
-		9E5A246A196A308A00C6D1A4 /* AddGoodReqBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGoodReqBody.m; sourceTree = "<group>"; };
-		9E5A246B196A308A00C6D1A4 /* AddGoodRespBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGoodRespBody.h; sourceTree = "<group>"; };
-		9E5A246C196A308A00C6D1A4 /* AddGoodRespBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGoodRespBody.m; sourceTree = "<group>"; };
 		9E5A246E196A308A00C6D1A4 /* AddPeopleAccountReqBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPeopleAccountReqBody.h; sourceTree = "<group>"; };
 		9E5A246F196A308A00C6D1A4 /* AddPeopleAccountReqBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPeopleAccountReqBody.m; sourceTree = "<group>"; };
 		9E5A2470196A308A00C6D1A4 /* AddPeopleAccountRespBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPeopleAccountRespBody.h; sourceTree = "<group>"; };
@@ -757,7 +751,6 @@
 				9E5A2591196A3F6900C6D1A4 /* AddTVComment */,
 				9E5A2592196A3F6900C6D1A4 /* AddTVGood */,
 				9E5A2463196A308A00C6D1A4 /* AddComment */,
-				9E5A2468196A308A00C6D1A4 /* AddGood */,
 				9E5A2593196A3F6900C6D1A4 /* GetAccountList */,
 				9E5A245E196A308A00C6D1A4 /* AddAccount */,
 				9E5A247C196A308A00C6D1A4 /* AddSecondDirectory */,
@@ -802,17 +795,6 @@
 				9E5A2467196A308A00C6D1A4 /* AddCommentRespBody.m */,
 			);
 			path = AddComment;
-			sourceTree = "<group>";
-		};
-		9E5A2468196A308A00C6D1A4 /* AddGood */ = {
-			isa = PBXGroup;
-			children = (
-				9E5A2469196A308A00C6D1A4 /* AddGoodReqBody.h */,
-				9E5A246A196A308A00C6D1A4 /* AddGoodReqBody.m */,
-				9E5A246B196A308A00C6D1A4 /* AddGoodRespBody.h */,
-				9E5A246C196A308A00C6D1A4 /* AddGoodRespBody.m */,
-			);
-			path = AddGood;
 			sourceTree = "<group>";
 		};
 		9E5A246D196A308A00C6D1A4 /* AddPeopleAccount */ = {
@@ -1773,7 +1755,6 @@
 				9E5A252D196A308A00C6D1A4 /* VerifyOutsideLoginRespBody.m in Sources */,
 				9EC7BF09197E580E000A0E54 /* UIImageView+AFNetworking.m in Sources */,
 				9E5A258A196A398B00C6D1A4 /* SDirectoryModel.m in Sources */,
-				9E5A250B196A308A00C6D1A4 /* AddGoodRespBody.m in Sources */,
 				9E5A2511196A308A00C6D1A4 /* AddPeopleOpinionReturnRespBody.m in Sources */,
 				9EC7BF0B197E580E000A0E54 /* QBAssetCollectionViewController.m in Sources */,
 				9E5A2521196A308A00C6D1A4 /* GetPeopleOpinionReturnRespBody.m in Sources */,
@@ -1887,7 +1868,6 @@
 				9E247119197CB91C00289E84 /* CollectionHeaderView.m in Sources */,
 				9E5A2526196A308A00C6D1A4 /* GetTopDirectoryReqBody.m in Sources */,
 				9E5A251E196A308A00C6D1A4 /* GetPeopleOpinionListReqBody.m in Sources */,
-				9E5A250A196A308A00C6D1A4 /* AddGoodReqBody.m in Sources */,
 				9E5A25ED196A421600C6D1A4 /* GetMyTVListOfTimeRespBody.m in Sources */,
 				9EE9D3BE1977B19E00508574 /* DateShowCell.m in Sources */,
 				9E4DACFD196A9CBC008C71BD /* ThirdViewController.m in Sources */,

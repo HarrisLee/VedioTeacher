@@ -22,7 +22,7 @@
     [array release];
     
     for (id obj in value) {
-        TaskModel *model = [[TaskModel alloc] init];
+        TVCommentModel *model = [[TVCommentModel alloc] init];
         [Utils setProperty:model withDic:obj];
         [commentList addObject:model];
         [model release];

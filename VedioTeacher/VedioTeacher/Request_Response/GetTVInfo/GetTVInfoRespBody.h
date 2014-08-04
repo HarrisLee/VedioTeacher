@@ -10,7 +10,7 @@
 
 @interface GetTVInfoRespBody : RespBody
 {
-    NSString *info;
+    NSMutableDictionary *info;
 }
-@property (nonatomic, retain) NSString *info;
+@property (nonatomic, retain) NSMutableDictionary *info;
 @end

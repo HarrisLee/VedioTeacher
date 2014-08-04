@@ -312,7 +312,7 @@
         [self checkSecondDirectroy:nil];
     }];
     [operation start];
-    [operation request];
+    [operation release];
 }
 
 -(void)checkSecondDirectroy:(GetTVListOfGoodCountRespBody *) response

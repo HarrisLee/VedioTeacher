@@ -24,77 +24,87 @@
     return self;
 }
 
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [self.tabBarController.tabBar setHidden:NO];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self.tabBarController.tabBar setHidden:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillHideNotification object:nil];
+    
     [self createInitView];
     
-//    GetTVInfoReqBody *reqBody = [[GetTVInfoReqBody alloc] init];
-//    reqBody.idTV = [[self.vedioModel.idTV description] stringByReplacingOccurrencesOfString:@" " withString:@""];
-//    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_TVINFO];
-//    [reqBody release];
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        GetTVInfoRespBody *respBody = (GetTVInfoRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_TVINFO];
-//        [self getTVInfoCheck:respBody];
-//    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"Error : %@", [error localizedDescription]);
-//        alertMessage(@"获取视频详细信息失败，请重新获取.");
-//    }];
-//    [operation start];
-//    [operation request];
+    commentCount = 0;
     
-//    GetTVCommentReqBody *reqBody = [[GetTVCommentReqBody alloc] init];
-//    reqBody.idTV = [[self.vedioModel.idTV description] stringByReplacingOccurrencesOfString:@" " withString:@""];
-//    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_TVCOMMENT];
-//    [reqBody release];
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        GetTVCommentRespBody *respBody = (GetTVCommentRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_TVCOMMENT];
-//        [self getTVCommentCheck:respBody];
-//    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"Error : %@", [error localizedDescription]);
-//        alertMessage(@"获取视频评论失败，请重新获取.");
-//    }];
-//    [operation start];
-//    [operation request];
+    GetTVInfoReqBody *reqBody = [[GetTVInfoReqBody alloc] init];
+    reqBody.idTV = [[self.vedioModel.idTV description] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_TVINFO];
+    [reqBody release];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        GetTVInfoRespBody *respBody = (GetTVInfoRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_TVINFO];
+        [self getTVInfoCheck:respBody];
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error : %@", [error localizedDescription]);
+        alertMessage(@"获取视频详细信息失败，请重新获取.");
+    }];
+    [operation start];
+    [operation release];
     
-//    AddTVCommentReqBody *reqBody = [[AddTVCommentReqBody alloc] init];
-//    reqBody.TVId = [[self.vedioModel.idTV description] stringByReplacingOccurrencesOfString:@" " withString:@""];
-//    reqBody.accountId = [DataCenter shareInstance].loginId;
-//    reqBody.commentNote = @"这个视频很好看";
-//    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:ADD_TVCOMMENT];
-//    [reqBody release];
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        AddTVCommentRespBody *respBody = (AddTVCommentRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:ADD_TVCOMMENT];
-//        [self addTVCommentCheck:respBody];
-//    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"Error : %@", [error localizedDescription]);
-//        alertMessage(@"添加评论失败，请重新添加.");
-//    }];
-//    [operation start];
-//    [operation request];
+    GetTVCommentReqBody *requestBody = [[GetTVCommentReqBody alloc] init];
+    requestBody.idTV = [[self.vedioModel.idTV description] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSMutableURLRequest *requestComment = [[AFHttpRequestUtils shareInstance] requestWithBody:requestBody andReqType:GET_TVCOMMENT];
+    [requestBody release];
+    AFHTTPRequestOperation *operationComent = [[AFHTTPRequestOperation alloc] initWithRequest:requestComment];
+    [operationComent setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        GetTVCommentRespBody *respBody = (GetTVCommentRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_TVCOMMENT];
+        [self getTVCommentCheck:respBody];
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error : %@", [error localizedDescription]);
+        alertMessage(@"获取视频评论失败，请重新获取.");
+    }];
+    [operationComent start];
+    [operationComent release];
 }
 
 -(void) getTVInfoCheck:(GetTVInfoRespBody *)response
 {
-    
+    if (![response.info isKindOfClass:[NSMutableDictionary class]]) {
+        alertMessage(@"获取视频详细信息失败，请重新获取！");
+        return ;
+    }
+    uploader.text = [NSString stringWithFormat:@"作者: %@",[[response.info objectForKey:@"accountName"] stringByReplacingOccurrencesOfString:@" " withString:@""]];
+    NSString *time = [response.info objectForKey:@"addTime"];
+    if (time && [time length] >= 19 ) {
+        time = [[time substringToIndex:19] stringByReplacingOccurrencesOfString:@"T" withString:@" "];
+    }
+    uploadTime.text = [NSString stringWithFormat:@"上传时间: %@", time];
 }
 
 -(void) getTVCommentCheck:(GetTVCommentRespBody *) response
 {
-    
-}
-
--(void) addTVCommentCheck:(AddTVCommentRespBody *) response
-{
-    if (response.tvCommentResult || [@"0" isEqualToString:response.tvCommentResult]) {
-        alertMessage(@"添加评论失败，请重新添加");
-        return;
+    if ([response.commentList count] == 0) {
+        return ;
     }
-    
+    NSInteger count = response.commentList.count - 1;
+    commentCount += count;
+    for (int i = 0; i<=count; i++) {
+        TVCommentModel *model = [response.commentList objectAtIndex:count-i];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 600 + i*25, 984, 17)];
+        label.text = [NSString stringWithFormat:@"%@:%@",model.accountName,model.comment];
+        label.backgroundColor = [UIColor clearColor];
+        label.textColor = [UIColor blackColor];
+        [scrollView addSubview:label];
+        [label release];
+    }
+    [scrollView setContentSize:CGSizeMake(1024, 600+25*commentCount)];
 }
 
 -(void) playVedio
@@ -108,35 +118,129 @@
 
 -(void) addGood:(id) sender
 {
-    AddGoodReqBody *reqBody = [[AddGoodReqBody alloc] init];
+    if (![DataCenter shareInstance].isLogined) {
+        LoginsViewController *login = [[LoginsViewController alloc] init];
+        login.modalPresentationStyle = UIModalPresentationFormSheet;
+        login.view.backgroundColor = [UIColor whiteColor];
+        [self presentViewController:login animated:YES completion:nil];
+        login.view.superview.frame = CGRectMake(0, 0, 512, 320);
+        login.view.superview.center = self.view.center;
+        [login release];
+        return ;
+    }
+    
+    AddTVGoodReqBody *reqBody = [[AddTVGoodReqBody alloc] init];
     reqBody.TVId = [[self.vedioModel.idTV description] stringByReplacingOccurrencesOfString:@" " withString:@""];
     reqBody.AccountId = [DataCenter shareInstance].loginId;
-    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:ADD_GOOD];
+    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:ADD_TVGOOD];
     [reqBody release];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        AddGoodRespBody *respBody = (AddGoodRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:ADD_GOOD];
+        AddTVGoodRespBody *respBody = (AddTVGoodRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:ADD_TVGOOD];
         [self addGoodCheck:respBody];
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error : %@", [error localizedDescription]);
         alertMessage(@"请求失败，请重新操作.");
     }];
     [operation start];
-    [operation request];
+    [operation release];
 }
 
--(void) addGoodCheck:(AddGoodRespBody *)response
+-(void) addGoodCheck:(AddTVGoodRespBody *)response
 {
-    if ([@"-1" isEqualToString:response.result]) {
+    if ([@"\"-1\"" isEqualToString:response.tVGoodResult]) {
         alertMessage(@"点赞失败，请重新操作");
-    } else if ([@"0" isEqualToString:response.result]) {
+    } else if ([@"\"0\"" isEqualToString:response.tVGoodResult]) {
         alertMessage(@"您已经对该视频进行过点赞操作，请勿重复点赞");
     } else {
         alertMessage(@"点赞成功");
-        [goodBtn setSelected:![goodBtn isSelected]];
-        [goodBtn setTitle:[response.result stringByReplacingOccurrencesOfString:@" " withString:@""] forState:UIControlStateNormal];
+        [goodBtn setSelected:YES];
+        countLabel.text = [response.tVGoodResult stringByReplacingOccurrencesOfString:@"\"" withString:@""];
         goodBtn.userInteractionEnabled = NO;
     }
+}
+
+-(void) submitComment:(id)sender
+{
+    NSLog(@"submit");
+    if ([contentField.text length] == 0) {
+        alertMessage(@"内容为空，请先输入评论内容。");
+        return ;
+    }
+    
+    if (![DataCenter shareInstance].isLogined) {
+        LoginsViewController *login = [[LoginsViewController alloc] init];
+        login.modalPresentationStyle = UIModalPresentationFormSheet;
+        login.view.backgroundColor = [UIColor whiteColor];
+        [self presentViewController:login animated:YES completion:nil];
+        login.view.superview.frame = CGRectMake(0, 0, 512, 320);
+        login.view.superview.center = self.view.center;
+        [login release];
+        return ;
+    }
+    
+    AddTVCommentReqBody *reqBody = [[AddTVCommentReqBody alloc] init];
+    reqBody.TVId = [[self.vedioModel.idTV description] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    reqBody.accountId = [DataCenter shareInstance].loginId;
+    reqBody.commentNote = contentField.text;
+    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:ADD_TVCOMMENT];
+    [reqBody release];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        AddTVCommentRespBody *respBody = (AddTVCommentRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:ADD_TVCOMMENT];
+        [self addTVCommentCheck:respBody];
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error : %@", [error localizedDescription]);
+        alertMessage(@"添加评论失败，请重新添加.");
+    }];
+    [operation start];
+    [operation release];
+}
+
+-(void) addTVCommentCheck:(AddTVCommentRespBody *) response
+{
+    if ([[response.tvCommentResult stringByReplacingOccurrencesOfString:@"\"" withString:@""] integerValue] == 0) {
+        alertMessage(@"添加评论失败，请重新添加");
+        return;
+    }
+    alertMessage(@"添加评论成功！");
+    commentCount ++;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 600 + commentCount*25, 984, 17)];
+    label.text = [NSString stringWithFormat:@"%@:%@",[DataCenter shareInstance].loginName,contentField.text];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor blackColor];
+    [scrollView addSubview:label];
+    [label release];
+    [scrollView setContentSize:CGSizeMake(1024, 600+25*commentCount)];
+    contentField.text = @"";
+    [contentField resignFirstResponder];
+}
+
+- (void)keyboardWillChangeFrame:(NSNotification *)notification
+{
+    if (!contentField.isEditing) {
+        return;
+    }
+
+    NSValue *keyboardBoundsValue = [[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardBounds;
+    [keyboardBoundsValue getValue:&keyboardBounds];
+    NSLog(@"height = %f  %f",keyboardBounds.size.height,keyboardBounds.size.width);
+    [UIView animateWithDuration:0.3 animations:^{
+        bottomBack.frame = CGRectMake(0, 768 - 64 - 60 - keyboardBounds.size.width, 1024, 60);
+    }];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+
+    [UIView animateWithDuration:0.3 animations:^{
+        bottomBack.frame = CGRectMake(0, 768 - 64 - 60, 1024, 60);
+    }];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -150,12 +254,15 @@
     [vedioModel release];
     [topName release];
     [secondName release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     [super dealloc];
 }
 
 -(void) createInitView
 {
-    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768-64-55)];
+    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768-64-60)];
+    scrollView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:scrollView];
     [scrollView release];
     
@@ -178,7 +285,7 @@
     [string release];
     [reference release];
     
-    string =  [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"视频名称:%@",[self.vedioModel.nameTV stringByReplacingOccurrencesOfString:@"(null)" withString:@" "]]];
+    string =  [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"视频名称: %@",[self.vedioModel.nameTV stringByReplacingOccurrencesOfString:@"(null)" withString:@" "]]];
     [string addAttribute:NSForegroundColorAttributeName value:[UIColor getColor:@"3FA6FF"] range:NSMakeRange(0, 5)];
     UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(15, header.frame.origin.y + header.frame.size.height, 994, 30)];
     name.textColor = [UIColor lightGrayColor];
@@ -210,11 +317,28 @@
     
     countLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, goodBtn.frame.origin.y + goodBtn.frame.size.height, goodBtn.frame.size.width, 15)];
     countLabel.text = [NSString stringWithFormat:@"%@",[self.vedioModel.goodCount description]];
-    countLabel.textColor = [UIColor darkGrayColor];
+    countLabel.textAlignment = NSTextAlignmentCenter;
+    countLabel.textColor = [UIColor whiteColor];
     countLabel.backgroundColor = [UIColor blueColor];
     countLabel.font = [UIFont systemFontOfSize:13.0f];
     [scrollView addSubview:countLabel];
     [countLabel release];
+    
+    uploader = [[UILabel alloc] initWithFrame:CGRectMake(1024-320, goodBtn.frame.origin.y, 300, 19)];
+    uploader.textColor = [UIColor blackColor];
+    uploader.backgroundColor = [UIColor clearColor];
+    uploader.font = [UIFont systemFontOfSize:15.0f];
+    uploader.textAlignment = NSTextAlignmentRight;
+    [scrollView addSubview:uploader];
+    [uploader release];
+    
+    uploadTime = [[UILabel alloc] initWithFrame:CGRectMake(1024-320, uploader.frame.origin.y + 25, 300, 19)];
+    uploadTime.textColor = [UIColor blackColor];
+    uploadTime.backgroundColor = [UIColor clearColor];
+    uploadTime.font = [UIFont systemFontOfSize:15.0f];
+    uploadTime.textAlignment = NSTextAlignmentRight;
+    [scrollView addSubview:uploadTime];
+    [uploadTime release];
     
     UIImageView *section = [[UIImageView alloc] initWithFrame:CGRectMake(20, countLabel.frame.origin.y + 35, 3, 25)];
     section.backgroundColor = [UIColor getColor:@"3FA6FF"];
@@ -226,6 +350,28 @@
     commentSection.font = [UIFont boldSystemFontOfSize:20.0];
     [scrollView addSubview:commentSection];
     [commentSection release];
+
+    bottomBack = [[UIImageView alloc] initWithFrame:CGRectMake(0, 768 - 64 - 60, 1024, 60)];
+    [bottomBack setImage:[[UIImage imageNamed:@"bottomView.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:5]];
+    bottomBack.userInteractionEnabled = YES;
+    [self.view addSubview:bottomBack];
+    [bottomBack release];
+    
+    point = bottomBack.center;
+    
+    contentField = [[UITextField alloc] initWithFrame:CGRectMake(15, 10, 840, 40)];
+    contentField.backgroundColor = [UIColor whiteColor];
+    contentField.delegate = self;
+    contentField.font = [UIFont fontWithName:@"Arial" size:15];
+    contentField.placeholder = @"请输入评论，字数在0-100字之间";
+    [bottomBack addSubview:contentField];
+    [contentField release];
+    
+    UIButton *submit = [UIButton buttonWithType:UIButtonTypeCustom];
+    submit.frame = CGRectMake(875, 4, 142, 52);
+    [submit setBackgroundImage:[UIImage imageNamed:@"button_13.png"] forState:UIControlStateNormal];
+    [submit addTarget:self action:@selector(submitComment:) forControlEvents:UIControlEventTouchUpInside];
+    [bottomBack addSubview:submit];
 }
 
 @end

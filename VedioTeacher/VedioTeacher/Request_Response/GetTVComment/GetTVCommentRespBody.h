@@ -7,7 +7,7 @@
 //
 
 #import "RespBody.h"
-#import "TaskModel.h"
+#import "TVCommentModel.h"
 
 @interface GetTVCommentRespBody : RespBody
 {
