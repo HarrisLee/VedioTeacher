@@ -27,9 +27,11 @@
 #import "AcceptTaskRespBody.h"
 #import "EndTaskReqBody.h"
 #import "EndTaskRespBody.h"
+#import "CollectionCell.h"
+#import "PlayerViewController.h"
 
 
-@interface SendTaskViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,DateShowCellDelegate>
+@interface SendTaskViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,DateShowCellDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 {
     UIView *headerView;
     UIImageView *userIcon;
@@ -60,6 +62,9 @@
     UIScrollView *userScroll;
     
     NSInteger didSelectCell;
+    
+    UICollectionView *waterView;
+    NSMutableArray *tvArray;
     
 }
 @end

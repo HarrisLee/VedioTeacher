@@ -12,13 +12,13 @@
 {
     NSString *startTime;
     NSString *endTime;
-    NSString *GJZ;
+    NSString *TVGJZ;
     NSString *jobId;
     NSString *accountId;
 }
 @property (nonatomic, retain) NSString *startTime;
 @property (nonatomic, retain) NSString *endTime;
-@property (nonatomic, retain) NSString *GJZ;
+@property (nonatomic, retain) NSString *TVGJZ;
 @property (nonatomic, retain) NSString *jobId;
 @property (nonatomic, retain) NSString *accountId;
 @end

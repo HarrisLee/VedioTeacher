@@ -17,6 +17,7 @@
 
 @interface CollectionHeaderView : UICollectionReusableView
 {
+    UILabel *label;
     UIScrollView *headerScroll;
     NSInteger    buttonCount;
     id<CollectionHeaderViewDelegate> delegate;
@@ -24,4 +25,5 @@
 @property (nonatomic, assign) id<CollectionHeaderViewDelegate> delegate;
 -(void) setHeaderDataView:(NSArray *)headerArray index:(NSInteger)index;
 
+-(void) setSearch:(BOOL)isSearch;
 @end

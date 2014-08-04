@@ -12,6 +12,10 @@
 
 + (id)getColor:(NSString *) hexColor
 {
+    if ([hexColor length] != 6) {
+        hexColor = @"000000";
+    }
+    
 	unsigned int redInt_, greenInt_, blueInt_;
 	NSRange rangeNSRange_;
 	rangeNSRange_.length = 2;  // 范围长度为2

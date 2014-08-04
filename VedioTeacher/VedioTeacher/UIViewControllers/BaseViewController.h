@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface BaseViewController : UIViewController
-
+{
+    BOOL isSearching;
+}
 //发布任务
 -(BOOL) releaseTask:(id)sender;
 
@@ -21,5 +23,7 @@
 
 //添加二级目录
 -(BOOL) addSecDir:(id)sender;
+
+-(void) clearSearch;
 
 @end

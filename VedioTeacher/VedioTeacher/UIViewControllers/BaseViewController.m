@@ -30,6 +30,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    isSearching = NO;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     UIView *logoView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 400, 44)];
     logoView.backgroundColor = [UIColor redColor];
@@ -63,10 +65,10 @@
 
 -(BOOL) releaseTask:(id)sender
 {
-//    BOOL islogin = [self isVerifyLogin];
-//    if (!islogin) {
-//        return NO;
-//    }
+    BOOL islogin = [self isVerifyLogin];
+    if (!islogin) {
+        return NO;
+    }
     
     [self.tabBarController setSelectedIndex:6];
     
@@ -75,10 +77,10 @@
 
 -(BOOL) uploadVedio:(id)sender
 {
-//    BOOL islogin = [self isVerifyLogin];
-//    if (!islogin) {
-//        return NO;
-//    }
+    BOOL islogin = [self isVerifyLogin];
+    if (!islogin) {
+        return NO;
+    }
     
     UploadViewController *upload = [[UploadViewController alloc] init];
     [self.navigationController pushViewController:upload animated:YES];
@@ -110,6 +112,11 @@
 -(void) goBackViewController:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) clearSearch
+{
+    isSearching = NO;
 }
 
 - (void)didReceiveMemoryWarning

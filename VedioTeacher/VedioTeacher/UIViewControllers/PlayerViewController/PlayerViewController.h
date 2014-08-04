@@ -18,6 +18,7 @@
 #import "GetTVInfoReqBody.h"
 #import "GetTVInfoRespBody.h"
 #import "LoginsViewController.h"
+#import "VedioPlayerViewController.h"
 
 @interface PlayerViewController : BaseViewController<UITextFieldDelegate>
 {

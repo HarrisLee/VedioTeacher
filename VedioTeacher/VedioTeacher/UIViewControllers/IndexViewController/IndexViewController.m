@@ -172,10 +172,17 @@
     //tab
     UITabBarController *tab = [[UITabBarController alloc] init];
     [tab.tabBar setTintColor:[UIColor getColor:@"3FA6FF"]];
+    tab.delegate = self;
     tab.viewControllers = viewArray;
     [self.navigationController pushViewController:tab animated:YES];
     [viewArray release];
     [tab release];
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    NSLog(@"%d",[tabBarController selectedIndex]);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"clear" object:nil];
 }
 
 -(BOOL) releaseTask:(id)sender

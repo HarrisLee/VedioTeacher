@@ -11,7 +11,7 @@
 @implementation GetTVOfSearchReqBody
 @synthesize startTime;
 @synthesize endTime;
-@synthesize GJZ;
+@synthesize TVGJZ;
 @synthesize jobId;
 @synthesize accountId;
 
@@ -19,7 +19,7 @@
 {
     [startTime release];
     [endTime release];
-    [GJZ release];
+    [TVGJZ release];
     [jobId release];
     [accountId release];
     [super dealloc];

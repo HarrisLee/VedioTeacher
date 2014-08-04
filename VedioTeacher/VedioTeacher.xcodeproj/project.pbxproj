@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E0F59CA198F5DD000EA09FA /* VedioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0F59C9198F5DD000EA09FA /* VedioPlayerViewController.m */; };
+		9E116728198F78B2006DE468 /* CHPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E116727198F78B2006DE468 /* CHPickerView.m */; };
 		9E24710A197CAA1200289E84 /* AcceptTaskReqBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E247109197CAA1200289E84 /* AcceptTaskReqBody.m */; };
 		9E24710D197CAA1E00289E84 /* EndTaskReqBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E24710C197CAA1E00289E84 /* EndTaskReqBody.m */; };
 		9E247110197CAA3300289E84 /* AcceptTaskRespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E24710F197CAA3300289E84 /* AcceptTaskRespBody.m */; };
@@ -218,6 +220,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E0F59C8198F5DD000EA09FA /* VedioPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioPlayerViewController.h; sourceTree = "<group>"; };
+		9E0F59C9198F5DD000EA09FA /* VedioPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioPlayerViewController.m; sourceTree = "<group>"; };
+		9E116726198F78B2006DE468 /* CHPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPickerView.h; sourceTree = "<group>"; };
+		9E116727198F78B2006DE468 /* CHPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPickerView.m; sourceTree = "<group>"; };
 		9E247108197CAA1200289E84 /* AcceptTaskReqBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptTaskReqBody.h; sourceTree = "<group>"; };
 		9E247109197CAA1200289E84 /* AcceptTaskReqBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptTaskReqBody.m; sourceTree = "<group>"; };
 		9E24710B197CAA1E00289E84 /* EndTaskReqBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndTaskReqBody.h; sourceTree = "<group>"; };
@@ -750,13 +756,13 @@
 				9E5A2590196A3F6900C6D1A4 /* AddTask */,
 				9E5A2591196A3F6900C6D1A4 /* AddTVComment */,
 				9E5A2592196A3F6900C6D1A4 /* AddTVGood */,
-				9E5A2463196A308A00C6D1A4 /* AddComment */,
 				9E5A2593196A3F6900C6D1A4 /* GetAccountList */,
 				9E5A245E196A308A00C6D1A4 /* AddAccount */,
 				9E5A247C196A308A00C6D1A4 /* AddSecondDirectory */,
 				9E5A24A4196A308A00C6D1A4 /* GetSecondDirectory */,
 				9E5A24AE196A308A00C6D1A4 /* GetTopDirectory */,
 				9E5A24B8196A308A00C6D1A4 /* VerifyLogin */,
+				9E5A2463196A308A00C6D1A4 /* AddComment */,
 				9E5A2598196A401B00C6D1A4 /* GetPeopleAccountList */,
 				9E5A246D196A308A00C6D1A4 /* AddPeopleAccount */,
 				9E5A2472196A308A00C6D1A4 /* AddPeopleOpinion */,
@@ -1082,6 +1088,8 @@
 				9E247115197CADF700289E84 /* CollectionCell.m */,
 				9E247117197CB91C00289E84 /* CollectionHeaderView.h */,
 				9E247118197CB91C00289E84 /* CollectionHeaderView.m */,
+				9E116726198F78B2006DE468 /* CHPickerView.h */,
+				9E116727198F78B2006DE468 /* CHPickerView.m */,
 				9E5A2555196A33AD00C6D1A4 /* CActivityIndicatorView.h */,
 				9E5A2556196A33AD00C6D1A4 /* CActivityIndicatorView.m */,
 				9E5A2557196A33AD00C6D1A4 /* CommentCell.h */,
@@ -1341,6 +1349,8 @@
 			children = (
 				9E6648F71976113900F810CC /* PlayerViewController.h */,
 				9E6648F81976113900F810CC /* PlayerViewController.m */,
+				9E0F59C8198F5DD000EA09FA /* VedioPlayerViewController.h */,
+				9E0F59C9198F5DD000EA09FA /* VedioPlayerViewController.m */,
 			);
 			path = PlayerViewController;
 			sourceTree = "<group>";
@@ -1795,6 +1805,7 @@
 				9E5A2509196A308A00C6D1A4 /* AddCommentRespBody.m in Sources */,
 				9E5A2589196A398B00C6D1A4 /* FDirectoryModel.m in Sources */,
 				9E5A251B196A308A00C6D1A4 /* GetJobRespBody.m in Sources */,
+				9E0F59CA198F5DD000EA09FA /* VedioPlayerViewController.m in Sources */,
 				9E9183C71978C6A00045B8D6 /* AccountModel.m in Sources */,
 				9E5A25AE196A40A700C6D1A4 /* AddTVCommentReqBody.m in Sources */,
 				9E5A2514196A308A00C6D1A4 /* GetImgReqBody.m in Sources */,
@@ -1888,6 +1899,7 @@
 				9E5A2513196A308A00C6D1A4 /* AddSecondDirectoryRespBody.m in Sources */,
 				9E5A25B7196A40DC00C6D1A4 /* AddTaskRespBody.m in Sources */,
 				9E5A25F3196A423200C6D1A4 /* GetMyTVListOfGoodCountRespBody.m in Sources */,
+				9E116728198F78B2006DE468 /* CHPickerView.m in Sources */,
 				9E4910AD1976523D00767FDB /* GetMyExecuteTaskListRespBody.m in Sources */,
 				9E5A24EE196A308A00C6D1A4 /* ReqBody.m in Sources */,
 				9E5A250F196A308A00C6D1A4 /* AddPeopleOpinionRespBody.m in Sources */,

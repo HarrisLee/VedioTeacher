@@ -25,9 +25,19 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    [self.navigationController setNavigationBarHidden:YES];
     NSLog(@"%@",[DataCenter shareInstance].taskDirId);
     if ([DataCenter shareInstance].isLogined) {
         nameLabel.text = [DataCenter shareInstance].loginName;
+    } else {
+        nameLabel.text = @"您尚未登录，请登录";
+        LoginsViewController *login = [[LoginsViewController alloc] init];
+        login.modalPresentationStyle = UIModalPresentationFormSheet;
+        login.view.backgroundColor = [UIColor whiteColor];
+        [self presentViewController:login animated:YES completion:nil];
+        login.view.superview.frame = CGRectMake(0, 0, 512, 320);
+        login.view.superview.center = self.view.center;
+        [login release];
     }
 }
 
@@ -35,7 +45,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.navigationController setNavigationBarHidden:YES];
     
     didSection = 0;
     didRow = 0;
@@ -44,6 +53,7 @@
     taskArray = [[NSMutableArray alloc] init];
     acceptArray = [[NSMutableArray alloc] init];
     accountArray = [[NSMutableArray alloc] init];
+    tvArray = [[NSMutableArray alloc] init];
     
     [self createInitView];
     
@@ -51,9 +61,118 @@
     
 }
 
+/**
+ *  返回每个collectionViewCell的大小（可以进行单独的配置）
+ *
+ *  @param collectionView       collectionView
+ *  @param collectionViewLayout collectionViewLayout
+ *  @param indexPath            indexPath
+ *
+ *  @return 返回每个collectionViewCell的大小
+ */
+-(CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(240, 160);
+}
+
+
+-(CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 5.0;
+}
+
+-(CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 15.0;
+}
+
+/**
+ *  总共有多少个Section
+ *
+ *  @param collectionView collectionView
+ *
+ *  @return 返回总共多少个Section
+ */
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+//-(CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+//{
+//
+//}
+
+/**
+ *  每个section总共有多少个cell
+ *
+ *  @param collectionView collection
+ *  @param section        当前的section
+ *
+ *  @return 返回每个section总共有多少个cell
+ */
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [tvArray count];
+}
+
+/**
+ *  返回的UICollectionViewCell
+ *  这个cell返回的时候必须先从
+ *  -dequeueReusableCellWithReuseIdentifier:forIndexPath:中检索
+ *
+ *  @param  collectionView
+ *
+ *  @return 返回Cell
+ */
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *collectionIdentifier = @"myTVList";
+    VedioModel *model = [tvArray objectAtIndex:indexPath.row];
+    CollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionIdentifier forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[[CollectionCell alloc] init] autorelease];
+    }
+    cell.name.text = [model.nameTV stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [cell.icon setImageWithURL:[NSURL URLWithString:model.tvPicVirtualPath]];
+    cell.count.text = [NSString stringWithFormat:@"点赞数：%@",[model.goodCount description]];
+    return cell;
+}
+
+/**
+ *  选中的当前Cell的点击事件
+ *
+ *  @param collectionView collectionView
+ *  @param indexPath      indexPath  索引
+ */
+-(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    VedioModel *model = [tvArray objectAtIndex:indexPath.row];
+    PlayerViewController *play = [[PlayerViewController alloc] init];
+    play.title = @"视频详情";
+    play.topName = self.title;
+    play.secondName = model.fileTVName;
+    play.vedioModel = model;
+    [self.navigationController pushViewController:play animated:YES];
+    [play release];
+}
+
 //显示我发布的任务
 -(void) sendedTask:(id)sender
 {
+    if (![DataCenter shareInstance].isLogined) {
+        LoginsViewController *login = [[LoginsViewController alloc] init];
+        login.modalPresentationStyle = UIModalPresentationFormSheet;
+        login.view.backgroundColor = [UIColor whiteColor];
+        [self presentViewController:login animated:YES completion:nil];
+        login.view.superview.frame = CGRectMake(0, 0, 512, 320);
+        login.view.superview.center = self.view.center;
+        [login release];
+        return ;
+    }
+    
+    [waterView setHidden:YES];
     [submit setHidden:NO];
     [submit setTitle:@"立即发布任务" forState:UIControlStateNormal];
     didRow = 0;
@@ -80,6 +199,18 @@
 //显示我接受的任务
 -(void) acceptedNewTask:(id)sender
 {
+    if (![DataCenter shareInstance].isLogined) {
+        LoginsViewController *login = [[LoginsViewController alloc] init];
+        login.modalPresentationStyle = UIModalPresentationFormSheet;
+        login.view.backgroundColor = [UIColor whiteColor];
+        [self presentViewController:login animated:YES completion:nil];
+        login.view.superview.frame = CGRectMake(0, 0, 512, 320);
+        login.view.superview.center = self.view.center;
+        [login release];
+        return ;
+    }
+    
+    [waterView setHidden:YES];
     [submit setHidden:YES];
     [submit setTitle:@"立即接受任务" forState:UIControlStateNormal];
     didRow = 0;
@@ -106,7 +237,46 @@
 //显示我发布的视频
 -(void) sendedVideo:(id)sender
 {
+    if (![DataCenter shareInstance].isLogined) {
+        LoginsViewController *login = [[LoginsViewController alloc] init];
+        login.modalPresentationStyle = UIModalPresentationFormSheet;
+        login.view.backgroundColor = [UIColor whiteColor];
+        [self presentViewController:login animated:YES completion:nil];
+        login.view.superview.frame = CGRectMake(0, 0, 512, 320);
+        login.view.superview.center = self.view.center;
+        [login release];
+        return ;
+    }
+    
     [sendedView setHidden:YES];
+    [submit setHidden:YES];
+    [waterView setHidden:NO];
+    GetMyTVListOfTimeReqBody *req = [[GetMyTVListOfTimeReqBody alloc] init];
+    req.accountId = [DataCenter shareInstance].loginId;
+    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:req andReqType:GET_MYTVLIST_TIME];
+    [req release];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        GetMyTVListOfTimeRespBody *respBody = (GetMyTVListOfTimeRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_MYTVLIST_TIME];
+        [self checkMyTVList:respBody];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error : %@", [error localizedDescription]);
+        alertMessage(@"请求失败，请重新获取视频列表.");
+    }];
+    [operation start];
+    [operation release];
+}
+
+-(void) checkMyTVList:(GetMyTVListOfTimeRespBody *)response
+{
+    if ([response.tvList count] == 0) {
+        return ;
+    }
+    [tvArray removeAllObjects];
+    for (VedioModel *model in response.tvList) {
+        [tvArray addObject:model];
+    }
+    [waterView reloadData];
 }
 
 -(void) submitTask:(id)sender
@@ -149,7 +319,6 @@
             NSLog(@"Error : %@", [error localizedDescription]);
             alertMessage(@"请求失败，请重新添加任务.");
         }];
-        
         [operation start];
         [operation release];
     } else if([[sender currentTitle] isEqualToString:@"立即接受任务"]){
@@ -335,6 +504,17 @@
 
 -(void) sectionHeaderDidSelectAtIndex:(id) sender
 {
+    if (![DataCenter shareInstance].isLogined) {
+        LoginsViewController *login = [[LoginsViewController alloc] init];
+        login.modalPresentationStyle = UIModalPresentationFormSheet;
+        login.view.backgroundColor = [UIColor whiteColor];
+        [self presentViewController:login animated:YES completion:nil];
+        login.view.superview.frame = CGRectMake(0, 0, 512, 320);
+        login.view.superview.center = self.view.center;
+        [login release];
+        return ;
+    }
+    
     NSInteger section = [sender tag] - 500;
     didSection = section;
     didRow = 0;
@@ -831,6 +1011,22 @@
     newTask.backgroundColor = [UIColor brownColor];
     sendVideo.backgroundColor = [UIColor brownColor];
     submit.backgroundColor = [UIColor brownColor];
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    [layout setItemSize:CGSizeMake(240, 160)];
+    //    [layout setMinimumInteritemSpacing:1];
+    [layout setMinimumLineSpacing:10.0f];
+    [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    
+    waterView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, headerView.frame.size.height, 1024, 710 - headerView.frame.size.height) collectionViewLayout:layout];
+    waterView.delegate = self;
+    waterView.dataSource = self;
+    waterView.showsVerticalScrollIndicator = NO;
+    [waterView registerClass:[CollectionCell class] forCellWithReuseIdentifier:@"myTVList"];
+    waterView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:waterView];
+    [layout release];
+    [waterView release];
 }
 
 - (void)didReceiveMemoryWarning

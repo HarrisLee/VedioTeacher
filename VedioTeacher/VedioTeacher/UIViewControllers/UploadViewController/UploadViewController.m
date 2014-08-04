@@ -177,7 +177,7 @@
     NSRange range = [[fileArray objectAtIndex:finishCount] rangeOfString:@"/" options:NSBackwardsSearch];
     NSString *file = [[fileArray objectAtIndex:finishCount] substringFromIndex:range.location+1];
     
-    upreqBody.nameTV = [NSString stringWithFormat:@"%@_%@",vedioNameField.text,file];
+    upreqBody.nameTV = [NSString stringWithFormat:@"%@_%d_%@",vedioNameField.text,finishCount,file];
     
     upreqBody.describeTV = [coverRemark text];
     
@@ -187,19 +187,11 @@
     
     upreqBody.fs = [uploadArray objectAtIndex:finishCount];//dataStr;
     
-    
     if ([relevanceField.text length] == 0) {
         upreqBody.idTask = @"0";
     } else {
         upreqBody.idTask = [taskModel.taskID stringByReplacingOccurrencesOfString:@" " withString:@""];
     }
-//    NSString *path = @"/Users/hmg/Library/Application Support/iPhone Simulator/7.1/Applications/AF4AA34A-0738-4219-802F-B16C5E4F9AE0/Documents/write/IMG_0030.mov";[[fileArray objectAtIndex:0] stringByAppendingPathComponent:@"write"];
-//    
-//    NSData *vData = [[NSData alloc] initWithBase64EncodedString:[fileArray objectAtIndex:0] options:0];
-//    
-//    [vData writeToFile:path atomically:YES];
-//    
-//    NSLog(@"%d",[vData length]);
     
     NSMutableURLRequest *requestUp = [[AFHttpRequestUtils shareInstance] requestWithBody:upreqBody andReqType:UPLOAD_TVFILE];
     
@@ -223,28 +215,17 @@
 -(void) reloadWaterView:(UploadTVFileRespBody *)respBody
 {
     finishCount ++;
-    HUD.progress = 1.0;//((float)finishCount)/uploadArray.count;
-    [HUD hide:YES];
-//    if ([@"\"0\"" isEqualToString:respBody.result]) {
-//        [self upLoadImageWithSort];
-//        errorCount ++;
-//        if (finishCount == [uploadArray count] && errorCount > 0) {
-//            alertMessage(@"有视频上传失败。");
-//        }
-//        return ;
-//    }
-//    respBody.result = [respBody.result stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-//    NSArray *array = [respBody.result componentsSeparatedByString:@"|"];
-//    ImageModel *model = [[ImageModel alloc] init];
-//    model.goodCount = @"0";
-//    model.virtualPath = [array objectAtIndex:0];
-//    model.idImg = [array objectAtIndex:1];
-//    model.nameImg = [NSString stringWithFormat:@"%@_%d.png",nameString,finishCount];
-//    [imageArray addObject:model];
-//    
-////    [waterFlower loadData];
-//    
-//    [self upLoadImageWithSort];
+    HUD.progress = ((float)finishCount)/uploadArray.count;
+    if ([@"\"0\"" isEqualToString:respBody.result]) {
+        [self upLoadImageWithSort];
+        errorCount ++;
+        if (finishCount == [uploadArray count] && errorCount > 0) {
+            alertMessage(@"有视频上传失败。");
+        }
+        return ;
+    }
+    
+    [self upLoadImageWithSort];
 }
 
 -(void) uploadFail:(NSError *)error

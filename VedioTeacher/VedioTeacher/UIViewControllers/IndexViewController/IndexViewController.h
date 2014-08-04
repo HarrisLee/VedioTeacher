@@ -17,6 +17,6 @@
 #import "GetTopDirectoryReqBody.h"
 #import "GetTopDirectoryRespBody.h"
 
-@interface IndexViewController : BaseViewController
+@interface IndexViewController : BaseViewController<UITabBarControllerDelegate>
 
 @end

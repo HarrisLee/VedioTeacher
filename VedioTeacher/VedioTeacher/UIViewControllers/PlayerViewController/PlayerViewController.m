@@ -29,6 +29,12 @@
     [self.tabBarController.tabBar setHidden:NO];
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    [self.tabBarController.tabBar setHidden:YES];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -93,10 +99,10 @@
     if ([response.commentList count] == 0) {
         return ;
     }
-    NSInteger count = response.commentList.count - 1;
+    NSInteger count = response.commentList.count;
     commentCount += count;
-    for (int i = 0; i<=count; i++) {
-        TVCommentModel *model = [response.commentList objectAtIndex:count-i];
+    for (int i = 0; i < count; i++) {
+        TVCommentModel *model = [response.commentList objectAtIndex:count- i - 1];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 600 + i*25, 984, 17)];
         label.text = [NSString stringWithFormat:@"%@:%@",model.accountName,model.comment];
         label.backgroundColor = [UIColor clearColor];
@@ -109,12 +115,21 @@
 
 -(void) playVedio
 {
+    VedioPlayerViewController *play = [[VedioPlayerViewController alloc] init];
+    play.title = @"播放";
+    play.url = [NSURL URLWithString:self.vedioModel.tvVirtualPath];
+    [self.navigationController pushViewController:play animated:YES];
+    [play release];
+    return ;
+    
     UIWebView *web = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 1024, 704)];
 //    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://feiclass.winnovo.com/fileupload/feiclass/course_file/20140522/14007534063406838420MTE=.mp4"]]];
     [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.vedioModel.tvVirtualPath]]];
     [self.view addSubview:web];
     [web release];
+
 }
+
 
 -(void) addGood:(id) sender
 {
@@ -168,6 +183,11 @@
         return ;
     }
     
+    if ([contentField.text length] > 100) {
+        alertMessage(@"内容过长，请控制在100字以内。");
+        return ;
+    }
+    
     if (![DataCenter shareInstance].isLogined) {
         LoginsViewController *login = [[LoginsViewController alloc] init];
         login.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -204,7 +224,6 @@
         return;
     }
     alertMessage(@"添加评论成功！");
-    commentCount ++;
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 600 + commentCount*25, 984, 17)];
     label.text = [NSString stringWithFormat:@"%@:%@",[DataCenter shareInstance].loginName,contentField.text];
     label.backgroundColor = [UIColor clearColor];
@@ -214,6 +233,7 @@
     [scrollView setContentSize:CGSizeMake(1024, 600+25*commentCount)];
     contentField.text = @"";
     [contentField resignFirstResponder];
+    commentCount ++;
 }
 
 - (void)keyboardWillChangeFrame:(NSNotification *)notification
@@ -316,7 +336,7 @@
     [scrollView addSubview:goodBtn];
     
     countLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, goodBtn.frame.origin.y + goodBtn.frame.size.height, goodBtn.frame.size.width, 15)];
-    countLabel.text = [NSString stringWithFormat:@"%@",[self.vedioModel.goodCount description]];
+    countLabel.text = [NSString stringWithFormat:@"%@",[self.vedioModel.goodCount description] ? [self.vedioModel.goodCount description] : @"0"];
     countLabel.textAlignment = NSTextAlignmentCenter;
     countLabel.textColor = [UIColor whiteColor];
     countLabel.backgroundColor = [UIColor blueColor];

@@ -16,6 +16,15 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1004, 50)];
+        label.text = @"搜索结果";
+        label.textColor = [UIColor blackColor];
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont systemFontOfSize:20.0f];
+        [label setHidden:YES];
+        [self addSubview:label];
+        [label release];
+        
         headerScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 1004, 50)];
         [self addSubview:headerScroll];
         [headerScroll release];
@@ -50,12 +59,7 @@
         [button addTarget:self action:@selector(headerClickAtIndex:) forControlEvents:UIControlEventTouchUpInside];
         [headerScroll addSubview:button];
     }
-    
-//    UIImageView *hor = [[UIImageView alloc] initWithFrame:CGRectMake(0, 49, 1024, 1)];
-//    hor.backgroundColor = [UIColor lightGrayColor];
-//    [headerScroll addSubview:hor];
-//    [hor release];
-    
+ 
     [headerScroll setContentSize:CGSizeMake(10+100*buttonCount,50.0f)];
 }
 
@@ -72,6 +76,12 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(headerClickAtIndex:)]) {
         [self.delegate headerClickAtIndex:sender];
     }
+}
+
+-(void) setSearch:(BOOL)isSearch
+{
+    [headerScroll setHidden:isSearch];
+    [label setHidden:!isSearch];
 }
 
 @end
