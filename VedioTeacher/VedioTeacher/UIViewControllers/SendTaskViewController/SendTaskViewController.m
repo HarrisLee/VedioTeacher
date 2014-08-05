@@ -135,7 +135,7 @@
         cell = [[[CollectionCell alloc] init] autorelease];
     }
     cell.name.text = [model.nameTV stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [cell.icon setImageWithURL:[NSURL URLWithString:model.tvPicVirtualPath]];
+    [cell.icon setImageWithURL:[NSURL URLWithString:model.tvPicVirtualPath] placeholderImage:[UIImage imageNamed:@"placeholder_horizontal"]];
     cell.count.text = [NSString stringWithFormat:@"点赞数：%@",[model.goodCount description]];
     return cell;
 }
@@ -656,7 +656,7 @@
         button.tag = 2000+i;
         [button.titleLabel setFont:[UIFont systemFontOfSize:13.0f]];
         [button setTitle:[model.peopleName stringByReplacingOccurrencesOfString:@" " withString:@""] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"preview_like_icon"] forState:UIControlStateSelected];
+        [button setImage:[UIImage imageNamed:@"icon_check"] forState:UIControlStateSelected];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(chooseAccount:) forControlEvents:UIControlEventTouchUpInside];
         [userScroll addSubview:button];
@@ -862,14 +862,19 @@
 //---------- 个人中心头部界面/高度为300  ---------------------
 //--------------------------------------------------------
     headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 300)];
-    headerView.backgroundColor = [UIColor blueColor];
+    headerView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:headerView];
     [headerView release];
     
     UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 1024, 260)];
-    [bgView setBackgroundColor:[UIColor grayColor]];
+    [bgView setImage:[UIImage imageNamed:@"personal_bj"]];
     [headerView addSubview:bgView];
     [bgView release];
+    
+    UIImageView *btnBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 260, 1024, 40)];
+    [btnBgView setImage:[UIImage imageNamed:@"personal_bj2"]];
+    [headerView addSubview:btnBgView];
+    [btnBgView release];
     
     UIButton *sendTask = [UIButton buttonWithType:UIButtonTypeCustom];
     sendTask.frame = CGRectMake(15, headerView.frame.size.height - 35, 90, 30);

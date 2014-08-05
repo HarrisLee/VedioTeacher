@@ -202,6 +202,7 @@
 
 -(void) clearSearchResult:(NSNotification *)notification
 {
+    [searchView setHidden:YES];
     isSearching = NO;
     [waterView reloadData];
 }
@@ -397,7 +398,7 @@
         cell = [[[CollectionCell alloc] init] autorelease];
     }
     cell.name.text = [model.nameTV stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [cell.icon setImageWithURL:[NSURL URLWithString:model.tvPicVirtualPath]];
+    [cell.icon setImageWithURL:[NSURL URLWithString:model.tvPicVirtualPath] placeholderImage:[UIImage imageNamed:@"placeholder_horizontal"]];
     cell.count.text = [NSString stringWithFormat:@"点赞数：%@",[model.goodCount description]];
     return cell;
 }

@@ -19,8 +19,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon.png"]];
-        imageView.backgroundColor = [UIColor redColor];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder_horizontal"]];
+        imageView.backgroundColor = [UIColor clearColor];
         imageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height - 35);
         self.icon = imageView;
         [self.contentView addSubview:imageView];

@@ -32,6 +32,7 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [self.tabBarController.tabBar setHidden:YES];
+    self.navigationItem.rightBarButtonItems = nil;
 }
 
 - (void)viewDidLoad

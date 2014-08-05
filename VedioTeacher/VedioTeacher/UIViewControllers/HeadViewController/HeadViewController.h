@@ -39,8 +39,6 @@
     UITextField *startField;
     UITextField *endField;
     NSMutableArray *tvList;
-    
-    
 }
 @property (nonatomic, retain) NSString *topId;
 

@@ -19,8 +19,11 @@
 #import "GetTVListOfTimeRespBody.h"
 #import "GetTVListOfGoodCountReqBody.h"
 #import "GetTVListOfGoodCountRespBody.h"
+#import "GetTVOfSearchReqBody.h"
+#import "GetTVOfSearchRespBody.h"
+#import "CHPickerView.h"
 
-@interface SecondViewController : BaseViewController<UIAlertViewDelegate,UITextFieldDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,CollectionHeaderViewDelegate>
+@interface SecondViewController : BaseViewController<UIAlertViewDelegate,UITextFieldDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,CollectionHeaderViewDelegate,CHPickerViewDelegate,UITextFieldDelegate>
 {
     NSString *topId;
     NSMutableArray *secArray;
@@ -28,6 +31,15 @@
     UICollectionView *waterView;
     NSInteger  clickedIndex;
     BOOL isLoading;
+    
+    UIView *searchView;
+    CHPickerView *pickerView;
+    NSInteger selectView;
+    UITextField *keyWordField;
+    UITextField *startField;
+    UITextField *endField;
+    NSMutableArray *tvList;
 }
 @property (nonatomic, retain) NSString *topId;
+
 @end

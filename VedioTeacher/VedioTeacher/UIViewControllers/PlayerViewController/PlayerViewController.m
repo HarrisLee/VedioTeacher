@@ -33,6 +33,7 @@
 {
     [self.tabBarController.tabBar setHidden:YES];
     [self.navigationController setNavigationBarHidden:NO];
+    self.navigationItem.rightBarButtonItems = nil;
 }
 
 - (void)viewDidLoad
@@ -317,7 +318,9 @@
     [name release];
     
     UIImageView *thumbnailImage = [[UIImageView alloc] initWithFrame:CGRectMake(15, name.frame.origin.y + name.frame.size.height, 994, 400)];
-    [thumbnailImage setImageWithURL:[NSURL URLWithString:self.vedioModel.tvPicVirtualPath]];
+    [thumbnailImage setImageWithURL:[NSURL URLWithString:self.vedioModel.tvPicVirtualPath] placeholderImage:[UIImage imageNamed:@"placeholder_home"]];
+    thumbnailImage.layer.borderWidth = 1.0;
+    thumbnailImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
     [thumbnailImage setBackgroundColor:[UIColor clearColor]];
     [scrollView addSubview:thumbnailImage];
     [thumbnailImage release];
@@ -328,18 +331,18 @@
     [tap release];
     
     goodBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    //    [goodBtn setImage:[UIImage imageNamed:@"common_button_green_disable"] forState:UIControlStateNormal];
-    //    [goodBtn setImage:[UIImage imageNamed:@"common_button_green_highlighted"] forState:UIControlStateSelected];
+    [goodBtn setImage:[UIImage imageNamed:@"detail_broadcast_praise_normal"] forState:UIControlStateNormal];
+    [goodBtn setImage:[UIImage imageNamed:@"detail_broadcast_praise_select"] forState:UIControlStateSelected];
     goodBtn.frame = CGRectMake(20, thumbnailImage.frame.origin.y + thumbnailImage.frame.size.height + 15, 40, 40);
     [goodBtn addTarget:self action:@selector(addGood:) forControlEvents:UIControlEventTouchUpInside];
-    goodBtn.backgroundColor = [UIColor brownColor];
+    goodBtn.backgroundColor = [UIColor clearColor];
     [scrollView addSubview:goodBtn];
     
     countLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, goodBtn.frame.origin.y + goodBtn.frame.size.height, goodBtn.frame.size.width, 15)];
     countLabel.text = [NSString stringWithFormat:@"%@",[self.vedioModel.goodCount description] ? [self.vedioModel.goodCount description] : @"0"];
     countLabel.textAlignment = NSTextAlignmentCenter;
-    countLabel.textColor = [UIColor whiteColor];
-    countLabel.backgroundColor = [UIColor blueColor];
+    countLabel.textColor = [UIColor getColor:@"4C4C4C"];
+    countLabel.backgroundColor = [UIColor clearColor];
     countLabel.font = [UIFont systemFontOfSize:13.0f];
     [scrollView addSubview:countLabel];
     [countLabel release];

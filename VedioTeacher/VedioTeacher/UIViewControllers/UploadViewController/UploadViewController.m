@@ -31,6 +31,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor getColor:@"E4E4E4"];
     [self.tabBarController.tabBar setHidden:YES];
+    self.navigationItem.rightBarButtonItems = nil;
     
     selectType = 1;
     secondArray = [[NSMutableArray alloc] init];
@@ -299,7 +300,11 @@
 
 -(void) chooseFile:(id) sender
 {
-    NSLog(@"choose file");
+    if ([top1Field.text length] == 0 || [top2Field.text length] == 0 || [vedioNameField.text length]==0 || [coverRemark.text length] == 0) {
+        alertMessage(@"您的上传信息尚未输入完整，请先输入！");
+        return ;
+    }
+    
     QBImagePickerController *imagePickerController = [[QBImagePickerController alloc] init];
     imagePickerController.filterType = QBImagePickerFilterTypeAllVideos;
     imagePickerController.delegate = self;
@@ -573,20 +578,20 @@
     fileBtn.layer.cornerRadius = 4.0f;
     [fileBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [fileBtn.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
-    fileBtn.frame = CGRectMake(coverRemark.frame.origin.x, coverRemark.frame.origin.y + 215, 70, 35);
+    fileBtn.frame = CGRectMake(coverRemark.frame.origin.x, coverRemark.frame.origin.y + 215, 200, 35);
     [fileBtn setBackgroundColor:[UIColor getColor:@"155AC3"]];
     [fileBtn addTarget:self action:@selector(chooseFile:) forControlEvents:UIControlEventTouchUpInside];
     [uView addSubview:fileBtn];
     
-    UIButton *submit = [UIButton buttonWithType:UIButtonTypeCustom];
-    [submit setTitle:@"立即上传" forState:UIControlStateNormal];
-    submit.layer.cornerRadius = 4.0f;
-    [submit setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [submit.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
-    submit.frame = CGRectMake(coverRemark.frame.origin.x + 100, coverRemark.frame.origin.y + 215, 70, 35);
-    [submit setBackgroundColor:[UIColor getColor:@"155AC3"]];
-    [submit addTarget:self action:@selector(submitFile:) forControlEvents:UIControlEventTouchUpInside];
-    [uView addSubview:submit];
+//    UIButton *submit = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [submit setTitle:@"立即上传" forState:UIControlStateNormal];
+//    submit.layer.cornerRadius = 4.0f;
+//    [submit setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [submit.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
+//    submit.frame = CGRectMake(coverRemark.frame.origin.x + 100, coverRemark.frame.origin.y + 215, 70, 35);
+//    [submit setBackgroundColor:[UIColor getColor:@"155AC3"]];
+//    [submit addTarget:self action:@selector(submitFile:) forControlEvents:UIControlEventTouchUpInside];
+//    [uView addSubview:submit];
 }
 
 - (void)didReceiveMemoryWarning

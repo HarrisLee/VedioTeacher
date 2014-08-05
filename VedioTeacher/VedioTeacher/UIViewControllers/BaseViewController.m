@@ -33,27 +33,27 @@
     isSearching = NO;
     
     self.view.backgroundColor = [UIColor whiteColor];
-    UIView *logoView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 400, 44)];
-    logoView.backgroundColor = [UIColor redColor];
+    UIView *logoView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 227, 44)];
     UIButton *logo = [UIButton buttonWithType:UIButtonTypeCustom];
-    logo.frame = CGRectMake(0, 0, 300, 44);
-    logo.backgroundColor = [UIColor brownColor];
+    logo.frame = CGRectMake(0, 8.5, 127, 27);
+    [logo setBackgroundImage:[UIImage imageNamed:@"nav_logo"] forState:UIControlStateNormal];
+    logo.backgroundColor = [UIColor clearColor];
     [logo addTarget:self action:@selector(goBackViewController:) forControlEvents:UIControlEventTouchUpInside];
     [logoView addSubview:logo];
-    UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(300, 5, 100, 30)];
+    UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(127, 7, 100, 30)];
     name.text = self.title;
     name.textColor = [UIColor blackColor];
     name.textAlignment = NSTextAlignmentCenter;
-    name.font = [UIFont systemFontOfSize:18.0];
+    name.font = [UIFont systemFontOfSize:16.0];
     [logoView addSubview:name];
     [name release];
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:logoView] autorelease];
     [logoView release];
     
-    UIBarButtonItem *item0 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbar_icon_redirect_hight_os7"] style:UIBarButtonItemStylePlain target:self action:@selector(addSecDir:)];
-    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbar_icon_redirect_hight_os7"] style:UIBarButtonItemStylePlain target:self action:@selector(releaseTask:)];
-    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbar_icon_redirect_hight_os7"] style:UIBarButtonItemStylePlain target:self action:@selector(uploadVedio:)];
-    UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbar_icon_redirect_hight_os7"] style:UIBarButtonItemStylePlain target:self action:@selector(searchTask:)];
+    UIBarButtonItem *item0 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navbar_app"] style:UIBarButtonItemStylePlain target:self action:@selector(addSecDir:)];
+    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navbar_history"] style:UIBarButtonItemStylePlain target:self action:@selector(releaseTask:)];
+    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navbar_upload"] style:UIBarButtonItemStylePlain target:self action:@selector(uploadVedio:)];
+    UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navbar_search"] style:UIBarButtonItemStylePlain target:self action:@selector(searchTask:)];
     self.navigationItem.rightBarButtonItems = @[item3,item2,item1,item0];
 
 }
