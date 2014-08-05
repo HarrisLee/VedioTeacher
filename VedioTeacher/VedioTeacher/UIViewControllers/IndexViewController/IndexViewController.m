@@ -27,9 +27,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [DataCenter shareInstance].loginId = @"NA140714020202352";
-    [DataCenter shareInstance].loginName = @"haha";
-    [DataCenter shareInstance].isLogined = YES;
+//    [DataCenter shareInstance].loginId = @"NA140714020202352";
+//    [DataCenter shareInstance].loginName = @"haha";
+//    [DataCenter shareInstance].isLogined = YES;
     
     GetTopDirectoryReqBody *reqBody = [[GetTopDirectoryReqBody alloc] init];
     NSMutableURLRequest *urlRequets = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_TOPDIR];

@@ -55,10 +55,17 @@
     accountArray = [[NSMutableArray alloc] init];
     tvArray = [[NSMutableArray alloc] init];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserInfo:) name:@"updateInfo" object:nil];
+    
     [self createInitView];
     
     [self getAccountList:[DataCenter shareInstance].loginId];
     
+}
+
+-(void) updateUserInfo:(NSNotification *)notification
+{
+    nameLabel.text = [DataCenter shareInstance].loginName;
 }
 
 /**
@@ -281,6 +288,17 @@
 
 -(void) submitTask:(id)sender
 {
+    if (![DataCenter shareInstance].isLogined) {
+        LoginsViewController *login = [[LoginsViewController alloc] init];
+        login.modalPresentationStyle = UIModalPresentationFormSheet;
+        login.view.backgroundColor = [UIColor whiteColor];
+        [self presentViewController:login animated:YES completion:nil];
+        login.view.superview.frame = CGRectMake(0, 0, 512, 320);
+        login.view.superview.center = self.view.center;
+        [login release];
+        return ;
+    }
+    
     if ([[sender currentTitle] isEqualToString:@"立即发布任务"]) {
         NSMutableString *accountList = [[NSMutableString alloc] init];
         for (int i = 0; i<[accountArray count]; i++) {
@@ -290,17 +308,17 @@
                 [accountList appendString:[NSString stringWithFormat:@"|%@",[model.idAccoun stringByReplacingOccurrencesOfString:@" " withString:@""]]];
             }
         }
-        
-        if ([accountList length] == 0) {
-            alertMessage(@"您尚未选择任务接收者");
-            return;
-        }
-        
+
         if ([taskTitleField.text length] == 0 || [taskInfoView.text length] == 0) {
             alertMessage(@"任务信息输入不完整，请补充");
             return;
         }
 
+        if ([accountList length] == 0) {
+            alertMessage(@"您尚未选择任务接收者");
+            return;
+        }
+        
         [accountList deleteCharactersInRange:NSMakeRange(0, 1)];
         
         AddTaskReqBody *reqBody = [[AddTaskReqBody alloc] init];
@@ -1046,6 +1064,7 @@
     [dateArray release];
     [taskArray release];
     [accountArray release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateInfo" object:nil];
     [super dealloc];
 }
 

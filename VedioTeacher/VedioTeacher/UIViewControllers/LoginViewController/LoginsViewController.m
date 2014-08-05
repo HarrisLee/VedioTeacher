@@ -203,6 +203,7 @@
         [DataCenter shareInstance].loginName = nameField.text;
         [DataCenter shareInstance].loginId = [respBody.userId stringByReplacingOccurrencesOfString:@"\"" withString:@""];
         [self dismissViewControllerAnimated:YES completion:^{}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateInfo" object:nil];
     } else {
         alertMessage(@"登录失败,账户或密码错误.");
     }
