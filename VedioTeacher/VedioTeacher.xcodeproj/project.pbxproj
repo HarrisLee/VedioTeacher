@@ -190,6 +190,8 @@
 		9E5A2606196A72A200C6D1A4 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A2605196A72A200C6D1A4 /* IndexViewController.m */; };
 		9E6648F91976113900F810CC /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6648F81976113900F810CC /* PlayerViewController.m */; };
 		9E6648FC1976114600F810CC /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6648FB1976114600F810CC /* UploadViewController.m */; };
+		9E68535019921C2B00EF67BE /* TransTVFileReqBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E68534F19921C2B00EF67BE /* TransTVFileReqBody.m */; };
+		9E68535319921C3900EF67BE /* TransTVFileRespBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E68535219921C3900EF67BE /* TransTVFileRespBody.m */; };
 		9E83D1661977B9A900ECB49C /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E83D1651977B9A900ECB49C /* TaskCell.m */; };
 		9E8A4F3C1990B67B0061F303 /* personal_bj.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E8A4F3A1990B67B0061F303 /* personal_bj.png */; };
 		9E8A4F3D1990B67B0061F303 /* personal_bj@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E8A4F3B1990B67B0061F303 /* personal_bj@2x.png */; };
@@ -557,6 +559,10 @@
 		9E6648F81976113900F810CC /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
 		9E6648FA1976114600F810CC /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
 		9E6648FB1976114600F810CC /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
+		9E68534E19921C2B00EF67BE /* TransTVFileReqBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransTVFileReqBody.h; sourceTree = "<group>"; };
+		9E68534F19921C2B00EF67BE /* TransTVFileReqBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransTVFileReqBody.m; sourceTree = "<group>"; };
+		9E68535119921C3900EF67BE /* TransTVFileRespBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransTVFileRespBody.h; sourceTree = "<group>"; };
+		9E68535219921C3900EF67BE /* TransTVFileRespBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransTVFileRespBody.m; sourceTree = "<group>"; };
 		9E83D1641977B9A900ECB49C /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		9E83D1651977B9A900ECB49C /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		9E8A4F3A1990B67B0061F303 /* personal_bj.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_bj.png; sourceTree = "<group>"; };
@@ -840,6 +846,7 @@
 		9E5A245D196A308A00C6D1A4 /* Request_Response */ = {
 			isa = PBXGroup;
 			children = (
+				9E68534D19921C1500EF67BE /* TransTVFile */,
 				9E247106197CA9FF00289E84 /* AcceptTask */,
 				9E247107197CA9FF00289E84 /* EndTask */,
 				9E4910A71976522300767FDB /* GetMyExecuteTaskList */,
@@ -1471,6 +1478,17 @@
 			path = UploadViewController;
 			sourceTree = "<group>";
 		};
+		9E68534D19921C1500EF67BE /* TransTVFile */ = {
+			isa = PBXGroup;
+			children = (
+				9E68534E19921C2B00EF67BE /* TransTVFileReqBody.h */,
+				9E68534F19921C2B00EF67BE /* TransTVFileReqBody.m */,
+				9E68535119921C3900EF67BE /* TransTVFileRespBody.h */,
+				9E68535219921C3900EF67BE /* TransTVFileRespBody.m */,
+			);
+			path = TransTVFile;
+			sourceTree = "<group>";
+		};
 		9E8DE23B197CE8BB00BFC6A1 /* VedioModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1942,6 +1960,7 @@
 				9E247116197CADF700289E84 /* CollectionCell.m in Sources */,
 				9E5A2606196A72A200C6D1A4 /* IndexViewController.m in Sources */,
 				9E5A2525196A308A00C6D1A4 /* GetSecondDirectoryOfTimeRespBody.m in Sources */,
+				9E68535319921C3900EF67BE /* TransTVFileRespBody.m in Sources */,
 				9E5A2509196A308A00C6D1A4 /* AddCommentRespBody.m in Sources */,
 				9E5A2589196A398B00C6D1A4 /* FDirectoryModel.m in Sources */,
 				9E5A251B196A308A00C6D1A4 /* GetJobRespBody.m in Sources */,
@@ -1983,6 +2002,7 @@
 				9E5A25CC196A416B00C6D1A4 /* GetTVListOfGoodCountReqBody.m in Sources */,
 				9E5A2588196A398B00C6D1A4 /* JobModel.m in Sources */,
 				9E5A250E196A308A00C6D1A4 /* AddPeopleOpinionReqBody.m in Sources */,
+				9E68535019921C2B00EF67BE /* TransTVFileReqBody.m in Sources */,
 				9E5A25AB196A409100C6D1A4 /* AddTVGoodReqBody.m in Sources */,
 				9E8DE242197CEA8A00BFC6A1 /* TVCommentModel.m in Sources */,
 				9ED53AE4196285A900DA3248 /* ViewController.m in Sources */,

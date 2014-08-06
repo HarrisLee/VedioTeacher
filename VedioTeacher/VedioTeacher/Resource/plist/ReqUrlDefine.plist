@@ -82,5 +82,7 @@
 	<string>EndTask</string>
 	<key>acceptTask</key>
 	<string>AcceptTask</string>
+	<key>transTVFile</key>
+	<string>TransTVFile</string>
 </dict>
 </plist>

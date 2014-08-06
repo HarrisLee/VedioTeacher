@@ -17,6 +17,8 @@
 #import "MBProgressHUD.h"
 #import "UploadTVFileReqBody.h"
 #import "UploadTVFileRespBody.h"
+#import "TransTVFileReqBody.h"
+#import "TransTVFileRespBody.h"
 
 
 @interface UploadViewController : BaseViewController<UITextFieldDelegate,UITextViewDelegate,UITableViewDataSource,UITableViewDelegate,QBImagePickerControllerDelegate,MBProgressHUDDelegate>
@@ -38,5 +40,12 @@
     SDirectoryModel *selectModel;
     TaskModel *taskModel;
     NSMutableArray *fileArray;
+    NSInteger fileCount;
+    NSInteger totalCount;
+    NSInteger sendCount;
+    NSInteger residueSize;
+    NSString *sendType;
+    NSString *tvfileNameContinue;
+    NSString *tvPicNameContinue;
 }
 @end

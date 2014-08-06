@@ -80,5 +80,7 @@
 	<string>EndTaskRespBody</string>
 	<key>acceptTask</key>
 	<string>AcceptTaskRespBody</string>
+	<key>transTVFile</key>
+	<string>TransTVFileRespBody</string>
 </dict>
 </plist>

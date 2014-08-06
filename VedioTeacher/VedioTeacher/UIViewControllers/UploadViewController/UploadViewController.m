@@ -14,6 +14,9 @@
 }
 @end
 
+//(1024*1024*2)=2097152   上传视频时，如果视频过大，已固定大小分段上传
+#define kConstLeng   2097152
+
 @implementation UploadViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,6 +37,9 @@
     self.navigationItem.rightBarButtonItems = nil;
     
     selectType = 1;
+    fileCount = 0;
+    errorCount = 0;
+    sendType = @"1";
     secondArray = [[NSMutableArray alloc] init];
     taskArray = [[NSMutableArray alloc] init];
     uploadArray = [[NSMutableArray alloc] init];
@@ -142,53 +148,211 @@
     [actView release];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    
     int writeCount = 0;
+    [fileArray removeAllObjects];
     
     for (ALAsset *asset in mediaInfoArray) {
         writeCount ++ ;
         NSString *documentsDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:[[asset defaultRepresentation] filename]];
         if ([Utils writeDataToPath:documentsDirectory andAsset:asset]) {
-            NSData *data = [[NSData alloc] initWithContentsOfFile:documentsDirectory];
-//            [uploadArray addObject:data];
-            [uploadArray addObject:[data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
             [fileArray addObject:documentsDirectory];
-            [data release];
         }
         if ([mediaInfoArray count] == writeCount) {
-            [self upLoadImageWithSort];
+            fileCount = 0;
+            [self upLoadImageWithSort:fileCount];
         }
     }
 }
 
--(void) upLoadImageWithSort
+-(void) upLoadImageWithSort:(NSInteger)repeat
 {
-    if ([uploadArray count] == 0 || finishCount >= [uploadArray count]) {
+    if ([fileArray count] == 0 || fileCount >= [fileArray count]) {
         [HUD hide:YES];
+        fileCount = 0;
         errorCount = 0;
-        finishCount = 0;
-        [uploadArray removeAllObjects];
+        residueSize = 0;
+        sendCount = 0;
+        totalCount = 0;
+        for (NSString *path in fileArray) {
+            [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        }
+        [fileArray removeAllObjects];
+        return ;
+    }
+
+    NSError *error = nil;
+    NSData *fileData = [NSData dataWithContentsOfFile:[fileArray objectAtIndex:repeat] options:NSDataReadingMappedIfSafe error:&error];
+    if (error) {
+        NSLog(@"error %@",[error localizedDescription]);
+        fileCount ++;
+        [self upLoadImageWithSort:fileCount];
         return ;
     }
     
+    //当视频小于2M的时候 直接完全上传  否则调用下面的方法
+    if ([fileData length] <= kConstLeng) {
+        NSString *idSec = [selectModel.idSecondDirectory stringByReplacingOccurrencesOfString:@" " withString:@""];
+        [self uploadVedioWithUserId:[DataCenter shareInstance].loginId idSecondDirectory:idSec path:[fileArray objectAtIndex:repeat] describeTV:coverRemark.text fs:[fileData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] taskName:relevanceField.text vedioName:vedioNameField.text];
+        return ;
+    }
+    
+    residueSize = [fileData length]%kConstLeng;
+    totalCount = [fileData length]/kConstLeng;
+    
+    NSLog(@"%.2lu",(unsigned long)[fileData length]);
+ 
+    NSLog(@"%@",[[fileData subdataWithRange:NSMakeRange(kConstLeng * 2, kConstLeng)] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]);
+    
+    NSString *idSec = [selectModel.idSecondDirectory stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [self transTvFile:[DataCenter shareInstance].loginId idSecondDirectory:idSec path:[fileArray objectAtIndex:fileCount] describeTV:coverRemark.text fs:nil taskName:relevanceField.text vedioName:vedioNameField.text ifCreate:sendType TVFileName:tvfileNameContinue tvPicName:tvPicNameContinue];
+    
+    return ;
+}
+
+
+-(void) transTvFile:(NSString *)userId idSecondDirectory:(NSString *)idSecondDirectory path:(NSString *)path describeTV:(NSString *)describe fs:(NSString *)fs taskName:(NSString *)taskName vedioName:(NSString *)vedioName ifCreate:(NSString *)ifCreate TVFileName:(NSString *)tvFileName tvPicName:(NSString *)tvPicName
+{
+    TransTVFileReqBody *upreqBody = [[TransTVFileReqBody alloc] init];
+    
+    upreqBody.idSecondDirectory = idSecondDirectory;
+    
+    NSRange range = [path rangeOfString:@"/" options:NSBackwardsSearch];
+    NSString *file = [path substringFromIndex:range.location+1];
+    
+    upreqBody.nameTV = [NSString stringWithFormat:@"%@_%d_%@",vedioName,fileCount,file];
+    
+    upreqBody.describeTV = describe;
+    
+    upreqBody.addAccountId = userId;
+    
+    NSError *error = nil;
+    NSData *fileData = [NSData dataWithContentsOfFile:[fileArray objectAtIndex:fileCount] options:NSDataReadingMappedIfSafe error:&error];
+    if (error) {
+        NSLog(@"error %@",[error localizedDescription]);
+        fileCount ++;
+        [self upLoadImageWithSort:fileCount];
+        return ;
+    }
+    
+    if ([sendType isEqualToString:@"1"] || [sendType isEqualToString:@"2"]) {
+        NSString *data = [[fileData subdataWithRange:NSMakeRange(kConstLeng * sendCount, kConstLeng)] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+        upreqBody.fs = data;
+    } else {
+        NSString *data = [[fileData subdataWithRange:NSMakeRange(kConstLeng * sendCount, residueSize)] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+        upreqBody.fs = data;
+    }
+
+    upreqBody.ifCreate = ifCreate;
+    
+    upreqBody.TVfileName = tvFileName ? tvFileName : @"";
+    
+    upreqBody.tvPicfileName = tvPicName ? tvPicName : @"";
+    
+    if ([taskName length] == 0) {
+        upreqBody.idTask = @"0";
+    } else {
+        upreqBody.idTask = [taskModel.taskID stringByReplacingOccurrencesOfString:@" " withString:@""];
+    }
+    
+    NSMutableURLRequest *requestUp = [[AFHttpRequestUtils shareInstance] requestWithBody:upreqBody andReqType:TRANSTV_FILE];
+    
+    AFHTTPRequestOperation *theOperationUp = [[AFHTTPRequestOperation alloc] initWithRequest:requestUp];
+    [theOperationUp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation,id responseObject){
+        
+        TransTVFileRespBody *respBody = (TransTVFileRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:TRANSTV_FILE];
+        
+        [self TVFileCheckSuccess:respBody];
+        
+    } failure:^(AFHTTPRequestOperation *operation,NSError *error){
+        
+        NSLog(@"Error : %@",[error localizedDescription]);
+        [self TVFileCheckFile:error];
+        
+    }];
+    [theOperationUp start];
+    [theOperationUp release];
+}
+
+-(void) TVFileCheckSuccess:(TransTVFileRespBody *)response
+{
+    if ([response.result isEqualToString:@"0"]) {
+        sendType = @"1";
+        HUD.progress = ((float)fileCount)/fileArray.count;
+        fileCount ++ ;
+        errorCount ++;
+        [self upLoadImageWithSort:fileCount];
+        if (fileCount == [fileArray count] && errorCount > 0) {
+            alertMessage(@"有视频上传失败。");
+        }
+        return ;
+    }
+    
+    NSString *idSec = [selectModel.idSecondDirectory stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if ([sendType isEqualToString:@"3"]) {
+        fileCount ++ ;
+        [self upLoadImageWithSort:fileCount];
+    } else if ([sendType isEqualToString:@"1"]) {
+        NSArray *array = [response.result componentsSeparatedByString:@"|"];
+        [tvfileNameContinue release]; [tvPicNameContinue release];
+        tvfileNameContinue = [[array objectAtIndex:0] retain];
+        tvPicNameContinue = [[array objectAtIndex:1] retain];
+        sendType = @"2";
+        NSString *data = nil;
+        [self transTvFile:[DataCenter shareInstance].loginId idSecondDirectory:idSec path:[fileArray objectAtIndex:fileCount] describeTV:coverRemark.text fs:data taskName:relevanceField.text vedioName:vedioNameField.text ifCreate:sendType TVFileName:tvfileNameContinue tvPicName:tvPicNameContinue];
+        
+    } else {
+        if (sendCount < totalCount) {
+            //继续发送
+            sendType = @"2";
+            NSString *data = nil;
+            [self transTvFile:[DataCenter shareInstance].loginId idSecondDirectory:idSec path:[fileArray objectAtIndex:fileCount] describeTV:coverRemark.text fs:data taskName:relevanceField.text vedioName:vedioNameField.text ifCreate:sendType TVFileName:tvfileNameContinue tvPicName:tvPicNameContinue];
+        } else if (sendCount == totalCount) {
+            if (residueSize == 0) {
+                sendType = @"1";
+                fileCount ++ ;
+                [self upLoadImageWithSort:fileCount];
+            } else {
+                sendType = @"3";
+                NSString *data = nil;
+                [self transTvFile:[DataCenter shareInstance].loginId idSecondDirectory:idSec path:[fileArray objectAtIndex:fileCount] describeTV:coverRemark.text fs:data taskName:relevanceField.text vedioName:vedioNameField.text ifCreate:sendType TVFileName:tvfileNameContinue tvPicName:tvPicNameContinue];
+            }
+        }
+    }
+}
+
+-(void) TVFileCheckFile:(NSError *)error
+{
+    sendType = @"1";
+    HUD.progress = ((float)fileCount)/fileArray.count;
+    fileCount ++ ;
+    [self upLoadImageWithSort:fileCount];
+    errorCount ++;
+    if (fileCount == [fileArray count] && errorCount > 0) {
+        alertMessage(@"有视频上传失败。");
+    }
+}
+
+
+-(void) uploadVedioWithUserId:(NSString *)userId idSecondDirectory:(NSString *)idSecondDirectory path:(NSString *)path describeTV:(NSString *)describe fs:(NSString *)fs taskName:(NSString *)taskName vedioName:(NSString *)vedioName
+{
+    sendType = @"1";
+    
     UploadTVFileReqBody *upreqBody = [[UploadTVFileReqBody alloc] init];
     
-    upreqBody.idSecondDirectory = [selectModel.idSecondDirectory stringByReplacingOccurrencesOfString:@" " withString:@""];
+    upreqBody.idSecondDirectory = idSecondDirectory;
     
-    NSRange range = [[fileArray objectAtIndex:finishCount] rangeOfString:@"/" options:NSBackwardsSearch];
-    NSString *file = [[fileArray objectAtIndex:finishCount] substringFromIndex:range.location+1];
+    NSRange range = [path rangeOfString:@"/" options:NSBackwardsSearch];
+    NSString *file = [path substringFromIndex:range.location+1];
     
-    upreqBody.nameTV = [NSString stringWithFormat:@"%@_%d_%@",vedioNameField.text,finishCount,file];
+    upreqBody.nameTV = [NSString stringWithFormat:@"%@_%d_%@",vedioName,fileCount,file];
     
-    upreqBody.describeTV = [coverRemark text];
+    upreqBody.describeTV = describe;
     
-    upreqBody.addAccountId = [DataCenter shareInstance].loginId;
+    upreqBody.addAccountId = userId;
     
-    NSLog(@"%d",[[uploadArray objectAtIndex:finishCount] length]);
+    upreqBody.fs = fs;
     
-    upreqBody.fs = [uploadArray objectAtIndex:finishCount];//dataStr;
-    
-    if ([relevanceField.text length] == 0) {
+    if ([taskName length] == 0) {
         upreqBody.idTask = @"0";
     } else {
         upreqBody.idTask = [taskModel.taskID stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -200,7 +364,7 @@
     [theOperationUp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation,id responseObject){
         
         UploadTVFileRespBody *respBody = (UploadTVFileRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:UPLOAD_TVFILE];
-        
+
         [self reloadWaterView:respBody];
         
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){
@@ -215,27 +379,27 @@
 
 -(void) reloadWaterView:(UploadTVFileRespBody *)respBody
 {
-    finishCount ++;
-    HUD.progress = ((float)finishCount)/uploadArray.count;
+    fileCount ++;
+    HUD.progress = ((float)fileCount)/fileArray.count;
     if ([@"\"0\"" isEqualToString:respBody.result]) {
-        [self upLoadImageWithSort];
+        [self upLoadImageWithSort:fileCount];
         errorCount ++;
-        if (finishCount == [uploadArray count] && errorCount > 0) {
+        if (fileCount == [fileArray count] && errorCount > 0) {
             alertMessage(@"有视频上传失败。");
         }
         return ;
     }
     
-    [self upLoadImageWithSort];
+    [self upLoadImageWithSort:fileCount];
 }
 
 -(void) uploadFail:(NSError *)error
 {
-    finishCount ++;
-    HUD.progress = ((float)finishCount)/uploadArray.count;
-    [self upLoadImageWithSort];
+    fileCount ++;
     errorCount ++;
-    if (finishCount == [uploadArray count] && errorCount > 0) {
+    HUD.progress = ((float)fileCount)/fileArray.count;
+    [self upLoadImageWithSort:fileCount];
+    if (fileCount == [fileArray count] && errorCount > 0) {
         alertMessage(@"有视频上传失败。");
     }
 }
@@ -300,10 +464,10 @@
 
 -(void) chooseFile:(id) sender
 {
-    if ([top1Field.text length] == 0 || [top2Field.text length] == 0 || [vedioNameField.text length]==0 || [coverRemark.text length] == 0) {
-        alertMessage(@"您的上传信息尚未输入完整，请先输入！");
-        return ;
-    }
+//    if ([top1Field.text length] == 0 || [top2Field.text length] == 0 || [vedioNameField.text length]==0 || [coverRemark.text length] == 0) {
+//        alertMessage(@"您的上传信息尚未输入完整，请先输入！");
+//        return ;
+//    }
     
     QBImagePickerController *imagePickerController = [[QBImagePickerController alloc] init];
     imagePickerController.filterType = QBImagePickerFilterTypeAllVideos;

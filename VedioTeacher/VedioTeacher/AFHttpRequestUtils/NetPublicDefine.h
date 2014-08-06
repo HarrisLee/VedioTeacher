@@ -87,4 +87,6 @@
 
 #define ACCEPT_TASK      @"acceptTask"
 
+#define TRANSTV_FILE     @"transTVFile"
+
 #endif
