@@ -469,10 +469,10 @@
 
 -(void) chooseFile:(id) sender
 {
-//    if ([top1Field.text length] == 0 || [top2Field.text length] == 0 || [vedioNameField.text length]==0 || [coverRemark.text length] == 0) {
-//        alertMessage(@"您的上传信息尚未输入完整，请先输入！");
-//        return ;
-//    }
+    if ([top1Field.text length] == 0 || [top2Field.text length] == 0 || [vedioNameField.text length]==0 || [coverRemark.text length] == 0) {
+        alertMessage(@"您的上传信息尚未输入完整，请先输入！");
+        return ;
+    }
     
     QBImagePickerController *imagePickerController = [[QBImagePickerController alloc] init];
     imagePickerController.filterType = QBImagePickerFilterTypeAllVideos;

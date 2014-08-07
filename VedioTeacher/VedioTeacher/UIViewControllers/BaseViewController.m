@@ -83,6 +83,7 @@
     }
     
     UploadViewController *upload = [[UploadViewController alloc] init];
+    upload.title = @"上传视频";
     [self.navigationController pushViewController:upload animated:YES];
     [upload release];
     
