@@ -537,7 +537,7 @@ typedef int (*PMobileInstallationInstall)(NSString *path, NSDictionary *dict, vo
         return @"";
     }
     
-    NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]autorelease];
+    NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
     NSDateComponents *comps = [[[NSDateComponents alloc] init] autorelease];
     NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit |
     NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
@@ -565,7 +565,6 @@ typedef int (*PMobileInstallationInstall)(NSString *path, NSDictionary *dict, vo
     }else if(week==7){
         weekStr= @"星期六";
     }
-    [comps release];
     return weekStr;
 }
 

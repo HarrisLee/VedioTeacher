@@ -43,9 +43,9 @@ static AFHttpRequestUtils *m_RequestCenter = nil;
             [Utils copyPlistToDst:@"Config"];
         }
         
-        NSMutableDictionary *configPlist = [[[NSMutableDictionary alloc] initWithContentsOfFile:[Utils documentsPath:@"Config.plist"]] mutableCopy];
+        NSMutableDictionary *configPlist = [[NSMutableDictionary alloc] initWithContentsOfFile:[Utils documentsPath:@"Config.plist"]];
         
-        baseUrl = [configPlist objectForKey:@"service"];
+        baseUrl = [[configPlist objectForKey:@"service"] retain];
         
         [configPlist release];
     }
@@ -168,6 +168,12 @@ static AFHttpRequestUtils *m_RequestCenter = nil;
     [respBody setValue:respDic];
 
     return respBody;
+}
+
+-(void) dealloc
+{
+    [baseUrl release];
+    [super dealloc];
 }
 
 @end

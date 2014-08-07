@@ -311,11 +311,13 @@
 
         if ([taskTitleField.text length] == 0 || [taskInfoView.text length] == 0) {
             alertMessage(@"任务信息输入不完整，请补充");
+            [accountList release];
             return;
         }
 
         if ([accountList length] == 0) {
             alertMessage(@"您尚未选择任务接收者");
+            [accountList release];
             return;
         }
         
@@ -328,6 +330,7 @@
         reqBody.addTaskAccountID = [DataCenter shareInstance].loginId;
         reqBody.AcceptAccountList = accountList;
         NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:ADD_TASK];
+        [accountList release];
         [reqBody release];
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {

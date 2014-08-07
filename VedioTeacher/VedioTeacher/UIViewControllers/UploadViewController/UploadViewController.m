@@ -195,13 +195,10 @@
         [self uploadVedioWithUserId:[DataCenter shareInstance].loginId idSecondDirectory:idSec path:[fileArray objectAtIndex:repeat] describeTV:coverRemark.text fs:[fileData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] taskName:relevanceField.text vedioName:vedioNameField.text];
         return ;
     }
-    
+    sendCount = 0;
+    sendType = @"1";
     residueSize = [fileData length]%kConstLeng;
     totalCount = [fileData length]/kConstLeng;
-    
-    NSLog(@"%.2lu",(unsigned long)[fileData length]);
- 
-    NSLog(@"%@",[[fileData subdataWithRange:NSMakeRange(kConstLeng * 2, kConstLeng)] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]);
     
     NSString *idSec = [selectModel.idSecondDirectory stringByReplacingOccurrencesOfString:@" " withString:@""];
     [self transTvFile:[DataCenter shareInstance].loginId idSecondDirectory:idSec path:[fileArray objectAtIndex:fileCount] describeTV:coverRemark.text fs:nil taskName:relevanceField.text vedioName:vedioNameField.text ifCreate:sendType TVFileName:tvfileNameContinue tvPicName:tvPicNameContinue];
@@ -229,6 +226,7 @@
     NSData *fileData = [NSData dataWithContentsOfFile:[fileArray objectAtIndex:fileCount] options:NSDataReadingMappedIfSafe error:&error];
     if (error) {
         NSLog(@"error %@",[error localizedDescription]);
+        [upreqBody release];
         fileCount ++;
         [self upLoadImageWithSort:fileCount];
         return ;
@@ -238,7 +236,7 @@
         NSString *data = [[fileData subdataWithRange:NSMakeRange(kConstLeng * sendCount, kConstLeng)] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
         upreqBody.fs = data;
     } else {
-        NSString *data = [[fileData subdataWithRange:NSMakeRange(kConstLeng * sendCount, residueSize)] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+        NSString *data = [[fileData subdataWithRange:NSMakeRange(kConstLeng * totalCount, residueSize)] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
         upreqBody.fs = data;
     }
 
@@ -255,6 +253,8 @@
     }
     
     NSMutableURLRequest *requestUp = [[AFHttpRequestUtils shareInstance] requestWithBody:upreqBody andReqType:TRANSTV_FILE];
+    
+    [upreqBody release];
     
     AFHTTPRequestOperation *theOperationUp = [[AFHTTPRequestOperation alloc] initWithRequest:requestUp];
     [theOperationUp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation,id responseObject){
@@ -294,18 +294,21 @@
     } else if ([sendType isEqualToString:@"1"]) {
         NSArray *array = [response.result componentsSeparatedByString:@"|"];
         [tvfileNameContinue release]; [tvPicNameContinue release];
-        tvfileNameContinue = [[array objectAtIndex:0] retain];
+        tvfileNameContinue = [[[array objectAtIndex:0] substringFromIndex:1] retain];
         tvPicNameContinue = [[array objectAtIndex:1] retain];
         sendType = @"2";
         NSString *data = nil;
+        sendCount ++ ;  //1
         [self transTvFile:[DataCenter shareInstance].loginId idSecondDirectory:idSec path:[fileArray objectAtIndex:fileCount] describeTV:coverRemark.text fs:data taskName:relevanceField.text vedioName:vedioNameField.text ifCreate:sendType TVFileName:tvfileNameContinue tvPicName:tvPicNameContinue];
-        
+        HUD.progress = (((float)sendCount)/(totalCount+1)) * (((float)fileCount)/fileArray.count);
     } else {
         if (sendCount < totalCount) {
             //继续发送
             sendType = @"2";
             NSString *data = nil;
+            sendCount ++ ;  //2.3
             [self transTvFile:[DataCenter shareInstance].loginId idSecondDirectory:idSec path:[fileArray objectAtIndex:fileCount] describeTV:coverRemark.text fs:data taskName:relevanceField.text vedioName:vedioNameField.text ifCreate:sendType TVFileName:tvfileNameContinue tvPicName:tvPicNameContinue];
+            HUD.progress = (((float)sendCount)/(totalCount+1)) * (((float)fileCount)/fileArray.count);
         } else if (sendCount == totalCount) {
             if (residueSize == 0) {
                 sendType = @"1";
@@ -359,6 +362,8 @@
     }
     
     NSMutableURLRequest *requestUp = [[AFHttpRequestUtils shareInstance] requestWithBody:upreqBody andReqType:UPLOAD_TVFILE];
+    
+    [upreqBody release];
     
     AFHTTPRequestOperation *theOperationUp = [[AFHTTPRequestOperation alloc] initWithRequest:requestUp];
     [theOperationUp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation,id responseObject){

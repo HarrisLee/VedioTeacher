@@ -481,6 +481,7 @@
     }
     
     [waterView reloadData];
+    [array release];
 }
 
 -(BOOL) searchTask:(id)sender
