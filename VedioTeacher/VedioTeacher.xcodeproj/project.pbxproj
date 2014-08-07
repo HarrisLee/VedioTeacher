@@ -223,8 +223,6 @@
 		9EC7BF10197E580E000A0E54 /* QBImagePickerFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEF5197E580E000A0E54 /* QBImagePickerFooterView.m */; };
 		9EC7BF11197E580E000A0E54 /* QBImagePickerGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEF7197E580E000A0E54 /* QBImagePickerGroupCell.m */; };
 		9EC7BF12197E580E000A0E54 /* QBImagePickerVideoInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BEF9197E580E000A0E54 /* QBImagePickerVideoInfoView.m */; };
-		9EC7BF13197E580E000A0E54 /* libUtilsGather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EC7BEFC197E580E000A0E54 /* libUtilsGather.a */; };
-		9EC7BF14197E580E000A0E54 /* libUtilsGather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EC7BEFE197E580E000A0E54 /* libUtilsGather.a */; };
 		9ED53ACE196285A900DA3248 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53ACD196285A900DA3248 /* Foundation.framework */; };
 		9ED53AD0196285A900DA3248 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53ACF196285A900DA3248 /* CoreGraphics.framework */; };
 		9ED53AD2196285A900DA3248 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED53AD1196285A900DA3248 /* UIKit.framework */; };
@@ -621,10 +619,6 @@
 		9EC7BEF7197E580E000A0E54 /* QBImagePickerGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerGroupCell.m; sourceTree = "<group>"; };
 		9EC7BEF8197E580E000A0E54 /* QBImagePickerVideoInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerVideoInfoView.h; sourceTree = "<group>"; };
 		9EC7BEF9197E580E000A0E54 /* QBImagePickerVideoInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerVideoInfoView.m; sourceTree = "<group>"; };
-		9EC7BEFC197E580E000A0E54 /* libUtilsGather.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUtilsGather.a; sourceTree = "<group>"; };
-		9EC7BEFE197E580E000A0E54 /* libUtilsGather.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUtilsGather.a; sourceTree = "<group>"; };
-		9EC7BEFF197E580E000A0E54 /* SayHello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SayHello.h; sourceTree = "<group>"; };
-		9EC7BF00197E580E000A0E54 /* UtilsGather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsGather.h; sourceTree = "<group>"; };
 		9ED53ACA196285A900DA3248 /* VedioTeacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VedioTeacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED53ACD196285A900DA3248 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9ED53ACF196285A900DA3248 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -659,8 +653,6 @@
 			files = (
 				9ED53B03196285C200DA3248 /* AVFoundation.framework in Frameworks */,
 				9ED53AD0196285A900DA3248 /* CoreGraphics.framework in Frameworks */,
-				9EC7BF14197E580E000A0E54 /* libUtilsGather.a in Frameworks */,
-				9EC7BF13197E580E000A0E54 /* libUtilsGather.a in Frameworks */,
 				9ED53AD2196285A900DA3248 /* UIKit.framework in Frameworks */,
 				9ED53ACE196285A900DA3248 /* Foundation.framework in Frameworks */,
 			);
@@ -1531,7 +1523,6 @@
 				9EC7BED0197E580E000A0E54 /* AFNetworking */,
 				9EC7BEE4197E580E000A0E54 /* HudProgress */,
 				9EC7BEE7197E580E000A0E54 /* QBImagePickerController */,
-				9EC7BEFA197E580E000A0E54 /* UtilsGather */,
 			);
 			name = Libraries;
 			path = VedioTeacher/Libraries;
@@ -1595,33 +1586,6 @@
 				9EC7BEF9197E580E000A0E54 /* QBImagePickerVideoInfoView.m */,
 			);
 			path = QBImagePickerController;
-			sourceTree = "<group>";
-		};
-		9EC7BEFA197E580E000A0E54 /* UtilsGather */ = {
-			isa = PBXGroup;
-			children = (
-				9EC7BEFB197E580E000A0E54 /* iphone-os */,
-				9EC7BEFD197E580E000A0E54 /* iphonesimulator */,
-				9EC7BEFF197E580E000A0E54 /* SayHello.h */,
-				9EC7BF00197E580E000A0E54 /* UtilsGather.h */,
-			);
-			path = UtilsGather;
-			sourceTree = "<group>";
-		};
-		9EC7BEFB197E580E000A0E54 /* iphone-os */ = {
-			isa = PBXGroup;
-			children = (
-				9EC7BEFC197E580E000A0E54 /* libUtilsGather.a */,
-			);
-			path = "iphone-os";
-			sourceTree = "<group>";
-		};
-		9EC7BEFD197E580E000A0E54 /* iphonesimulator */ = {
-			isa = PBXGroup;
-			children = (
-				9EC7BEFE197E580E000A0E54 /* libUtilsGather.a */,
-			);
-			path = iphonesimulator;
 			sourceTree = "<group>";
 		};
 		9ED53AC1196285A900DA3248 = {
@@ -2188,11 +2152,7 @@
 				GCC_PREFIX_HEADER = "VedioTeacher/VedioTeacher-Prefix.pch";
 				INFOPLIST_FILE = "VedioTeacher/VedioTeacher-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/VedioTeacher/Libraries/UtilsGather/iphonesimulator",
-					"$(PROJECT_DIR)/VedioTeacher/Libraries/UtilsGather/iphone-os",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -2209,11 +2169,7 @@
 				GCC_PREFIX_HEADER = "VedioTeacher/VedioTeacher-Prefix.pch";
 				INFOPLIST_FILE = "VedioTeacher/VedioTeacher-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/VedioTeacher/Libraries/UtilsGather/iphonesimulator",
-					"$(PROJECT_DIR)/VedioTeacher/Libraries/UtilsGather/iphone-os",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

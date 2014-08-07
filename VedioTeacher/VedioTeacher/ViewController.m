@@ -8,8 +8,6 @@
 
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
-#import "SayHello.h"
-#import "UtilsGather.h"
 
 @interface ViewController ()
 {
@@ -33,14 +31,6 @@
 //    img.userInteractionEnabled = YES;
 //    [img addGestureRecognizer:tap];
 //    [tap release];
-
-    SayHello *say = [[SayHello alloc] init];
-    [say sayMessage:@"Utils Test"];
-    NSLog(@"%@",[say sayMessage:@"Utils Test"]);
-    
-    UtilsGather *utls = [[UtilsGather alloc] init];
-    [utls sayUtils:@"Utils Test"];
-    NSLog(@"%@",[utls sayUtils:@"Utils Test"]);
     
     NSLog(@"%.@", NSStringFromCGRect([[UIApplication sharedApplication] statusBarFrame]) );
   
