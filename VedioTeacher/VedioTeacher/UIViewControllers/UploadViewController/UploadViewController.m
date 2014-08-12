@@ -177,6 +177,7 @@
             [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
         }
         [fileArray removeAllObjects];
+        [self.navigationController popViewControllerAnimated:YES];
         return ;
     }
 
@@ -300,7 +301,7 @@
         NSString *data = nil;
         sendCount ++ ;  //1
         [self transTvFile:[DataCenter shareInstance].loginId idSecondDirectory:idSec path:[fileArray objectAtIndex:fileCount] describeTV:coverRemark.text fs:data taskName:relevanceField.text vedioName:vedioNameField.text ifCreate:sendType TVFileName:tvfileNameContinue tvPicName:tvPicNameContinue];
-        HUD.progress = (((float)sendCount)/(totalCount+1)) * (((float)fileCount)/fileArray.count);
+        HUD.progress = ((float)fileCount)/fileArray.count  + ((float)sendCount)/totalCount/fileArray.count;
     } else {
         if (sendCount < totalCount) {
             //继续发送
@@ -308,7 +309,7 @@
             NSString *data = nil;
             sendCount ++ ;  //2.3
             [self transTvFile:[DataCenter shareInstance].loginId idSecondDirectory:idSec path:[fileArray objectAtIndex:fileCount] describeTV:coverRemark.text fs:data taskName:relevanceField.text vedioName:vedioNameField.text ifCreate:sendType TVFileName:tvfileNameContinue tvPicName:tvPicNameContinue];
-            HUD.progress = (((float)sendCount)/(totalCount+1)) * (((float)fileCount)/fileArray.count);
+            HUD.progress = ((float)fileCount)/fileArray.count + ((float)sendCount)/totalCount/fileArray.count;
         } else if (sendCount == totalCount) {
             if (residueSize == 0) {
                 sendType = @"1";
