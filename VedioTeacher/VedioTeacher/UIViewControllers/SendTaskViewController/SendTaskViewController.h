@@ -31,7 +31,7 @@
 #import "PlayerViewController.h"
 
 
-@interface SendTaskViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,DateShowCellDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIAlertViewDelegate>
+@interface SendTaskViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,DateShowCellDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIAlertViewDelegate,UITextFieldDelegate>
 {
     UIView *headerView;
     UIImageView *userIcon;
@@ -66,5 +66,6 @@
     UICollectionView *waterView;
     NSMutableArray *tvArray;
     
+    NSString *baseURL;
 }
 @end

@@ -52,6 +52,14 @@ static AFHttpRequestUtils *m_RequestCenter = nil;
     return self;
 }
 
+-(void) setBaseUrl:(NSString *)baseURL
+{
+    if (baseUrl) {
+        [baseUrl release];
+        baseUrl = nil;
+    }
+    baseUrl = [baseURL retain];
+}
 
 -(NSMutableURLRequest *)requestWithBody:(ReqBody*)reqBody andReqType:(NSString*)reqType
 {

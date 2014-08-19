@@ -634,6 +634,44 @@
     return YES;
 }
 
+-(void) textFieldDidEndEditing:(UITextField *)textField
+{
+    if ([textField.text length] == 0) {
+        return ;
+    }
+    
+    if (baseURL) {
+        [baseURL release];
+        baseURL = nil;
+    }
+    
+    NSString *plistName = [NSString stringWithFormat:@"Config.plist"];
+    // 创建本地Plist文件实现缓存
+    NSString *plistPath = [Utils documentsPath:plistName];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
+    {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [[NSFileManager defaultManager] createFileAtPath:plistPath contents:dic attributes:nil];
+        [dic release];
+    }
+    NSMutableDictionary *infoDictionary = [[[NSMutableDictionary alloc] initWithContentsOfFile:plistPath] mutableCopy];
+    
+    baseURL = [textField.text retain];
+    
+    if (textField.text.length != 0) {
+        
+        [infoDictionary setObject:baseURL forKey:@"service"];
+        
+        [infoDictionary writeToFile:plistPath atomically:YES];
+    }
+    
+    NSLog(@"%@",baseURL);
+    [[AFHttpRequestUtils shareInstance] setBaseUrl:baseURL];
+    
+    [infoDictionary release];
+}
+
 /*!
  *  获取所有用户列表
  *
@@ -904,6 +942,12 @@
 
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if (alertView.tag == 1005) {
+        if (buttonIndex == 1) {
+            NSLog(@"修改IP地址");
+            return ;
+        }
+    }
     if (buttonIndex == 1) {
         NSLog(@"注销");
         [DataCenter shareInstance].isLogined = NO;
@@ -911,6 +955,17 @@
         [DataCenter shareInstance].loginName = @"";
         [self.tabBarController setSelectedIndex:0];
     }
+}
+
+-(void) configBaseURL:(id)sender
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"请输入服务器地址"delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alertView textFieldAtIndex:0].keyboardType = UIKeyboardTypeDefault;
+    [alertView textFieldAtIndex:0].delegate = self;
+    alertView.tag = 1005;
+    [alertView show];
+    [alertView release];
 }
 
 -(void) createInitView
@@ -936,7 +991,13 @@
     [outLogin addTarget:self action:@selector(outLogin:) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:outLogin];
     
-    
+    UIButton *config = [UIButton buttonWithType:UIButtonTypeCustom];
+    config.frame = CGRectMake(1024-60, 80, 40, 40);
+    config.backgroundColor = [UIColor clearColor];
+    [config setBackgroundImage:[UIImage imageNamed:@"broadcast_icon_setting_normal"] forState:UIControlStateNormal];
+    [config setBackgroundImage:[UIImage imageNamed:@"broadcast_icon_setting_pressed"] forState:UIControlStateHighlighted];
+    [config addTarget:self action:@selector(configBaseURL:) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:config];
     
     UIImageView *btnBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 260, 1024, 40)];
     [btnBgView setImage:[UIImage imageNamed:@"personal_bj2"]];

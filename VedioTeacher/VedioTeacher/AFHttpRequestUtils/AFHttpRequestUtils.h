@@ -25,4 +25,6 @@
 
 -(RespBody *) jsonConvertObject:(NSData *)jsonData withReqType:(NSString *)reqType;
 
+-(void) setBaseUrl:(NSString *)baseURL;
+
 @end
