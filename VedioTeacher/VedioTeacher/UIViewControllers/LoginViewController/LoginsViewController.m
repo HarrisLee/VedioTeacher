@@ -199,6 +199,10 @@
 -(void) checkData:(VerifyLoginRespBody *) respBody
 {
     if (![@"\"0\"" isEqualToString:respBody.userId]) {
+        
+        [[NSUserDefaults standardUserDefaults] setValue:nameField.text forKey:@"userName"];
+        [[NSUserDefaults standardUserDefaults] setValue:passwordField.text forKey:@"userpwd"];
+        
         [DataCenter shareInstance].isLogined = YES;
         [DataCenter shareInstance].loginName = nameField.text;
         [DataCenter shareInstance].loginId = [respBody.userId stringByReplacingOccurrencesOfString:@"\"" withString:@""];

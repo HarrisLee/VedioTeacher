@@ -31,7 +31,7 @@
 #import "PlayerViewController.h"
 
 
-@interface SendTaskViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,DateShowCellDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
+@interface SendTaskViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,DateShowCellDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIAlertViewDelegate>
 {
     UIView *headerView;
     UIImageView *userIcon;

@@ -306,7 +306,14 @@
     [string release];
     [reference release];
     
-    string =  [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"视频名称: %@",[self.vedioModel.nameTV stringByReplacingOccurrencesOfString:@"(null)" withString:@" "]]];
+    NSString *nameString = [self.vedioModel.nameTV stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSRange range = [nameString rangeOfString:@"." options:NSBackwardsSearch];
+    NSString *file = @"";
+    if (range.length > 0) {
+        file = [nameString substringToIndex:range.location];
+    }
+    
+    string =  [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"视频名称: %@",file]];
     [string addAttribute:NSForegroundColorAttributeName value:[UIColor getColor:@"3FA6FF"] range:NSMakeRange(0, 5)];
     UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(15, header.frame.origin.y + header.frame.size.height, 994, 30)];
     name.textColor = [UIColor lightGrayColor];

@@ -30,6 +30,32 @@
 //    [DataCenter shareInstance].loginId = @"NA140714020202352";
 //    [DataCenter shareInstance].loginName = @"haha";
 //    [DataCenter shareInstance].isLogined = YES;
+    NSString *name = [[NSUserDefaults standardUserDefaults] valueForKey:@"userName"];
+    NSString *pwd = [[NSUserDefaults standardUserDefaults] valueForKey:@"userpwd"];
+    if ([name isKindOfClass:[NSString class]] && [name length] > 0
+        && [pwd isKindOfClass:[NSString class]] && [pwd length] > 0 ) {
+        VerifyLoginReqBody *reqBody = [[VerifyLoginReqBody alloc] init];
+        reqBody.name = name;
+        reqBody.password = pwd;
+        NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody
+                                                                                andReqType:VERITY_LOGIN];
+        [reqBody release];
+        
+        AFHTTPRequestOperation *theOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        [theOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            VerifyLoginRespBody *respBody = (VerifyLoginRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:VERITY_LOGIN];
+            [self checkLoginData:respBody];
+            
+        }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error : %@", [error localizedDescription]);
+        }];
+        
+        [theOperation start];
+        [theOperation release];
+    }
+    
+    
     
     GetTopDirectoryReqBody *reqBody = [[GetTopDirectoryReqBody alloc] init];
     NSMutableURLRequest *urlRequets = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_TOPDIR];
@@ -48,6 +74,15 @@
     
     [theOperation start];
     [theOperation release];
+}
+
+-(void) checkLoginData:(VerifyLoginRespBody *) respBody
+{
+    if (![@"\"0\"" isEqualToString:respBody.userId]) {
+        [DataCenter shareInstance].isLogined = YES;
+        [DataCenter shareInstance].loginName = [[NSUserDefaults standardUserDefaults] valueForKey:@"userName"];
+        [DataCenter shareInstance].loginId = [respBody.userId stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+    }
 }
 
 -(void) checkData:(GetTopDirectoryRespBody *)response

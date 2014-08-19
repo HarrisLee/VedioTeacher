@@ -141,7 +141,14 @@
     if (!cell) {
         cell = [[[CollectionCell alloc] init] autorelease];
     }
-    cell.name.text = [model.nameTV stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *name = [model.nameTV stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSRange range = [name rangeOfString:@"." options:NSBackwardsSearch];
+    if (range.length > 0) {
+        NSString *file = [name substringToIndex:range.location];
+        cell.name.text = file;
+    } else {
+        cell.name.text = name;
+    }
     [cell.icon setImageWithURL:[NSURL URLWithString:model.tvPicVirtualPath] placeholderImage:[UIImage imageNamed:@"placeholder_horizontal"]];
     cell.count.text = [NSString stringWithFormat:@"点赞数：%@",[model.goodCount description]];
     return cell;
@@ -877,6 +884,34 @@
     
 }
 
+-(void) outLogin:(id)sender
+{
+    if (![DataCenter shareInstance].isLogined) {
+        LoginsViewController *login = [[LoginsViewController alloc] init];
+        login.modalPresentationStyle = UIModalPresentationFormSheet;
+        login.view.backgroundColor = [UIColor whiteColor];
+        [self presentViewController:login animated:YES completion:nil];
+        login.view.superview.frame = CGRectMake(0, 0, 512, 320);
+        login.view.superview.center = self.view.center;
+        [login release];
+        return ;
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您确定要退出当前登录账号么？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    [alert release];
+}
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        NSLog(@"注销");
+        [DataCenter shareInstance].isLogined = NO;
+        [DataCenter shareInstance].loginId = @"";
+        [DataCenter shareInstance].loginName = @"";
+        [self.tabBarController setSelectedIndex:0];
+    }
+}
+
 -(void) createInitView
 {
 //--------------------------------------------------------
@@ -891,6 +926,14 @@
     [bgView setImage:[UIImage imageNamed:@"personal_bj"]];
     [headerView addSubview:bgView];
     [bgView release];
+    
+    UIButton *outLogin = [UIButton buttonWithType:UIButtonTypeCustom];
+    outLogin.frame = CGRectMake(1024-60, 30, 40, 40);
+    outLogin.backgroundColor = [UIColor clearColor];
+    [outLogin setBackgroundImage:[UIImage imageNamed:@"broadcast_icon_setting_normal"] forState:UIControlStateNormal];
+    [outLogin setBackgroundImage:[UIImage imageNamed:@"broadcast_icon_setting_pressed"] forState:UIControlStateHighlighted];
+    [outLogin addTarget:self action:@selector(outLogin:) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:outLogin];
     
     UIImageView *btnBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 260, 1024, 40)];
     [btnBgView setImage:[UIImage imageNamed:@"personal_bj2"]];

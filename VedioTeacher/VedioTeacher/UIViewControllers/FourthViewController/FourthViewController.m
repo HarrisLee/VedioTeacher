@@ -397,7 +397,14 @@
     if (!cell) {
         cell = [[[CollectionCell alloc] init] autorelease];
     }
-    cell.name.text = [model.nameTV stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *name = [model.nameTV stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSRange range = [name rangeOfString:@"." options:NSBackwardsSearch];
+    if (range.length > 0) {
+        NSString *file = [name substringToIndex:range.location];
+        cell.name.text = file;
+    } else {
+        cell.name.text = name;
+    }
     [cell.icon setImageWithURL:[NSURL URLWithString:model.tvPicVirtualPath] placeholderImage:[UIImage imageNamed:@"placeholder_horizontal"]];
     cell.count.text = [NSString stringWithFormat:@"点赞数：%@",[model.goodCount description]];
     return cell;

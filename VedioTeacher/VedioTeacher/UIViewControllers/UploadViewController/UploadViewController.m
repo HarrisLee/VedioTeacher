@@ -214,10 +214,10 @@
     
     upreqBody.idSecondDirectory = idSecondDirectory;
     
-    NSRange range = [path rangeOfString:@"/" options:NSBackwardsSearch];
-    NSString *file = [path substringFromIndex:range.location+1];
+    NSRange range = [path rangeOfString:@"." options:NSBackwardsSearch];
+    NSString *file = [path substringFromIndex:range.location];
     
-    upreqBody.nameTV = [NSString stringWithFormat:@"%@_%d_%@",vedioName,fileCount,file];
+    upreqBody.nameTV = [NSString stringWithFormat:@"%@-%02d%@",vedioName,fileCount+1,file];
     
     upreqBody.describeTV = describe;
     
@@ -345,10 +345,10 @@
     
     upreqBody.idSecondDirectory = idSecondDirectory;
     
-    NSRange range = [path rangeOfString:@"/" options:NSBackwardsSearch];
-    NSString *file = [path substringFromIndex:range.location+1];
+    NSRange range = [path rangeOfString:@"." options:NSBackwardsSearch];
+    NSString *file = [path substringFromIndex:range.location];
     
-    upreqBody.nameTV = [NSString stringWithFormat:@"%@_%d_%@",vedioName,fileCount,file];
+    upreqBody.nameTV = [NSString stringWithFormat:@"%@-%02d%@",vedioName,fileCount+1,file];
     
     upreqBody.describeTV = describe;
     

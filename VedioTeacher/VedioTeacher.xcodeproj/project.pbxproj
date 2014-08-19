@@ -205,6 +205,13 @@
 		9E9183C71978C6A00045B8D6 /* AccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9183C61978C6A00045B8D6 /* AccountModel.m */; };
 		9E9183CE1978C8000045B8D6 /* TaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9183CD1978C8000045B8D6 /* TaskModel.m */; };
 		9EBDDC761974D2AA006CAD7A /* LoginsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDDC751974D2AA006CAD7A /* LoginsViewController.m */; };
+		9EBDEE0B19A2F67700C8DF18 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBDEE0919A2F67700C8DF18 /* icon.png */; };
+		9EBDEE0C19A2F67700C8DF18 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBDEE0A19A2F67700C8DF18 /* icon@2x.png */; };
+		9EBDEE1119A2FBD900C8DF18 /* broadcast_icon_setting_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBDEE0D19A2FBD800C8DF18 /* broadcast_icon_setting_normal.png */; };
+		9EBDEE1219A2FBD900C8DF18 /* broadcast_icon_setting_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBDEE0E19A2FBD800C8DF18 /* broadcast_icon_setting_normal@2x.png */; };
+		9EBDEE1319A2FBD900C8DF18 /* broadcast_icon_setting_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBDEE0F19A2FBD800C8DF18 /* broadcast_icon_setting_pressed.png */; };
+		9EBDEE1419A2FBD900C8DF18 /* broadcast_icon_setting_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBDEE1019A2FBD800C8DF18 /* broadcast_icon_setting_pressed@2x.png */; };
+		9EBDEE1619A30B7000C8DF18 /* 254X54.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EBDEE1519A30B7000C8DF18 /* 254X54.jpg */; };
 		9EC7BF01197E580E000A0E54 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BED2197E580E000A0E54 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9EC7BF02197E580E000A0E54 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BED4197E580E000A0E54 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9EC7BF03197E580E000A0E54 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7BED6197E580E000A0E54 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -580,6 +587,13 @@
 		9E9183CD1978C8000045B8D6 /* TaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskModel.m; sourceTree = "<group>"; };
 		9EBDDC741974D2AA006CAD7A /* LoginsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginsViewController.h; sourceTree = "<group>"; };
 		9EBDDC751974D2AA006CAD7A /* LoginsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginsViewController.m; sourceTree = "<group>"; };
+		9EBDEE0919A2F67700C8DF18 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		9EBDEE0A19A2F67700C8DF18 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		9EBDEE0D19A2FBD800C8DF18 /* broadcast_icon_setting_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = broadcast_icon_setting_normal.png; sourceTree = "<group>"; };
+		9EBDEE0E19A2FBD800C8DF18 /* broadcast_icon_setting_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "broadcast_icon_setting_normal@2x.png"; sourceTree = "<group>"; };
+		9EBDEE0F19A2FBD800C8DF18 /* broadcast_icon_setting_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = broadcast_icon_setting_pressed.png; sourceTree = "<group>"; };
+		9EBDEE1019A2FBD800C8DF18 /* broadcast_icon_setting_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "broadcast_icon_setting_pressed@2x.png"; sourceTree = "<group>"; };
+		9EBDEE1519A30B7000C8DF18 /* 254X54.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 254X54.jpg; sourceTree = "<group>"; };
 		9EC7BED1197E580E000A0E54 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		9EC7BED2197E580E000A0E54 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		9EC7BED3197E580E000A0E54 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -619,7 +633,7 @@
 		9EC7BEF7197E580E000A0E54 /* QBImagePickerGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerGroupCell.m; sourceTree = "<group>"; };
 		9EC7BEF8197E580E000A0E54 /* QBImagePickerVideoInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImagePickerVideoInfoView.h; sourceTree = "<group>"; };
 		9EC7BEF9197E580E000A0E54 /* QBImagePickerVideoInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerVideoInfoView.m; sourceTree = "<group>"; };
-		9ED53ACA196285A900DA3248 /* VedioTeacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VedioTeacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9ED53ACA196285A900DA3248 /* 校园电视台.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "校园电视台.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED53ACD196285A900DA3248 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9ED53ACF196285A900DA3248 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9ED53AD1196285A900DA3248 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1102,6 +1116,11 @@
 		9E5A24C3196A308A00C6D1A4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9EBDEE1519A30B7000C8DF18 /* 254X54.jpg */,
+				9EBDEE0D19A2FBD800C8DF18 /* broadcast_icon_setting_normal.png */,
+				9EBDEE0E19A2FBD800C8DF18 /* broadcast_icon_setting_normal@2x.png */,
+				9EBDEE0F19A2FBD800C8DF18 /* broadcast_icon_setting_pressed.png */,
+				9EBDEE1019A2FBD800C8DF18 /* broadcast_icon_setting_pressed@2x.png */,
 				9E8A4F461990B9640061F303 /* common_button_green_highlighted@2x.png */,
 				9E8A4F421990B9120061F303 /* icon_check.png */,
 				9E8A4F431990B9120061F303 /* icon_check@2x.png */,
@@ -1602,7 +1621,7 @@
 		9ED53ACB196285A900DA3248 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9ED53ACA196285A900DA3248 /* VedioTeacher.app */,
+				9ED53ACA196285A900DA3248 /* 校园电视台.app */,
 				9ED53AEB196285A900DA3248 /* VedioTeacherTests.xctest */,
 			);
 			name = Products;
@@ -1632,6 +1651,8 @@
 				9E5A24C2196A308A00C6D1A4 /* Resource */,
 				9ED53ADC196285A900DA3248 /* AppDelegate.h */,
 				9ED53ADD196285A900DA3248 /* AppDelegate.m */,
+				9EBDEE0919A2F67700C8DF18 /* icon.png */,
+				9EBDEE0A19A2F67700C8DF18 /* icon@2x.png */,
 				9ED53AE2196285A900DA3248 /* ViewController.h */,
 				9ED53AE3196285A900DA3248 /* ViewController.m */,
 				9ED53AE5196285A900DA3248 /* Images.xcassets */,
@@ -1726,7 +1747,7 @@
 			);
 			name = VedioTeacher;
 			productName = VedioTeacher;
-			productReference = 9ED53ACA196285A900DA3248 /* VedioTeacher.app */;
+			productReference = 9ED53ACA196285A900DA3248 /* 校园电视台.app */;
 			productType = "com.apple.product-type.application";
 		};
 		9ED53AEA196285A900DA3248 /* VedioTeacherTests */ = {
@@ -1795,16 +1816,22 @@
 				9E253D831990B194005A7C8E /* placeholder_home@2x.png in Resources */,
 				9E06D8E21990AD530049180D /* icon_tab_account@2x.png in Resources */,
 				9E8A4F411990B7B80061F303 /* personal_bj2@2x.png in Resources */,
+				9EBDEE1319A2FBD900C8DF18 /* broadcast_icon_setting_pressed.png in Resources */,
 				9E253D8E1990B377005A7C8E /* detail_broadcast_praise_select.png in Resources */,
 				9E06D8EF1990AD530049180D /* icon_tab_selected_account.png in Resources */,
+				9EBDEE1419A2FBD900C8DF18 /* broadcast_icon_setting_pressed@2x.png in Resources */,
+				9EBDEE0B19A2F67700C8DF18 /* icon.png in Resources */,
+				9EBDEE1619A30B7000C8DF18 /* 254X54.jpg in Resources */,
 				9E5A2552196A308A00C6D1A4 /* RespNameDefine.plist in Resources */,
 				9ED53AE6196285A900DA3248 /* Images.xcassets in Resources */,
 				9E06D8F51990AF2C0049180D /* navbar_app.png in Resources */,
+				9EBDEE1119A2FBD900C8DF18 /* broadcast_icon_setting_normal.png in Resources */,
 				9E8A4F471990B9640061F303 /* common_button_green_highlighted@2x.png in Resources */,
 				9E5A2530196A308A00C6D1A4 /* bottomView.png in Resources */,
 				9E5A254B196A308A00C6D1A4 /* table6.png in Resources */,
 				9E5A2531196A308A00C6D1A4 /* button_13.png in Resources */,
 				9E06D8F11990AD530049180D /* icon_tab_selected_home.png in Resources */,
+				9EBDEE0C19A2F67700C8DF18 /* icon@2x.png in Resources */,
 				9E5A2551196A308A00C6D1A4 /* ReqUrlDefine.plist in Resources */,
 				9E8A4F441990B9120061F303 /* icon_check.png in Resources */,
 				9E06D8EB1990AD530049180D /* icon_tab_selected_95.png in Resources */,
@@ -1847,6 +1874,7 @@
 				9E5A254D196A308A00C6D1A4 /* toolbar_icon_redirect_hight_os7@2x.png in Resources */,
 				9E5A2543196A308A00C6D1A4 /* menu_3@2x.png in Resources */,
 				9E06D8D81990AD530049180D /* icon_tab_84@2x.png in Resources */,
+				9EBDEE1219A2FBD900C8DF18 /* broadcast_icon_setting_normal@2x.png in Resources */,
 				9E5A2549196A308A00C6D1A4 /* preview_like_icon@2x.png in Resources */,
 				9E06D8E11990AD530049180D /* icon_tab_account.png in Resources */,
 				9E06D8F91990AF370049180D /* navbar_history.png in Resources */,
@@ -2153,7 +2181,7 @@
 				INFOPLIST_FILE = "VedioTeacher/VedioTeacher-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "校园电视台";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2170,7 +2198,7 @@
 				INFOPLIST_FILE = "VedioTeacher/VedioTeacher-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "校园电视台";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

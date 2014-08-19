@@ -36,7 +36,7 @@
     UIView *logoView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 227, 44)];
     UIButton *logo = [UIButton buttonWithType:UIButtonTypeCustom];
     logo.frame = CGRectMake(0, 8.5, 127, 27);
-    [logo setBackgroundImage:[UIImage imageNamed:@"nav_logo"] forState:UIControlStateNormal];
+    [logo setBackgroundImage:[UIImage imageNamed:@"254X54.jpg"] forState:UIControlStateNormal];
     logo.backgroundColor = [UIColor clearColor];
     [logo addTarget:self action:@selector(goBackViewController:) forControlEvents:UIControlEventTouchUpInside];
     [logoView addSubview:logo];
