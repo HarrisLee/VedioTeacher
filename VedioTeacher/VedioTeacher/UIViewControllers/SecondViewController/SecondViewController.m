@@ -191,13 +191,16 @@
 
 -(BOOL) textFieldShouldBeginEditing:(UITextField *)textField
 {
-    if (textField == startField) {
-        selectView = 1;
-    } else {
-        selectView = 2;
+    if (textField == startField || textField == endField) {
+        if (textField == startField) {
+            selectView = 1;
+        } else {
+            selectView = 2;
+        }
+        [pickerView setHidden:NO];
+        return NO;
     }
-    [pickerView setHidden:NO];
-    return NO;
+    return YES;
 }
 
 -(void) clearSearchResult:(NSNotification *)notification
@@ -288,6 +291,13 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
+    if (textField == startField || textField == endField) {
+        return ;
+    }
+    if (dirName) {
+        [dirName release];
+        dirName = nil;
+    }
     dirName = [textField.text retain];
     NSLog(@"%@",dirName);
 }

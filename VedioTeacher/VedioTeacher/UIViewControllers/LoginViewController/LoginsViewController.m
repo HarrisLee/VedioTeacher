@@ -62,7 +62,7 @@
     [bgView release];
     
     nameField = [[UITextField alloc] initWithFrame:CGRectMake((512-390)/2 + 5, 55, 380, 35)];
-    nameField.placeholder = @"邮箱/昵称/手机号";
+    nameField.placeholder = @"账号";
     nameField.font = [UIFont systemFontOfSize:15.0f];
     nameField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [loginView addSubview:nameField];

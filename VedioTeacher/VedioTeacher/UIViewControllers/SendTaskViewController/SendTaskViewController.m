@@ -66,6 +66,7 @@
 -(void) updateUserInfo:(NSNotification *)notification
 {
     nameLabel.text = [DataCenter shareInstance].loginName;
+    [self getAccountList:[DataCenter shareInstance].loginId];
 }
 
 /**
@@ -689,7 +690,7 @@
         [button addTarget:self action:@selector(chooseAccount:) forControlEvents:UIControlEventTouchUpInside];
         [userScroll addSubview:button];
     }
-    [userScroll setContentSize:CGSizeMake(204, 15 + ceilf([accountArray count]/2.0))];
+    [userScroll setContentSize:CGSizeMake(204, 60 + 40*ceilf([accountArray count]/2.0))];
 }
 
 -(void) chooseAccount:(id) sender
@@ -934,6 +935,8 @@
     [outLogin setBackgroundImage:[UIImage imageNamed:@"broadcast_icon_setting_pressed"] forState:UIControlStateHighlighted];
     [outLogin addTarget:self action:@selector(outLogin:) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:outLogin];
+    
+    
     
     UIImageView *btnBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 260, 1024, 40)];
     [btnBgView setImage:[UIImage imageNamed:@"personal_bj2"]];

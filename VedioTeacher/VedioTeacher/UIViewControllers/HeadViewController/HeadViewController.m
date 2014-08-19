@@ -191,13 +191,16 @@
 
 -(BOOL) textFieldShouldBeginEditing:(UITextField *)textField
 {
-    if (textField == startField) {
-        selectView = 1;
-    } else {
-        selectView = 2;
+    if (textField == startField || textField == endField) {
+        if (textField == startField) {
+            selectView = 1;
+        } else {
+            selectView = 2;
+        }
+        [pickerView setHidden:NO];
+        return NO;
     }
-    [pickerView setHidden:NO];
-    return NO;
+    return YES;
 }
 
 -(void) clearSearchResult:(NSNotification *)notification
@@ -233,7 +236,7 @@
     if (![super addSecDir:sender]) {
         return NO;
     }
-    
+
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"请输入活动主题"delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     [alertView textFieldAtIndex:0].keyboardType = UIKeyboardTypeDefault;
@@ -288,6 +291,13 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
+    if (textField == startField || textField == endField) {
+        return ;
+    }
+    if (dirName) {
+        [dirName release];
+        dirName = nil;
+    }
     dirName = [textField.text retain];
     NSLog(@"%@",dirName);
 }
