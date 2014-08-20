@@ -986,8 +986,8 @@
     UIButton *outLogin = [UIButton buttonWithType:UIButtonTypeCustom];
     outLogin.frame = CGRectMake(1024-60, 30, 40, 40);
     outLogin.backgroundColor = [UIColor clearColor];
-    [outLogin setBackgroundImage:[UIImage imageNamed:@"broadcast_icon_setting_normal"] forState:UIControlStateNormal];
-    [outLogin setBackgroundImage:[UIImage imageNamed:@"broadcast_icon_setting_pressed"] forState:UIControlStateHighlighted];
+    [outLogin setBackgroundImage:[UIImage imageNamed:@"tool_share"] forState:UIControlStateNormal];
+    [outLogin setBackgroundImage:[UIImage imageNamed:@"tool_share_selected"] forState:UIControlStateHighlighted];
     [outLogin addTarget:self action:@selector(outLogin:) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:outLogin];
     

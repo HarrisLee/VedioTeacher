@@ -7,6 +7,7 @@
 //
 
 #import "PlayerViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface PlayerViewController ()
 
@@ -116,19 +117,43 @@
 
 -(void) playVedio
 {
+    
+    NSString *getPath = [[NSUserDefaults standardUserDefaults] objectForKey:self.vedioModel.tvVirtualPath];
+    if ([getPath isKindOfClass:[NSString class]] && [getPath length] > 0) {
+        // create MPMoviePlayerViewController
+        NSURL *url = [NSURL fileURLWithPath:getPath];
+        MPMoviePlayerViewController *playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
+        playerViewController.view.frame = CGRectMake(0, 0, 1024, 768);
+        // add to view
+//        [self.view addSubview:playerViewController.view];
+        [self.navigationController presentViewController:playerViewController animated:YES completion:^{
+            
+        }];
+        
+        // play movie
+        MPMoviePlayerController *player = [playerViewController moviePlayer];
+        player.controlStyle = MPMovieControlStyleFullscreen;
+        player.shouldAutoplay = NO;
+        player.repeatMode = MPMovieRepeatModeNone;
+        [player setFullscreen:YES animated:YES];
+        player.scalingMode = MPMovieScalingModeAspectFit;
+        [player play];
+        [playerViewController release];
+        return ;
+    }
+    
     VedioPlayerViewController *play = [[VedioPlayerViewController alloc] init];
     play.title = @"播放";
     play.url = [NSURL URLWithString:self.vedioModel.tvVirtualPath];
     [self.navigationController pushViewController:play animated:YES];
     [play release];
     return ;
-    
+/*
     UIWebView *web = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 1024, 704)];
-//    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://feiclass.winnovo.com/fileupload/feiclass/course_file/20140522/14007534063406838420MTE=.mp4"]]];
     [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.vedioModel.tvVirtualPath]]];
     [self.view addSubview:web];
     [web release];
-
+ */
 }
 
 
@@ -216,6 +241,7 @@
     }];
     [operation start];
     [operation release];
+
 }
 
 -(void) addTVCommentCheck:(AddTVCommentRespBody *) response
@@ -262,6 +288,72 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
+}
+
+-(void) downVedioFromService:(id)sender
+{
+    NSLog(@"下载");
+    NSString *getPath = [[NSUserDefaults standardUserDefaults] objectForKey:self.vedioModel.tvVirtualPath];
+    if ([getPath isKindOfClass:[NSString class]] && [getPath length] > 0) {
+        alertMessage(@"该视频已经下载。");
+        return ;
+    }
+    
+    maskHUD = [[MBProgressHUD alloc] initWithView:self.view];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:maskHUD];
+    // Set determinate mode
+    maskHUD.mode = MBProgressHUDModeAnnularDeterminate;
+    maskHUD.delegate = self;
+    maskHUD.labelText = @"视频下载中...";
+    [maskHUD show:YES];
+    UIActivityIndicatorView *actView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    actView.frame = CGRectMake(502, (768 - 20)/2-11, 20, 20);
+    [actView startAnimating];
+    [maskHUD addSubview:actView];
+    [actView release];
+    
+    NSURL *url = [NSURL URLWithString:[self.vedioModel.tvVirtualPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:9999];
+    AFHTTPRequestOperation *operationDown = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    NSArray *array = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[array objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",self.vedioModel.fileTVName]];
+    operationDown.outputStream = [[NSOutputStream alloc] initToFileAtPath:path append:NO];
+    [operationDown setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+        CGFloat progress = ((float)totalBytesRead) / totalBytesExpectedToRead;
+        maskHUD.progress = progress;
+    }];
+    
+    [operationDown setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self downloadSuccess:path downloadURL:self.vedioModel.tvVirtualPath];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [maskHUD hide:YES];
+        NSLog(@"error : %@",[error localizedDescription]);
+        alertMessage(@"下载失败，请重新下载");
+        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    }];
+    
+    [operationDown start];
+    [request release];
+    [operationDown release];
+    
+}
+
+-(void) downloadSuccess:(NSString *)path downloadURL:(NSString *)url
+{
+    maskHUD.labelText = @"下载完成";
+    [maskHUD hide:YES afterDelay:1.0];
+    [[NSUserDefaults standardUserDefaults] setValue:path forKey:url];
+}
+
+#pragma mark -
+#pragma mark MBProgressHUDDelegate methods
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+	// Remove HUD from screen when the HUD was hidded
+	[hud removeFromSuperview];
+	[hud release];
+	hud = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -353,6 +445,13 @@
     countLabel.font = [UIFont systemFontOfSize:13.0f];
     [scrollView addSubview:countLabel];
     [countLabel release];
+    
+    UIButton *download = [UIButton buttonWithType:UIButtonTypeCustom];
+    [download setBackgroundImage:[UIImage imageNamed:@"tool_download"] forState:UIControlStateNormal];
+    [download setBackgroundImage:[UIImage imageNamed:@"tool_download_selected"] forState:UIControlStateHighlighted];
+    download.frame = CGRectMake(75, goodBtn.frame.origin.y+7.5, 40, 40);
+    [download addTarget:self action:@selector(downVedioFromService:) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:download];
     
     uploader = [[UILabel alloc] initWithFrame:CGRectMake(1024-320, goodBtn.frame.origin.y, 300, 19)];
     uploader.textColor = [UIColor blackColor];

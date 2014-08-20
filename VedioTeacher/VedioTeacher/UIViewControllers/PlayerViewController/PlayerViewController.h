@@ -19,8 +19,9 @@
 #import "GetTVInfoRespBody.h"
 #import "LoginsViewController.h"
 #import "VedioPlayerViewController.h"
+#import "MBProgressHUD.h"
 
-@interface PlayerViewController : BaseViewController<UITextFieldDelegate>
+@interface PlayerViewController : BaseViewController<UITextFieldDelegate,MBProgressHUDDelegate>
 {
     UIScrollView *scrollView;
     VedioModel *vedioModel;
@@ -34,6 +35,7 @@
     UIImageView *bottomBack;
     CGPoint point;
     NSInteger commentCount;
+    __block MBProgressHUD *maskHUD;
 }
 @property (nonatomic, retain) VedioModel *vedioModel;
 @property (nonatomic, retain) NSString *topName;
