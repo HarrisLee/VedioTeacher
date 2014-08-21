@@ -7,7 +7,6 @@
 //
 
 #import "PlayerViewController.h"
-#import <MediaPlayer/MediaPlayer.h>
 
 @interface PlayerViewController ()
 
@@ -122,23 +121,26 @@
     if ([getPath isKindOfClass:[NSString class]] && [getPath length] > 0) {
         // create MPMoviePlayerViewController
         NSURL *url = [NSURL fileURLWithPath:getPath];
-        MPMoviePlayerViewController *playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
+        playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
         playerViewController.view.frame = CGRectMake(0, 0, 1024, 768);
         // add to view
-//        [self.view addSubview:playerViewController.view];
-        [self.navigationController presentViewController:playerViewController animated:YES completion:^{
+        //        [self.view addSubview:playerViewController.view];
             
-        }];
-        
+        [self.navigationController presentViewController:playerViewController animated:YES completion:^{}];
         // play movie
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDidFinish:)
+//                                                     name:MPMoviePlayerPlaybackDidFinishNotification
+//                                                   object:[playerViewController moviePlayer]];
+        
         MPMoviePlayerController *player = [playerViewController moviePlayer];
         player.controlStyle = MPMovieControlStyleFullscreen;
-        player.shouldAutoplay = NO;
-        player.repeatMode = MPMovieRepeatModeNone;
+        player.repeatMode = MPMovieRepeatModeOne;
+        player.shouldAutoplay = YES;
         [player setFullscreen:YES animated:YES];
         player.scalingMode = MPMovieScalingModeAspectFit;
         [player play];
         [playerViewController release];
+
         return ;
     }
     
@@ -156,6 +158,11 @@
  */
 }
 
+-(void) moviePlayBackDidFinish:(NSNotification *)sender
+{
+    MPMoviePlayerController *playerController = (MPMoviePlayerController *)sender.object;
+    [playerController stop];
+}
 
 -(void) addGood:(id) sender
 {

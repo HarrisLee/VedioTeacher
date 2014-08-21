@@ -20,6 +20,7 @@
 #import "LoginsViewController.h"
 #import "VedioPlayerViewController.h"
 #import "MBProgressHUD.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface PlayerViewController : BaseViewController<UITextFieldDelegate,MBProgressHUDDelegate>
 {
@@ -36,6 +37,7 @@
     CGPoint point;
     NSInteger commentCount;
     __block MBProgressHUD *maskHUD;
+    MPMoviePlayerViewController *playerViewController;
 }
 @property (nonatomic, retain) VedioModel *vedioModel;
 @property (nonatomic, retain) NSString *topName;
