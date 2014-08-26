@@ -87,7 +87,7 @@
     [loginView addSubview:login];
     
     UIButton *regsiBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    regsiBtn.frame = CGRectMake(150, 180, 100, 35);
+    regsiBtn.frame = CGRectMake(200, 180, 100, 35);
     [regsiBtn setBackgroundColor:[UIColor clearColor]];
     [regsiBtn setTitleColor:[UIColor getColor:@"3FA6FF"] forState:UIControlStateNormal];
     [regsiBtn setTitle:@"注册账户" forState:UIControlStateNormal];
@@ -99,7 +99,7 @@
     hor.backgroundColor = [UIColor lightGrayColor];
     [loginView addSubview:hor];
     [hor release];
-    
+/*
     UIButton *forgetPass = [UIButton buttonWithType:UIButtonTypeCustom];
     forgetPass.frame = CGRectMake(260, 180, 100, 35);
     [forgetPass setBackgroundColor:[UIColor clearColor]];
@@ -108,6 +108,7 @@
     [forgetPass.titleLabel setFont:[UIFont systemFontOfSize:11.0f]];
     [forgetPass addTarget:self action:@selector(forgetPassword:) forControlEvents:UIControlEventTouchUpInside];
     [loginView addSubview:forgetPass];
+ */
 }
 
 -(void) createRegisterView

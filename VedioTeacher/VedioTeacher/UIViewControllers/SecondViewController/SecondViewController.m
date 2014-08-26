@@ -38,6 +38,7 @@
     secArray = [[NSMutableArray alloc] init];
     vedioDictionary = [[NSMutableDictionary alloc] init];
     tvList = [[NSMutableArray alloc] init];
+    accountArray = [[NSMutableArray alloc] init];
     clickedIndex = 0;
     isLoading = NO;
     isSearching = NO;
@@ -85,7 +86,7 @@
     [searchView release];
     
     keyWordField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 300, 30)];
-    keyWordField.text = @"123";
+    keyWordField.text = @"";
     keyWordField.placeholder = @"请输入搜索关键词";
     keyWordField.backgroundColor = [UIColor whiteColor];
     [searchView addSubview:keyWordField];
@@ -94,7 +95,7 @@
     startField = [[UITextField alloc] initWithFrame:CGRectMake(10, 50, 300, 30)];
     startField.delegate = self;
     startField.text = date;
-    startField.placeholder = @"请输入搜索开始时间";
+    startField.placeholder = @"请选择搜索开始时间";
     startField.backgroundColor = [UIColor whiteColor];
     [searchView addSubview:startField];
     [startField release];
@@ -102,13 +103,21 @@
     endField = [[UITextField alloc] initWithFrame:CGRectMake(10, 90, 300, 30)];
     endField.delegate = self;
     endField.text = date;
-    endField.placeholder = @"请输入搜索结束时间";
+    endField.placeholder = @"请选择搜索结束时间";
     endField.backgroundColor = [UIColor whiteColor];
     [searchView addSubview:endField];
     [endField release];
     
+    accountField = [[UITextField alloc] initWithFrame:CGRectMake(10, 130, 300, 30)];
+    accountField.delegate = self;
+    accountField.text = @"";
+    accountField.placeholder = @"请选择用户";
+    accountField.backgroundColor = [UIColor whiteColor];
+    [searchView addSubview:accountField];
+    [accountField release];
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(10, 130, 300, 30);
+    button.frame = CGRectMake(10, 170, 300, 30);
     button.backgroundColor = [UIColor getColor:@"3FA6FF"];
     [button setTitle:@"搜索" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(searchTVList:) forControlEvents:UIControlEventTouchUpInside];
@@ -116,8 +125,17 @@
     
     pickerView = [[CHPickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)];
     pickerView.delegate = self;
+    [pickerView setHidden:YES];
     [searchView addSubview:pickerView];
     [pickerView release];
+    
+    accountTable = [[UITableView alloc] initWithFrame:CGRectMake(10, 160, 300, 200) style:UITableViewStylePlain];
+    accountTable.delegate = self;
+    accountTable.dataSource = self;
+    accountTable.showsVerticalScrollIndicator = NO;
+    [searchView addSubview:accountTable];
+    [accountTable setHidden:YES];
+    [accountTable release];
     
     [searchView setHidden:YES];
 }
@@ -156,8 +174,12 @@
     GetTVOfSearchReqBody *reqBody = [[GetTVOfSearchReqBody alloc] init];
     reqBody.startTime = startField.text;
     reqBody.endTime = endField.text;
-    reqBody.TVGJZ = keyWordField.text;
-    reqBody.accountId = [DataCenter shareInstance].loginId;
+    reqBody.GJZ = keyWordField.text;
+    if (accountModel) {
+        reqBody.accountId = [accountModel.idAccoun stringByReplacingOccurrencesOfString:@" " withString:@""];
+    } else {
+        reqBody.accountId = @"";
+    }
     reqBody.jobId = @"";
     NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_TV_SEARCH];
     [reqBody release];
@@ -192,6 +214,8 @@
 -(BOOL) textFieldShouldBeginEditing:(UITextField *)textField
 {
     if (textField == startField || textField == endField) {
+        [accountTable setHidden:YES];
+        [self.view endEditing:YES];
         if (textField == startField) {
             selectView = 1;
         } else {
@@ -200,7 +224,83 @@
         [pickerView setHidden:NO];
         return NO;
     }
+    
+    if (textField == accountField) {
+        [self getAccountList:nil];
+        return NO;
+    }
+    
     return YES;
+}
+
+/*!
+ *  获取所有用户列表
+ *
+ *  @param account 用户ID
+ */
+-(void) getAccountList:(NSString *)account
+{
+    GetAccountListReqBody *reqBody = [[GetAccountListReqBody alloc] init];
+    NSMutableURLRequest *request = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_ACCOUNTLIST];
+    [reqBody release];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        GetAccountListRespBody *respBody = (GetAccountListRespBody *)[[AFHttpRequestUtils shareInstance] jsonConvertObject:(NSData *)responseObject withReqType:GET_ACCOUNTLIST];
+        [self checkAccountList:respBody];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error : %@", [error localizedDescription]);
+        alertMessage(@"请求失败，获取用户列表失败.");
+    }];
+    [operation start];
+    [operation release];
+}
+
+-(void) checkAccountList:(GetAccountListRespBody *) response
+{
+    if ([response.accountListResult count] == 0) {
+        alertMessage(@"请求出错，请重新获取");
+        return ;
+    }
+    [accountTable setHidden:NO];
+    [accountArray removeAllObjects];
+    for (AccountModel *model in response.accountListResult) {
+        [accountArray addObject:model];
+    }
+    [accountTable reloadData];
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 30.0f;
+}
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [accountArray count] ? [accountArray count] : 0 ;
+}
+
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"cellIdendefier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
+    }
+    AccountModel *model = [accountArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = model.accountName;
+    return cell;
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (accountModel) {
+        [accountModel release];
+        accountModel = nil;
+    }
+    accountModel = [[accountArray objectAtIndex:indexPath.row] retain];
+    accountField.text = [accountModel.accountName stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [tableView setHidden:YES];
 }
 
 -(void) clearSearchResult:(NSNotification *)notification
@@ -401,11 +501,16 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *collectionIdentifier = @"collectionIdentifier";
-    NSArray *array = [vedioDictionary objectForKey:[NSString stringWithFormat:@"%d",clickedIndex]];
-    VedioModel *model = [array objectAtIndex:indexPath.row];
     CollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionIdentifier forIndexPath:indexPath];
     if (!cell) {
         cell = [[[CollectionCell alloc] init] autorelease];
+    }
+    VedioModel *model = nil;
+    if (isSearching) {
+        model = [tvList objectAtIndex:indexPath.row];
+    } else {
+        NSArray *array = [vedioDictionary objectForKey:[NSString stringWithFormat:@"%d",clickedIndex]];
+        model = [array objectAtIndex:indexPath.row];
     }
     NSString *name = [model.nameTV stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSRange range = [name rangeOfString:@"." options:NSBackwardsSearch];
@@ -513,6 +618,7 @@
         [login release];
         return NO;
     }
+    [tvList removeAllObjects];
     isSearching = YES;
     [waterView reloadData];
     
@@ -530,8 +636,13 @@
 
 -(void) dealloc
 {
+    if (accountModel) {
+        [accountModel release];
+        accountModel = nil;
+    }
     [topId release];
     [secArray release];
+    [accountArray release];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"clear" object:nil];
     [super dealloc];
 }

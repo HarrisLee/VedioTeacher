@@ -22,8 +22,11 @@
 #import "GetTVOfSearchReqBody.h"
 #import "GetTVOfSearchRespBody.h"
 #import "CHPickerView.h"
+#import "AccountModel.h"
+#import "GetAccountListReqBody.h"
+#import "GetAccountListRespBody.h"
 
-@interface FifthViewController : BaseViewController<UIAlertViewDelegate,UITextFieldDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,CollectionHeaderViewDelegate,CHPickerViewDelegate,UITextFieldDelegate>
+@interface FifthViewController : BaseViewController<UIAlertViewDelegate,UITextFieldDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,CollectionHeaderViewDelegate,CHPickerViewDelegate,UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     NSString *topId;
     NSMutableArray *secArray;
@@ -38,6 +41,10 @@
     UITextField *keyWordField;
     UITextField *startField;
     UITextField *endField;
+    UITextField *accountField;
+    AccountModel *accountModel;
+    NSMutableArray *accountArray;
+    UITableView *accountTable;
     NSMutableArray *tvList;
 }
 @property (nonatomic, retain) NSString *topId;
