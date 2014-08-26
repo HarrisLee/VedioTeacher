@@ -521,7 +521,8 @@
         cell.name.text = name;
     }
     [cell.icon setImageWithURL:[NSURL URLWithString:model.tvPicVirtualPath] placeholderImage:[UIImage imageNamed:@"placeholder_horizontal"]];
-    cell.count.text = [NSString stringWithFormat:@"点赞数：%@",[model.goodCount description]];
+    NSString *count = ![model.goodCount description] ? @"0" : [model.goodCount description];
+    cell.count.text = [NSString stringWithFormat:@"点赞数：%@",count];
     return cell;
 }
 

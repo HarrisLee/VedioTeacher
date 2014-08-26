@@ -119,29 +119,26 @@
     
     NSString *getPath = [[NSUserDefaults standardUserDefaults] objectForKey:self.vedioModel.tvVirtualPath];
     if ([getPath isKindOfClass:[NSString class]] && [getPath length] > 0) {
-        // create MPMoviePlayerViewController
-        NSURL *url = [NSURL fileURLWithPath:getPath];
-        playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
-        playerViewController.view.frame = CGRectMake(0, 0, 1024, 768);
-        // add to view
-        //        [self.view addSubview:playerViewController.view];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:getPath]) {
+            // create MPMoviePlayerViewController
+            NSURL *url = [NSURL fileURLWithPath:getPath];
+            playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
+            playerViewController.view.frame = CGRectMake(0, 0, 1024, 768);
+            // add to view
+            [self.navigationController presentViewController:playerViewController animated:YES completion:^{}];
+            MPMoviePlayerController *player = [playerViewController moviePlayer];
+            player.controlStyle = MPMovieControlStyleFullscreen;
+            player.repeatMode = MPMovieRepeatModeOne;
+            player.shouldAutoplay = YES;
+            [player setFullscreen:YES animated:YES];
+            player.scalingMode = MPMovieScalingModeAspectFit;
+            [player play];
+            [playerViewController release];
             
-        [self.navigationController presentViewController:playerViewController animated:YES completion:^{}];
-        // play movie
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDidFinish:)
-//                                                     name:MPMoviePlayerPlaybackDidFinishNotification
-//                                                   object:[playerViewController moviePlayer]];
-        
-        MPMoviePlayerController *player = [playerViewController moviePlayer];
-        player.controlStyle = MPMovieControlStyleFullscreen;
-        player.repeatMode = MPMovieRepeatModeOne;
-        player.shouldAutoplay = YES;
-        [player setFullscreen:YES animated:YES];
-        player.scalingMode = MPMovieScalingModeAspectFit;
-        [player play];
-        [playerViewController release];
-
-        return ;
+            return ;
+        } else {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:self.vedioModel.tvVirtualPath];
+        }
     }
     
     VedioPlayerViewController *play = [[VedioPlayerViewController alloc] init];
