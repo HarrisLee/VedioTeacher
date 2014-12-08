@@ -94,12 +94,12 @@
     [regsiBtn.titleLabel setFont:[UIFont systemFontOfSize:11.0f]];
     [regsiBtn addTarget:self action:@selector(goRegisterView:) forControlEvents:UIControlEventTouchUpInside];
     [loginView addSubview:regsiBtn];
-    
+/*
     UIImageView *hor = [[UIImageView alloc] initWithFrame:CGRectMake(255, 190, 1, 15)];
     hor.backgroundColor = [UIColor lightGrayColor];
     [loginView addSubview:hor];
     [hor release];
-/*
+
     UIButton *forgetPass = [UIButton buttonWithType:UIButtonTypeCustom];
     forgetPass.frame = CGRectMake(260, 180, 100, 35);
     [forgetPass setBackgroundColor:[UIColor clearColor]];

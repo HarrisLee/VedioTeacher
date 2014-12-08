@@ -56,7 +56,14 @@
     }
     
     
+    [self getIndexDirc];
     
+    [self createIpView];
+
+}
+
+- (void)getIndexDirc
+{
     GetTopDirectoryReqBody *reqBody = [[GetTopDirectoryReqBody alloc] init];
     NSMutableURLRequest *urlRequets = [[AFHttpRequestUtils shareInstance] requestWithBody:reqBody andReqType:GET_TOPDIR];
     [reqBody release];
@@ -70,6 +77,7 @@
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error : %@", [error localizedDescription]);
         alertMessage(@"请求失败，获取主目录目录失败.");
+        [self checkData:nil];
     }];
     
     [theOperation start];
@@ -88,6 +96,12 @@
 -(void) checkData:(GetTopDirectoryRespBody *)response
 {
     NSLog(@"%@",response.topDirectoryArray);
+    
+    if (!response) {
+        //重新输入IP地址
+        [ipView setHidden:NO];
+        return ;
+    }
     
     if ([response.topDirectoryArray count] < 6) {
         alertMessage(@"主目录获取个数小于6");
@@ -212,6 +226,83 @@
     [self.navigationController pushViewController:tab animated:YES];
     [viewArray release];
     [tab release];
+}
+
+- (void)createIpView
+{
+    ipView = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2.0 - 250, SCREEN_HEIGHT/2.0 - 250, 500, 300)];
+    [self.view addSubview:ipView];
+    ipView.backgroundColor = [UIColor getColor:@"a9a9a9"];
+    [ipView release];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, 40, ipView.frame.size.width - 60, 30)];
+    label.text = @"请输入服务器地址";
+    [ipView addSubview:label];
+    [label release];
+    
+    ipField = [[UITextView alloc] initWithFrame:CGRectMake(30, 80, label.frame.size.width, ipView.frame.size.height - 180)];
+    ipField.text = [[DataCenter shareInstance].configDictionary objectForKey:@"service"];
+    [ipView addSubview:ipField];
+    [ipField release];
+    
+    UIButton *cancle = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancle.backgroundColor = [UIColor getColor:@"3FA6FF"];
+    [cancle setTitle:@"取消" forState:UIControlStateNormal];
+    [cancle setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [cancle addTarget:self action:@selector(connectServiceAgain) forControlEvents:UIControlEventTouchUpInside];
+    cancle.frame = CGRectMake(30, ipField.frame.origin.y + ipField.frame.size.height + 10, ipField.frame.size.width/2 - 15.0, 30.0);
+    [ipView addSubview:cancle];
+    
+    UIButton *connect = [UIButton buttonWithType:UIButtonTypeCustom];
+    connect.backgroundColor = [UIColor getColor:@"3FA6FF"];
+    [connect setTitle:@"修改" forState:UIControlStateNormal];
+    [connect setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [connect addTarget:self action:@selector(connectService) forControlEvents:UIControlEventTouchUpInside];
+    connect.frame = CGRectMake(cancle.frame.origin.x + cancle.frame.size.width + 30, cancle.frame.origin.y, ipField.frame.size.width/2 - 15.0, 30.0);
+    [ipView addSubview:connect];
+    
+}
+
+- (void)connectServiceAgain
+{
+    [ipField resignFirstResponder];
+    [ipView setHidden:YES];
+    [self getIndexDirc];
+}
+
+- (void)connectService
+{
+    [ipField resignFirstResponder];
+    [ipView setHidden:YES];
+    if([ipField.text length] == 0)
+    {
+        alertMessage(@"服务器地址不能为空，请重新输入");
+        return ;
+    }
+    
+    NSString *plistName = [NSString stringWithFormat:@"Config.plist"];
+    // 创建本地Plist文件实现缓存
+    NSString *plistPath = [Utils documentsPath:plistName];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
+    {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [[NSFileManager defaultManager] createFileAtPath:plistPath contents:dic attributes:nil];
+        [dic release];
+    }
+    NSMutableDictionary *infoDictionary = [[[NSMutableDictionary alloc] initWithContentsOfFile:plistPath] mutableCopy];
+    
+    [infoDictionary setObject:ipField.text forKey:@"service"];
+    
+    [infoDictionary writeToFile:plistPath atomically:YES];
+
+    [DataCenter shareInstance].configDictionary = nil;
+    
+    [DataCenter shareInstance].configDictionary = infoDictionary;
+    
+    [[AFHttpRequestUtils shareInstance] setBaseUrl:ipField.text];
+    
+    [self getIndexDirc];
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController

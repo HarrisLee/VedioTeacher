@@ -10,29 +10,29 @@
 	<string>VedioTeacher</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>A83DD7CE-0867-4CCE-8D29-2A3A73094E48</key>
+		<key>AA5433BD7FF9C0AEB84235700C49A9A3ECA8983D</key>
 		<string>https://github.com/HarrisLee/VedioTeacher.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>VedioTeacher/VedioTeacher.xcodeproj/project.xcworkspace</string>
+	<string>VedioTeacher/VedioTeacher.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>A83DD7CE-0867-4CCE-8D29-2A3A73094E48</key>
+		<key>AA5433BD7FF9C0AEB84235700C49A9A3ECA8983D</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/HarrisLee/VedioTeacher.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>A83DD7CE-0867-4CCE-8D29-2A3A73094E48</string>
+	<string>AA5433BD7FF9C0AEB84235700C49A9A3ECA8983D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>A83DD7CE-0867-4CCE-8D29-2A3A73094E48</string>
+			<string>AA5433BD7FF9C0AEB84235700C49A9A3ECA8983D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>VedioTeacher</string>
 		</dict>

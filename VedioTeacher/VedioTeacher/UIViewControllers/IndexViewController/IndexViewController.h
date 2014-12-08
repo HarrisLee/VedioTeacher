@@ -18,5 +18,8 @@
 #import "GetTopDirectoryRespBody.h"
 
 @interface IndexViewController : BaseViewController<UITabBarControllerDelegate>
-
+{
+    UIView *ipView;
+    UITextView *ipField;
+}
 @end
